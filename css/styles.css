@@ -3600,7 +3600,8 @@ input::-moz-focus-inner {
   font-weight: 600;
   letter-spacing: -0.04em;
   line-height: 1;
-  color: var(--color-1);
+  /* color: var(--color-1); */
+  color: rgb(255, 0, 0);
   margin-bottom: 0;
   position: relative;
 }
@@ -3999,7 +4000,7 @@ html.no-csstransitions .s-hero__content {
 
 @media screen and (max-width: 600px) {
   .s-hero__content h1 {
-    font-size: 28vw;
+    font-size: 26vw;
   }
   .s-hero__content-about {
     padding-right: 15vw;
@@ -4735,7 +4736,7 @@ html.no-csstransitions .s-hero__content {
  *
  * ------------------------------------------------------------------- */
 .s-contact {
-  background-color: var(--color-1);
+  background-color: #006400;
   padding-top: calc(6 * var(--space));
   padding-bottom: var(--vspace-2);
 }
