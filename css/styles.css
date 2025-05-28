@@ -3601,7 +3601,7 @@ input::-moz-focus-inner {
   letter-spacing: -0.04em;
   line-height: 1;
   /* color: var(--color-1); */
-  color: rgb(255, 0, 0);
+  color: rgb(255, 255, 255);
   margin-bottom: 0;
   position: relative;
 }
@@ -4111,7 +4111,7 @@ html.no-csstransitions .s-hero__content {
 }
 
 .s-about__photo {
-  background-image: url(../images/about-photo.jpg);
+  background-image: url(../images/about-photo.jpeg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
