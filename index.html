@@ -33,6 +33,40 @@
     <link rel="icon" type="image/png" sizes="32x32" href="image8.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="image8.png" />
     <link rel="manifest" href="site.webmanifest" />
+    <style>
+      .about-photo-wrapper {
+        width: 100%;
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .about-photo {
+        width: 100%;
+        max-width: 500px;
+        height: 350px;
+        margin: 0 auto;
+        display: block;
+        border-radius: 4px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        object-fit: cover;
+        object-position: center;
+        transition: transform 0.3s ease;
+      }
+      .about-photo:hover {
+        transform: scale(1.02);
+      }
+      @media screen and (max-width: 900px) {
+        .about-photo-wrapper {
+          padding: 15px;
+        }
+        .about-photo {
+          height: 250px;
+          max-width: 100%;
+          border-radius: 4px;
+        }
+      }
+    </style>
   </head>
 
   <body id="top">
@@ -222,85 +256,79 @@
 
 
         <!-- Photo ou illustration -->
-        <div class="column large-6 w-900-stack s-about__photo-block">
-          <div class="s-about__photo" data-aos="fade-up"></div>
+        <div class="column large-6 w-900-stack">
+          <div class="about-photo-wrapper" data-aos="fade-up">
+            <img class="about-photo" src="./images/about-photo.jpeg" alt="AXE LEGAL - Notre équipe">
+          </div>
         </div>
-      </div>
 
-      <!-- Processus de travail simplifié -->
-      <div
-        class="row block-large-1-2 block-tab-full s-about__process item-list"
-      >
-        <div class="column item item-process" data-aos="fade-up">
-          <h3 class="item-title">Conseils en Fiscalité</h3>
-          <p>
-Défense de vos intérêts en cas de redressement fiscal. Nous mettons en place une culture fiscale qui vous permet d'être un contribuable épanoui.
-          </p>
+        <!-- Processus de travail simplifié -->
+        <div class="row block-large-1-2 block-tab-full s-about__process item-list">
+          <div class="column item item-process" data-aos="fade-up">
+            <h3 class="item-title">Conseils en Fiscalité</h3>
+            <p>
+              Défense de vos intérêts en cas de redressement fiscal. Nous mettons en place une culture fiscale qui vous permet d'être un contribuable épanoui.
+            </p>
+          </div>
+          <div class="column item item-process" data-aos="fade-up">
+            <h3 class="item-title">Élaboration de Contrats</h3>
+            <p>
+              Rédaction et validation de contrats de travail, de bail professionnel et à habitation, ainsi que des contrats commerciaux.
+            </p>
+          </div>
+          <div class="column item item-process" data-aos="fade-up">
+            <h3 class="item-title">Sécurisation Foncière</h3>
+            <p>
+              Vérification de l'état de droit de propriété foncière, sécurisation des transactions immobilières et des baux.
+            </p>
+          </div>
+          <div class="column item item-process" data-aos="fade-up">
+            <h3 class="item-title">Recouvrement de Créances</h3>
+            <p>
+              Assistance dans le recouvrement amiable et judiciaire des créances pour maintenir votre solvabilité et une bonne surface financière dans vos affaires.
+            </p>
+          </div>
+          <div class="column item item-process" data-aos="fade-up">
+            <h3 class="item-title">Assistance en Marché Public</h3>
+            <p>
+              Conseils sur les procédures de marchés publics, y compris la rédaction des offres et la gestion des contrats.
+            </p>
+          </div>
+          <div class="column item item-process" data-aos="fade-up">
+            <h3 class="item-title">Constitution de Sociétés</h3>
+            <p>
+              Conseils et assistance en création et à la bonne gouvernance de société.
+            </p>
+          </div>
+          <div class="column item item-process" data-aos="fade-up">
+            <h3 class="item-title">Gestion des Ressources Humaines</h3>
+            <p>
+              Accompagnement dans la gestion des relations de travail, y compris le recrutement, la gestion des contrats et le respect des normes.
+            </p>
+          </div>
+          <div class="column item item-process" data-aos="fade-up">
+            <h3 class="item-title">Prévention des Conflits</h3>
+            <p>
+              Stratégies pour prévenir les conflits juridiques, avec un focus sur la médiation et la gestion des litiges.
+            </p>
+          </div>
+          <div class="column item item-process" data-aos="fade-up">
+            <h3 class="item-title">Évaluation du Patrimoine</h3>
+            <p>
+              Services d'expertise pour l'évaluation du patrimoine et des actifs de votre entreprise, pour une meilleure gestion financière.
+            </p>
+          </div>
+          <div class="column item item-process" data-aos="fade-up">
+            <h3 class="item-title">Assistance en couverture des risques et règlement des sinistres</h3>
+            <p>
+              Vous conseiller dans la prévention des risques professionnels, vous assister dans la négociation des dédommagements en cas de préjudices subis auprès des sociétés d'assurances
+            </p>
+          </div>
         </div>
-        <div class="column item item-process" data-aos="fade-up">
-          <h3 class="item-title">Élaboration de Contrats</h3>
-          <p>
-            Rédaction et validation de contrats de travail, de bail
-            professionnel et à habitation, ainsi que des contrats commerciaux.
-          </p>
-        </div>
-        <div class="column item item-process" data-aos="fade-up">
-          <h3 class="item-title">Sécurisation Foncière</h3>
-          <p>
-            Vérification de l'état de droit de propriété foncière, sécurisation
-            des transactions immobilières et des baux.
-          </p>
-        </div>
-        <div class="column item item-process" data-aos="fade-up">
-          <h3 class="item-title">Recouvrement de Créances</h3>
-          <p>
-            Assistance dans le recouvrement amiable et judiciaire des créances
-            pour maintenir votre solvabilité et une bonne surface financière dans vos affaires.
-          </p>
-        </div>
-        <div class="column item item-process" data-aos="fade-up">
-          <h3 class="item-title">Assistance en Marché Public</h3>
-          <p>
-            Conseils sur les procédures de marchés publics, y compris la
-            rédaction des offres et la gestion des contrats.
-          </p>
-        </div>
-        <div class="column item item-process" data-aos="fade-up">
-          <h3 class="item-title">Constitution de Sociétés</h3>
-          <p>
-            Conseils et assistance en création et à la bonne gouvernance de société.
-          </p>
-        </div>
-        <div class="column item item-process" data-aos="fade-up">
-          <h3 class="item-title">Gestion des Ressources Humaines</h3>
-          <p>
-            Accompagnement dans la gestion des relations de travail, y compris
-            le recrutement, la gestion des contrats et le respect des normes.
-          </p>
-        </div>
-        <div class="column item item-process" data-aos="fade-up">
-          <h3 class="item-title">Prévention des Conflits</h3>
-          <p>
-            Stratégies pour prévenir les conflits juridiques, avec un focus sur
-            la médiation et la gestion des litiges.
-          </p>
-        </div>
-        <div class="column item item-process" data-aos="fade-up">
-          <h3 class="item-title">Évaluation du Patrimoine</h3>
-          <p>
-            Services d'expertise pour l'évaluation du patrimoine et des actifs
-            de votre entreprise, pour une meilleure gestion financière.
-          </p>
-        </div>
-        <div class="column item item-process" data-aos="fade-up">
-          <h3 class="item-title">Assistance en couverture des risques et règlement des sinistres</h3>
-          <p>
-            Vous conseiller dans la prévention des risques professionnels, vous assister dans la négociation des dédommagements en cas de préjudices subis auprès des sociétés d'assurances
 
-          </p>
-        </div>
       </div>
-    </section>
+    </div>
+  </section>
     <!-- end s-about -->
 
     <!-- services
@@ -371,7 +399,7 @@ Défense de vos intérêts en cas de redressement fiscal. Nous mettons en place 
           <span class="service-icon service-icon--illustration"></span>
           <h3 class="item-title">Assistance en Marché Public</h3>
           <p>
-            Accompagnement dans la préparation et la soumission d’offres pour
+            Accompagnement dans la préparation et la soumission d'offres pour
             les marchés publics, ainsi que la gestion des contrats conclus avec
             les administrations.
           </p>
@@ -407,7 +435,7 @@ Défense de vos intérêts en cas de redressement fiscal. Nous mettons en place 
         </div>
         <div class="column large-6 w-900-stack">
           <h1 class="display-1" data-aos="fade-up">
-            Découvrez quelques-unes de nos affaires récentes. N’hésitez pas à
+            Découvrez quelques-unes de nos affaires récentes. N'hésitez pas à
             les consulter.
           </h1>
         </div>
@@ -555,7 +583,7 @@ Défense de vos intérêts en cas de redressement fiscal. Nous mettons en place 
             >
             <div class="folio-item__caption">
               <p>
-                Résolution d’un conflit immobilier majeur concernant des
+                Résolution d'un conflit immobilier majeur concernant des
                 transactions foncières, avec une issue favorable pour notre
                 client.
               </p>
@@ -629,7 +657,7 @@ Défense de vos intérêts en cas de redressement fiscal. Nous mettons en place 
             >
             <div class="folio-item__caption">
               <p>
-                Assistance dans la défense d’un client impliqué dans une affaire
+                Assistance dans la défense d'un client impliqué dans une affaire
                 de droit pénal, avec une issue favorable grâce à notre
                 expertise.
               </p>
@@ -667,114 +695,119 @@ Défense de vos intérêts en cas de redressement fiscal. Nous mettons en place 
 
     <!-- footer
     ================================================== -->
-    <!-- <footer class="s-footer">
-      <div class="row row-y-top">
+    <footer class="s-footer" style="background-color: #1a1a1a; color: #ffffff; padding: 4rem 0;">
+      <div class="row row-y-top" style="max-width: 1200px; margin: 0 auto; padding: 0 2rem;">
+        <!-- Colonne gauche : Coordonnées + réseaux -->
         <div class="column large-8 medium-12">
           <div class="row">
-            <div class="column large-7 tab-12 s-footer__block">
-              <h4 class="h6">Où nous trouver</h4>
-
-              <p>
-                AXE LEGAL <br />
-                Aïfa, Abomey-Calavi <br />
+            <!-- Coordonnées -->
+            <div class="column large-7 tab-12 s-footer__block" style="margin-bottom: 2rem;">
+              <h4 class="h6" style="color: #f5f5f5; font-size: 1.2rem; margin-bottom: 1.5rem; display: flex; align-items: center;">
+                <i class="fas fa-map-marker-alt" style="margin-right: 10px; color: #f5f5f5;"></i>
+                Où nous trouver
+              </h4>
+              <p style="line-height: 1.8;">
+                <strong style="color: #f5f5f5;">AXE LEGAL</strong> <br />
+                <i class="fas fa-building" style="margin-right: 10px; color: #f5f5f5;"></i>
+                Godomey échangeur, en direction Calavi-Cotonou, côté opposé à la mosquée. <br />
+                <i class="fas fa-globe-africa" style="margin-right: 10px; color: #f5f5f5;"></i>
                 Bénin <br />
-                <a href="tel:+22997747593">+229 01 97 74 75 93</a><br />
-                <a href="tel:+22965656825">+229 01 65 65 68 25</a><br />
-                <a href="tel:+22940666938">+229 01 40 66 69 38</a>
+                <a href="tel:+22997747593" style="color: #f5f5f5; text-decoration: none; display: flex; align-items: center; margin: 8px 0;">
+                  <i class="fas fa-phone" style="margin-right: 10px;"></i>+229 01 97 74 75 93
+                </a>
+                <a href="tel:+22965656825" style="color: #f5f5f5; text-decoration: none; display: flex; align-items: center; margin: 8px 0;">
+                  <i class="fas fa-phone" style="margin-right: 10px;"></i>+229 01 65 65 68 25
+                </a>
+                <a href="tel:+22940666938" style="color: #f5f5f5; text-decoration: none; display: flex; align-items: center; margin: 8px 0;">
+                  <i class="fas fa-phone" style="margin-right: 10px;"></i>+229 01 40 66 69 38
+                </a>
+              </p>
+              <p style="margin-top: 1.5rem;">
+                <a href="https://maps.app.goo.gl/5b6RALZhyXMQQavh6" target="_blank" style="color: #f5f5f5; text-decoration: none; display: inline-flex; align-items: center; padding: 8px 16px; border: 1px solid #f5f5f5; border-radius: 4px;">
+                  <i class="fas fa-map-marked-alt" style="margin-right: 8px;"></i>
+                  Voir sur Google Maps
+                </a>
               </p>
             </div>
 
-            <div class="column large-5 tab-12 s-footer__block">
-              <h4 class="h6">Suivez-nous</h4>
-              <ul class="s-footer__list">
-                <li><a href="https://www.facebook.com/profile.php?id=100092728800155">Facebook</a></li>
-                <li><a href="https://www.linkedin.com/in/axe-legal-0134991b2/">LinkedIn</a></li>
-
+            <!-- Réseaux sociaux -->
+            <div class="column large-5 tab-12 s-footer__block" style="margin-bottom: 2rem;">
+              <h4 class="h6" style="color: #f5f5f5; font-size: 1.2rem; margin-bottom: 1.5rem; display: flex; align-items: center;">
+                <i class="fas fa-share-alt" style="margin-right: 10px; color: #f5f5f5;"></i>
+                Suivez-nous
+              </h4>
+              <ul class="s-footer__list" style="list-style: none; padding: 0;">
+                <li style="margin-bottom: 1rem;">
+                  <a href="https://www.facebook.com/profile.php?id=100092728800155" style="color: #f5f5f5; text-decoration: none; display: flex; align-items: center;">
+                    <i class="fab fa-facebook" style="margin-right: 10px; font-size: 1.2rem;"></i>
+                    Facebook
+                  </a>
+                </li>
+                <li>
+                  <a href="https://www.linkedin.com/in/axe-legal-0134991b2/" style="color: #f5f5f5; text-decoration: none; display: flex; align-items: center;">
+                    <i class="fab fa-linkedin" style="margin-right: 10px; font-size: 1.2rem;"></i>
+                    LinkedIn
+                  </a>
+                </li>
               </ul>
             </div>
           </div>
         </div>
 
-        <div class="column large-4 medium-12 s-footer__block--end">
-          <a href="mailto:axelconsult.jurist@gmail.com" class="btn h-full-width"
-            >Contactez-nous</a
-          >
+        <!-- Colonne droite : Légal + Contact -->
+        <div class="column large-4 medium-12 s-footer__block--end" style="border-left: 1px solid #333; padding-left: 2rem;">
+          <h4 class="h6" style="color: #f5f5f5; font-size: 1.2rem; margin-bottom: 1.5rem; display: flex; align-items: center;">
+            <i class="fas fa-balance-scale" style="margin-right: 10px; color: #f5f5f5;"></i>
+            Informations légales
+          </h4>
+          <p style="line-height: 1.8;">
+            <i class="fas fa-file-contract" style="margin-right: 10px; color: #f5f5f5;"></i>
+            Registre du commerce : RB/ABC/20 B 3095 <br />
+            <i class="fas fa-id-card" style="margin-right: 10px; color: #f5f5f5;"></i>
+            Identifiant fiscal : 3202011436651
+          </p>
 
-          <div class="ss-copyright">
-            <span>&copy; AXE LEGAL 2025</span>
-            <span
-              >Développement web par
-              <a href="https://portfolio-cnkp.vercel.app/">Ray Ague</a></span
-            >
+          <h4 class="h6" style="color: #f5f5f5; font-size: 1.2rem; margin: 1.5rem 0 1rem; display: flex; align-items: center;">
+            <i class="fas fa-handshake" style="margin-right: 10px; color: #f5f5f5;"></i>
+            Nos prestations
+          </h4>
+          <ul style="padding-left: 1rem; line-height: 1.8;">
+            <li style="display: flex; align-items: center; margin-bottom: 0.5rem;">
+              <i class="fas fa-check-circle" style="margin-right: 10px; color: #f5f5f5;"></i>
+              Contrats de 3 mois minimum (paiement mensuel ou trimestriel)
+            </li>
+            <li style="display: flex; align-items: center;">
+              <i class="fas fa-check-circle" style="margin-right: 10px; color: #f5f5f5;"></i>
+              Prestations ponctuelles : paiement à la tâche ou par mission
+            </li>
+          </ul>
+
+          <a href="mailto:axelconsult.jurist@gmail.com" class="btn h-full-width" style="background-color: #f5f5f5; color: #1a1a1a; padding: 1rem; text-align: center; display: flex; align-items: center; justify-content: center; text-decoration: none; margin: 2rem 0; border-radius: 4px; transition: all 0.3s ease;">
+            <i class="fas fa-envelope" style="margin-right: 10px;"></i>
+            Contactez-nous
+          </a>
+
+          <div class="ss-copyright" style="border-top: 1px solid #333; padding-top: 1rem; margin-top: 2rem;">
+            <span style="display: block; margin-bottom: 0.5rem;">
+              <i class="fas fa-copyright" style="margin-right: 5px;"></i>
+              AXE LEGAL 2025
+            </span>
+            <span style="display: flex; align-items: center;">
+              <i class="fas fa-code" style="margin-right: 5px;"></i>
+              Développement web par 
+              <a href="https://portfolio-cnkp.vercel.app/" style="color: #f5f5f5; text-decoration: none; margin-left: 5px;">Ray Ague</a>
+            </span>
           </div>
         </div>
 
-        <div class="ss-go-top">
-          <a class="smoothscroll" title="Retour en haut" href="#top"> haut </a>
+        <!-- Bouton retour haut -->
+        <div class="ss-go-top" style="position: fixed; bottom: 2rem; right: 2rem;">
+          <a class="smoothscroll" title="Retour en haut" href="#top" style="background-color: #f5f5f5; color: #1a1a1a; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; text-decoration: none; border-radius: 50%; transition: all 0.3s ease;">
+            <i class="fas fa-arrow-up"></i>
+          </a>
         </div>
       </div>
-    </footer> -->
-
-    <footer class="s-footer">
-  <div class="row row-y-top">
-    <!-- Colonne gauche : Coordonnées + réseaux -->
-    <div class="column large-8 medium-12">
-      <div class="row">
-        <!-- Coordonnées -->
-        <div class="column large-7 tab-12 s-footer__block">
-          <h4 class="h6">Où nous trouver</h4>
-          <p>
-            AXE LEGAL <br />
-            Godomey échangeur, en direction Calavi-Cotonou, côté opposé à la mosquée. <br />
-            Bénin <br />
-            <a href="tel:+22997747593">+229 01 97 74 75 93</a><br />
-            <a href="tel:+22965656825">+229 01 65 65 68 25</a><br />
-            <a href="tel:+22940666938">+229 01 40 66 69 38</a>
-          </p>
-          <p>
-            <strong><a href="https://maps.app.goo.gl/5b6RALZhyXMQQavh6" target="_blank">Voir sur Google Maps</a></strong>
-          </p>
-        </div>
-
-        <!-- Réseaux sociaux -->
-        <div class="column large-5 tab-12 s-footer__block">
-          <h4 class="h6">Suivez-nous</h4>
-          <ul class="s-footer__list">
-            <li><a href="https://www.facebook.com/profile.php?id=100092728800155">Facebook</a></li>
-            <li><a href="https://www.linkedin.com/in/axe-legal-0134991b2/">LinkedIn</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <!-- Colonne droite : Légal + Contact -->
-    <div class="column large-4 medium-12 s-footer__block--end">
-      <h4 class="h6">Informations légales</h4>
-      <p>
-        Registre du commerce : RB/ABC/20 B 3095 <br />
-        Identifiant fiscal : 3202011436651
-      </p>
-
-      <h4 class="h6">Nos prestations</h4>
-      <ul style="padding-left: 1rem;">
-        <li>Contrats de 3 mois minimum (paiement mensuel ou trimestriel)</li>
-        <li>Prestations ponctuelles : paiement à la tâche ou par mission</li>
-      </ul>
-
-      <a href="mailto:axelconsult.jurist@gmail.com" class="btn h-full-width">Contactez-nous</a>
-
-      <div class="ss-copyright">
-        <span>&copy; AXE LEGAL 2025</span>
-        <span>Développement web par <a href="https://portfolio-cnkp.vercel.app/">Ray Ague</a></span>
-      </div>
-    </div>
-
-    <!-- Bouton retour haut -->
-    <div class="ss-go-top">
-      <a class="smoothscroll" title="Retour en haut" href="#top"> haut </a>
-    </div>
-  </div>
-</footer>
+    </footer>
 
     <!-- photoswipe background
     ================================================== -->
@@ -840,5 +873,18 @@ Défense de vos intérêts en cas de redressement fiscal. Nous mettons en place 
     <script src="js/jquery-3.2.1.min.js"></script>
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
+
+    <style>
+      @media screen and (max-width: 900px) {
+        .s-about__photo {
+          margin: 2rem auto;
+          max-width: 500px;
+        }
+        .s-about__photo img {
+          min-height: 300px;
+          object-position: center;
+        }
+      }
+    </style>
   </body>
 </html>
