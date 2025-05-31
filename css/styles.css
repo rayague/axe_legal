@@ -86,185 +86,140 @@
  * ## fonts
  * ------------------------------------------------------------------- */
 
-@import url("https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i|Nunito+Sans:300,300i,400,400i,600,600i,700,700i&display=swap");
+ @import url("https://fonts.googleapis.com/css?family=Montserrat:300,300i,400,400i,500,500i,600,600i,700,700i|Nunito+Sans:300,300i,400,400i,600,600i,700,700i&display=swap");
 
-:root {
-  --font-1: "Nunito Sans", sans-serif;
-  --font-2: "Montserrat", sans-serif;
-
-  /* monospace
-     */
-  --font-mono: Consolas, "Andale Mono", Courier, "Courier New", monospace;
-}
-
-/* ------------------------------------------------------------------- 
- * ## colors
- * ------------------------------------------------------------------- */
-:root {
-  /* color-1(#d9083c)
-     * color-2(#eb5e55)
-     * color-3(#f2d0a4)
-     */
-  --color-1: rgb(50, 217, 8);
-  --color-2: rgb(116, 235, 86);
-  --color-3: hsla(34, 75%, 80%, 1);
-
-  /* theme color variations
-     */
-  --color-1-lighter: rgb(118, 249, 78);
-  --color-1-light: rgb(29, 247, 58);
-  --color-1-dark: rgb(6, 167, 14);
-  --color-1-darker: rgb(4, 118, 23);
-  --color-2-lighter: rgb(177, 246, 192);
-  --color-2-light: rgb(136, 241, 132);
-  --color-2-dark: rgb(40, 230, 65);
-  --color-2-darker: rgb(23, 196, 32);
-
-  /* feedback colors
-     * color-error(#ffd1d2), color-success(#c8e675), 
-     * color-info(#d7ecfb), color-notice(#fff099)
-     */
-  --color-error: hsla(359, 100%, 91%, 1);
-  --color-success: hsla(76, 69%, 68%, 1);
-  --color-info: hsla(205, 82%, 91%, 1);
-  --color-notice: hsla(51, 100%, 80%, 1);
-  --color-error-content: rgb(64, 191, 96);
-  --color-success-content: hsla(76, 29%, 28%, 1);
-  --color-info-content: hsla(205, 32%, 31%, 1);
-  --color-notice-content: hsla(51, 30%, 30%, 1);
-
-  /* shades 
-     * generated using 
-     * Tint & Shade Generator 
-     * (https://maketintsandshades.com/)
-     */
-  --color-black: #000000;
-  --color-gray-19: #0b0b0c;
-  --color-gray-18: #161719;
-  --color-gray-17: #202225;
-  --color-gray-16: #2b2e32;
-  --color-gray-15: #363a3f;
-  --color-gray-14: #41454b;
-  --color-gray-13: #4c5158;
-  --color-gray-12: #565c64;
-  --color-gray-11: #616871;
-  --color-gray-10: #6c737d;
-  --color-gray-9: #7b818a;
-  --color-gray-8: #898f97;
-  --color-gray-7: #989da4;
-  --color-gray-6: #a7abb1;
-  --color-gray-5: #b6b9be;
-  --color-gray-4: #c4c7cb;
-  --color-gray-3: #d3d5d8;
-  --color-gray-2: #e2e3e5;
-  --color-gray-1: #f0f1f2;
-  --color-white: #ffffff;
-
-  /* text
-     */
-  --color-text: var(--color-gray-10);
-  --color-text-dark: var(--color-white);
-  --color-text-light: var(--color-gray-12);
-  --color-placeholder: var(--color-gray-11);
-
-  /* buttons
-     */
-  --color-btn: var(--color-gray-15);
-  --color-btn-text: var(--color-white);
-  --color-btn-hover: var(--color-white);
-  --color-btn-hover-text: var(--color-black);
-  --color-btn-primary: var(--color-1);
-  --color-btn-primary-text: var(--color-white);
-  --color-btn-primary-hover: var(--color-white);
-  --color-btn-primary-hover-text: var(--color-black);
-  --color-btn-stroke: var(--color-white);
-  --color-btn-stroke-text: var(--color-white);
-  --color-btn-stroke-hover: var(--color-white);
-  --color-btn-stroke-hover-text: var(--color-black);
-
-  /* others
-     */
-  --color-body: var(--color-1);
-  --color-bg: #14171b;
-  --color-border: var(--color-gray-17);
-}
-
-/* ------------------------------------------------------------------- 
- * ## vertical spacing and typescale
- * ------------------------------------------------------------------- */
-:root {
-  /* spacing
-     * base font size: 18px 
-     * vertical space unit : 32px
-     */
-  --base-size: 62.5%;
-  --base-font-size: 1.8rem;
-  --space: 3.2rem;
-
-  /* vertical spacing 
-     */
-  --vspace-0_25: calc(0.25 * var(--space));
-  --vspace-0_5: calc(0.5 * var(--space));
-  --vspace-0_75: calc(0.75 * var(--space));
-  --vspace-1: calc(var(--space));
-  --vspace-1_25: calc(1.25 * var(--space));
-  --vspace-1_5: calc(1.5 * var(--space));
-  --vspace-1_75: calc(1.75 * var(--space));
-  --vspace-2: calc(2 * var(--space));
-  --vspace-2_5: calc(2.5 * var(--space));
-  --vspace-3: calc(3 * var(--space));
-  --vspace-3_5: calc(3.5 * var(--space));
-  --vspace-4: calc(4 * var(--space));
-
-  /* type scale
-     * ratio 1:2 | base: 18px
-     * -------------------------------------------------------
-     *
-     * --text-display-3 = (77.40px)
-     * --text-display-2 = (64.50px)
-     * --text-display-1 = (53.75px)
-     * --text-xxxl      = (44.79px)
-     * --text-xxl       = (37.32px)
-     * --text-xl        = (31.10px)
-     * --text-lg        = (25.92px)
-     * --text-md        = (21.60px)
-     * --text-size      = (18.00px) BASE
-     * --text-sm        = (15.00px)
-     * --text-xs        = (12.50px)
-     *
-     * -------------------------------------------------------
-     */
-  --text-scale-ratio: 1.2;
-  --text-size: var(--base-font-size);
-  --text-xs: calc(
-    (var(--text-size) / var(--text-scale-ratio)) / var(--text-scale-ratio)
-  );
-  --text-sm: calc(var(--text-xs) * var(--text-scale-ratio));
-  --text-md: calc(
-    var(--text-sm) * var(--text-scale-ratio) * var(--text-scale-ratio)
-  );
-  --text-lg: calc(var(--text-md) * var(--text-scale-ratio));
-  --text-xl: calc(var(--text-lg) * var(--text-scale-ratio));
-  --text-xxl: calc(var(--text-xl) * var(--text-scale-ratio));
-  --text-xxxl: calc(var(--text-xxl) * var(--text-scale-ratio));
-  --text-display-1: calc(var(--text-xxxl) * var(--text-scale-ratio));
-  --text-display-2: calc(var(--text-display-1) * var(--text-scale-ratio));
-  --text-display-3: calc(var(--text-display-2) * var(--text-scale-ratio));
-
-  /* default button height
-     */
-  --vspace-btn: var(--vspace-2);
-}
-
-/* on mobile devices below 480px
- */
-@media screen and (max-width: 480px) {
-  :root {
-    --base-font-size: 1.6rem;
-    --space: 2.8rem;
-  }
-}
-
+ :root {
+   --font-1: "Nunito Sans", sans-serif;
+   --font-2: "Montserrat", sans-serif;
+   --font-mono: Consolas, "Andale Mono", Courier, "Courier New", monospace;
+ }
+ 
+ /* ------------------------------------------------------------------- 
+  * ## colors - REVISED VERSION
+  * ------------------------------------------------------------------- */
+ :root {
+   /* Primary blues for professional feel */
+   --color-1: #0057A8;
+   --color-2: #1976D2;
+   --color-3: #E3F2FD;
+ 
+   /* Variations */
+   --color-1-lighter: #3385c7;
+   --color-1-light: #3385c7;
+   --color-1-dark: #003f7d;
+   --color-1-darker: #002f5c;
+ 
+   --color-2-lighter: #4793e0;
+   --color-2-light: #4793e0;
+   --color-2-dark: #125a9c;
+   --color-2-darker: #0d3e6d;
+ 
+   /* Feedback colors */
+   --color-error: #ffd1d2;
+   --color-success: #c8e675;
+   --color-info: #d7ecfb;
+   --color-notice: #fff099;
+   --color-error-content: #bf4040;
+   --color-success-content: #5b7521;
+   --color-info-content: #3e6a93;
+   --color-notice-content: #857f39;
+ 
+   /* Greys and neutrals */
+   --color-black: #000000;
+   --color-white: #ffffff;
+   --color-gray-1: #f0f1f2;
+   --color-gray-2: #e2e3e5;
+   --color-gray-3: #d3d5d8;
+   --color-gray-4: #c4c7cb;
+   --color-gray-5: #b6b9be;
+   --color-gray-6: #a7abb1;
+   --color-gray-7: #989da4;
+   --color-gray-8: #898f97;
+   --color-gray-9: #7b818a;
+   --color-gray-10: #6c737d;
+   --color-gray-11: #616871;
+   --color-gray-12: #565c64;
+   --color-gray-13: #4c5158;
+   --color-gray-14: #41454b;
+   --color-gray-15: #363a3f;
+   --color-gray-16: #2b2e32;
+   --color-gray-17: #202225;
+   --color-gray-18: #161719;
+   --color-gray-19: #0b0b0c;
+ 
+   /* Global backgrounds and text */
+   --color-body: var(--color-1);
+   --color-bg: #f8f9fa;
+   --color-border: var(--color-gray-3);
+ 
+   /* Text colors */
+   --color-text: var(--color-gray-10);
+   --color-text-dark: var(--color-black);
+   --color-text-light: var(--color-gray-12);
+   --color-placeholder: var(--color-gray-11);
+ 
+   /* Buttons */
+   --color-btn: var(--color-1-dark);
+   --color-btn-text: var(--color-white);
+   --color-btn-hover: var(--color-1-light);
+   --color-btn-hover-text: var(--color-white);
+   --color-btn-primary: var(--color-1);
+   --color-btn-primary-text: var(--color-white);
+   --color-btn-primary-hover: var(--color-2);
+   --color-btn-primary-hover-text: var(--color-white);
+   --color-btn-stroke: var(--color-1);
+   --color-btn-stroke-text: var(--color-white);
+   --color-btn-stroke-hover: var(--color-2-light);
+   --color-btn-stroke-hover-text: var(--color-white);
+ }
+ 
+ /* ------------------------------------------------------------------- 
+  * ## spacing and type scale
+  * ------------------------------------------------------------------- */
+ :root {
+   --base-size: 62.5%;
+   --base-font-size: 1.8rem;
+   --space: 3.2rem;
+ 
+   /* Vertical spacing */
+   --vspace-0_25: calc(0.25 * var(--space));
+   --vspace-0_5: calc(0.5 * var(--space));
+   --vspace-0_75: calc(0.75 * var(--space));
+   --vspace-1: calc(var(--space));
+   --vspace-1_25: calc(1.25 * var(--space));
+   --vspace-1_5: calc(1.5 * var(--space));
+   --vspace-1_75: calc(1.75 * var(--space));
+   --vspace-2: calc(2 * var(--space));
+   --vspace-2_5: calc(2.5 * var(--space));
+   --vspace-3: calc(3 * var(--space));
+   --vspace-3_5: calc(3.5 * var(--space));
+   --vspace-4: calc(4 * var(--space));
+ 
+   /* Typography scale */
+   --text-scale-ratio: 1.2;
+   --text-size: var(--base-font-size);
+   --text-xs: calc((var(--text-size) / var(--text-scale-ratio)) / var(--text-scale-ratio));
+   --text-sm: calc(var(--text-xs) * var(--text-scale-ratio));
+   --text-md: calc(var(--text-sm) * var(--text-scale-ratio) * var(--text-scale-ratio));
+   --text-lg: calc(var(--text-md) * var(--text-scale-ratio));
+   --text-xl: calc(var(--text-lg) * var(--text-scale-ratio));
+   --text-xxl: calc(var(--text-xl) * var(--text-scale-ratio));
+   --text-xxxl: calc(var(--text-xxl) * var(--text-scale-ratio));
+   --text-display-1: calc(var(--text-xxxl) * var(--text-scale-ratio));
+   --text-display-2: calc(var(--text-display-1) * var(--text-scale-ratio));
+   --text-display-3: calc(var(--text-display-2) * var(--text-scale-ratio));
+ 
+   --vspace-btn: var(--vspace-2);
+ }
+ 
+ /* Responsive adjustments for small devices */
+ @media screen and (max-width: 480px) {
+   :root {
+     --base-font-size: 1.6rem;
+     --space: 2.8rem;
+   }
+ }
+ 
 /* ------------------------------------------------------------------- 
  * ## grid variables
  * ------------------------------------------------------------------- */
@@ -3644,29 +3599,47 @@ input::-moz-focus-inner {
 }
 
 .s-hero__content-about p {
-  margin-bottom: var(--vspace-2);
+  font-size: var(--text-lg);
+  line-height: 1.6;
+}
+
+@media screen and (max-width: 600px) {
+  .s-hero__content {
+    padding: 0 2rem;
+  }
 }
 
 /* hero content social
  * ----------------------------------------------- */
 .s-hero__content-social {
-  display: inline-block;
+  margin-top: 3rem;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+}
+
+.s-hero__content-social .social-icons {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.s-hero__content-social .social-icons a {
+  color: var(--color-white);
   font-size: 1.8rem;
-  line-height: var(--vspace-1);
+  transition: all 0.3s ease;
+  text-decoration: none;
 }
 
-.s-hero__content-social a {
-  color: white;
-  margin-right: 1.2rem;
-}
-
-.s-hero__content-social a:hover,
-.s-hero__content-social a:focus {
+.s-hero__content-social .social-icons a:hover {
   color: var(--color-1-light);
+  transform: translateY(-2px);
 }
 
-.s-hero__content-social a:last-child {
-  margin-right: 0;
+@media screen and (max-width: 600px) {
+  .s-hero__content-social {
+    margin-top: 2rem;
+  }
 }
 
 /* ------------------------------------------------------------------- 
@@ -3674,8 +3647,8 @@ input::-moz-focus-inner {
  * ------------------------------------------------------------------- */
 .s-hero__video {
   position: absolute;
-  right: 10.4rem;
-  bottom: 20vh;
+  right: 0;
+  bottom: 0;
 }
 
 .s-hero__video svg {
