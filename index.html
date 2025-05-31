@@ -66,6 +66,39 @@
           border-radius: 4px;
         }
       }
+      .parallax-layer {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        opacity: 0.7;
+        transition: transform 0.1s ease-out;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+      }
+      
+      .parallax-section {
+        background-color: #000;
+        position: relative;
+        height: 100vh;
+        overflow: hidden;
+      }
+
+      .parallax-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+      
+      @media screen and (max-width: 900px) {
+        .parallax-content h2 {
+          font-size: 3rem;
+        }
+      }
     </style>
   </head>
 
@@ -138,7 +171,7 @@
 
     <!-- Hero Section ================================================== -->
     <section id="hero" class="s-hero target-section">
-      <div class="s-hero__bg">
+      <div class="s-hero__bg" style="background-image: url('images/axel.jpeg');">
         <div class="gradient-overlay"></div>
       </div>
 
@@ -644,9 +677,26 @@
     </section>
     <!-- end s-portfolio -->
 
+    <!-- Parallax Section -->
+    <section class="image-gallery" style="position: relative; height: 100vh; background-color: #000; overflow: hidden; padding: 80px 0;">
+      <div class="gallery-container" style="position: absolute; top: 80px; left: 50%; transform: translateX(-50%); width: 80%; height: calc(100% - 160px);">
+        <img src="images/axe_legal/image%20(1).jpeg" class="gallery-image" alt="Image 1" loading="lazy" width="1200" height="800">
+        <img src="images/axe_legal/image%20(2).jpeg" class="gallery-image" alt="Image 2" loading="lazy" width="1200" height="800">
+        <img src="images/axe_legal/image%20(3).jpeg" class="gallery-image" alt="Image 3" loading="lazy" width="1200" height="800">
+        <img src="images/axe_legal/image%20(4).jpeg" class="gallery-image" alt="Image 4" loading="lazy" width="1200" height="800">
+        <img src="images/axe_legal/image%20(6).jpeg" class="gallery-image" alt="Image 5" loading="lazy" width="1200" height="800">
+        <img src="images/axe_legal/image%20(8).jpeg" class="gallery-image" alt="Image 6" loading="lazy" width="1200" height="800">
+        <img src="images/axe_legal/image%20(10).jpeg" class="gallery-image" alt="Image 7" loading="lazy" width="1200" height="800">
+        <img src="images/axe_legal/image%20(11).jpeg" class="gallery-image" alt="Image 8" loading="lazy" width="1200" height="800">
+      </div>
+      <div class="gallery-content" style="position: relative; z-index: 2; height: 100%; display: flex; align-items: center; justify-content: center;">
+        <h2 style="color: #fff; font-size: 4rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.5);">Fiscaliste</h2>
+      </div>
+    </section>
+
     <!-- clients
     ================================================== -->
-    <section id="clients" class="section s-clients">
+    <section id="clients" class="section s-clientss">
     </section>
     <!-- end s-clients -->
 
@@ -854,6 +904,123 @@
     <script src="js/jquery-3.2.1.min.js"></script>
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
+
+    <style>
+      .gallery-container {
+        position: absolute;
+        top: 80px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80%;
+        height: calc(100% - 160px);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      .gallery-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0;
+        transition: all 1.5s ease-in-out;
+        display: block;
+        will-change: transform, opacity;
+        backface-visibility: hidden;
+        transform: scale(1.02);
+      }
+
+      .gallery-image.active {
+        opacity: 0.85;
+        z-index: 1;
+        transform: scale(1);
+      }
+
+      .gallery-image.loading {
+        filter: blur(10px);
+      }
+
+      .gallery-image.loaded {
+        filter: blur(0);
+      }
+
+      @media screen and (min-width: 769px) {
+        .gallery-image {
+          border-radius: 8px;
+        }
+      }
+
+      @media screen and (max-width: 768px) {
+        .gallery-container {
+          width: 95%;
+          height: calc(100% - 120px);
+          top: 60px;
+        }
+        .gallery-content h2 {
+          font-size: 2.5rem;
+        }
+        .gallery-image {
+          border-radius: 0;
+        }
+      }
+
+      @media screen and (max-width: 480px) {
+        .gallery-container {
+          width: 100%;
+          height: calc(100% - 100px);
+          top: 50px;
+        }
+        .gallery-content h2 {
+          font-size: 2rem;
+        }
+      }
+    </style>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const images = document.querySelectorAll('.gallery-image');
+        let currentIndex = 0;
+        let isTransitioning = false;
+
+        // Fonction pour précharger les images
+        function preloadImages() {
+          images.forEach(img => {
+            img.classList.add('loading');
+            const tempImage = new Image();
+            tempImage.onload = function() {
+              img.classList.remove('loading');
+              img.classList.add('loaded');
+            };
+            tempImage.src = img.src;
+          });
+        }
+
+        // Fonction pour changer d'image avec une transition fluide
+        function changeImage() {
+          if (isTransitioning) return;
+          isTransitioning = true;
+
+          const currentImage = images[currentIndex];
+          currentImage.classList.remove('active');
+          
+          currentIndex = (currentIndex + 1) % images.length;
+          const nextImage = images[currentIndex];
+          nextImage.classList.add('active');
+
+          setTimeout(() => {
+            isTransitioning = false;
+          }, 1500); // Correspond à la durée de la transition CSS
+        }
+
+        // Initialisation
+        if (images.length > 0) {
+          preloadImages();
+          images[0].classList.add('active');
+          setInterval(changeImage, 4000); // Changement toutes les 4 secondes
+        }
+      });
+    </script>
 
     <style>
       @media screen and (max-width: 900px) {
