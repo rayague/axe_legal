@@ -2237,6 +2237,92 @@
             opacity: 0.9;
             margin: 0;
         }
+
+
+
+        /* Styles responsive pour mobile */
+@media (max-width: 768px) {
+    .formations-section {
+        padding: 3rem 0.5rem !important;
+    }
+    
+    .formations-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+    }
+    
+    .formation-filters {
+        gap: 0.5rem !important;
+    }
+    
+    .filter-btn {
+        padding: 0.6rem 1rem !important;
+        font-size: 0.8rem !important;
+    }
+    
+    .advantages-section {
+        padding: 2rem 1rem !important;
+    }
+    
+    .advantages-section > div {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .formations-header h2 {
+        font-size: 1.6rem !important;
+    }
+    
+    .formation-card {
+        margin: 0 0.5rem !important;
+    }
+    
+    .formation-card > div:last-child {
+        padding: 1.5rem !important;
+    }
+    
+    .buy-btn {
+        padding: 0.6rem 1rem !important;
+        font-size: 0.9rem !important;
+    }
+}
+
+/* Animation des cartes */
+.formation-card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+/* Style des boutons de filtre actifs */
+.filter-btn.active {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Support du mode sombre */
+@media (prefers-color-scheme: dark) {
+    .formations-section {
+        background: #1a202c !important;
+        color: white;
+    }
+    
+    .formation-card {
+        background: #2d3748 !important;
+        border-color: #4a5568 !important;
+    }
+    
+    .advantages-section {
+        background: #2d3748 !important;
+    }
+    
+    .formation-card h3,
+    .formation-card p,
+    .advantages-section h3,
+    .advantages-section p {
+        color: #e2e8f0 !important;
+    }
+}
     </style>
 </head>
 <body>
@@ -2257,7 +2343,7 @@
             </nav>
 
             <div class="nav-cta">
-                <a href="consultation.html" class="btn btn-primary"><i class="fas fa-phone"></i>Consultation Gratuite</a>
+                <a href="legalTech.html" class="btn btn-primary"> <i class="fas fa-gavel"></i>Legal Tech</a>
             </div>
 
             <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Ouvrir le menu de navigation" title="Ouvrir le menu de navigation">
@@ -2496,6 +2582,404 @@
         </div>
     </section>
 
+
+    <!-- Section Formations Juridiques -->
+<section id="formations" class="formations-section" style="
+    padding: 5rem 1rem;
+    background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+    min-height: 100vh;
+">
+    <div class="container" style="max-width: 1400px; margin: 0 auto;">
+        
+        <!-- En-tête -->
+        <div class="formations-header" style="text-align: center; margin-bottom: 4rem;">
+            <div style="display: inline-flex; align-items: center; gap: 0.5rem; background: var(--primary-blue); color: white; padding: 0.75rem 1.5rem; border-radius: 50px; margin-bottom: 1.5rem; font-size: 0.9rem; font-weight: 600;">
+                <span><i class="fas fa-graduation-cap"></i></span> Formations Juridiques
+            </div>
+            
+            <h2 style="font-size: clamp(2rem, 4vw, 3rem); font-weight: 700; color: var(--primary-blue); margin-bottom: 1rem; font-family: 'Playfair Display', serif;">
+                Développez vos Compétences Juridiques
+            </h2>
+            
+            <p style="font-size: 1.1rem; color: var(--text-dark); max-width: 700px; margin: 0 auto 2rem; line-height: 1.6;">
+                Des formations expertes créées par nos juristes pour vous accompagner dans la maîtrise du droit.
+                <strong>Apprenez à votre rythme et renforcez vos compétences.</strong>
+            </p>
+
+            <!-- Filtres par catégorie -->
+            <div class="formation-filters" style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 2rem;">
+                <button class="filter-btn active" data-filter="all" style="
+                    background: var(--primary-blue);
+                    color: white;
+                    border: none;
+                    padding: 0.75rem 1.5rem;
+                    border-radius: 25px;
+                    font-weight: 600;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                ">Toutes les formations</button>
+                <button class="filter-btn" data-filter="entreprise" style="
+                    background: #e3f2fd;
+                    color: var(--primary-blue);
+                    border: 2px solid var(--primary-blue);
+                    padding: 0.75rem 1.5rem;
+                    border-radius: 25px;
+                    font-weight: 600;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                ">Droit des Entreprises</button>
+                <button class="filter-btn" data-filter="immobilier" style="
+                    background: #e8f5e8;
+                    color: #2e7d32;
+                    border: 2px solid #2e7d32;
+                    padding: 0.75rem 1.5rem;
+                    border-radius: 25px;
+                    font-weight: 600;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                ">Droit Immobilier</button>
+                <button class="filter-btn" data-filter="numerique" style="
+                    background: #f3e5f5;
+                    color: #7b1fa2;
+                    border: 2px solid #7b1fa2;
+                    padding: 0.75rem 1.5rem;
+                    border-radius: 25px;
+                    font-weight: 600;
+                    cursor: pointer;
+                    transition: all 0.3s ease;
+                ">Droit du Numérique</button>
+            </div>
+        </div>
+
+        <!-- Grille des formations -->
+        <div class="formations-grid" style="
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        ">
+            
+            <!-- Formation 1 - Droit des Entreprises -->
+            <div class="formation-card" data-category="entreprise" style="
+                background: white;
+                border-radius: 20px;
+                overflow: hidden;
+                box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+                transition: all 0.3s ease;
+                border: 1px solid #e9ecef;
+            ">
+                <!-- Badge populaire -->
+                <div style="position: absolute; top: 1rem; right: 1rem; background: #ff6b6b; color: white; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; z-index: 2;">
+                    <i class="fas fa-fire"></i> Populaire
+                </div>
+                
+                <!-- Image de la formation -->
+                <div style="height: 200px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); position: relative; overflow: hidden;">
+                    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: white;">
+                        <i class="fas fa-building" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.9;"></i>
+                        <h4 style="margin: 0; font-size: 1.2rem; font-weight: 600;">ENTREPRISE</h4>
+                    </div>
+                </div>
+                
+                <!-- Contenu de la formation -->
+                <div style="padding: 2rem;">
+                    <h3 style="color: var(--primary-blue); margin-bottom: 1rem; font-size: 1.4rem; font-weight: 700;">
+                        Création et Gestion d'Entreprise
+                    </h3>
+                    
+                    <p style="color: var(--text-dark); margin-bottom: 1.5rem; line-height: 1.6;">
+                        Maîtrisez les aspects juridiques de la création d'entreprise, de la rédaction des statuts à la gestion quotidienne.
+                    </p>
+                    
+                    <!-- Détails de la formation -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem;">
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <i class="fas fa-clock" style="color: var(--primary-blue);"></i>
+                            <span style="font-size: 0.9rem; color: var(--text-dark);">8h de formation</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <i class="fas fa-play-circle" style="color: var(--primary-blue);"></i>
+                            <span style="font-size: 0.9rem; color: var(--text-dark);">24 leçons</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <i class="fas fa-certificate" style="color: var(--primary-blue);"></i>
+                            <span style="font-size: 0.9rem; color: var(--text-dark);">Certification</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <i class="fas fa-infinity" style="color: var(--primary-blue);"></i>
+                            <span style="font-size: 0.9rem; color: var(--text-dark);">Accès à vie</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Niveau et évaluation -->
+                    <div style="display: flex; justify-content: between; align-items: center; margin-bottom: 1.5rem;">
+                        <div>
+                            <span style="background: #e3f2fd; color: var(--primary-blue); padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.8rem; font-weight: 600;">Débutant</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <div style="color: #FFD700;">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <span style="font-size: 0.9rem; color: var(--text-dark);">(4.5/5)</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Prix et CTA -->
+                    <div style="display: flex; justify-content: between; align-items: center;">
+                        <div>
+   <span style="font-size: 1.8rem; font-weight: 700; color: var(--primary-blue);">45.000 FCFA</span>
+    <span style="text-decoration: line-through; color: #6c757d; margin-left: 0.5rem;">65.000 FCFA</span>
+                        </div>
+                        <button class="buy-btn" style="
+                            background: var(--primary-blue);
+                            color: white;
+                            border: none;
+                            padding: 0.75rem 1.5rem;
+                            border-radius: 10px;
+                            font-weight: 600;
+                            cursor: pointer;
+                            transition: all 0.3s ease;
+                        " onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 5px 15px rgba(30, 90, 168, 0.3)'" 
+                        onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                            <i class="fas fa-shopping-cart"></i> Acheter
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Formation 2 - Droit Immobilier -->
+            <div class="formation-card" data-category="immobilier" style="
+                background: white;
+                border-radius: 20px;
+                overflow: hidden;
+                box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+                transition: all 0.3s ease;
+                border: 1px solid #e9ecef;
+            ">
+                <!-- Image de la formation -->
+                <div style="height: 200px; background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%); position: relative; overflow: hidden;">
+                    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: white;">
+                        <i class="fas fa-home" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.9;"></i>
+                        <h4 style="margin: 0; font-size: 1.2rem; font-weight: 600;">IMMOBILIER</h4>
+                    </div>
+                </div>
+                
+                <!-- Contenu de la formation -->
+                <div style="padding: 2rem;">
+                    <h3 style="color: #2e7d32; margin-bottom: 1rem; font-size: 1.4rem; font-weight: 700;">
+                        Investissement Immobilier Légal
+                    </h3>
+                    
+                    <p style="color: var(--text-dark); margin-bottom: 1.5rem; line-height: 1.6;">
+                        Apprenez les aspects juridiques de l'investissement immobilier, contrats, fiscalité et gestion locative.
+                    </p>
+                    
+                    <!-- Détails de la formation -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem;">
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <i class="fas fa-clock" style="color: #2e7d32;"></i>
+                            <span style="font-size: 0.9rem; color: var(--text-dark);">6h de formation</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <i class="fas fa-play-circle" style="color: #2e7d32;"></i>
+                            <span style="font-size: 0.9rem; color: var(--text-dark);">18 leçons</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <i class="fas fa-certificate" style="color: #2e7d32;"></i>
+                            <span style="font-size: 0.9rem; color: var(--text-dark);">Certification</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <i class="fas fa-infinity" style="color: #2e7d32;"></i>
+                            <span style="font-size: 0.9rem; color: var(--text-dark);">Accès à vie</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Niveau et évaluation -->
+                    <div style="display: flex; justify-content: between; align-items: center; margin-bottom: 1.5rem;">
+                        <div>
+                            <span style="background: #e8f5e8; color: #2e7d32; padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.8rem; font-weight: 600;">Intermédiaire</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <div style="color: #FFD700;">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span style="font-size: 0.9rem; color: var(--text-dark);">(5.0/5)</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Prix et CTA -->
+                    <div style="display: flex; justify-content: between; align-items: center;">
+                        <div>
+                            <span style="font-size: 1.8rem; font-weight: 700; color: #2e7d32;">55.000 FCFA</span>
+                        </div>
+                        <button class="buy-btn" style="
+                            background: #2e7d32;
+                            color: white;
+                            border: none;
+                            padding: 0.75rem 1.5rem;
+                            border-radius: 10px;
+                            font-weight: 600;
+                            cursor: pointer;
+                            transition: all 0.3s ease;
+                        " onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 5px 15px rgba(46, 125, 50, 0.3)'" 
+                        onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                            <i class="fas fa-shopping-cart"></i> Acheter
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Formation 3 - Droit du Numérique -->
+            <div class="formation-card" data-category="numerique" style="
+                background: white;
+                border-radius: 20px;
+                overflow: hidden;
+                box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+                transition: all 0.3s ease;
+                border: 1px solid #e9ecef;
+            ">
+                <!-- Badge nouveau -->
+                <div style="position: absolute; top: 1rem; right: 1rem; background: #667eea; color: white; padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600; z-index: 2;">
+                    <i class="fas fa-star"></i> Nouveau
+                </div>
+                
+                <!-- Image de la formation -->
+                <div style="height: 200px; background: linear-gradient(135deg, #ff6b6b 0%, #ff8e8e 100%); position: relative; overflow: hidden;">
+                    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); text-align: center; color: white;">
+                        <i class="fas fa-laptop-code" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.9;"></i>
+                        <h4 style="margin: 0; font-size: 1.2rem; font-weight: 600;">NUMÉRIQUE</h4>
+                    </div>
+                </div>
+                
+                <!-- Contenu de la formation -->
+                <div style="padding: 2rem;">
+                    <h3 style="color: #7b1fa2; margin-bottom: 1rem; font-size: 1.4rem; font-weight: 700;">
+                        RGPD et Protection des Données
+                    </h3>
+                    
+                    <p style="color: var(--text-dark); margin-bottom: 1.5rem; line-height: 1.6;">
+                        Maîtrisez le RGPD, protégez les données personnelles et assurez la conformité de votre entreprise.
+                    </p>
+                    
+                    <!-- Détails de la formation -->
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem;">
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <i class="fas fa-clock" style="color: #7b1fa2;"></i>
+                            <span style="font-size: 0.9rem; color: var(--text-dark);">5h de formation</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <i class="fas fa-play-circle" style="color: #7b1fa2;"></i>
+                            <span style="font-size: 0.9rem; color: var(--text-dark);">15 leçons</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <i class="fas fa-certificate" style="color: #7b1fa2;"></i>
+                            <span style="font-size: 0.9rem; color: var(--text-dark);">Certification</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <i class="fas fa-infinity" style="color: #7b1fa2;"></i>
+                            <span style="font-size: 0.9rem; color: var(--text-dark);">Accès à vie</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Niveau et évaluation -->
+                    <div style="display: flex; justify-content: between; align-items: center; margin-bottom: 1.5rem;">
+                        <div>
+                            <span style="background: #f3e5f5; color: #7b1fa2; padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.8rem; font-weight: 600;">Avancé</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.5rem;">
+                            <div style="color: #FFD700;">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span style="font-size: 0.9rem; color: var(--text-dark);">(4.8/5)</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Prix et CTA -->
+                    <div style="display: flex; justify-content: between; align-items: center;">
+ <div>
+    <span style="font-size: 1.8rem; font-weight: 700; color: #7b1fa2;">35.000 FCFA</span>
+    <span style="text-decoration: line-through; color: #6c757d; margin-left: 0.5rem;">50.000 FCFA</span>
+</div>
+                        <button class="buy-btn" style="
+                            background: #7b1fa2;
+                            color: white;
+                            border: none;
+                            padding: 0.75rem 1.5rem;
+                            border-radius: 10px;
+                            font-weight: 600;
+                            cursor: pointer;
+                            transition: all 0.3s ease;
+                        " onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 5px 15px rgba(123, 31, 162, 0.3)'" 
+                        onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'">
+                            <i class="fas fa-shopping-cart"></i> Acheter
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section avantages -->
+        <div class="advantages-section" style="
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+            text-align: center;
+        ">
+            <h3 style="color: var(--primary-blue); margin-bottom: 2rem; font-size: 1.8rem;">Pourquoi choisir nos formations ?</h3>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+                <div>
+                    <div style="width: 60px; height: 60px; background: #e3f2fd; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-size: 1.5rem; color: var(--primary-blue);">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h4 style="color: var(--primary-blue); margin-bottom: 0.5rem;">Experts Juridiques</h4>
+                    <p style="color: var(--text-dark); font-size: 0.9rem;">Formations créées par des avocats et juristes expérimentés</p>
+                </div>
+                
+                <div>
+                    <div style="width: 60px; height: 60px; background: #e8f5e8; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-size: 1.5rem; color: #2e7d32;">
+                        <i class="fas fa-play-circle"></i>
+                    </div>
+                    <h4 style="color: #2e7d32; margin-bottom: 0.5rem;">Vidéos HD</h4>
+                    <p style="color: var(--text-dark); font-size: 0.9rem;">Contenu vidéo professionnel et supports téléchargeables</p>
+                </div>
+                
+                <div>
+                    <div style="width: 60px; height: 60px; background: #f3e5f5; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-size: 1.5rem; color: #7b1fa2;">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h4 style="color: #7b1fa2; margin-bottom: 0.5rem;">Support Dédié</h4>
+                    <p style="color: var(--text-dark); font-size: 0.9rem;">Équipe de support pour répondre à vos questions</p>
+                </div>
+                
+                <div>
+                    <div style="width: 60px; height: 60px; background: #fff3cd; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; font-size: 1.5rem; color: #856404;">
+                        <i class="fas fa-certificate"></i>
+                    </div>
+                    <h4 style="color: #856404; margin-bottom: 0.5rem;">Certification</h4>
+                    <p style="color: var(--text-dark); font-size: 0.9rem;">Certificat de réussite reconnu</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-container">
@@ -2584,6 +3068,203 @@
             </div>
         </div>
     </footer>
+
+
+
+
+<script>
+
+
+
+    document.addEventListener('DOMContentLoaded', function() {
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const formationCards = document.querySelectorAll('.formation-card');
+    
+    // Filtrage des formations
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            filterBtns.forEach(b => b.classList.remove('active'));
+            this.classList.add('active');
+            
+            const filter = this.getAttribute('data-filter');
+            
+            formationCards.forEach(card => {
+                if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                    card.style.display = 'block';
+                    setTimeout(() => {
+                        card.style.opacity = '1';
+                        card.style.transform = 'translateY(0)';
+                    }, 100);
+                } else {
+                    card.style.opacity = '0';
+                    card.style.transform = 'translateY(20px)';
+                    setTimeout(() => {
+                        card.style.display = 'none';
+                    }, 300);
+                }
+            });
+        });
+    });
+
+    // Animation des cartes
+    formationCards.forEach(card => {
+        card.addEventListener('mouseenter', function() {
+            this.style.transform = 'translateY(-10px)';
+            this.style.boxShadow = '0 20px 50px rgba(0, 0, 0, 0.15)';
+        });
+        
+        card.addEventListener('mouseleave', function() {
+            this.style.transform = 'translateY(0)';
+            this.style.boxShadow = '0 10px 40px rgba(0, 0, 0, 0.1)';
+        });
+    });
+
+    // Gestion des paiements et du modal
+    const buyBtns = document.querySelectorAll('.buy-btn');
+    buyBtns.forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const card = this.closest('.formation-card');
+            const title = card.querySelector('h3').textContent;
+            const price = card.querySelector('span:nth-child(1)').textContent;
+
+            // Création du modal avec styles intégrés
+            const modal = document.createElement('div');
+            modal.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: rgba(0,0,0,0.8);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 9999;
+                padding: 20px;
+            `;
+
+            modal.innerHTML = `
+                <div style="
+                    background: white;
+                    padding: 1rem;
+                    border-radius: 10px;
+                    width: 90%;
+                    max-width: 550px;
+                    max-height: 90vh;
+                    overflow-y: auto;
+                    position: relative;
+                ">
+                    <h3 style="margin-bottom: 1.5rem; color: var(--primary-blue); font-size: 1.5rem;">
+                        Commander la formation "${title}"
+                    </h3>
+                    
+                    <p style="font-size: 1.2rem; color: var(--primary-blue); margin-bottom: 1.5rem;">
+                        Prix: ${price}
+                    </p>
+
+                    <div style="margin-bottom: 2rem; padding: 1rem; background: #f8f9fa; border-radius: 8px;">
+                        <p style="margin-bottom: 1rem; color: #666;">Pour accéder à cette formation:</p>
+                        <ol style="padding-left: 1.2rem;">
+                            <li style="margin-bottom: 0.5rem;">Effectuez le paiement via WAVE ou MOOV Money au:
+                                <br><strong style="color: var(--primary-blue); font-size: 1.1rem;">+229 01 97 74 75 93</strong>
+                            </li>
+                            <li style="margin-bottom: 0.5rem;">Remplissez le formulaire ci-dessous</li>
+                            <li>Joignez la capture d'écran de votre paiement</li>
+                        </ol>
+                    </div>
+
+                    <form id="payment-form" style="display: flex; flex-direction: column; gap: 1rem;">
+                        <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                            <label style="font-weight: 600; color: #333;">Nom complet *</label>
+                            <input type="text" required style="
+                                width: 100%;
+                                padding: 0.75rem;
+                                border: 1px solid #ddd;
+                                border-radius: 5px;
+                                font-size: 1rem;
+                            ">
+                        </div>
+
+                        <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                            <label style="font-weight: 600; color: #333;">Email *</label>
+                            <input type="email" required style="
+                                width: 100%;
+                                padding: 0.75rem;
+                                border: 1px solid #ddd;
+                                border-radius: 5px;
+                                font-size: 1rem;
+                            ">
+                        </div>
+
+                        <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                            <label style="font-weight: 600; color: #333;">Téléphone *</label>
+                            <input type="tel" required style="
+                                width: 100%;
+                                padding: 0.75rem;
+                                border: 1px solid #ddd;
+                                border-radius: 5px;
+                                font-size: 1rem;
+                            ">
+                        </div>
+
+                        <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                            <label style="font-weight: 600; color: #333;">Capture d'écran du paiement *</label>
+                            <input type="file" required accept="image/*" style="
+                                width: 100%;
+                                padding: 0.5rem;
+                                border: 1px solid #ddd;
+                                border-radius: 5px;
+                                font-size: 1rem;
+                            ">
+                        </div>
+
+                        <div style="
+                            display: flex;
+                            gap: 1rem;
+                            margin-top: 1rem;
+                        ">
+                            <button type="submit" style="
+                                background: var(--primary-blue);
+                                color: white;
+                                border: none;
+                                padding: 0.75rem 1.5rem;
+                                border-radius: 5px;
+                                font-weight: 600;
+                                cursor: pointer;
+                                flex: 1;
+                            ">Envoyer</button>
+                            
+                            <button type="button" onclick="this.closest('div').parentElement.parentElement.parentElement.remove()" style="
+                                background: #6c757d;
+                                color: white;
+                                border: none;
+                                padding: 0.75rem 1.5rem;
+                                border-radius: 5px;
+                                font-weight: 600;
+                                cursor: pointer;
+                            ">Annuler</button>
+                        </div>
+                    </form>
+                </div>
+            `;
+
+            document.body.appendChild(modal);
+
+            // Gestion de la soumission du formulaire
+            modal.querySelector('#payment-form').addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Merci pour votre commande ! Une fois le paiement vérifié, vous recevrez les accès par email dans les plus brefs délais.');
+                modal.remove();
+            });
+        });
+    });
+});
+
+
+</script>
+
 
 
     <script>
