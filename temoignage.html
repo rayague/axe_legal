@@ -392,7 +392,7 @@
             background: #FFFFFF !important;
             transform: translateX(-100%);
             opacity: 0;
-            visibility: hidden;
+            visibility: visible;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             z-index: 9999;
             display: flex;
@@ -400,6 +400,7 @@
             justify-content: center;
             padding-top: 70px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            overflow: auto;
         }
 
         .mobile-menu.active {
@@ -2510,89 +2511,203 @@
         }
         
         /* Section de contenu pour démontrer l'effet parallax */
-        .content-section {
-            padding: 5rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .content-section h2 {
-            text-align: center;
-            margin-bottom: 2rem;
-            color: var(--accent-color);
-        }
-        
-        .testimonial-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-        
-        .testimonial-card {
-            background: white;
-            border-radius: 12px;
-            padding: 1.5rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-        }
-        
-        .testimonial-text {
-            font-style: italic;
-            margin-bottom: 1rem;
-        }
-        
-        .testimonial-author {
-            font-weight: 600;
-            color: var(--accent-color);
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero-title {
-                font-size: 2.2rem;
-            }
-            
-            .hero-subtitle {
-                font-size: 1.1rem;
-            }
-            
-            .stats-container {
-                gap: 1.5rem;
-            }
-            
-            .stat-item {
-                min-width: 140px;
-                padding: 1.2rem;
-            }
-            
-            .stat-number {
-                font-size: 2rem;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .parallax-hero {
-                min-height: 90vh;
-            }
-            
-            .hero-title {
-                font-size: 1.8rem;
-            }
-            
-            .stats-container {
-                flex-direction: column;
-                gap: 1rem;
-            }
-            
-            .hero-cta {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .btn {
-                width: 100%;
-                justify-content: center;
-            }
-        }
+        /* Section de contenu pour démontrer l'effet parallax */
+.content-section {
+    padding: 4rem 1rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.content-section h2 {
+    text-align: center;
+    margin-bottom: 3rem;
+    color: var(--primary-blue);
+    font-size: clamp(2rem, 4vw, 2.5rem);
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+}
+
+.testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2rem;
+    padding: 0 1rem;
+}
+
+.testimonial-card {
+    background: white;
+    border-radius: 16px;
+    padding: 2rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+}
+
+.testimonial-icon {
+    font-size: 3rem;
+    color: var(--primary-blue);
+    opacity: 0.2;
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    font-family: serif;
+    font-weight: bold;
+}
+
+.testimonial-text {
+    font-style: italic;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--text-dark);
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 2;
+}
+
+.testimonial-author {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    padding-top: 1rem;
+}
+
+.author-name {
+    font-weight: 600;
+    color: var(--primary-blue);
+    font-size: 1rem;
+}
+
+.author-rating {
+    color: #FFD700;
+    font-size: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .testimonial-grid {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .content-section {
+        padding: 3rem 1rem;
+    }
+    
+    .content-section h2 {
+        margin-bottom: 2rem;
+        font-size: 1.8rem;
+    }
+    
+    .testimonial-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 0;
+    }
+    
+    .testimonial-card {
+        padding: 1.5rem;
+        margin: 0 0.5rem;
+    }
+    
+    .testimonial-text {
+        font-size: 1rem;
+    }
+    
+    .testimonial-icon {
+        font-size: 2.5rem;
+        top: 0.5rem;
+        right: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .content-section {
+        padding: 2rem 0.5rem;
+    }
+    
+    .content-section h2 {
+        font-size: 1.6rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .testimonial-card {
+        padding: 1.25rem;
+        margin: 0;
+        border-radius: 12px;
+    }
+    
+    .testimonial-text {
+        font-size: 0.95rem;
+        line-height: 1.5;
+    }
+    
+    .author-name {
+        font-size: 0.9rem;
+    }
+    
+    .testimonial-icon {
+        font-size: 2rem;
+        top: 0.5rem;
+        right: 0.75rem;
+    }
+}
+
+/* Pour les très petits écrans */
+@media (max-width: 360px) {
+    .testimonial-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .testimonial-card {
+        padding: 1rem;
+    }
+    
+    .testimonial-text {
+        font-size: 0.9rem;
+    }
+}
+
+/* Amélioration de l'accessibilité */
+@media (prefers-reduced-motion: reduce) {
+    .testimonial-card {
+        transition: none;
+    }
+    
+    .testimonial-card:hover {
+        transform: none;
+    }
+}
+
+/* Mode sombre */
+@media (prefers-color-scheme: dark) {
+    .testimonial-card {
+        background: #2d3748;
+        color: white;
+        border-color: #4a5568;
+    }
+    
+    .testimonial-text {
+        color: #e2e8f0;
+    }
+    
+    .author-name {
+        color: #90cdf4;
+    }
+    
+    .testimonial-author {
+        border-top-color: #4a5568;
+    }
+}
         
     </style>
     <script>
@@ -2635,16 +2750,16 @@
             </div>
 
             <nav class="nav-menu">
-                <li class="nav-item"><a href="index.html" class="nav-link"><i class="fas fa-home"></i><span>Accueil</span></a></li>
+                <li class="nav-item"><a href="index.html" class="nav-link active"><i class="fas fa-home"></i><span>Accueil</span></a></li>
                 <li class="nav-item"><a href="services.html" class="nav-link"><i class="fas fa-gavel"></i><span>Services</span></a></li>
                 <li class="nav-item"><a href="equipe.html" class="nav-link"><i class="fas fa-users"></i><span>Équipe</span></a></li>
                 <li class="nav-item"><a href="processus.html" class="nav-link"><i class="fas fa-tasks"></i><span>Processus</span></a></li>
-                <li class="nav-item"><a href="temoignage.html" class="nav-link active"><i class="fas fa-comments"></i><span>Témoignages</span></a></li>
+                <li class="nav-item"><a href="temoignage.html" class="nav-link"><i class="fas fa-comments"></i><span>Témoignages</span></a></li>
                 <li class="nav-item"><a href="contact.html" class="nav-link"><i class="fas fa-envelope"></i><span>Contact</span></a></li>
             </nav>
 
             <div class="nav-cta">
-                <a href="contact.html" class="btn btn-primary"><i class="fas fa-phone"></i>Consultation Gratuite</a>
+                <a href="consultation.html" class="btn btn-primary"><i class="fas fa-phone"></i>Consultation Gratuite</a>
             </div>
 
             <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Ouvrir le menu de navigation" title="Ouvrir le menu de navigation">
@@ -2662,7 +2777,7 @@
                 <li class="mobile-nav-item"><a href="processus.html" class="mobile-nav-link"><i class="fas fa-tasks"></i>Processus</a></li>
                 <li class="mobile-nav-item"><a href="temoignage.html" class="mobile-nav-link"><i class="fas fa-comments"></i>Témoignages</a></li>
                 <li class="mobile-nav-item"><a href="contact.html" class="mobile-nav-link"><i class="fas fa-envelope"></i>Contact</a></li>
-                <li class="mobile-nav-item"><a href="contact.html" class="mobile-nav-link"><i class="fas fa-phone"></i>Consultation Gratuite</a></li>
+                <li class="mobile-nav-item"><a href="consultation.html" class="mobile-nav-link"><i class="fas fa-phone"></i>Consultation Gratuite</a></li>
             </ul>
         </div>
     </header>
@@ -2689,13 +2804,10 @@
             background: url('data:image/svg+xml;utf8,<svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 100 100&quot;><defs><pattern id=&quot;dots&quot; width=&quot;20&quot; height=&quot;20&quot; patternUnits=&quot;userSpaceOnUse&quot;><circle cx=&quot;10&quot; cy=&quot;10&quot; r=&quot;1&quot; fill=&quot;white&quot; opacity=&quot;0.1&quot;/></pattern></defs><rect width=&quot;100&quot; height=&quot;100&quot; fill=&quot;url(%23dots)&quot;/></svg>');
             z-index: 1;
         "></div>
-        <div class="hero-container" style="max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 3rem; text-align: center; position: relative; z-index: 2;">
+        <div class="hero-container" style="max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: 1fr; gap: 3rems; text-align: center; position: relative; z-index: 2;">
             
             <!-- Hero Introduction -->
             <div class="hero-intro" style="max-width: 800px; margin: 0 auto;">
-                <div style="display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); padding: 0.75rem 1.5rem; border-radius: 50px; margin-bottom: 2rem; font-size: 0.9rem; font-weight: 600; color: var(--primary-blue); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); border: 1px solid rgba(255, 255, 255, 0.2);">
-                    <span>💬</span> Témoignages Clients
-                </div>
                 
                 <h1 style="font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; line-height: 1.1; margin-bottom: 1.5rem; color: var(--white); font-family: 'Playfair Display', serif; text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);">
                     La <span style="background: linear-gradient(135deg, #FFD700, #FFA500); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-shadow: none;">Confiance</span> de Nos Clients
@@ -2705,121 +2817,45 @@
                     Découvrez les témoignages authentiques de nos clients qui nous font confiance pour leurs besoins juridiques.
                 </p>
             </div>
-
-            <!-- Statistics Cards -->
-            <div class="stats-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
-                
-                <!-- Témoignages -->
-                <div style="background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(15px); padding: 2rem 1.5rem; border-radius: 20px; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1); border: 1px solid rgba(255, 255, 255, 0.3); transition: all 0.4s ease; position: relative; overflow: hidden;" onmouseover="this.style.transform='translateY(-15px) scale(1.02)'; this.style.boxShadow='0 25px 50px rgba(0, 0, 0, 0.15)'; this.style.background='rgba(255, 255, 255, 0.98)'" onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.1)'; this.style.background='rgba(255, 255, 255, 0.95)'">
-                    <div style="position: absolute; top: -10px; right: -10px; width: 50px; height: 50px; background: linear-gradient(135deg, #667eea, #764ba2); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem;">💬</div>
-                    <div style="font-size: 3rem; margin-bottom: 1rem; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1)); color: #667eea; font-weight: 800;">250+</div>
-                    <h3 style="font-size: 1.2rem; font-weight: 700; color: var(--primary-blue); margin-bottom: 0.5rem;">Témoignages</h3>
-                    <p style="color: var(--text-dark); font-size: 0.9rem; line-height: 1.4; opacity: 0.8;">Avis clients authentiques</p>
-                </div>
-
-                <!-- Évaluation -->
-                <div style="background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(15px); padding: 2rem 1.5rem; border-radius: 20px; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1); border: 1px solid rgba(255, 255, 255, 0.3); transition: all 0.4s ease; position: relative; overflow: hidden;" onmouseover="this.style.transform='translateY(-15px) scale(1.02)'; this.style.boxShadow='0 25px 50px rgba(0, 0, 0, 0.15)'; this.style.background='rgba(255, 255, 255, 0.98)'" onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.1)'; this.style.background='rgba(255, 255, 255, 0.95)'">
-                    <div style="position: absolute; top: -10px; right: -10px; width: 50px; height: 50px; background: linear-gradient(135deg, #FFD93D, #FF6B6B); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem;">⭐</div>
-                    <div style="font-size: 3rem; margin-bottom: 1rem; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1)); color: #FFD93D; font-weight: 800;">4.9/5</div>
-                    <h3 style="font-size: 1.2rem; font-weight: 700; color: var(--primary-blue); margin-bottom: 0.5rem;">Évaluation</h3>
-                    <p style="color: var(--text-dark); font-size: 0.9rem; line-height: 1.4; opacity: 0.8;">Note moyenne clients</p>
-                </div>
-
-                <!-- Satisfaction -->
-                <div style="background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(15px); padding: 2rem 1.5rem; border-radius: 20px; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1); border: 1px solid rgba(255, 255, 255, 0.3); transition: all 0.4s ease; position: relative; overflow: hidden;" onmouseover="this.style.transform='translateY(-15px) scale(1.02)'; this.style.boxShadow='0 25px 50px rgba(0, 0, 0, 0.15)'; this.style.background='rgba(255, 255, 255, 0.98)'" onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.1)'; this.style.background='rgba(255, 255, 255, 0.95)'">
-                    <div style="position: absolute; top: -10px; right: -10px; width: 50px; height: 50px; background: linear-gradient(135deg, #11998e, #38ef7d); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem;">✅</div>
-                    <div style="font-size: 3rem; margin-bottom: 1rem; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1)); color: #11998e; font-weight: 800;">98%</div>
-                    <h3 style="font-size: 1.2rem; font-weight: 700; color: var(--primary-blue); margin-bottom: 0.5rem;">Satisfaction</h3>
-                    <p style="color: var(--text-dark); font-size: 0.9rem; line-height: 1.4; opacity: 0.8;">Clients recommandent</p>
-                </div>
-
-                <!-- Expérience -->
-                <div style="background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(15px); padding: 2rem 1.5rem; border-radius: 20px; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1); border: 1px solid rgba(255, 255, 255, 0.3); transition: all 0.4s ease; position: relative; overflow: hidden;" onmouseover="this.style.transform='translateY(-15px) scale(1.02)'; this.style.boxShadow='0 25px 50px rgba(0, 0, 0, 0.15)'; this.style.background='rgba(255, 255, 255, 0.98)'" onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.1)'; this.style.background='rgba(255, 255, 255, 0.95)'">
-                    <div style="position: absolute; top: -10px; right: -10px; width: 50px; height: 50px; background: linear-gradient(135deg, #FF6B6B, #FF8E8E); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem;">🏆</div>
-                    <div style="font-size: 3rem; margin-bottom: 1rem; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1)); color: #FF6B6B; font-weight: 800;">15+</div>
-                    <h3 style="font-size: 1.2rem; font-weight: 700; color: var(--primary-blue); margin-bottom: 0.5rem;">Expérience</h3>
-                    <p style="color: var(--text-dark); font-size: 0.9rem; line-height: 1.4; opacity: 0.8;">Années d'excellence</p>
-                </div>
-            </div>
-
-            <!-- Call to Action -->
-            <div style="margin-top: 3rem;">
-                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem;">
-                    <a href="#temoignages" style="display: inline-flex; align-items: center; gap: 0.5rem; background: var(--primary-blue); color: var(--white); padding: 1rem 2rem; border-radius: 50px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(30, 90, 168, 0.3);" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 25px rgba(30, 90, 168, 0.4)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(30, 90, 168, 0.3)'">
-                        <span>💬</span> Lire les Témoignages
-                    </a>
-                    <a href="tel:+2290197747593" style="display: inline-flex; align-items: center; gap: 0.5rem; background: transparent; color: var(--white); padding: 1rem 2rem; border-radius: 50px; text-decoration: none; font-weight: 600; border: 2px solid rgba(255, 255, 255, 0.8); transition: all 0.3s ease;" onmouseover="this.style.background='rgba(255, 255, 255, 0.2)'; this.style.borderColor='rgba(255, 255, 255, 1)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.background='transparent'; this.style.borderColor='rgba(255, 255, 255, 0.8)'; this.style.transform='translateY(0)'">
-                        <span>📞</span> Consultation Gratuite
-                    </a>
-                </div>
-                
-                <!-- Trust Indicators -->
-                <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; opacity: 0.8;">
-                    <div style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.9);">
-                        <span style="color: #FFD700;">✓</span> Témoignages vérifiés
-                    </div>
-                    <div style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.9);">
-                        <span style="color: #FFD700;">✓</span> Avis authentiques
-                    </div>
-                    <div style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.9);">
-                        <span style="color: #FFD700;">✓</span> Clients satisfaits
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
-    <section class="content-section">
-        <h2>Découvrez ce que disent nos clients</h2>
-        <div class="testimonial-grid">
-            <div class="testimonial-card">
-                <p class="testimonial-text">"Le cabinet a résolu mon litige commercial avec professionnalisme et efficacité. Je recommande vivement leurs services."</p>
-                <p class="testimonial-author">- Marie L., Entrepreneure</p>
-            </div>
-            <div class="testimonial-card">
-                <p class="testimonial-text">"Un accompagnement personnalisé et des conseils avisés qui m'ont été d'une grande aide pour mon entreprise."</p>
-                <p class="testimonial-author">- Thomas D., Chef d'entreprise</p>
-            </div>
-            <div class="testimonial-card">
-                <p class="testimonial-text">"Expertise remarquable et un réel souci du client. J'ai été impressionné par la qualité du service fourni."</p>
-                <p class="testimonial-author">- Sophie M., Directrice Juridique</p>
+<section class="content-section">
+    <h2>Découvrez ce que disent nos clients</h2>
+    <div class="testimonial-grid">
+        <div class="testimonial-card">
+            <div class="testimonial-icon">"</div>
+            <p class="testimonial-text">"Le cabinet a résolu mon litige commercial avec professionnalisme et efficacité. Je recommande vivement leurs services."</p>
+            <div class="testimonial-author">
+                <span class="author-name">- Marie L., Entrepreneure</span>
+                <span class="author-rating">★★★★★</span>
             </div>
         </div>
-    </section>
+        <div class="testimonial-card">
+            <div class="testimonial-icon">"</div>
+            <p class="testimonial-text">"Un accompagnement personnalisé et des conseils avisés qui m'ont été d'une grande aide pour mon entreprise."</p>
+            <div class="testimonial-author">
+                <span class="author-name">- Thomas D., Chef d'entreprise</span>
+                <span class="author-rating">★★★★★</span>
+            </div>
+        </div>
+        <div class="testimonial-card">
+            <div class="testimonial-icon">"</div>
+            <p class="testimonial-text">"Expertise remarquable et un réel souci du client. J'ai été impressionné par la qualité du service fourni."</p>
+            <div class="testimonial-author">
+                <span class="author-name">- Sophie M., Directrice Juridique</span>
+                <span class="author-rating">★★★★★</span>
+            </div>
+        </div>
+    </div>
+</section>
 
-    <!-- Trust Indicators -->
-    <section class="trust-section">
-        <div class="trust-container">
-            <h2 class="trust-title">Reconnu et Certifié</h2>
-            <div class="trust-grid">
-                <div class="trust-item fade-in">
-                    <div class="trust-icon">🏛️</div>
-                    <div class="trust-label">Barreau du Bénin</div>
-                    <div class="trust-desc">Inscrit et certifié</div>
-                </div>
-                <div class="trust-item fade-in">
-                    <div class="trust-icon">🌍</div>
-                    <div class="trust-label">OHADA</div>
-                    <div class="trust-desc">Expert en droit OHADA</div>
-                </div>
-                <div class="trust-item fade-in">
-                    <div class="trust-icon">🏆</div>
-                    <div class="trust-label">Excellence</div>
-                    <div class="trust-desc">Prix du meilleur cabinet 2023</div>
-                </div>
-                <div class="trust-item fade-in">
-                    <div class="trust-icon">🔒</div>
-                    <div class="trust-label">Confidentialité</div>
-                    <div class="trust-desc">Garantie absolue</div>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Testimonials Section -->
     <section id="temoignages" class="testimonials">
         <div class="testimonials-container">
             <div class="section-header fade-in">
-                <div class="section-badge">💬 Témoignages</div>
+                <div class="section-badge">  <i class="fas fa-comment-dots" style="color: #004080; margin-right: 6px;"></i>
+ Témoignages</div>
                 <h2 class="section-title">Ce Que Disent Nos Clients</h2>
                 <p class="section-subtitle">
                     La satisfaction de nos clients est notre plus belle récompense. 
@@ -2926,35 +2962,62 @@
                         Cabinet d'affaires spécialisé dans l'accompagnement juridique des entreprises 
                         et particuliers au Bénin.
                     </p>
+                    
                     <p><strong>Composition de l'équipe :</strong></p>
                     <ul class="footer-links">
-                        <li>l'Associé-Gérant</li>
-                        <li>La Cellule de l'Intelligence Fiscale</li>
-                        <li>La Cellule des Actes Juridiques et de la Gouvernance d'Entreprise</li>
-                        <li>La Cellule de Traitement de l'Information Financière</li>
+                        <li>
+                            <i class="fas fa-user-tie" style="margin-right: 6px; color: #004080;"></i>
+                            L'Associé-Gérant
+                        </li>
+                        <li>
+                            <i class="fas fa-coins" style="margin-right: 6px; color: #004080;"></i>
+                            La Cellule de l'Intelligence Fiscale
+                        </li>
+                        <li>
+                            <i class="fas fa-balance-scale" style="margin-right: 6px; color: #004080;"></i>
+                            La Cellule des Actes Juridiques et de la Gouvernance d'Entreprise
+                        </li>
+                        <li>
+                            <i class="fas fa-chart-line" style="margin-right: 6px; color: #004080;"></i>
+                            La Cellule de Traitement de l'Information Financière
+                        </li>
                     </ul>
+
                     <div class="footer-social">
-                        <a href="https://www.facebook.com/profile.php?id=100092728800155" title="Facebook" target="_blank">📘</a>
-                        <a href="https://www.linkedin.com/in/axe-legal-0134991b2/" title="LinkedIn" target="_blank">💼</a>
+                        <a href="https://www.facebook.com/profile.php?id=100092728800155" title="Facebook" target="_blank">
+                            <i class="fab fa-facebook-square" style="font-size: 1.4rem; color: #4267B2;"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/axe-legal-0134991b2/" title="LinkedIn" target="_blank">
+                            <i class="fab fa-linkedin" style="font-size: 1.4rem; color: #0A66C2;"></i>
+                        </a>
                     </div>
                 </div>
+
                 
-                <div class="footer-section">
+               <div class="footer-section">
                     <h4>Nos Prestations</h4>
                     <p><strong>Nous travaillons sous :</strong></p>
                     <ul class="footer-links">
-                        <li>Prestations sous contrat de trois mois au moins avec paiement mensuel ou trimestriel</li>
-                        <li>Prestation instantanée avec paiement à la tâche ou par mission</li>
+                        <li><i class="fas fa-check-circle" style="margin-right: 6px; color: #00bfa6;"></i> Prestations sous contrat de trois mois au moins avec paiement mensuel ou trimestriel</li>
+                        <li><i class="fas fa-check-circle" style="margin-right: 6px; color: #00bfa6;"></i> Prestation instantanée avec paiement à la tâche ou par mission</li>
                     </ul>
                 </div>
+
                 
                 <div class="footer-section">
                     <h4>Informations Légales</h4>
                     <ul class="footer-links">
-                        <li><strong>Registre du commerce :</strong> RB/ABC/20 B 3095</li>
-                        <li><strong>Identifiant fiscal :</strong> 3202011436651</li>
+                        <li>
+                            <i class="fas fa-briefcase" style="margin-right: 6px; color: #004080;"></i>
+                            <strong>Registre du commerce :</strong> RB/ABC/20 B 3095
+                        </li>
+                        <li>
+                            <i class="fas fa-id-card" style="margin-right: 6px; color: #004080;"></i>
+                            <strong>Identifiant fiscal :</strong> 3202011436651
+                        </li>
                     </ul>
                 </div>
+
                 
                 <div class="footer-section">
                     <h4>Contact</h4>
@@ -2977,6 +3040,7 @@
             </div>
         </div>
     </footer>
+
 
     <script>
         // Header scroll effect

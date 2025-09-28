@@ -381,7 +381,7 @@
         }
 
         /* Mobile Menu */
-        .mobile-menu {
+.mobile-menu {
             position: fixed;
             top: 0;
             left: 0;
@@ -392,7 +392,7 @@
             background: #FFFFFF !important;
             transform: translateX(-100%);
             opacity: 0;
-            visibility: hidden;
+            visibility: visible;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             z-index: 9999;
             display: flex;
@@ -400,7 +400,9 @@
             justify-content: center;
             padding-top: 70px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            overflow: auto;
         }
+
 
         .mobile-menu.active {
             transform: translateX(0);
@@ -2251,11 +2253,11 @@
                 <li class="nav-item"><a href="equipe.html" class="nav-link"><i class="fas fa-users"></i><span>Équipe</span></a></li>
                 <li class="nav-item"><a href="processus.html" class="nav-link"><i class="fas fa-tasks"></i><span>Processus</span></a></li>
                 <li class="nav-item"><a href="temoignage.html" class="nav-link"><i class="fas fa-comments"></i><span>Témoignages</span></a></li>
-                <li class="nav-item"><a href="contact.html" class="nav-link active"><i class="fas fa-envelope"></i><span>Contact</span></a></li>
+                <li class="nav-item"><a href="consultation.html" class="nav-link active"><i class="fas fa-envelope"></i><span>Contact</span></a></li>
             </nav>
 
             <div class="nav-cta">
-                <a href="#consultation" class="btn btn-primary"><i class="fas fa-phone"></i>Consultation Gratuite</a>
+                <a href="consultation.html" class="btn btn-primary"><i class="fas fa-phone"></i>Consultation Gratuite</a>
             </div>
 
             <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Ouvrir le menu de navigation" title="Ouvrir le menu de navigation">
@@ -2273,7 +2275,7 @@
                 <li class="mobile-nav-item"><a href="processus.html" class="mobile-nav-link"><i class="fas fa-tasks"></i>Processus</a></li>
                 <li class="mobile-nav-item"><a href="temoignage.html" class="mobile-nav-link"><i class="fas fa-comments"></i>Témoignages</a></li>
                 <li class="mobile-nav-item"><a href="contact.html" class="mobile-nav-link"><i class="fas fa-envelope"></i>Contact</a></li>
-                <li class="mobile-nav-item"><a href="contact.html" class="mobile-nav-link"><i class="fas fa-phone"></i>Consultation Gratuite</a></li>
+                <li class="mobile-nav-item"><a href="consultation.html" class="mobile-nav-link"><i class="fas fa-phone"></i>Consultation Gratuite</a></li>
             </ul>
         </div>
     </header>
@@ -2305,7 +2307,7 @@
             <!-- Contact Introduction -->
             <div class="contact-intro" style="max-width: 800px; margin: 0 auto;">
                 <div style="display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); padding: 0.75rem 1.5rem; border-radius: 50px; margin-bottom: 2rem; font-size: 0.9rem; font-weight: 600; color: var(--primary-blue); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); border: 1px solid rgba(255, 255, 255, 0.2);">
-                    <span>📞</span> Contactez-Nous
+                    <span><i class="fas fa-phone"></i></span> Contactez-Nous
                 </div>
                 
                 <h1 style="font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; line-height: 1.1; margin-bottom: 1.5rem; color: var(--white); font-family: 'Playfair Display', serif; text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);">
@@ -2316,182 +2318,115 @@
                     Prêt à discuter de vos besoins juridiques ? Notre équipe est à votre disposition pour vous accompagner.
                 </p>
             </div>
-
-            <!-- Contact Methods -->
-            <div class="contact-methods" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
-                
-                <!-- Téléphone -->
-                <div style="background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(15px); padding: 2rem 1.5rem; border-radius: 20px; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1); border: 1px solid rgba(255, 255, 255, 0.3); transition: all 0.4s ease; position: relative; overflow: hidden;" onmouseover="this.style.transform='translateY(-15px) scale(1.02)'; this.style.boxShadow='0 25px 50px rgba(0, 0, 0, 0.15)'; this.style.background='rgba(255, 255, 255, 0.98)'" onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.1)'; this.style.background='rgba(255, 255, 255, 0.95)'">
-                    <div style="position: absolute; top: -10px; right: -10px; width: 50px; height: 50px; background: linear-gradient(135deg, #11998e, #38ef7d); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem;">📞</div>
-                    <div style="font-size: 3rem; margin-bottom: 1.5rem; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));">📞</div>
-                    <h3 style="font-size: 1.2rem; font-weight: 700; color: var(--primary-blue); margin-bottom: 1rem;">Appelez-nous</h3>
-                    <p style="color: var(--text-dark); font-size: 0.9rem; line-height: 1.5; opacity: 0.8; margin-bottom: 1rem;">Consultation téléphonique immédiate</p>
-                    <div style="display: flex; flex-direction: column; gap: 0.5rem;">
-                        <a href="tel:+2290197747593" style="color: #11998e; text-decoration: none; font-weight: 600; font-size: 0.9rem;">+229 01 97 74 75 93</a>
-                        <a href="tel:+2290165656825" style="color: #11998e; text-decoration: none; font-weight: 600; font-size: 0.9rem;">+229 01 65 65 68 25</a>
-                    </div>
-                </div>
-
-                <!-- Email -->
-                <div style="background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(15px); padding: 2rem 1.5rem; border-radius: 20px; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1); border: 1px solid rgba(255, 255, 255, 0.3); transition: all 0.4s ease; position: relative; overflow: hidden;" onmouseover="this.style.transform='translateY(-15px) scale(1.02)'; this.style.boxShadow='0 25px 50px rgba(0, 0, 0, 0.15)'; this.style.background='rgba(255, 255, 255, 0.98)'" onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.1)'; this.style.background='rgba(255, 255, 255, 0.95)'">
-                    <div style="position: absolute; top: -10px; right: -10px; width: 50px; height: 50px; background: linear-gradient(135deg, #667eea, #764ba2); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem;">✉️</div>
-                    <div style="font-size: 3rem; margin-bottom: 1.5rem; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));">✉️</div>
-                    <h3 style="font-size: 1.2rem; font-weight: 700; color: var(--primary-blue); margin-bottom: 1rem;">Écrivez-nous</h3>
-                    <p style="color: var(--text-dark); font-size: 0.9rem; line-height: 1.5; opacity: 0.8; margin-bottom: 1rem;">Envoyez-nous votre demande par email</p>
-                    <a href="mailto:contact@axe-legal.bj" style="color: #667eea; text-decoration: none; font-weight: 600; font-size: 0.9rem;">contact@axe-legal.bj</a>
-                </div>
-
-                <!-- WhatsApp -->
-                <div style="background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(15px); padding: 2rem 1.5rem; border-radius: 20px; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1); border: 1px solid rgba(255, 255, 255, 0.3); transition: all 0.4s ease; position: relative; overflow: hidden;" onmouseover="this.style.transform='translateY(-15px) scale(1.02)'; this.style.boxShadow='0 25px 50px rgba(0, 0, 0, 0.15)'; this.style.background='rgba(255, 255, 255, 0.98)'" onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.1)'; this.style.background='rgba(255, 255, 255, 0.95)'">
-                    <div style="position: absolute; top: -10px; right: -10px; width: 50px; height: 50px; background: linear-gradient(135deg, #25D366, #128C7E); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem;">💬</div>
-                    <div style="font-size: 3rem; margin-bottom: 1.5rem; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));">💬</div>
-                    <h3 style="font-size: 1.2rem; font-weight: 700; color: var(--primary-blue); margin-bottom: 1rem;">WhatsApp</h3>
-                    <p style="color: var(--text-dark); font-size: 0.9rem; line-height: 1.5; opacity: 0.8; margin-bottom: 1rem;">Chat direct et rapide</p>
-                    <a href="https://wa.me/2290197747593" target="_blank" style="color: #25D366; text-decoration: none; font-weight: 600; font-size: 0.9rem;">Démarrer une conversation</a>
-                </div>
-
-                <!-- Adresse -->
-                <div style="background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(15px); padding: 2rem 1.5rem; border-radius: 20px; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1); border: 1px solid rgba(255, 255, 255, 0.3); transition: all 0.4s ease; position: relative; overflow: hidden;" onmouseover="this.style.transform='translateY(-15px) scale(1.02)'; this.style.boxShadow='0 25px 50px rgba(0, 0, 0, 0.15)'; this.style.background='rgba(255, 255, 255, 0.98)'" onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.1)'; this.style.background='rgba(255, 255, 255, 0.95)'">
-                    <div style="position: absolute; top: -10px; right: -10px; width: 50px; height: 50px; background: linear-gradient(135deg, #FF6B6B, #FF8E8E); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem;">📍</div>
-                    <div style="font-size: 3rem; margin-bottom: 1.5rem; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));">📍</div>
-                    <h3 style="font-size: 1.2rem; font-weight: 700; color: var(--primary-blue); margin-bottom: 1rem;">Visitez-nous</h3>
-                    <p style="color: var(--text-dark); font-size: 0.9rem; line-height: 1.5; opacity: 0.8; margin-bottom: 1rem;">Godomey échangeur, Calavi-Cotonou</p>
-                    <a href="https://maps.app.goo.gl/5b6RALZhyXMQQavh6" target="_blank" style="color: #FF6B6B; text-decoration: none; font-weight: 600; font-size: 0.9rem;">Voir sur Google Maps</a>
-                </div>
-            </div>
-
-            <!-- Call to Action -->
-            <div style="margin-top: 3rem;">
-                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem;">
-                    <a href="#contact" style="display: inline-flex; align-items: center; gap: 0.5rem; background: var(--primary-blue); color: var(--white); padding: 1rem 2rem; border-radius: 50px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(30, 90, 168, 0.3);" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 25px rgba(30, 90, 168, 0.4)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(30, 90, 168, 0.3)'">
-                        <span>📝</span> Formulaire de Contact
-                    </a>
-                    <a href="tel:+2290197747593" style="display: inline-flex; align-items: center; gap: 0.5rem; background: transparent; color: var(--white); padding: 1rem 2rem; border-radius: 50px; text-decoration: none; font-weight: 600; border: 2px solid rgba(255, 255, 255, 0.8); transition: all 0.3s ease;" onmouseover="this.style.background='rgba(255, 255, 255, 0.2)'; this.style.borderColor='rgba(255, 255, 255, 1)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.background='transparent'; this.style.borderColor='rgba(255, 255, 255, 0.8)'; this.style.transform='translateY(0)'">
-                        <span>📞</span> Appel Immédiat
-                    </a>
-                </div>
-                
-                <!-- Trust Indicators -->
-                <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; opacity: 0.8;">
-                    <div style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.9);">
-                        <span style="color: #FFD700;">✓</span> Réponse sous 24h
-                    </div>
-                    <div style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.9);">
-                        <span style="color: #FFD700;">✓</span> Consultation gratuite
-                    </div>
-                    <div style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.9);">
-                        <span style="color: #FFD700;">✓</span> Confidentialité garantie
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="contact-container">
-            <div class="contact-info fade-in">
-                <h3>Contactez-nous</h3>
-                <p>
-                    Prêt à discuter de vos besoins juridiques ? Notre équipe est à votre disposition 
-                    pour vous fournir des conseils experts et des solutions adaptées.
-                </p>
-                
-                <div class="contact-items">
-                    <div class="contact-item">
-                        <div class="contact-icon">📍</div>
-                        <div class="contact-details">
-                            <h4>Adresse</h4>
-                            <p>Godomey échangeur, en direction Calavi-Cotonou, côté opposé à la mosquée.<br>Bénin</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon">📞</div>
-                        <div class="contact-details">
-                            <h4>Téléphone</h4>
-                            <p>+229 01 97 74 75 93<br>+229 01 65 65 68 25<br>+229 01 40 66 69 38</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon">✉️</div>
-                        <div class="contact-details">
-                            <h4>Email</h4>
-                            <p>contact@axe-legal.bj</p>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon">🕒</div>
-                        <div class="contact-details">
-                            <h4>Horaires</h4>
-                            <p>Lun - Ven: 8h00 - 18h00<br>Sam: 9h00 - 13h00<br>Urgences: 24h/7j</p>
-                        </div>
+<section id="contact" class="contact">
+    <div class="contact-container">
+        <div class="contact-info fade-in">
+            <h3>Contactez-nous</h3>
+            <p>
+                Prêt à discuter de vos besoins juridiques ? Notre équipe est à votre disposition 
+                pour vous fournir des conseils experts et des solutions adaptées.
+            </p>
+            
+            <div class="contact-items">
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <div class="contact-details">
+                        <h4>Adresse</h4>
+                        <p>Godomey échangeur, en direction Calavi-Cotonou, <br> côté opposé à la mosquée.<br>Bénin</p>
                     </div>
                 </div>
-            </div>
-
-            <div class="contact-form fade-in" id="consultation">
-                <div class="section-header">
-                    <h3>Questions Fréquentes</h3>
-                    <p class="section-subtitle">
-                        Cliquez sur une question pour nous contacter directement sur WhatsApp et obtenir une réponse rapide de nos experts.
-                    </p>
+                
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fas fa-phone-alt"></i></div>
+                    <div class="contact-details">
+                        <h4>Téléphone</h4>
+                        <p>+229 01 97 74 75 93<br>+229 01 65 65 68 25<br>+229 01 40 66 69 38</p>
+                    </div>
                 </div>
                 
-                <div class="whatsapp-questions">
-                    <a href="https://wa.me/2290197747593?text=Bonjour, j'ai une question concernant l'optimisation fiscale de mon entreprise. Pouvez-vous m'aider ?" target="_blank" class="whatsapp-question">
-                        <div class="question-icon">💰</div>
-                        <div class="question-content">
-                            <h4>Optimisation Fiscale</h4>
-                            <p>Comment optimiser la fiscalité de mon entreprise tout en respectant la légalité ?</p>
-                        </div>
-                    </a>
-                    
-                    <a href="https://wa.me/2290197747593?text=Bonjour, j'ai besoin d'aide pour la création et structuration de ma société. Quelles sont les étapes ?" target="_blank" class="whatsapp-question">
-                        <div class="question-icon">🏢</div>
-                        <div class="question-content">
-                            <h4>Création de Société</h4>
-                            <p>Quelles sont les étapes pour créer et structurer ma société au Bénin ?</p>
-                        </div>
-                    </a>
-                    
-                    <a href="https://wa.me/2290197747593?text=Bonjour, je suis confronté à un redressement fiscal. Pouvez-vous m'assister ?" target="_blank" class="whatsapp-question">
-                        <div class="question-icon">⚖️</div>
-                        <div class="question-content">
-                            <h4>Redressement Fiscal</h4>
-                            <p>Comment défendre mes intérêts face à un redressement fiscal ?</p>
-                        </div>
-                    </a>
-                    
-                    <a href="https://wa.me/2290197747593?text=Bonjour, j'ai des créances impayées. Comment procéder au recouvrement ?" target="_blank" class="whatsapp-question">
-                        <div class="question-icon">💳</div>
-                        <div class="question-content">
-                            <h4>Recouvrement de Créances</h4>
-                            <p>Mes clients ne paient pas, comment récupérer mes créances efficacement ?</p>
-                        </div>
-                    </a>
-                    
-                    <a href="https://wa.me/2290197747593?text=Bonjour, j'ai un litige immobilier. Pouvez-vous m'aider à le résoudre ?" target="_blank" class="whatsapp-question">
-                        <div class="question-icon">🏠</div>
-                        <div class="question-content">
-                            <h4>Litige Immobilier</h4>
-                            <p>Comment résoudre un conflit immobilier et sécuriser mes transactions ?</p>
-                        </div>
-                    </a>
-                    
-                    <a href="https://wa.me/2290197747593?text=Bonjour, je souhaite participer à un marché public. Pouvez-vous m'accompagner ?" target="_blank" class="whatsapp-question">
-                        <div class="question-icon">📋</div>
-                        <div class="question-content">
-                            <h4>Marchés Publics</h4>
-                            <p>Comment préparer et soumettre une offre pour un marché public ?</p>
-                        </div>
-                    </a>
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                    <div class="contact-details">
+                        <h4>Email</h4>
+                        <p>contact@axe-legal.bj</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon"><i class="fas fa-clock"></i></div>
+                    <div class="contact-details">
+                        <h4>Horaires</h4>
+                        <p>Lun - Ven: 8h00 - 18h00<br>Sam: 9h00 - 13h00<br>Urgences: 24h/7j</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
+
+        <div class="contact-form fade-in" id="consultation">
+            <div class="section-header">
+                <h3>Questions Fréquentes</h3>
+                <p class="section-subtitle">
+                    Cliquez sur une question pour nous contacter directement sur WhatsApp et obtenir une réponse rapide de nos experts.
+                </p>
+            </div>
+            
+            <div class="whatsapp-questions">
+                <a href="https://wa.me/2290197747593?text=Bonjour, j'ai une question concernant l'optimisation fiscale de mon entreprise. Pouvez-vous m'aider ?" target="_blank" class="whatsapp-question">
+                    <div class="question-icon"><i class="fas fa-piggy-bank" style="color: #004080;"></i></div>
+                    <div class="question-content">
+                        <h4>Optimisation Fiscale</h4>
+                        <p>Comment optimiser la fiscalité de mon entreprise tout en respectant la légalité ?</p>
+                    </div>
+                </a>
+                
+                <a href="https://wa.me/2290197747593?text=Bonjour, j'ai besoin d'aide pour la création et structuration de ma société. Quelles sont les étapes ?" target="_blank" class="whatsapp-question">
+                    <div class="question-icon"><i class="fas fa-building" style="color: #004080;"></i></div>
+                    <div class="question-content">
+                        <h4>Création de Société</h4>
+                        <p>Quelles sont les étapes pour créer et structurer ma société au Bénin ?</p>
+                    </div>
+                </a>
+                
+                <a href="https://wa.me/2290197747593?text=Bonjour, je suis confronté à un redressement fiscal. Pouvez-vous m'assister ?" target="_blank" class="whatsapp-question">
+                    <div class="question-icon"><i class="fas fa-scale-balanced" style="color: #004080;"></i></div>
+                    <div class="question-content">
+                        <h4>Redressement Fiscal</h4>
+                        <p>Comment défendre mes intérêts face à un redressement fiscal ?</p>
+                    </div>
+                </a>
+                
+                <a href="https://wa.me/2290197747593?text=Bonjour, j'ai des créances impayées. Comment procéder au recouvrement ?" target="_blank" class="whatsapp-question">
+                    <div class="question-icon"><i class="fas fa-file-invoice-dollar" style="color: #004080;"></i></div>
+                    <div class="question-content">
+                        <h4>Recouvrement de Créances</h4>
+                        <p>Mes clients ne paient pas, comment récupérer mes créances efficacement ?</p>
+                    </div>
+                </a>
+                
+                <a href="https://wa.me/2290197747593?text=Bonjour, j'ai un litige immobilier. Pouvez-vous m'aider à le résoudre ?" target="_blank" class="whatsapp-question">
+                    <div class="question-icon"><i class="fas fa-house-chimney" style="color: #004080;"></i></div>
+                    <div class="question-content">
+                        <h4>Litige Immobilier</h4>
+                        <p>Comment résoudre un conflit immobilier et sécuriser mes transactions ?</p>
+                    </div>
+                </a>
+                
+                <a href="https://wa.me/2290197747593?text=Bonjour, je souhaite participer à un marché public. Pouvez-vous m'accompagner ?" target="_blank" class="whatsapp-question">
+                    <div class="question-icon"><i class="fas fa-file-contract" style="color: #004080;"></i></div>
+                    <div class="question-content">
+                        <h4>Marchés Publics</h4>
+                        <p>Comment préparer et soumettre une offre pour un marché public ?</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
 
     <!-- Footer -->
     <footer class="footer">
@@ -2503,35 +2438,62 @@
                         Cabinet d'affaires spécialisé dans l'accompagnement juridique des entreprises 
                         et particuliers au Bénin.
                     </p>
+                    
                     <p><strong>Composition de l'équipe :</strong></p>
                     <ul class="footer-links">
-                        <li>l'Associé-Gérant</li>
-                        <li>La Cellule de l'Intelligence Fiscale</li>
-                        <li>La Cellule des Actes Juridiques et de la Gouvernance d'Entreprise</li>
-                        <li>La Cellule de Traitement de l'Information Financière</li>
+                        <li>
+                            <i class="fas fa-user-tie" style="margin-right: 6px; color: #004080;"></i>
+                            L'Associé-Gérant
+                        </li>
+                        <li>
+                            <i class="fas fa-coins" style="margin-right: 6px; color: #004080;"></i>
+                            La Cellule de l'Intelligence Fiscale
+                        </li>
+                        <li>
+                            <i class="fas fa-balance-scale" style="margin-right: 6px; color: #004080;"></i>
+                            La Cellule des Actes Juridiques et de la Gouvernance d'Entreprise
+                        </li>
+                        <li>
+                            <i class="fas fa-chart-line" style="margin-right: 6px; color: #004080;"></i>
+                            La Cellule de Traitement de l'Information Financière
+                        </li>
                     </ul>
+
                     <div class="footer-social">
-                        <a href="https://www.facebook.com/profile.php?id=100092728800155" title="Facebook" target="_blank">📘</a>
-                        <a href="https://www.linkedin.com/in/axe-legal-0134991b2/" title="LinkedIn" target="_blank">💼</a>
+                        <a href="https://www.facebook.com/profile.php?id=100092728800155" title="Facebook" target="_blank">
+                            <i class="fab fa-facebook-square" style="font-size: 1.4rem; color: #4267B2;"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/axe-legal-0134991b2/" title="LinkedIn" target="_blank">
+                            <i class="fab fa-linkedin" style="font-size: 1.4rem; color: #0A66C2;"></i>
+                        </a>
                     </div>
                 </div>
+
                 
-                <div class="footer-section">
+               <div class="footer-section">
                     <h4>Nos Prestations</h4>
                     <p><strong>Nous travaillons sous :</strong></p>
                     <ul class="footer-links">
-                        <li>Prestations sous contrat de trois mois au moins avec paiement mensuel ou trimestriel</li>
-                        <li>Prestation instantanée avec paiement à la tâche ou par mission</li>
+                        <li><i class="fas fa-check-circle" style="margin-right: 6px; color: #00bfa6;"></i> Prestations sous contrat de trois mois au moins avec paiement mensuel ou trimestriel</li>
+                        <li><i class="fas fa-check-circle" style="margin-right: 6px; color: #00bfa6;"></i> Prestation instantanée avec paiement à la tâche ou par mission</li>
                     </ul>
                 </div>
+
                 
                 <div class="footer-section">
                     <h4>Informations Légales</h4>
                     <ul class="footer-links">
-                        <li><strong>Registre du commerce :</strong> RB/ABC/20 B 3095</li>
-                        <li><strong>Identifiant fiscal :</strong> 3202011436651</li>
+                        <li>
+                            <i class="fas fa-briefcase" style="margin-right: 6px; color: #004080;"></i>
+                            <strong>Registre du commerce :</strong> RB/ABC/20 B 3095
+                        </li>
+                        <li>
+                            <i class="fas fa-id-card" style="margin-right: 6px; color: #004080;"></i>
+                            <strong>Identifiant fiscal :</strong> 3202011436651
+                        </li>
                     </ul>
                 </div>
+
                 
                 <div class="footer-section">
                     <h4>Contact</h4>
@@ -2554,6 +2516,7 @@
             </div>
         </div>
     </footer>
+
 
     <script>
         // Header scroll effect

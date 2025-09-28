@@ -381,7 +381,7 @@
         }
 
         /* Mobile Menu */
-        .mobile-menu {
+.mobile-menu {
             position: fixed;
             top: 0;
             left: 0;
@@ -392,7 +392,7 @@
             background: #FFFFFF !important;
             transform: translateX(-100%);
             opacity: 0;
-            visibility: hidden;
+            visibility: visible;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             z-index: 9999;
             display: flex;
@@ -400,7 +400,9 @@
             justify-content: center;
             padding-top: 70px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            overflow: auto;
         }
+
 
         .mobile-menu.active {
             transform: translateX(0);
@@ -2246,7 +2248,7 @@
             </div>
 
             <nav class="nav-menu">
-                <li class="nav-item"><a href="" class="nav-link"><i class="fas fa-home"></i><span>Accueil</span></a></li>
+                <li class="nav-item"><a href="index.html" class="nav-link"><i class="fas fa-home"></i><span>Accueil</span></a></li>
                 <li class="nav-item"><a href="services.html" class="nav-link active"><i class="fas fa-gavel"></i><span>Services</span></a></li>
                 <li class="nav-item"><a href="equipe.html" class="nav-link"><i class="fas fa-users"></i><span>Équipe</span></a></li>
                 <li class="nav-item"><a href="processus.html" class="nav-link"><i class="fas fa-tasks"></i><span>Processus</span></a></li>
@@ -2255,7 +2257,7 @@
             </nav>
 
             <div class="nav-cta">
-                <a href="#consultation" class="btn btn-primary"><i class="fas fa-phone"></i>Consultation Gratuite</a>
+                <a href="consultation.html" class="btn btn-primary"><i class="fas fa-phone"></i>Consultation Gratuite</a>
             </div>
 
             <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Ouvrir le menu de navigation" title="Ouvrir le menu de navigation">
@@ -2267,13 +2269,13 @@
 
         <div class="mobile-menu" id="mobile-menu">
             <ul class="mobile-nav-menu">
-                <li class="mobile-nav-item"><a href="" class="mobile-nav-link"><i class="fas fa-home"></i>Accueil</a></li>
+                <li class="mobile-nav-item"><a href="index.html" class="mobile-nav-link"><i class="fas fa-home"></i>Accueil</a></li>
                 <li class="mobile-nav-item"><a href="services.html" class="mobile-nav-link"><i class="fas fa-gavel"></i>Services</a></li>
                 <li class="mobile-nav-item"><a href="equipe.html" class="mobile-nav-link"><i class="fas fa-users"></i>Équipe</a></li>
                 <li class="mobile-nav-item"><a href="processus.html" class="mobile-nav-link"><i class="fas fa-tasks"></i>Processus</a></li>
                 <li class="mobile-nav-item"><a href="temoignage.html" class="mobile-nav-link"><i class="fas fa-comments"></i>Témoignages</a></li>
                 <li class="mobile-nav-item"><a href="contact.html" class="mobile-nav-link"><i class="fas fa-envelope"></i>Contact</a></li>
-                <li class="mobile-nav-item"><a href="contact.html" class="mobile-nav-link"><i class="fas fa-phone"></i>Consultation Gratuite</a></li>
+                <li class="mobile-nav-item"><a href="consultation.html" class="mobile-nav-link"><i class="fas fa-phone"></i>Consultation Gratuite</a></li>
             </ul>
         </div>
     </header>
@@ -2304,10 +2306,7 @@
             
             <!-- Services Introduction -->
             <div class="services-intro" style="max-width: 800px; margin: 0 auto;">
-                <div style="display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); padding: 0.75rem 1.5rem; border-radius: 50px; margin-bottom: 2rem; font-size: 0.9rem; font-weight: 600; color: var(--primary-blue); box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); border: 1px solid rgba(255, 255, 255, 0.2);">
-                    <span>⚖️</span> Expertise Juridique Complète
-                </div>
-                
+
                 <h1 style="font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 800; line-height: 1.1; margin-bottom: 1.5rem; color: var(--white); font-family: 'Playfair Display', serif; text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);">
                     Des <span style="background: linear-gradient(135deg, #FFD700, #FFA500); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; text-shadow: none;">Solutions</span> Juridiques d'Excellence
                 </h1>
@@ -2316,120 +2315,13 @@
                     Une gamme complète de services juridiques adaptés aux besoins des entreprises et des particuliers, avec une approche personnalisée.
                 </p>
             </div>
-
-            <!-- Services Preview Cards -->
-            <div class="services-preview" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
-                
-                <!-- Droit des Affaires -->
-                <div style="background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(15px); padding: 2rem 1.5rem; border-radius: 20px; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1); border: 1px solid rgba(255, 255, 255, 0.3); transition: all 0.4s ease; position: relative; overflow: hidden;" onmouseover="this.style.transform='translateY(-15px) scale(1.02)'; this.style.boxShadow='0 25px 50px rgba(0, 0, 0, 0.15)'; this.style.background='rgba(255, 255, 255, 0.98)'" onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.1)'; this.style.background='rgba(255, 255, 255, 0.95)'">
-                    <div style="position: absolute; top: -10px; right: -10px; width: 50px; height: 50px; background: linear-gradient(135deg, #667eea, #764ba2); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem;">🏢</div>
-                    <div style="font-size: 3rem; margin-bottom: 1.5rem; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));">⚖️</div>
-                    <h3 style="font-size: 1.2rem; font-weight: 700; color: var(--primary-blue); margin-bottom: 1rem;">Droit des Affaires</h3>
-                    <p style="color: var(--text-dark); font-size: 0.9rem; line-height: 1.5; opacity: 0.8; margin-bottom: 1rem;">Création d'entreprises, contrats commerciaux, fusions-acquisitions</p>
-                    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-                        <span style="background: rgba(30, 90, 168, 0.1); color: var(--primary-blue); padding: 0.25rem 0.75rem; border-radius: 15px; font-size: 0.7rem; font-weight: 600;">Contrats</span>
-                        <span style="background: rgba(30, 90, 168, 0.1); color: var(--primary-blue); padding: 0.25rem 0.75rem; border-radius: 15px; font-size: 0.7rem; font-weight: 600;">M&A</span>
-                    </div>
-                </div>
-
-                <!-- Droit Fiscal -->
-                <div style="background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(15px); padding: 2rem 1.5rem; border-radius: 20px; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1); border: 1px solid rgba(255, 255, 255, 0.3); transition: all 0.4s ease; position: relative; overflow: hidden;" onmouseover="this.style.transform='translateY(-15px) scale(1.02)'; this.style.boxShadow='0 25px 50px rgba(0, 0, 0, 0.15)'; this.style.background='rgba(255, 255, 255, 0.98)'" onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.1)'; this.style.background='rgba(255, 255, 255, 0.95)'">
-                    <div style="position: absolute; top: -10px; right: -10px; width: 50px; height: 50px; background: linear-gradient(135deg, #11998e, #38ef7d); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem;">💰</div>
-                    <div style="font-size: 3rem; margin-bottom: 1.5rem; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));">📊</div>
-                    <h3 style="font-size: 1.2rem; font-weight: 700; color: var(--primary-blue); margin-bottom: 1rem;">Droit Fiscal</h3>
-                    <p style="color: var(--text-dark); font-size: 0.9rem; line-height: 1.5; opacity: 0.8; margin-bottom: 1rem;">Optimisation fiscale, contentieux fiscal, conseil en fiscalité</p>
-                    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-                        <span style="background: rgba(17, 153, 142, 0.1); color: #11998e; padding: 0.25rem 0.75rem; border-radius: 15px; font-size: 0.7rem; font-weight: 600;">TVA</span>
-                        <span style="background: rgba(17, 153, 142, 0.1); color: #11998e; padding: 0.25rem 0.75rem; border-radius: 15px; font-size: 0.7rem; font-weight: 600;">IS</span>
-                    </div>
-                </div>
-
-                <!-- Gouvernance -->
-                <div style="background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(15px); padding: 2rem 1.5rem; border-radius: 20px; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1); border: 1px solid rgba(255, 255, 255, 0.3); transition: all 0.4s ease; position: relative; overflow: hidden;" onmouseover="this.style.transform='translateY(-15px) scale(1.02)'; this.style.boxShadow='0 25px 50px rgba(0, 0, 0, 0.15)'; this.style.background='rgba(255, 255, 255, 0.98)'" onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.1)'; this.style.background='rgba(255, 255, 255, 0.95)'">
-                    <div style="position: absolute; top: -10px; right: -10px; width: 50px; height: 50px; background: linear-gradient(135deg, #FF6B6B, #FF8E8E); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem;">🏛️</div>
-                    <div style="font-size: 3rem; margin-bottom: 1.5rem; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));">🏛️</div>
-                    <h3 style="font-size: 1.2rem; font-weight: 700; color: var(--primary-blue); margin-bottom: 1rem;">Gouvernance</h3>
-                    <p style="color: var(--text-dark); font-size: 0.9rem; line-height: 1.5; opacity: 0.8; margin-bottom: 1rem;">Compliance, gouvernance d'entreprise, réglementation</p>
-                    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-                        <span style="background: rgba(255, 107, 107, 0.1); color: #FF6B6B; padding: 0.25rem 0.75rem; border-radius: 15px; font-size: 0.7rem; font-weight: 600;">OHADA</span>
-                        <span style="background: rgba(255, 107, 107, 0.1); color: #FF6B6B; padding: 0.25rem 0.75rem; border-radius: 15px; font-size: 0.7rem; font-weight: 600;">Audit</span>
-                    </div>
-                </div>
-
-                <!-- Contentieux -->
-                <div style="background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(15px); padding: 2rem 1.5rem; border-radius: 20px; box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1); border: 1px solid rgba(255, 255, 255, 0.3); transition: all 0.4s ease; position: relative; overflow: hidden;" onmouseover="this.style.transform='translateY(-15px) scale(1.02)'; this.style.boxShadow='0 25px 50px rgba(0, 0, 0, 0.15)'; this.style.background='rgba(255, 255, 255, 0.98)'" onmouseout="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 15px 35px rgba(0, 0, 0, 0.1)'; this.style.background='rgba(255, 255, 255, 0.95)'">
-                    <div style="position: absolute; top: -10px; right: -10px; width: 50px; height: 50px; background: linear-gradient(135deg, #FFD93D, #FF6B6B); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.2rem;">⚔️</div>
-                    <div style="font-size: 3rem; margin-bottom: 1.5rem; filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));">⚔️</div>
-                    <h3 style="font-size: 1.2rem; font-weight: 700; color: var(--primary-blue); margin-bottom: 1rem;">Contentieux</h3>
-                    <p style="color: var(--text-dark); font-size: 0.9rem; line-height: 1.5; opacity: 0.8; margin-bottom: 1rem;">Litiges commerciaux, arbitrage, médiation</p>
-                    <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-                        <span style="background: rgba(255, 217, 61, 0.1); color: #FFD93D; padding: 0.25rem 0.75rem; border-radius: 15px; font-size: 0.7rem; font-weight: 600;">Arbitrage</span>
-                        <span style="background: rgba(255, 217, 61, 0.1); color: #FFD93D; padding: 0.25rem 0.75rem; border-radius: 15px; font-size: 0.7rem; font-weight: 600;">Médiation</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Call to Action -->
-            <div style="margin-top: 3rem;">
-                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem;">
-                    <a href="#services" style="display: inline-flex; align-items: center; gap: 0.5rem; background: var(--primary-blue); color: var(--white); padding: 1rem 2rem; border-radius: 50px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(30, 90, 168, 0.3);" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 8px 25px rgba(30, 90, 168, 0.4)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 4px 15px rgba(30, 90, 168, 0.3)'">
-                        <span>⚖️</span> Découvrir Tous Nos Services
-                    </a>
-                    <a href="tel:+2290197747593" style="display: inline-flex; align-items: center; gap: 0.5rem; background: transparent; color: var(--white); padding: 1rem 2rem; border-radius: 50px; text-decoration: none; font-weight: 600; border: 2px solid rgba(255, 255, 255, 0.8); transition: all 0.3s ease;" onmouseover="this.style.background='rgba(255, 255, 255, 0.2)'; this.style.borderColor='rgba(255, 255, 255, 1)'; this.style.transform='translateY(-2px)'" onmouseout="this.style.background='transparent'; this.style.borderColor='rgba(255, 255, 255, 0.8)'; this.style.transform='translateY(0)'">
-                        <span>📞</span> Consultation Gratuite
-                    </a>
-                </div>
-                
-                <!-- Trust Indicators -->
-                <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; opacity: 0.8;">
-                    <div style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.9);">
-                        <span style="color: #FFD700;">✓</span> +500 clients satisfaits
-                    </div>
-                    <div style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.9);">
-                        <span style="color: #FFD700;">✓</span> 15 ans d'expérience
-                    </div>
-                    <div style="display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; color: rgba(255, 255, 255, 0.9);">
-                        <span style="color: #FFD700;">✓</span> Expertise OHADA
-                    </div>
-                </div>
-            </div>
         </div>
     </section>
-
-    <!-- Trust Indicators -->
-    <section class="trust-section">
-        <div class="trust-container">
-            <h2 class="trust-title">Reconnu et Certifié</h2>
-            <div class="trust-grid">
-                <div class="trust-item fade-in">
-                    <div class="trust-icon">🏛️</div>
-                    <div class="trust-label">Barreau du Bénin</div>
-                    <div class="trust-desc">Inscrit et certifié</div>
-                </div>
-                <div class="trust-item fade-in">
-                    <div class="trust-icon">🌍</div>
-                    <div class="trust-label">OHADA</div>
-                    <div class="trust-desc">Expert en droit OHADA</div>
-                </div>
-                <div class="trust-item fade-in">
-                    <div class="trust-icon">🏆</div>
-                    <div class="trust-label">Excellence</div>
-                    <div class="trust-desc">Prix du meilleur cabinet 2023</div>
-                </div>
-                <div class="trust-item fade-in">
-                    <div class="trust-icon">🔒</div>
-                    <div class="trust-label">Confidentialité</div>
-                    <div class="trust-desc">Garantie absolue</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Services Section -->
     <section id="services" class="services">
         <div class="services-container">
             <div class="section-header fade-in">
-                <div class="section-badge">⚖️ Nos Expertises</div>
+                <div class="section-badge"><i class="fas fa-scale-balanced"></i> Nos Expertises</div>
                 <h2 class="section-title">Services Juridiques Complets</h2>
                 <p class="section-subtitle">
                     Une gamme complète de services juridiques adaptés aux besoins des entreprises 
@@ -2440,7 +2332,7 @@
             <div class="services-grid">
                 <div class="service-card fade-in">
                     <div class="service-icon">
-                        <img src="images/image1.jpg" alt="Droit des Affaires" loading="lazy">
+                        <img src="assets/images/image1.jpg" alt="Droit des Affaires" loading="lazy">
                     </div>
                     <h3 class="service-title">Droit des Affaires</h3>
                     <p class="service-description">
@@ -2457,7 +2349,7 @@
 
                 <div class="service-card fade-in">
                     <div class="service-icon">
-                        <img src="images/image2.jpg" alt="Fiscalité" loading="lazy">
+                        <img src="assets/images/image2.jpg" alt="Fiscalité" loading="lazy">
                     </div>
                     <h3 class="service-title">Fiscalité</h3>
                     <p class="service-description">
@@ -2474,7 +2366,7 @@
 
                 <div class="service-card fade-in">
                     <div class="service-icon">
-                        <img src="images/image3.jpg" alt="Droit Immobilier" loading="lazy">
+                        <img src="assets/images/image3.jpg" alt="Droit Immobilier" loading="lazy">
                     </div>
                     <h3 class="service-title">Droit Immobilier</h3>
                     <p class="service-description">
@@ -2491,7 +2383,7 @@
 
                 <div class="service-card fade-in">
                     <div class="service-icon">
-                        <img src="images/image4.jpg" alt="Droit du Travail" loading="lazy">
+                        <img src="assets/images/image4.jpg" alt="Droit du Travail" loading="lazy">
                     </div>
                     <h3 class="service-title">Droit du Travail</h3>
                     <p class="service-description">
@@ -2508,7 +2400,7 @@
 
                 <div class="service-card fade-in">
                     <div class="service-icon">
-                        <img src="images/image5.jpg" alt="Recouvrement" loading="lazy">
+                        <img src="assets/images/image5.jpg" alt="Recouvrement" loading="lazy">
                     </div>
                     <h3 class="service-title">Recouvrement</h3>
                     <p class="service-description">
@@ -2525,7 +2417,7 @@
 
                 <div class="service-card fade-in">
                     <div class="service-icon">
-                        <img src="images/image6.jpg" alt="Marchés Publics" loading="lazy">
+                        <img src="assets/images/image6.jpg" alt="Marchés Publics" loading="lazy">
                     </div>
                     <h3 class="service-title">Marchés Publics</h3>
                     <p class="service-description">
@@ -2547,7 +2439,7 @@
     <section class="about">
         <div class="about-container">
             <div class="about-content slide-in-left">
-                <div class="section-badge">📖 Notre Histoire</div>
+                <div class="section-badge"><i class="fas fa-book"></i> Notre Histoire</div>
                 <h2>Excellence et Innovation Juridique</h2>
                 <p>
                     Fondé en 2008, Axe Legal s'est imposé comme l'un des cabinets d'avocats les plus respectés 
@@ -2559,41 +2451,42 @@
                     garantissant à nos clients un accompagnement de qualité à chaque étape de leur parcours juridique.
                 </p>
                 
-                <div class="about-features">
-                    <div class="about-feature">
-                        <div class="about-feature-icon">🎯</div>
-                        <div class="about-feature-content">
-                            <h4>Approche Stratégique</h4>
-                            <p>Solutions personnalisées et conseil stratégique adapté à vos enjeux</p>
-                        </div>
-                    </div>
-                    <div class="about-feature">
-                        <div class="about-feature-icon">⚡</div>
-                        <div class="about-feature-content">
-                            <h4>Réactivité</h4>
-                            <p>Réponse rapide et traitement efficace de vos dossiers urgents</p>
-                        </div>
-                    </div>
-                    <div class="about-feature">
-                        <div class="about-feature-icon">🤝</div>
-                        <div class="about-feature-content">
-                            <h4>Accompagnement</h4>
-                            <p>Suivi personnalisé et relation de confiance sur le long terme</p>
-                        </div>
-                    </div>
-                    <div class="about-feature">
-                        <div class="about-feature-icon">🏆</div>
-                        <div class="about-feature-content">
-                            <h4>Excellence</h4>
-                            <p>Standards de qualité élevés et expertise reconnue du marché</p>
-                        </div>
-                    </div>
-                </div>
+<div class="about-features">
+    <div class="about-feature">
+        <div class="about-feature-icon"><i class="fas fa-bullseye"></i></div>
+        <div class="about-feature-content">
+            <h4>Approche Stratégique</h4>
+            <p>Solutions personnalisées et conseil stratégique adapté à vos enjeux</p>
+        </div>
+    </div>
+    <div class="about-feature">
+        <div class="about-feature-icon"><i class="fas fa-bolt"></i></div>
+        <div class="about-feature-content">
+            <h4>Réactivité</h4>
+            <p>Réponse rapide et traitement efficace de vos dossiers urgents</p>
+        </div>
+    </div>
+    <div class="about-feature">
+        <div class="about-feature-icon"><i class="fas fa-handshake"></i></div>
+        <div class="about-feature-content">
+            <h4>Accompagnement</h4>
+            <p>Suivi personnalisé et relation de confiance sur le long terme</p>
+        </div>
+    </div>
+    <div class="about-feature">
+        <div class="about-feature-icon"><i class="fas fa-trophy"></i></div>
+        <div class="about-feature-content">
+            <h4>Excellence</h4>
+            <p>Standards de qualité élevés et expertise reconnue du marché</p>
+        </div>
+    </div>
+</div>
+
             </div>
 
             <div class="about-visual slide-in-right">
                 <div class="about-image">
-                    <img src="images/about-photo.jpeg" alt="Cabinet Axe Legal - Équipe professionnelle" loading="lazy">
+                    <img src="assets/images/about-photo.jpeg" alt="Cabinet Axe Legal - Équipe professionnelle" loading="lazy">
                     <div class="image-overlay">
                         <h3>Excellence Juridique</h3>
                         <p>15 ans d'expérience au service de nos clients</p>
@@ -2602,31 +2495,6 @@
             </div>
         </div>
     </section>
-
-    <!-- Stats Section -->
-    <section class="stats">
-        <div class="stats-container">
-            <div class="stats-grid">
-                <div class="stat-item fade-in">
-                    <span class="stat-number" data-target="500">0</span>
-                    <span class="stat-label">Clients Accompagnés</span>
-                </div>
-                <div class="stat-item fade-in">
-                    <span class="stat-number" data-target="1200">0</span>
-                    <span class="stat-label">Dossiers Traités</span>
-                </div>
-                <div class="stat-item fade-in">
-                    <span class="stat-number" data-target="98">0</span>
-                    <span class="stat-label">% de Réussite</span>
-                </div>
-                <div class="stat-item fade-in">
-                    <span class="stat-number" data-target="15">0</span>
-                    <span class="stat-label">Années d'Expérience</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
 
     <!-- Footer -->
     <footer class="footer">
@@ -2638,35 +2506,62 @@
                         Cabinet d'affaires spécialisé dans l'accompagnement juridique des entreprises 
                         et particuliers au Bénin.
                     </p>
+                    
                     <p><strong>Composition de l'équipe :</strong></p>
                     <ul class="footer-links">
-                        <li>l'Associé-Gérant</li>
-                        <li>La Cellule de l'Intelligence Fiscale</li>
-                        <li>La Cellule des Actes Juridiques et de la Gouvernance d'Entreprise</li>
-                        <li>La Cellule de Traitement de l'Information Financière</li>
+                        <li>
+                            <i class="fas fa-user-tie" style="margin-right: 6px; color: #004080;"></i>
+                            L'Associé-Gérant
+                        </li>
+                        <li>
+                            <i class="fas fa-coins" style="margin-right: 6px; color: #004080;"></i>
+                            La Cellule de l'Intelligence Fiscale
+                        </li>
+                        <li>
+                            <i class="fas fa-balance-scale" style="margin-right: 6px; color: #004080;"></i>
+                            La Cellule des Actes Juridiques et de la Gouvernance d'Entreprise
+                        </li>
+                        <li>
+                            <i class="fas fa-chart-line" style="margin-right: 6px; color: #004080;"></i>
+                            La Cellule de Traitement de l'Information Financière
+                        </li>
                     </ul>
+
                     <div class="footer-social">
-                        <a href="https://www.facebook.com/profile.php?id=100092728800155" title="Facebook" target="_blank">📘</a>
-                        <a href="https://www.linkedin.com/in/axe-legal-0134991b2/" title="LinkedIn" target="_blank">💼</a>
+                        <a href="https://www.facebook.com/profile.php?id=100092728800155" title="Facebook" target="_blank">
+                            <i class="fab fa-facebook-square" style="font-size: 1.4rem; color: #4267B2;"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/axe-legal-0134991b2/" title="LinkedIn" target="_blank">
+                            <i class="fab fa-linkedin" style="font-size: 1.4rem; color: #0A66C2;"></i>
+                        </a>
                     </div>
                 </div>
+
                 
-                <div class="footer-section">
+               <div class="footer-section">
                     <h4>Nos Prestations</h4>
                     <p><strong>Nous travaillons sous :</strong></p>
                     <ul class="footer-links">
-                        <li>Prestations sous contrat de trois mois au moins avec paiement mensuel ou trimestriel</li>
-                        <li>Prestation instantanée avec paiement à la tâche ou par mission</li>
+                        <li><i class="fas fa-check-circle" style="margin-right: 6px; color: #00bfa6;"></i> Prestations sous contrat de trois mois au moins avec paiement mensuel ou trimestriel</li>
+                        <li><i class="fas fa-check-circle" style="margin-right: 6px; color: #00bfa6;"></i> Prestation instantanée avec paiement à la tâche ou par mission</li>
                     </ul>
                 </div>
+
                 
                 <div class="footer-section">
                     <h4>Informations Légales</h4>
                     <ul class="footer-links">
-                        <li><strong>Registre du commerce :</strong> RB/ABC/20 B 3095</li>
-                        <li><strong>Identifiant fiscal :</strong> 3202011436651</li>
+                        <li>
+                            <i class="fas fa-briefcase" style="margin-right: 6px; color: #004080;"></i>
+                            <strong>Registre du commerce :</strong> RB/ABC/20 B 3095
+                        </li>
+                        <li>
+                            <i class="fas fa-id-card" style="margin-right: 6px; color: #004080;"></i>
+                            <strong>Identifiant fiscal :</strong> 3202011436651
+                        </li>
                     </ul>
                 </div>
+
                 
                 <div class="footer-section">
                     <h4>Contact</h4>
@@ -2689,6 +2584,7 @@
             </div>
         </div>
     </footer>
+
 
     <script>
         // Header scroll effect
