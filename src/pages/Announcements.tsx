@@ -6,6 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
+import { getAnnouncements } from "@/lib/firebaseApi";
 import {
   Gift,
   TrendingUp,
@@ -69,11 +70,8 @@ export default function AnnouncementsPage() {
 
   const fetchAnnouncements = async () => {
     try {
-      const response = await fetch("http://localhost:4000/api/announcements");
-      if (response.ok) {
-        const data = await response.json();
-        setAnnouncements(data);
-      }
+      const data = await getAnnouncements();
+      setAnnouncements(data as Announcement[]);
     } catch (error) {
       console.error("Erreur lors du chargement des annonces:", error);
     } finally {

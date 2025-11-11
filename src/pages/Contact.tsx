@@ -22,6 +22,7 @@ import PageHero from "@/components/PageHero";
 import contactHero from "@/assets/team-office.jpg";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import { addMessage } from "@/lib/firebaseApi";
 
 const Contact = () => {
   const { toast } = useToast();
@@ -39,33 +40,29 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_BASE || 'http://localhost:4000'}/api/contact`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
+      await addMessage({
+        name: formData.nom,
+        email: formData.email,
+        phone: formData.telephone,
+        subject: formData.sujet,
+        message: formData.message
       });
 
-      const data = await response.json();
-
-      if (response.ok) {
-        toast({
-          title: "Message envoyé !",
-          description: "Nous vous répondrons dans les plus brefs délais.",
-        });
-        // Reset form
-        setFormData({
-          nom: "",
-          email: "",
-          telephone: "",
-          sujet: "",
-          message: ""
-        });
-      } else {
-        throw new Error(data.message || 'Erreur lors de l\'envoi');
-      }
+      toast({
+        title: "Message envoyé !",
+        description: "Nous vous répondrons dans les plus brefs délais.",
+      });
+      
+      // Reset form
+      setFormData({
+        nom: "",
+        email: "",
+        telephone: "",
+        sujet: "",
+        message: ""
+      });
     } catch (error) {
+      console.error('Erreur lors de l\'envoi du message:', error);
       toast({
         title: "Erreur",
         description: "Une erreur est survenue. Veuillez réessayer.",

@@ -24,6 +24,7 @@ import {
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import { addConsultation } from "@/lib/firebaseApi";
 
 export default function Consultation() {
   const { toast } = useToast();
@@ -43,35 +44,33 @@ export default function Consultation() {
     setIsSubmitting(true);
 
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_BASE || 'http://localhost:4000'}/api/consultation`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
+      await addConsultation({
+        name: formData.nom,
+        email: formData.email,
+        phone: formData.telephone,
+        consultationType: formData.service,
+        preferredDate: formData.datePreferee,
+        preferredTime: formData.heurePreferee,
+        description: formData.message
       });
 
-      const data = await response.json();
-
-      if (response.ok) {
-        toast({
-          title: "Demande envoyée !",
-          description: "Nous vous contacterons bientôt pour confirmer votre consultation.",
-        });
-        // Reset form
-        setFormData({
-          nom: "",
-          email: "",
-          telephone: "",
-          service: "",
-          datePreferee: "",
-          heurePreferee: "",
-          message: "",
-        });
-      } else {
-        throw new Error(data.message || 'Erreur lors de l\'envoi');
-      }
+      toast({
+        title: "Demande envoyée !",
+        description: "Nous vous contacterons bientôt pour confirmer votre consultation.",
+      });
+      
+      // Reset form
+      setFormData({
+        nom: "",
+        email: "",
+        telephone: "",
+        service: "",
+        datePreferee: "",
+        heurePreferee: "",
+        message: "",
+      });
     } catch (error) {
+      console.error('Erreur lors de l\'envoi de la consultation:', error);
       toast({
         title: "Erreur",
         description: "Une erreur est survenue. Veuillez réessayer.",

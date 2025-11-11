@@ -379,3 +379,146 @@ export const getBusinessHours = async (): Promise<BusinessHours> => {
 export const updateBusinessHours = async (hours: BusinessHours): Promise<void> => {
   await updateDoc(doc(db, 'settings', 'business_hours'), hours);
 };
+
+// ============= CASES (Dossiers) =============
+
+export interface Case {
+  id: string;
+  title: string;
+  client: string;
+  caseType: string;
+  status: 'pending' | 'active' | 'closed' | 'won' | 'lost';
+  description?: string;
+  startDate?: string;
+  endDate?: string;
+  assignedTo?: string;
+  createdAt?: Date;
+}
+
+export const getCases = async (): Promise<Case[]> => {
+  const q = query(collection(db, 'cases'), orderBy('createdAt', 'desc'));
+  const querySnapshot = await getDocs(q);
+  return querySnapshot.docs.map(doc => ({
+    id: doc.id,
+    ...convertTimestamp(doc.data())
+  } as Case));
+};
+
+export const addCase = async (caseData: Omit<Case, 'id'>): Promise<Case> => {
+  const docRef = await addDoc(collection(db, 'cases'), {
+    ...caseData,
+    createdAt: Timestamp.now()
+  });
+  const newDoc = await getDoc(docRef);
+  return { id: newDoc.id, ...convertTimestamp(newDoc.data()) } as Case;
+};
+
+export const updateCase = async (id: string, caseData: Partial<Case>): Promise<void> => {
+  await updateDoc(doc(db, 'cases', id), caseData);
+};
+
+export const deleteCase = async (id: string): Promise<void> => {
+  await deleteDoc(doc(db, 'cases', id));
+};
+
+// ============= APPOINTMENTS (Rendez-vous) =============
+
+export interface Appointment {
+  id: string;
+  title: string;
+  client: string;
+  email?: string;
+  phone?: string;
+  appointmentType: string;
+  date: string;
+  time: string;
+  duration?: number;
+  status: 'pending' | 'confirmed' | 'completed' | 'cancelled';
+  notes?: string;
+  assignedTo?: string;
+  createdAt?: Date;
+}
+
+export const getAppointments = async (): Promise<Appointment[]> => {
+  const q = query(collection(db, 'appointments'), orderBy('date', 'desc'));
+  const querySnapshot = await getDocs(q);
+  return querySnapshot.docs.map(doc => ({
+    id: doc.id,
+    ...convertTimestamp(doc.data())
+  } as Appointment));
+};
+
+export const addAppointment = async (appointment: Omit<Appointment, 'id'>): Promise<Appointment> => {
+  const docRef = await addDoc(collection(db, 'appointments'), {
+    ...appointment,
+    createdAt: Timestamp.now()
+  });
+  const newDoc = await getDoc(docRef);
+  return { id: newDoc.id, ...convertTimestamp(newDoc.data()) } as Appointment;
+};
+
+export const updateAppointment = async (id: string, appointment: Partial<Appointment>): Promise<void> => {
+  await updateDoc(doc(db, 'appointments', id), appointment);
+};
+
+export const deleteAppointment = async (id: string): Promise<void> => {
+  await deleteDoc(doc(db, 'appointments', id));
+};
+
+// ============= NOTIFICATIONS =============
+
+export interface Notification {
+  id: string;
+  title: string;
+  message: string;
+  type: 'info' | 'warning' | 'success' | 'error';
+  isRead: boolean;
+  isArchived?: boolean;
+  userId?: string;
+  link?: string;
+  createdAt?: Date;
+}
+
+export const getNotifications = async (): Promise<Notification[]> => {
+  const q = query(collection(db, 'notifications'), orderBy('createdAt', 'desc'));
+  const querySnapshot = await getDocs(q);
+  return querySnapshot.docs.map(doc => ({
+    id: doc.id,
+    ...convertTimestamp(doc.data())
+  } as Notification));
+};
+
+export const addNotification = async (notification: Omit<Notification, 'id'>): Promise<Notification> => {
+  const docRef = await addDoc(collection(db, 'notifications'), {
+    ...notification,
+    isRead: false,
+    createdAt: Timestamp.now()
+  });
+  const newDoc = await getDoc(docRef);
+  return { id: newDoc.id, ...convertTimestamp(newDoc.data()) } as Notification;
+};
+
+export const markNotificationAsRead = async (id: string): Promise<void> => {
+  await updateDoc(doc(db, 'notifications', id), { isRead: true });
+};
+
+export const markNotificationAsUnread = async (id: string): Promise<void> => {
+  await updateDoc(doc(db, 'notifications', id), { isRead: false });
+};
+
+export const archiveNotification = async (id: string): Promise<void> => {
+  await updateDoc(doc(db, 'notifications', id), { isArchived: true });
+};
+
+export const deleteNotification = async (id: string): Promise<void> => {
+  await deleteDoc(doc(db, 'notifications', id));
+};
+
+export const markAllNotificationsAsRead = async (): Promise<void> => {
+  const notifications = await getNotifications();
+  const unreadNotifications = notifications.filter(n => !n.isRead);
+  
+  await Promise.all(
+    unreadNotifications.map(n => markNotificationAsRead(n.id))
+  );
+};
