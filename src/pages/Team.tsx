@@ -25,28 +25,17 @@ import {
   Globe
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import { getTeamMembers } from "@/lib/firebaseApi";
 import teamLeader from "@/assets/team-leader.jpg";
 import AnimatedCounter from "@/components/AnimatedCounter";
 import { useToast } from "@/hooks/use-toast";
 
 interface TeamMember {
-  id: number;
+  id?: string;
   name: string;
   role: string;
-  title: string;
   bio: string;
-  specialties: string[];
-  education: string[];
-  experience: string;
-  email: string;
-  phone: string;
-  linkedin: string;
-  imageUrl: string;
-  isActive: boolean;
-  order: number;
-  languages: string[];
-  certifications: string[];
-  achievements: string[];
+  image: string;
 }
 
 export default function Team() {
@@ -62,14 +51,8 @@ export default function Team() {
   const fetchTeamMembers = async () => {
     try {
       setIsLoading(true);
-      const response = await fetch('http://localhost:4000/api/team');
-      
-      if (!response.ok) {
-        throw new Error('Failed to fetch team members');
-      }
-
-      const data = await response.json();
-      setTeamMembers(data.members || []);
+      const data = await getTeamMembers();
+      setTeamMembers(data as TeamMember[]);
     } catch (error) {
       console.error('Error fetching team members:', error);
       toast({
@@ -175,9 +158,9 @@ export default function Team() {
                     style={{ animationDelay: `${index * 100}ms` }}
                   >
                     <div className="relative h-64 overflow-hidden bg-gradient-to-br from-primary/20 to-primary/5">
-                      {member.imageUrl ? (
+                      {member.image ? (
                         <img
-                          src={member.imageUrl}
+                          src={member.image}
                           alt={member.name}
                           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                         />
@@ -200,7 +183,7 @@ export default function Team() {
                         <h3 className="text-2xl font-bold text-foreground mb-1">
                           {member.name}
                         </h3>
-                        <p className="text-primary font-semibold">{member.title}</p>
+                        <p className="text-primary font-semibold">{member.role}</p>
                       </div>
                     </div>
 
@@ -208,95 +191,6 @@ export default function Team() {
                       <p className="text-muted-foreground leading-relaxed text-sm">
                         {member.bio}
                       </p>
-
-                      {/* Experience */}
-                      {member.experience && (
-                        <div className="flex items-center gap-2 text-sm">
-                          <Briefcase className="h-4 w-4 text-primary" />
-                          <span className="text-muted-foreground">{member.experience}</span>
-                        </div>
-                      )}
-
-                      {/* Specialties */}
-                      {member.specialties && member.specialties.length > 0 && (
-                        <div className="pt-4 border-t border-border">
-                          <h4 className="font-semibold text-sm mb-3 flex items-center gap-2">
-                            <GraduationCap className="h-4 w-4 text-primary" />
-                            Spécialités
-                          </h4>
-                          <div className="flex flex-wrap gap-2">
-                            {member.specialties.map((specialty, i) => (
-                              <Badge key={i} variant="secondary" className="text-xs">
-                                {specialty}
-                              </Badge>
-                            ))}
-                          </div>
-                        </div>
-                      )}
-
-                      {/* Languages */}
-                      {member.languages && member.languages.length > 0 && (
-                        <div className="pt-4 border-t border-border">
-                          <h4 className="font-semibold text-sm mb-2 flex items-center gap-2">
-                            <Globe className="h-4 w-4 text-primary" />
-                            Langues
-                          </h4>
-                          <p className="text-sm text-muted-foreground">
-                            {member.languages.join(', ')}
-                          </p>
-                        </div>
-                      )}
-
-                      {/* Contact Info */}
-                      <div className="pt-4 border-t border-border space-y-2">
-                        {member.email && (
-                          <a
-                            href={`mailto:${member.email}`}
-                            className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
-                          >
-                            <Mail className="h-4 w-4" />
-                            {member.email}
-                          </a>
-                        )}
-                        {member.phone && (
-                          <a
-                            href={`tel:${member.phone}`}
-                            className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
-                          >
-                            <Phone className="h-4 w-4" />
-                            {member.phone}
-                          </a>
-                        )}
-                        {member.linkedin && (
-                          <a
-                            href={member.linkedin}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
-                          >
-                            <Linkedin className="h-4 w-4" />
-                            LinkedIn
-                          </a>
-                        )}
-                      </div>
-
-                      {/* Achievements */}
-                      {member.achievements && member.achievements.length > 0 && (
-                        <div className="pt-4 border-t border-border">
-                          <h4 className="font-semibold text-sm mb-2 flex items-center gap-2">
-                            <Trophy className="h-4 w-4 text-primary" />
-                            Réalisations
-                          </h4>
-                          <ul className="space-y-1">
-                            {member.achievements.slice(0, 3).map((achievement, i) => (
-                              <li key={i} className="flex items-start gap-2 text-sm">
-                                <CheckCircle className="h-4 w-4 text-primary mt-0.5 shrink-0" />
-                                <span className="text-muted-foreground">{achievement}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      )}
                     </div>
                   </Card>
                 ))}

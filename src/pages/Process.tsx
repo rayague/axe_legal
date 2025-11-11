@@ -25,16 +25,12 @@ import {
   GitBranch
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { getProcessSteps } from "@/lib/firebaseApi";
 
 interface ProcessStep {
-  id: number;
-  icon: string;
-  number: string;
+  id?: string;
   title: string;
   description: string;
-  details: string[];
-  duration: string;
-  color: string;
   order: number;
 }
 
@@ -177,14 +173,8 @@ export default function Process() {
   const fetchProcessSteps = async () => {
     try {
       setIsLoading(true);
-      const response = await fetch('http://localhost:4000/api/processes');
-      
-      if (!response.ok) {
-        throw new Error('Failed to fetch process steps');
-      }
-
-      const data = await response.json();
-      setProcessSteps(data.processes || []);
+      const data = await getProcessSteps();
+      setProcessSteps(data as ProcessStep[]);
     } catch (error) {
       console.error('Error fetching process steps:', error);
       toast({

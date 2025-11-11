@@ -3,17 +3,15 @@ import { Card } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Star, Quote, User } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { getTestimonials } from "@/lib/firebaseApi";
 
 interface Testimonial {
-  id: number;
-  clientName: string;
-  clientRole: string;
-  clientCompany: string;
-  clientImage: string;
+  id?: string;
+  name: string;
+  role: string;
+  content: string;
   rating: number;
-  testimonial: string;
-  caseType: string;
-  date: string;
+  image: string;
 }
 
 export const TestimonialsSection = () => {
@@ -29,14 +27,8 @@ export const TestimonialsSection = () => {
   const fetchTestimonials = async () => {
     try {
       setIsLoading(true);
-      const response = await fetch('http://localhost:4000/api/testimonials');
-      
-      if (!response.ok) {
-        throw new Error('Failed to fetch testimonials');
-      }
-
-      const data = await response.json();
-      setTestimonials(data.testimonials || []);
+      const data = await getTestimonials();
+      setTestimonials(data as Testimonial[]);
     } catch (error) {
       console.error('Error fetching testimonials:', error);
       toast({
@@ -104,32 +96,25 @@ export const TestimonialsSection = () => {
 
                   {/* Content */}
                   <p className="text-muted-foreground leading-relaxed text-base min-h-[100px]">
-                    "{item.testimonial}"
+                    "{item.content}"
                   </p>
-
-                  {/* Case Type Badge */}
-                  {item.caseType && (
-                    <div className="text-xs text-primary font-medium border-t border-primary/20 pt-2">
-                      📋 {item.caseType}
-                    </div>
-                  )}
 
                   {/* Author */}
                   <div className="flex items-center gap-4 pt-2 border-t border-primary/20">
                     <Avatar className="h-14 w-14 bg-gradient-to-br from-primary to-primary/80 text-primary-foreground ring-2 ring-primary/20">
-                      {item.clientImage ? (
-                        <AvatarImage src={item.clientImage} alt={item.clientName} />
+                      {item.image ? (
+                        <AvatarImage src={item.image} alt={item.name} />
                       ) : null}
                       <AvatarFallback className="bg-gradient-to-br from-primary to-primary/80 text-white font-bold">
-                        {getInitials(item.clientName)}
+                        {getInitials(item.name)}
                       </AvatarFallback>
                     </Avatar>
                     <div className="flex-1">
                       <div className="font-bold text-foreground group-hover:text-primary transition-colors">
-                        {item.clientName}
+                        {item.name}
                       </div>
                       <div className="text-sm text-muted-foreground">
-                        {item.clientRole} • {item.clientCompany}
+                        {item.role}
                       </div>
                     </div>
                   </div>
