@@ -22,6 +22,7 @@ import {
   UserCheck,
   Award
 } from "lucide-react";
+import { getServices } from "@/lib/firebaseApi";
 import businessLaw from "@/assets/business-law.jpg";
 import taxLaw from "@/assets/tax-law.jpg";
 import realEstateLaw from "@/assets/real-estate-law.jpg";
@@ -62,26 +63,21 @@ const imageMap: Record<string, string> = {
 };
 
 interface Service {
-  id: number;
+  id?: string;
   title: string;
   slug: string;
   icon: string;
   shortDescription: string;
-  fullDescription: string;
+  description: string;
   features: string[];
   benefits: string[];
   category: string;
-  price: string;
+  pricing: string;
   duration: string;
-  isActive: boolean;
   order: number;
-  metadata?: {
-    seoTitle?: string;
-    seoDescription?: string;
-    keywords?: string[];
-  };
-  createdAt: string;
-  updatedAt?: string;
+  seoTitle?: string;
+  seoDescription?: string;
+  keywords?: string[];
 }
 
 export const ServicesSection = () => {
@@ -95,11 +91,8 @@ export const ServicesSection = () => {
   useEffect(() => {
     const fetchServices = async () => {
       try {
-        const response = await fetch('http://localhost:4000/api/services');
-        if (!response.ok) throw new Error('Erreur lors du chargement');
-        
-        const data = await response.json();
-        setServices(data.services || []);
+        const data = await getServices();
+        setServices(data as Service[]);
       } catch (err) {
         console.error('Erreur lors du chargement des services:', err);
         setError(true);
@@ -189,12 +182,12 @@ export const ServicesSection = () => {
                     </ul>
                   )}
 
-                  {(service.price || service.duration) && (
+                  {(service.pricing || service.duration) && (
                     <div className="flex gap-4 text-sm text-muted-foreground pt-2 border-t">
-                      {service.price && (
+                      {service.pricing && (
                         <span className="flex items-center gap-1">
                           <DollarSign className="h-4 w-4" />
-                          {service.price}
+                          {service.pricing}
                         </span>
                       )}
                       {service.duration && (
