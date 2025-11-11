@@ -1,190 +1,144 @@
-import { useState, useEffect } from "react";
-import { useAuth } from "@/lib/auth";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Mail, Phone, Calendar, Trash2, Eye, RefreshCw } from "lucide-react";
+import { useState, useEffect } from 'react';
+import { useToast } from '@/hooks/use-toast';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Card } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Search, Mail, Trash2, Calendar } from 'lucide-react';
+import { getMessages, deleteMessage } from '@/lib/firebaseApi';
 
-type ContactMessage = {
-  id: number;
-  nom: string;
+interface Message {
+  id?: string;
+  name: string;
   email: string;
-  telephone: string;
-  sujet: string;
+  phone?: string;
+  subject: string;
   message: string;
-  date: string;
-  read: boolean;
-};
+  createdAt?: Date;
+}
 
 export default function MessagesPage() {
-  const { token } = useAuth();
-  const [messages, setMessages] = useState<ContactMessage[]>([]);
-  const [loading, setLoading] = useState(true);
+  const { toast } = useToast();
 
-  useEffect(() => {
-    fetchMessages();
-  }, [token]);
+  const [messages, setMessages] = useState<Message[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [searchQuery, setSearchQuery] = useState('');
 
   const fetchMessages = async () => {
-    if (!token) return;
-    setLoading(true);
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_BASE || 'http://localhost:4000'}/api/admin/messages`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      const data = await response.json();
-      if (data.messages) setMessages(data.messages);
+      const data = await getMessages();
+      setMessages(data as Message[]);
     } catch (error) {
-      console.error('Error fetching messages:', error);
+      toast({
+        title: 'Erreur',
+        description: 'Impossible de charger les messages',
+        variant: 'destructive',
+      });
     } finally {
       setLoading(false);
     }
   };
 
-  const markAsRead = async (id: number) => {
-    if (!token) return;
+  useEffect(() => {
+    fetchMessages();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const filteredMessages = messages.filter((message) =>
+    message.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    message.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    message.subject.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
+  const handleDelete = async (id: string) => {
+    if (!confirm('Voulez-vous vraiment supprimer ce message ?')) return;
+
     try {
-      await fetch(`${import.meta.env.VITE_API_BASE || 'http://localhost:4000'}/api/admin/messages/${id}/read`, {
-        method: 'PATCH',
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      setMessages(messages.map(msg => msg.id === id ? { ...msg, read: true } : msg));
+      await deleteMessage(id);
+      setMessages((prev) => prev.filter((m) => m.id !== id));
+      toast({ title: 'Succès', description: 'Message supprimé avec succès' });
     } catch (error) {
-      console.error('Error marking message as read:', error);
+      toast({ title: 'Erreur', description: 'Impossible de supprimer le message', variant: 'destructive' });
     }
   };
 
-  const deleteMessage = async (id: number) => {
-    if (!token || !confirm('Êtes-vous sûr de vouloir supprimer ce message ?')) return;
-    try {
-      await fetch(`${import.meta.env.VITE_API_BASE || 'http://localhost:4000'}/api/admin/messages/${id}`, {
-        method: 'DELETE',
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      setMessages(messages.filter(msg => msg.id !== id));
-    } catch (error) {
-      console.error('Error deleting message:', error);
-    }
-  };
-
-  const formatDate = (dateString: string) => {
-    const date = new Date(dateString);
-    return new Intl.DateTimeFormat('fr-FR', {
-      day: '2-digit',
-      month: 'short',
-      year: 'numeric',
-      hour: '2-digit',
-      minute: '2-digit'
-    }).format(date);
-  };
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
+      </div>
+    );
+  }
 
   return (
-    <div>
-      <Card>
-        <CardHeader>
-          <div className="flex items-center justify-between">
-            <div>
-              <CardTitle className="flex items-center gap-2">
-                <Mail className="h-5 w-5 text-primary" />
-                Messages de Contact
-              </CardTitle>
-              <CardDescription>
-                Messages reçus via le formulaire de contact du site web
-              </CardDescription>
-            </div>
-            <Button
-              onClick={fetchMessages}
-              variant="outline"
-              size="sm"
-              className="gap-2"
-              disabled={loading}
-            >
-              <RefreshCw className={`h-4 w-4 ${loading ? 'animate-spin' : ''}`} />
-              Actualiser
-            </Button>
-          </div>
-        </CardHeader>
-        <CardContent>
-          {loading ? (
-            <p className="text-muted-foreground text-center py-8">Chargement des messages...</p>
-          ) : messages.length === 0 ? (
-            <p className="text-muted-foreground text-center py-8">Aucun message pour le moment</p>
-          ) : (
-            <div className="space-y-4">
-              {messages.map((msg) => (
-                <Card 
-                  key={msg.id} 
-                  className={`border-2 ${!msg.read ? 'border-primary/50 bg-primary/5' : 'border-border'}`}
-                >
-                  <CardContent className="p-4">
-                    <div className="flex items-start justify-between gap-4">
-                      <div className="flex-1 space-y-2">
-                        <div className="flex items-center gap-2 flex-wrap">
-                          <h3 className="font-bold text-lg">{msg.nom}</h3>
-                          {!msg.read && (
-                            <Badge variant="default" className="text-xs">Nouveau</Badge>
-                          )}
-                          {msg.sujet && (
-                            <Badge variant="outline" className="text-xs">{msg.sujet}</Badge>
-                          )}
-                        </div>
-                        
-                        <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
-                          <div className="flex items-center gap-1">
-                            <Mail className="h-3 w-3" />
-                            <a href={`mailto:${msg.email}`} className="hover:text-primary">
-                              {msg.email}
-                            </a>
-                          </div>
-                          {msg.telephone && (
-                            <div className="flex items-center gap-1">
-                              <Phone className="h-3 w-3" />
-                              <a href={`tel:${msg.telephone}`} className="hover:text-primary">
-                                {msg.telephone}
-                              </a>
-                            </div>
-                          )}
-                          <div className="flex items-center gap-1">
-                            <Calendar className="h-3 w-3" />
-                            <span>{formatDate(msg.date)}</span>
-                          </div>
-                        </div>
-                        
-                        <div className="pt-2 border-t">
-                          <p className="text-sm whitespace-pre-wrap">{msg.message}</p>
-                        </div>
-                      </div>
-                      
-                      <div className="flex flex-col gap-2">
-                        {!msg.read && (
-                          <Button
-                            size="sm"
-                            variant="outline"
-                            onClick={() => markAsRead(msg.id)}
-                            className="gap-2"
-                          >
-                            <Eye className="h-4 w-4" />
-                            Marquer lu
-                          </Button>
-                        )}
-                        <Button
-                          size="sm"
-                          variant="destructive"
-                          onClick={() => deleteMessage(msg.id)}
-                          className="gap-2"
-                        >
-                          <Trash2 className="h-4 w-4" />
-                          Supprimer
-                        </Button>
-                      </div>
+    <div className="p-8">
+      <div className="mb-8">
+        <h1 className="text-3xl font-bold mb-2">Messages de Contact</h1>
+        <p className="text-muted-foreground">Gérez les messages reçus via le formulaire de contact</p>
+      </div>
+
+      <div className="flex gap-4 mb-6">
+        <div className="flex-1 relative">
+          <Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
+          <Input
+            placeholder="Rechercher un message..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="pl-10"
+          />
+        </div>
+      </div>
+
+      {filteredMessages.length === 0 ? (
+        <Card className="p-12 text-center">
+          <Mail className="h-12 w-12 text-muted-foreground mx-auto mb-4" />
+          <p className="text-muted-foreground">Aucun message trouvé</p>
+        </Card>
+      ) : (
+        <div className="grid gap-4">
+          {filteredMessages.map((message) => (
+            <Card key={message.id} className="p-6">
+              <div className="flex items-start justify-between">
+                <div className="flex-1">
+                  <div className="flex items-center gap-2 mb-2">
+                    <h3 className="font-bold">{message.name}</h3>
+                    <Badge variant="outline">{message.email}</Badge>
+                    {message.phone && <Badge variant="secondary">{message.phone}</Badge>}
+                  </div>
+                  <h4 className="font-semibold text-primary mb-2">{message.subject}</h4>
+                  <p className="text-sm text-muted-foreground mb-3">{message.message}</p>
+                  {message.createdAt && (
+                    <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                      <Calendar className="h-3 w-3" />
+                      {new Date(message.createdAt).toLocaleDateString('fr-FR', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric',
+                        hour: '2-digit',
+                        minute: '2-digit'
+                      })}
                     </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          )}
-        </CardContent>
-      </Card>
+                  )}
+                </div>
+                <div className="flex gap-2">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => window.location.href = `mailto:${message.email}?subject=Re: ${message.subject}`}
+                  >
+                    <Mail className="h-3 w-3 mr-1" />
+                    Répondre
+                  </Button>
+                  <Button variant="outline" size="sm" onClick={() => handleDelete(message.id!)}>
+                    <Trash2 className="h-3 w-3 mr-1" />
+                    Supprimer
+                  </Button>
+                </div>
+              </div>
+            </Card>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
