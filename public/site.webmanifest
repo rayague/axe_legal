@@ -1,0 +1,21 @@
+{
+  "name": "Axe Legal",
+  "short_name": "Axe Legal",
+  "description": "Cabinet d'Excellence Juridique au Bénin",
+  "icons": [
+    {
+      "src": "/assets/images/logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/assets/images/logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#1e293b",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "start_url": "/"
+}
