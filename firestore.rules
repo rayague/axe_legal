@@ -3,64 +3,62 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
     
-    // Fonction helper pour vérifier si l'utilisateur est admin
-    function isAdmin() {
-      return request.auth != null && 
-             exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
-             get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
+    // Fonction helper pour vérifier si l'utilisateur est authentifié
+    function isAuthenticated() {
+      return request.auth != null;
     }
     
-    // Collection users - Seulement les admins
+    // Collection users - Seulement les utilisateurs authentifiés
     match /users/{userId} {
-      allow read, write: if isAdmin();
+      allow read, write: if isAuthenticated();
     }
     
-    // Collection services - Lecture publique, écriture admin
+    // Collection services - Lecture publique, écriture pour authentifiés
     match /services/{serviceId} {
       allow read: if true;
-      allow write: if isAdmin();
+      allow write: if isAuthenticated();
     }
     
-    // Collection team - Lecture publique, écriture admin
+    // Collection team - Lecture publique, écriture pour authentifiés
     match /team/{memberId} {
       allow read: if true;
-      allow write: if isAdmin();
+      allow write: if isAuthenticated();
     }
     
-    // Collection process - Lecture publique, écriture admin
-    match /process/{stepId} {
+    // Collection processes - Lecture publique, écriture pour authentifiés
+    match /processes/{stepId} {
       allow read: if true;
-      allow write: if isAdmin();
+      allow write: if isAuthenticated();
     }
     
-    // Collection testimonials - Lecture publique, écriture admin
+    // Collection testimonials - Lecture publique, écriture pour authentifiés
     match /testimonials/{testimonialId} {
       allow read: if true;
-      allow write: if isAdmin();
+      allow write: if isAuthenticated();
     }
     
-    // Collection announcements - Lecture publique, écriture admin
+    // Collection announcements - Lecture publique, écriture pour authentifiés
     match /announcements/{announcementId} {
       allow read: if true;
-      allow write: if isAdmin();
+      allow write: if isAuthenticated();
     }
     
-    // Collection messages - Création publique, lecture/modification admin
+    // Collection messages - Création publique, lecture/modification pour authentifiés
     match /messages/{messageId} {
       allow create: if true;
-      allow read, update, delete: if isAdmin();
+      allow read, update, delete: if isAuthenticated();
     }
     
-    // Collection consultations - Création publique, lecture/modification admin
+    // Collection consultations - Création publique, lecture/modification pour authentifiés
     match /consultations/{consultationId} {
       allow create: if true;
-      allow read, update, delete: if isAdmin();
+      allow read, update, delete: if isAuthenticated();
     }
     
-    // Collection settings - Lecture publique, écriture admin
+    // Collection settings - Lecture publique, écriture pour authentifiés
     match /settings/{settingId} {
       allow read: if true;
-      allow write: if isAdmin();
+      allow write: if isAuthenticated();
     }
   }
 }

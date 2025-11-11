@@ -33,6 +33,8 @@ import BusinessHoursManagementPage from "./pages/admin/BusinessHoursManagementPa
 import ProfilePage from "./pages/admin/ProfilePage";
 import Announcements from "./pages/Announcements";
 import PlaceholderPage from "./pages/admin/PlaceholderPage";
+import SeedDataPage from "./pages/admin/SeedDataPage";
+import TestFirestore from "./pages/admin/TestFirestore";
 
 const queryClient = new QueryClient();
 
@@ -91,6 +93,8 @@ const App = () => (
               <Route path="consultations" element={<ConsultationsPage />} />
               <Route path="calendar" element={<CalendarPage />} />
               <Route path="notifications" element={<NotificationsPage />} />
+              <Route path="seed-data" element={<SeedDataPage />} />
+              <Route path="test-firestore" element={<TestFirestore />} />
               <Route path="settings" element={<PlaceholderPage title="Paramètres" description="Configuration du système" />} />
             </Route>
 

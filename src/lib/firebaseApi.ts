@@ -151,29 +151,43 @@ export const getAdminProfile = async (userId: string): Promise<AdminUser> => {
 
 // ============= SERVICES =============
 
-export const getServices = async (): Promise<Service[]> => {
-  const querySnapshot = await getDocs(collection(db, 'services'));
-  return querySnapshot.docs.map(doc => ({
-    id: doc.id,
-    ...convertTimestamp(doc.data())
-  } as Service));
+// Services
+export const getServices = async () => {
+  const servicesRef = collection(db, 'services');
+  const q = query(servicesRef, orderBy('order', 'asc'));
+  const snapshot = await getDocs(q);
+  return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
 };
 
-export const addService = async (service: Omit<Service, 'id'>): Promise<Service> => {
-  const docRef = await addDoc(collection(db, 'services'), {
+export const getServiceBySlug = async (slug: string) => {
+  const servicesRef = collection(db, 'services');
+  const q = query(servicesRef, where('slug', '==', slug));
+  const snapshot = await getDocs(q);
+  if (snapshot.empty) return null;
+  const doc = snapshot.docs[0];
+  return { id: doc.id, ...doc.data() };
+};
+
+export const addService = async (service: any) => {
+  const servicesRef = collection(db, 'services');
+  const docRef = await addDoc(servicesRef, {
     ...service,
     createdAt: Timestamp.now()
   });
-  const newDoc = await getDoc(docRef);
-  return { id: newDoc.id, ...convertTimestamp(newDoc.data()) } as Service;
+  return docRef.id;
 };
 
-export const updateService = async (id: string, service: Partial<Service>): Promise<void> => {
-  await updateDoc(doc(db, 'services', id), service);
+export const updateService = async (id: string, service: any) => {
+  const serviceRef = doc(db, 'services', id);
+  await updateDoc(serviceRef, {
+    ...service,
+    updatedAt: Timestamp.now()
+  });
 };
 
-export const deleteService = async (id: string): Promise<void> => {
-  await deleteDoc(doc(db, 'services', id));
+export const deleteService = async (id: string) => {
+  const serviceRef = doc(db, 'services', id);
+  await deleteDoc(serviceRef);
 };
 
 // ============= TEAM =============
