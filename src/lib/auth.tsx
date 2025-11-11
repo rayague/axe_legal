@@ -54,9 +54,12 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const login = async (email: string, password: string) => {
     try {
+      console.log('Auth: Appel de signIn avec', email);
       const result = await signIn(email, password);
+      console.log('Auth: signIn réussi, résultat:', result);
       setUser(result.user);
       setToken(result.token);
+      console.log('Auth: État mis à jour - user:', result.user);
     } catch (error) {
       console.error('Login error:', error);
       const errorMessage = error instanceof Error ? error.message : 'Échec de la connexion';

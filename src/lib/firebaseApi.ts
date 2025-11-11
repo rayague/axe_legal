@@ -106,11 +106,13 @@ const convertTimestamp = (data: any) => {
 
 export const signIn = async (email: string, password: string) => {
   try {
+    console.log('FirebaseAPI: Tentative de connexion avec Firebase Auth');
     const userCredential = await signInWithEmailAndPassword(auth, email, password);
     const user = userCredential.user;
+    console.log('FirebaseAPI: Connexion Firebase réussie, UID:', user.uid);
     
     // Tous les utilisateurs dans Firebase Auth sont considérés comme admins
-    return {
+    const result = {
       user: {
         id: user.uid,
         email: user.email!,
@@ -119,7 +121,10 @@ export const signIn = async (email: string, password: string) => {
       },
       token: await user.getIdToken()
     };
+    console.log('FirebaseAPI: Retour du résultat:', result);
+    return result;
   } catch (error) {
+    console.error('FirebaseAPI: Erreur de connexion:', error);
     const errorMessage = error instanceof Error ? error.message : 'Erreur de connexion';
     throw new Error(errorMessage);
   }

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useAuth } from "@/lib/auth";
+import { getMessages, getConsultations, getServices, getTeamMembers } from "@/lib/firebaseApi";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { TrendingUp, Users, Briefcase, FileText, MessageSquare, Calendar } from "lucide-react";
@@ -10,7 +11,9 @@ type DashStats = {
   clients: number; 
   cases: number; 
   messages: number; 
-  consultations: number 
+  consultations: number;
+  services: number;
+  team: number;
 };
 
 type ContactMessage = {
@@ -25,7 +28,6 @@ type ConsultationRequest = {
 
 export default function DashboardHome() {
   const navigate = useNavigate();
-  const { token } = useAuth();
   const [stats, setStats] = useState<DashStats | null>(null);
   const [loading, setLoading] = useState(true);
   const [messages, setMessages] = useState<ContactMessage[]>([]);
@@ -33,30 +35,35 @@ export default function DashboardHome() {
 
   useEffect(() => {
     const fetchData = async () => {
-      if (!token) return;
-      
       setLoading(true);
       try {
-        // Fetch stats
-        const statsResponse = await fetch(`${import.meta.env.VITE_API_BASE || 'http://localhost:4000'}/api/admin/dashboard`, {
-          headers: { Authorization: `Bearer ${token}` },
-        });
-        const statsData = await statsResponse.json();
-        if (statsData.stats) setStats(statsData.stats);
+        // Fetch messages from Firebase
+        const messagesData = await getMessages();
+        setMessages(messagesData.map(m => ({ id: parseInt(m.id), read: false })));
 
-        // Fetch messages
-        const messagesResponse = await fetch(`${import.meta.env.VITE_API_BASE || 'http://localhost:4000'}/api/admin/messages`, {
-          headers: { Authorization: `Bearer ${token}` },
-        });
-        const messagesData = await messagesResponse.json();
-        if (messagesData.messages) setMessages(messagesData.messages);
+        // Fetch consultations from Firebase
+        const consultationsData = await getConsultations();
+        setConsultations(consultationsData.map(c => ({ 
+          id: parseInt(c.id), 
+          status: c.status 
+        })));
 
-        // Fetch consultations
-        const consultationsResponse = await fetch(`${import.meta.env.VITE_API_BASE || 'http://localhost:4000'}/api/admin/consultations`, {
-          headers: { Authorization: `Bearer ${token}` },
+        // Fetch services
+        const servicesData = await getServices();
+        
+        // Fetch team members
+        const teamData = await getTeamMembers();
+
+        // Calculate stats from Firebase data
+        setStats({
+          users: 1, // Admin user
+          clients: 0, // À implémenter plus tard
+          cases: 0, // À implémenter plus tard
+          messages: messagesData.length,
+          consultations: consultationsData.length,
+          services: servicesData.length,
+          team: teamData.length,
         });
-        const consultationsData = await consultationsResponse.json();
-        if (consultationsData.consultations) setConsultations(consultationsData.consultations);
       } catch (error) {
         console.error('Error fetching dashboard data:', error);
       } finally {
@@ -65,7 +72,7 @@ export default function DashboardHome() {
     };
 
     fetchData();
-  }, [token]);
+  }, []);
 
   const messagesUnread = messages.filter(m => !m.read).length;
   const consultationsPending = consultations.filter(c => c.status === 'pending').length;

@@ -21,10 +21,14 @@ const AdminLogin = () => {
     setError("");
     setLoading(true);
     try {
+      console.log("Tentative de connexion avec:", email);
       await login(email, password);
+      console.log("Connexion réussie, redirection vers /admin");
       navigate("/admin");
     } catch (err) {
-      setError("Identifiants incorrects. Veuillez réessayer.");
+      console.error("Erreur de connexion:", err);
+      const errorMessage = err instanceof Error ? err.message : "Identifiants incorrects. Veuillez réessayer.";
+      setError(errorMessage);
     } finally {
       setLoading(false);
     }
