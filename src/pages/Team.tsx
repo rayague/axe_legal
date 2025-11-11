@@ -1,0 +1,444 @@
+import { useState, useEffect } from "react";
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
+import PageHero from "@/components/PageHero";
+import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { 
+  Users, 
+  TrendingUp, 
+  FileText, 
+  BarChart, 
+  Award,
+  Target,
+  Lightbulb,
+  Shield,
+  CheckCircle,
+  ArrowRight,
+  Briefcase,
+  GraduationCap,
+  Trophy,
+  Mail,
+  Phone,
+  Linkedin,
+  Globe
+} from "lucide-react";
+import { Link } from "react-router-dom";
+import teamLeader from "@/assets/team-leader.jpg";
+import AnimatedCounter from "@/components/AnimatedCounter";
+import { useToast } from "@/hooks/use-toast";
+
+interface TeamMember {
+  id: number;
+  name: string;
+  role: string;
+  title: string;
+  bio: string;
+  specialties: string[];
+  education: string[];
+  experience: string;
+  email: string;
+  phone: string;
+  linkedin: string;
+  imageUrl: string;
+  isActive: boolean;
+  order: number;
+  languages: string[];
+  certifications: string[];
+  achievements: string[];
+}
+
+export default function Team() {
+  const [teamMembers, setTeamMembers] = useState<TeamMember[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const { toast } = useToast();
+
+  useEffect(() => {
+    fetchTeamMembers();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const fetchTeamMembers = async () => {
+    try {
+      setIsLoading(true);
+      const response = await fetch('http://localhost:4000/api/team');
+      
+      if (!response.ok) {
+        throw new Error('Failed to fetch team members');
+      }
+
+      const data = await response.json();
+      setTeamMembers(data.members || []);
+    } catch (error) {
+      console.error('Error fetching team members:', error);
+      toast({
+        title: "Erreur",
+        description: "Impossible de charger les membres de l'équipe",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const values = [
+    {
+      icon: Award,
+      title: "Excellence",
+      description: "Nous visons la perfection dans chaque dossier et nous engageons à fournir des prestations juridiques de la plus haute qualité."
+    },
+    {
+      icon: Shield,
+      title: "Intégrité",
+      description: "L'éthique et la transparence guident toutes nos actions. Nous construisons des relations de confiance durables avec nos clients."
+    },
+    {
+      icon: Lightbulb,
+      title: "Innovation",
+      description: "Nous adoptons les technologies juridiques modernes pour offrir des solutions efficaces et adaptées aux enjeux contemporains."
+    },
+    {
+      icon: Target,
+      title: "Résultats",
+      description: "Notre focus est mis sur l'atteinte des objectifs de nos clients avec des stratégies éprouvées et une exécution rigoureuse."
+    }
+  ];
+
+  return (
+    <div className="min-h-screen bg-background">
+      <Header />
+      
+      <main>
+        <PageHero
+          eyebrow="Notre Équipe"
+          title={(
+            <>
+              Une Équipe d'<span className="text-yellow-400">Experts</span><br />
+              à Votre Service
+            </>
+          )}
+          subtitle={"Des professionnels du droit hautement qualifiés, organisés en cellules spécialisées pour vous offrir une expertise complète et une approche pluridisciplinaire de vos problématiques juridiques."}
+          ctaText="Rencontrer l'équipe"
+          ctaLink="/contact"
+          imageSrc={teamLeader}
+          large
+        />
+
+        {/* Introduction Section */}
+        <section className="py-16 bg-gradient-to-b from-background to-primary/5">
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto text-center space-y-6">
+              <Badge className="mb-4" variant="outline">
+                <Trophy className="h-4 w-4 mr-2" />
+                Excellence & Expertise
+              </Badge>
+              <h2 className="text-3xl md:text-4xl font-bold">
+                Une Organisation au Service de <span className="text-primary">Votre Réussite</span>
+              </h2>
+              <p className="text-lg text-muted-foreground leading-relaxed">
+                Notre cabinet s'appuie sur une structure organisationnelle innovante, avec des cellules 
+                spécialisées qui travaillent en synergie pour vous apporter des solutions juridiques 
+                complètes et performantes. Chaque cellule regroupe des experts reconnus dans leur domaine, 
+                garantissant une expertise pointue et une réactivité optimale.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* Team Members Grid */}
+        <section className="py-20 bg-background">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold mb-4">Notre Équipe d'Avocats</h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Découvrez les avocats expérimentés qui composent notre équipe et leurs domaines d'expertise
+              </p>
+            </div>
+
+            {isLoading ? (
+              <div className="text-center py-12">
+                <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
+                <p className="mt-4 text-muted-foreground">Chargement de l'équipe...</p>
+              </div>
+            ) : teamMembers.length === 0 ? (
+              <div className="text-center py-12">
+                <Users className="h-16 w-16 text-muted-foreground mx-auto mb-4" />
+                <p className="text-muted-foreground">Aucun membre de l'équipe à afficher pour le moment.</p>
+              </div>
+            ) : (
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+                {teamMembers.map((member, index) => (
+                  <Card
+                    key={member.id}
+                    className="overflow-hidden hover:shadow-2xl transition-all duration-500 group animate-fade-in-up border-2 hover:border-primary/50"
+                    style={{ animationDelay: `${index * 100}ms` }}
+                  >
+                    <div className="relative h-64 overflow-hidden bg-gradient-to-br from-primary/20 to-primary/5">
+                      {member.imageUrl ? (
+                        <img
+                          src={member.imageUrl}
+                          alt={member.name}
+                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        />
+                      ) : (
+                        <div className="w-full h-full flex items-center justify-center">
+                          <Users className="h-24 w-24 text-primary/40" />
+                        </div>
+                      )}
+                      <div className="absolute inset-0 bg-gradient-to-t from-background via-background/70 to-transparent" />
+                      
+                      {/* Badge Role */}
+                      <div className="absolute top-4 right-4">
+                        <Badge className="bg-primary/90 backdrop-blur-sm">
+                          {member.role}
+                        </Badge>
+                      </div>
+
+                      {/* Nom en bas */}
+                      <div className="absolute bottom-0 left-0 right-0 p-6">
+                        <h3 className="text-2xl font-bold text-foreground mb-1">
+                          {member.name}
+                        </h3>
+                        <p className="text-primary font-semibold">{member.title}</p>
+                      </div>
+                    </div>
+
+                    <div className="p-6 space-y-4">
+                      <p className="text-muted-foreground leading-relaxed text-sm">
+                        {member.bio}
+                      </p>
+
+                      {/* Experience */}
+                      {member.experience && (
+                        <div className="flex items-center gap-2 text-sm">
+                          <Briefcase className="h-4 w-4 text-primary" />
+                          <span className="text-muted-foreground">{member.experience}</span>
+                        </div>
+                      )}
+
+                      {/* Specialties */}
+                      {member.specialties && member.specialties.length > 0 && (
+                        <div className="pt-4 border-t border-border">
+                          <h4 className="font-semibold text-sm mb-3 flex items-center gap-2">
+                            <GraduationCap className="h-4 w-4 text-primary" />
+                            Spécialités
+                          </h4>
+                          <div className="flex flex-wrap gap-2">
+                            {member.specialties.map((specialty, i) => (
+                              <Badge key={i} variant="secondary" className="text-xs">
+                                {specialty}
+                              </Badge>
+                            ))}
+                          </div>
+                        </div>
+                      )}
+
+                      {/* Languages */}
+                      {member.languages && member.languages.length > 0 && (
+                        <div className="pt-4 border-t border-border">
+                          <h4 className="font-semibold text-sm mb-2 flex items-center gap-2">
+                            <Globe className="h-4 w-4 text-primary" />
+                            Langues
+                          </h4>
+                          <p className="text-sm text-muted-foreground">
+                            {member.languages.join(', ')}
+                          </p>
+                        </div>
+                      )}
+
+                      {/* Contact Info */}
+                      <div className="pt-4 border-t border-border space-y-2">
+                        {member.email && (
+                          <a
+                            href={`mailto:${member.email}`}
+                            className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
+                          >
+                            <Mail className="h-4 w-4" />
+                            {member.email}
+                          </a>
+                        )}
+                        {member.phone && (
+                          <a
+                            href={`tel:${member.phone}`}
+                            className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
+                          >
+                            <Phone className="h-4 w-4" />
+                            {member.phone}
+                          </a>
+                        )}
+                        {member.linkedin && (
+                          <a
+                            href={member.linkedin}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
+                          >
+                            <Linkedin className="h-4 w-4" />
+                            LinkedIn
+                          </a>
+                        )}
+                      </div>
+
+                      {/* Achievements */}
+                      {member.achievements && member.achievements.length > 0 && (
+                        <div className="pt-4 border-t border-border">
+                          <h4 className="font-semibold text-sm mb-2 flex items-center gap-2">
+                            <Trophy className="h-4 w-4 text-primary" />
+                            Réalisations
+                          </h4>
+                          <ul className="space-y-1">
+                            {member.achievements.slice(0, 3).map((achievement, i) => (
+                              <li key={i} className="flex items-start gap-2 text-sm">
+                                <CheckCircle className="h-4 w-4 text-primary mt-0.5 shrink-0" />
+                                <span className="text-muted-foreground">{achievement}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+                    </div>
+                  </Card>
+                ))}
+              </div>
+            )}
+          </div>
+        </section>
+
+        {/* Stats Section */}
+        <section className="py-20 bg-gradient-to-br from-primary via-primary/90 to-primary/80 relative overflow-hidden">
+          {/* Motif de fond */}
+          <div className="absolute inset-0 opacity-10">
+            <div className="absolute top-0 left-0 w-64 h-64 bg-white rounded-full blur-3xl"></div>
+            <div className="absolute bottom-0 right-0 w-96 h-96 bg-white rounded-full blur-3xl"></div>
+          </div>
+
+          <div className="container mx-auto px-4 relative z-10">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                Notre Impact en Chiffres
+              </h2>
+              <p className="text-white/90 max-w-2xl mx-auto">
+                Des résultats concrets qui témoignent de notre engagement et de notre expertise
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-4 gap-8">
+              <div className="text-center animate-scale-in bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
+                <div className="text-5xl font-extrabold text-white mb-2">
+                  <AnimatedCounter value={150} suffix="+" />
+                </div>
+                <div className="text-white/90 font-medium">Clients Accompagnés</div>
+                <p className="text-white/70 text-sm mt-2">Entreprises et particuliers</p>
+              </div>
+              
+              <div className="text-center animate-scale-in bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20" style={{ animationDelay: "100ms" }}>
+                <div className="text-5xl font-extrabold text-white mb-2">
+                  <AnimatedCounter value={500} suffix="+" />
+                </div>
+                <div className="text-white/90 font-medium">Dossiers Traités</div>
+                <p className="text-white/70 text-sm mt-2">Avec succès et rigueur</p>
+              </div>
+              
+              <div className="text-center animate-scale-in bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20" style={{ animationDelay: "200ms" }}>
+                <div className="text-5xl font-extrabold text-white mb-2">
+                  <AnimatedCounter value={98} suffix="%" />
+                </div>
+                <div className="text-white/90 font-medium">Taux de Réussite</div>
+                <p className="text-white/70 text-sm mt-2">Satisfaction garantie</p>
+              </div>
+              
+              <div className="text-center animate-scale-in bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20" style={{ animationDelay: "300ms" }}>
+                <div className="text-5xl font-extrabold text-white mb-2">
+                  <AnimatedCounter value={5} suffix="+" />
+                </div>
+                <div className="text-white/90 font-medium">Années d'Expérience</div>
+                <p className="text-white/70 text-sm mt-2">Expertise éprouvée</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Values Section */}
+        <section className="py-20 bg-background">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-12">
+              <Badge className="mb-4" variant="outline">
+                <Briefcase className="h-4 w-4 mr-2" />
+                Nos Valeurs
+              </Badge>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                Les Piliers de Notre <span className="text-primary">Engagement</span>
+              </h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                Des valeurs fortes qui guident notre action quotidienne et façonnent notre relation avec nos clients
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {values.map((value, index) => (
+                <Card
+                  key={index}
+                  className="p-6 text-center hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-2 hover:border-primary/50 group"
+                  style={{ animationDelay: `${index * 100}ms` }}
+                >
+                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-4 group-hover:bg-primary/20 transition-colors">
+                    <value.icon className="h-8 w-8 text-primary" />
+                  </div>
+                  <h3 className="text-xl font-bold mb-3">{value.title}</h3>
+                  <p className="text-muted-foreground text-sm leading-relaxed">
+                    {value.description}
+                  </p>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* CTA Section */}
+        <section className="py-20 bg-gradient-to-br from-primary/10 via-background to-primary/5">
+          <div className="container mx-auto px-4">
+            <Card className="max-w-4xl mx-auto p-8 md:p-12 text-center border-2 border-primary/20 shadow-xl">
+              <div className="space-y-6">
+                <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-primary/10 mb-4">
+                  <Users className="h-10 w-10 text-primary" />
+                </div>
+                
+                <h2 className="text-3xl md:text-4xl font-bold">
+                  Rencontrons-nous pour Discuter de <span className="text-primary">Votre Projet</span>
+                </h2>
+                
+                <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+                  Notre équipe est à votre disposition pour analyser votre situation, comprendre vos besoins 
+                  et vous proposer des solutions juridiques sur mesure. Prenez rendez-vous dès aujourd'hui.
+                </p>
+
+                <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+                  <Button size="lg" className="group" asChild>
+                    <Link to="/contact">
+                      Prendre Rendez-vous
+                      <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                    </Link>
+                  </Button>
+                  <Button size="lg" variant="outline" asChild>
+                    <Link to="/services">
+                      Découvrir Nos Services
+                    </Link>
+                  </Button>
+                </div>
+
+                <div className="pt-6 border-t border-primary/20 mt-8">
+                  <p className="text-sm text-muted-foreground">
+                    💼 Première consultation offerte • 📞 Disponibles 24/7 • ✓ Réponse garantie sous 24h
+                  </p>
+                </div>
+              </div>
+            </Card>
+          </div>
+        </section>
+      </main>
+
+      <Footer />
+    </div>
+  );
+}

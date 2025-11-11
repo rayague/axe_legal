@@ -1,0 +1,124 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+/* typed cursor blink */
+@keyframes blink {
+  0%, 49% { opacity: 1 }
+  50%, 100% { opacity: 0 }
+}
+.animate-blink { animation: blink 1s step-end infinite }
+
+/* Hero animated background blobs */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0; /* behind content but above section background */
+  overflow: hidden;
+  pointer-events: none;
+}
+.hero-gradient {
+  position: absolute;
+  inset: 0;
+  /* slightly stronger gradient so blobs are visible on light backgrounds */
+  background: radial-gradient(1200px 600px at 10% 20%, rgba(11,95,255,0.12), transparent 28%),
+              radial-gradient(800px 400px at 90% 80%, rgba(6,182,212,0.09), transparent 22%);
+  mix-blend-mode: multiply;
+}
+
+.blob {
+  position: absolute;
+  filter: blur(36px);
+  opacity: 0.72;
+  transform: translate3d(0,0,0);
+  mix-blend-mode: normal;
+}
+.blob-1 { width: 420px; height: 420px; left: -8%; top: -10%; background: radial-gradient(circle at 30% 30%, rgba(11,95,255,0.5), rgba(11,95,255,0.22)); animation: float-1 12s ease-in-out infinite; }
+.blob-2 { width: 360px; height: 360px; right: -6%; top: 10%; background: radial-gradient(circle at 70% 40%, rgba(3,105,161,0.42), rgba(3,105,161,0.22)); animation: float-2 10s ease-in-out infinite; }
+.blob-3 { width: 300px; height: 300px; left: 30%; bottom: -8%; background: radial-gradient(circle at 60% 60%, rgba(6,182,212,0.36), rgba(6,182,212,0.16)); animation: float-3 14s ease-in-out infinite; }
+
+@keyframes float-1 {
+  0% { transform: translateY(0) translateX(0) scale(1); }
+  50% { transform: translateY(18px) translateX(6px) scale(1.03); }
+  100% { transform: translateY(0) translateX(0) scale(1); }
+}
+@keyframes float-2 {
+  0% { transform: translateY(0) translateX(0) scale(1); }
+  50% { transform: translateY(-12px) translateX(-10px) scale(0.98); }
+  100% { transform: translateY(0) translateX(0) scale(1); }
+}
+@keyframes float-3 {
+  0% { transform: translateY(0) translateX(0) scale(1); }
+  50% { transform: translateY(10px) translateX(-6px) scale(1.02); }
+  100% { transform: translateY(0) translateX(0) scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blob { animation: none !important; }
+}
+
+/* Header compact styles and underline */
+.site-header { --header-height: 64px; }
+.site-header .container { max-width: 1280px; }
+.site-header .nav-link { padding-left: 0.6rem; padding-right: 0.6rem; }
+.nav-underline {
+  position: absolute;
+  height: 3px;
+  bottom: 6px;
+  left: 0;
+  width: 0;
+  background: linear-gradient(90deg, rgba(11,95,255,1), rgba(6,182,212,1));
+  border-radius: 4px;
+  transform: translateX(0);
+  transition: transform 220ms cubic-bezier(.2,.9,.2,1), width 220ms cubic-bezier(.2,.9,.2,1), opacity 220ms;
+  opacity: 0;
+}
+
+/* slightly bolder link text when active */
+.nav-link[aria-current="page"] { font-weight: 600; }
+
+/* Dots overlay used by the large PageHero */
+.hero-dots {
+  background-image: radial-gradient(circle, rgba(255,255,255,0.08) 2px, transparent 2px);
+  background-size: 48px 48px;
+  mix-blend-mode: overlay;
+}
