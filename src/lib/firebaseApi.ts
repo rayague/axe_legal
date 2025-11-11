@@ -21,10 +21,18 @@ import { auth, db } from './firebase';
 
 // Types
 export interface Service {
-  id: string;
+  id?: string;
   title: string;
+  slug?: string;
   description: string;
   icon?: string;
+  features?: string[];
+  benefits?: string[];
+  pricing?: string;
+  duration?: string;
+  order?: number;
+  metaTitle?: string;
+  metaDescription?: string;
   createdAt?: Date;
 }
 

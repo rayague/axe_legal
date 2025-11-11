@@ -25,7 +25,13 @@ service cloud.firestore {
       allow write: if isAuthenticated();
     }
     
-    // Collection processes - Lecture publique, écriture pour authentifiés
+    // Collection process - Lecture publique, écriture pour authentifiés
+    match /process/{stepId} {
+      allow read: if true;
+      allow write: if isAuthenticated();
+    }
+    
+    // Collection processes (alias) - Lecture publique, écriture pour authentifiés
     match /processes/{stepId} {
       allow read: if true;
       allow write: if isAuthenticated();
@@ -53,6 +59,21 @@ service cloud.firestore {
     match /consultations/{consultationId} {
       allow create: if true;
       allow read, update, delete: if isAuthenticated();
+    }
+    
+    // Collection cases - Admin seulement
+    match /cases/{caseId} {
+      allow read, write: if isAuthenticated();
+    }
+    
+    // Collection appointments - Admin seulement
+    match /appointments/{appointmentId} {
+      allow read, write: if isAuthenticated();
+    }
+    
+    // Collection notifications - Admin seulement
+    match /notifications/{notificationId} {
+      allow read, write: if isAuthenticated();
     }
     
     // Collection settings - Lecture publique, écriture pour authentifiés
