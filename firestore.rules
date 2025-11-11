@@ -1,0 +1,66 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Fonction helper pour vérifier si l'utilisateur est admin
+    function isAdmin() {
+      return request.auth != null && 
+             exists(/databases/$(database)/documents/users/$(request.auth.uid)) &&
+             get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
+    }
+    
+    // Collection users - Seulement les admins
+    match /users/{userId} {
+      allow read, write: if isAdmin();
+    }
+    
+    // Collection services - Lecture publique, écriture admin
+    match /services/{serviceId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+    
+    // Collection team - Lecture publique, écriture admin
+    match /team/{memberId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+    
+    // Collection process - Lecture publique, écriture admin
+    match /process/{stepId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+    
+    // Collection testimonials - Lecture publique, écriture admin
+    match /testimonials/{testimonialId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+    
+    // Collection announcements - Lecture publique, écriture admin
+    match /announcements/{announcementId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+    
+    // Collection messages - Création publique, lecture/modification admin
+    match /messages/{messageId} {
+      allow create: if true;
+      allow read, update, delete: if isAdmin();
+    }
+    
+    // Collection consultations - Création publique, lecture/modification admin
+    match /consultations/{consultationId} {
+      allow create: if true;
+      allow read, update, delete: if isAdmin();
+    }
+    
+    // Collection settings - Lecture publique, écriture admin
+    match /settings/{settingId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+  }
+}

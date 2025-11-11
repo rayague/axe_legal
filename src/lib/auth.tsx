@@ -1,70 +1,84 @@
 /* eslint-disable @typescript-eslint/explicit-module-boundary-types */
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { signIn, signOut } from './firebaseApi';
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth } from './firebase';
 
-type User = { id: number; email: string; name?: string; isAdmin?: boolean } | null;
+type User = { id: string; email: string; name?: string; role?: string } | null;
 
 type AuthContextType = {
   user: User;
   token: string | null;
   login: (email: string, password: string) => Promise<void>;
   logout: () => void;
+  loading: boolean;
 };
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [user, setUser] = useState<User>(() => {
-    try {
-      const raw = localStorage.getItem('axel_user');
-      return raw ? JSON.parse(raw) : null;
-    } catch (e) {
-      return null;
-    }
-  });
-  const [token, setToken] = useState<string | null>(() => localStorage.getItem('axel_token'));
+  const [user, setUser] = useState<User>(null);
+  const [token, setToken] = useState<string | null>(null);
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (token && !user) {
-      // try to fetch /api/admin/me
-      fetch(`${import.meta.env.VITE_API_BASE || 'http://localhost:4000'}/api/admin/me`, {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-        .then((r) => r.json())
-        .then((data) => {
-          if (data.user) setUser(data.user);
-        })
-        .catch(() => {
-          // ignore
-        });
-    }
-  }, [token, user]);
+    // Écouter les changements d'état d'authentification Firebase
+    const unsubscribe = onAuthStateChanged(auth, async (firebaseUser) => {
+      if (firebaseUser) {
+        try {
+          const authToken = await firebaseUser.getIdToken();
+          
+          setUser({
+            id: firebaseUser.uid,
+            email: firebaseUser.email || '',
+            name: firebaseUser.displayName || 'Administrateur',
+            role: 'admin' // Tous les utilisateurs dans Firebase Auth sont admins
+          });
+          setToken(authToken);
+        } catch (error) {
+          console.error('Error loading user:', error);
+          setUser(null);
+          setToken(null);
+        }
+      } else {
+        setUser(null);
+        setToken(null);
+      }
+      setLoading(false);
+    });
+
+    return () => unsubscribe();
+  }, []);
 
   const login = async (email: string, password: string) => {
-    const res = await fetch(`${import.meta.env.VITE_API_BASE || 'http://localhost:4000'}/api/admin/login`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, password }),
-    });
-    if (!res.ok) throw new Error('Login failed');
-    const data = await res.json();
-    setToken(data.token);
-    setUser(data.user);
-    localStorage.setItem('axel_token', data.token);
-    localStorage.setItem('axel_user', JSON.stringify(data.user));
+    try {
+      const result = await signIn(email, password);
+      setUser(result.user);
+      setToken(result.token);
+    } catch (error) {
+      console.error('Login error:', error);
+      const errorMessage = error instanceof Error ? error.message : 'Échec de la connexion';
+      throw new Error(errorMessage);
+    }
   };
 
-  const logout = () => {
-    setToken(null);
-    setUser(null);
-    localStorage.removeItem('axel_token');
-    localStorage.removeItem('axel_user');
-    navigate('/');
+  const logout = async () => {
+    try {
+      await signOut();
+      setUser(null);
+      setToken(null);
+      navigate('/');
+    } catch (error) {
+      console.error('Logout error:', error);
+    }
   };
 
   return (
-    <AuthContext.Provider value={{ user, token, login, logout }}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={{ user, token, login, logout, loading }}>
+      {children}
+    </AuthContext.Provider>
   );
 };
 

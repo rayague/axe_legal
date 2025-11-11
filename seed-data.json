@@ -1,0 +1,115 @@
+{
+  "services": [
+    {
+      "title": "Droit des Affaires",
+      "description": "Accompagnement juridique complet pour vos entreprises : création, restructuration, contrats commerciaux, fusions-acquisitions.",
+      "icon": "briefcase"
+    },
+    {
+      "title": "Droit Immobilier",
+      "description": "Conseil et assistance dans vos transactions immobilières, baux commerciaux et résidentiels, copropriété.",
+      "icon": "home"
+    },
+    {
+      "title": "Droit du Travail",
+      "description": "Défense de vos droits en matière de contrats de travail, licenciement, harcèlement et conflits collectifs.",
+      "icon": "users"
+    },
+    {
+      "title": "Droit Fiscal",
+      "description": "Optimisation fiscale, contentieux fiscal, déclarations et conseils en matière de fiscalité des entreprises et particuliers.",
+      "icon": "calculator"
+    }
+  ],
+  "team": [
+    {
+      "name": "Me. Jean-Baptiste ADJIBI",
+      "role": "Associé Principal - Droit des Affaires",
+      "bio": "Plus de 15 ans d'expérience en droit des affaires et corporate. Diplômé de l'Université Paris 1 Panthéon-Sorbonne.",
+      "image": "/assets/images/team-leader.jpg"
+    },
+    {
+      "name": "Me. Marie KOSSOU",
+      "role": "Avocate Associée - Droit Immobilier",
+      "bio": "Spécialiste en droit immobilier avec une expertise reconnue en transactions complexes et contentieux.",
+      "image": "/assets/images/team-legal.jpg"
+    },
+    {
+      "name": "Me. Serge HOUNKANRIN",
+      "role": "Avocat - Droit du Travail",
+      "bio": "Expert en droit social et relations collectives du travail. Formé à l'École des Avocats de Paris.",
+      "image": "/assets/images/team-fiscal.jpg"
+    },
+    {
+      "name": "Me. Claudine AGOSSOU",
+      "role": "Avocate - Droit Fiscal",
+      "bio": "Spécialiste en fiscalité d'entreprise et contentieux fiscal. Master 2 Droit Fiscal - Université de Bordeaux.",
+      "image": "/assets/images/team-finance.jpg"
+    }
+  ],
+  "process": [
+    {
+      "title": "Consultation Initiale",
+      "description": "Analyse de votre situation et évaluation de vos besoins juridiques lors d'un entretien confidentiel.",
+      "order": 1
+    },
+    {
+      "title": "Étude du Dossier",
+      "description": "Examen approfondi des documents et recherches juridiques nécessaires à votre affaire.",
+      "order": 2
+    },
+    {
+      "title": "Stratégie Juridique",
+      "description": "Élaboration d'une stratégie adaptée et présentation des options disponibles avec leurs implications.",
+      "order": 3
+    },
+    {
+      "title": "Mise en Œuvre",
+      "description": "Exécution des actions juridiques : rédaction, négociation, représentation devant les juridictions.",
+      "order": 4
+    },
+    {
+      "title": "Suivi et Accompagnement",
+      "description": "Suivi régulier de l'évolution de votre dossier et ajustements si nécessaire jusqu'à sa conclusion.",
+      "order": 5
+    }
+  ],
+  "testimonials": [
+    {
+      "name": "Sophie MENSAH",
+      "role": "Directrice Générale, SARL TechBénin",
+      "content": "Axe Legal nous a accompagnés dans la restructuration de notre entreprise avec professionnalisme et réactivité. Leur expertise en droit des affaires est remarquable.",
+      "rating": 5
+    },
+    {
+      "name": "Ibrahim TOURÉ",
+      "role": "Promoteur Immobilier",
+      "content": "Grâce à Me. KOSSOU, notre transaction immobilière complexe s'est déroulée sans encombre. Un service juridique de qualité exceptionnelle.",
+      "rating": 5
+    },
+    {
+      "name": "Marie-Claire DOSSOU",
+      "role": "Salariée",
+      "content": "Me. HOUNKANRIN a défendu mes droits avec acharnement lors de mon litige prud'homal. Je recommande vivement ce cabinet.",
+      "rating": 5
+    },
+    {
+      "name": "Patrick AKPO",
+      "role": "Chef d'Entreprise",
+      "content": "L'équipe d'Axe Legal a optimisé notre fiscalité d'entreprise tout en respectant scrupuleusement la réglementation. Des experts de confiance.",
+      "rating": 5
+    }
+  ],
+  "announcements": [
+    {
+      "title": "Nouveau: Service de Médiation",
+      "content": "Axe Legal propose désormais des services de médiation pour résoudre vos conflits à l'amiable, de manière rapide et confidentielle.",
+      "type": "info"
+    },
+    {
+      "title": "Consultation Gratuite - Mois de Décembre",
+      "content": "Profitez d'une consultation gratuite de 30 minutes pour toute nouvelle demande reçue avant le 31 décembre 2025.",
+      "type": "success"
+    }
+  ]
+}
