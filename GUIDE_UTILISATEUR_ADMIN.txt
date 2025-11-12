@@ -1,0 +1,611 @@
+================================================================================
+                    GUIDE D'UTILISATION - AXE LEGAL
+              Dashboard Administrateur - Mode d'emploi complet
+================================================================================
+
+📅 Dernière mise à jour : 12 novembre 2025
+🎯 Public cible : Administrateurs du cabinet Axe Legal
+📱 URL de l'application : https://axe-legal.vercel.app
+🔐 URL du tableau de bord admin : https://axe-legal.vercel.app/admin
+
+================================================================================
+                        SECTION 1 : CONNEXION
+================================================================================
+
+🔑 IDENTIFIANTS DE CONNEXION
+----------------------------
+URL de connexion : https://axe-legal.vercel.app/admin/login
+
+Email administrateur : admin@axelegal.com
+Mot de passe : admin123
+
+⚠️  IMPORTANT : Changez le mot de passe après votre première connexion !
+
+📝 Étapes de connexion :
+1. Ouvrez votre navigateur (Chrome, Firefox, Safari, Edge)
+2. Accédez à : https://axe-legal.vercel.app/admin/login
+3. Entrez votre email : admin@axelegal.com
+4. Entrez votre mot de passe : admin123
+5. Cliquez sur "Se connecter"
+6. Vous serez redirigé vers le tableau de bord
+
+================================================================================
+                    SECTION 2 : NAVIGATION DANS LE DASHBOARD
+================================================================================
+
+📊 MENU PRINCIPAL (Barre latérale gauche)
+-----------------------------------------
+
+Le menu contient les sections suivantes :
+
+1. 🏠 Tableau de bord - Vue d'ensemble et statistiques
+2. 👤 Profil - Gérer votre profil administrateur
+3. 📁 Dossiers - Gestion des dossiers clients (à venir)
+4. ⚖️  Services - Gérer les services juridiques proposés
+5. 👥 Équipe - Gérer les membres de l'équipe
+6. 🔄 Processus - Gérer les processus juridiques
+7. ⭐ Témoignages - Gérer les avis clients
+8. 📢 Annonces - Gérer les annonces importantes
+9. 🕒 Horaires - Gérer les horaires d'ouverture
+10. 💬 Messages - Consulter les messages (à venir)
+11. 📅 Consultations - Gérer les demandes de consultation
+12. 📆 Agenda - Calendrier (à venir)
+13. 🔔 Notifications - Voir les notifications (à venir)
+14. ⚙️  Paramètres - Gérer les catégories juridiques LegalTech
+
+🎨 INTERFACE
+------------
+- Barre latérale BLEUE avec logo Axe Legal
+- Icône menu (☰) pour réduire/agrandir la barre latérale
+- En haut à droite : votre nom et email
+- Bouton "Déconnexion" en bas de la barre latérale
+
+================================================================================
+            SECTION 3 : GESTION DES CONTENUS PAR PAGE
+================================================================================
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│                    PAGE D'ACCUEIL (https://axe-legal.vercel.app)        │
+└─────────────────────────────────────────────────────────────────────────┘
+
+La page d'accueil contient plusieurs sections que vous pouvez modifier :
+
+📋 SECTION 1 : HERO (Section principale)
+----------------------------------------
+Localisation : En haut de la page d'accueil
+Contenu : 
+  - Titre principal : "Votre Partenaire Juridique de Confiance au Bénin"
+  - Description
+  - Statistiques (500+ clients, 1000+ dossiers, 95% taux de réussite)
+  
+⚠️  Modification : Ces données sont codées en dur dans le code source.
+    Pour les modifier, contactez le développeur.
+
+
+📋 SECTION 2 : À PROPOS
+-----------------------
+Localisation : Deuxième section de la page d'accueil
+Contenu : Histoire du cabinet, valeurs, points forts
+
+⚠️  Modification : Contenu codé en dur, contactez le développeur.
+
+
+📋 SECTION 3 : CERTIFICATIONS
+-----------------------------
+Localisation : Section avec fond bleu
+Contenu : 3 certifications affichées
+
+⚠️  Modification : Contenu codé en dur, contactez le développeur.
+
+
+📋 SECTION 4 : STATISTIQUES
+---------------------------
+Localisation : Section avec gradient bleu
+Contenu : 4 statistiques clés (Clients, Dossiers, Taux de réussite, Années)
+
+⚠️  Modification : Contenu codé en dur, contactez le développeur.
+
+
+📋 SECTION 5 : ANNONCES
+-----------------------
+Localisation : Section des annonces importantes
+
+✅ MODIFIABLE DEPUIS : Dashboard > Annonces (📢)
+
+Comment modifier :
+1. Cliquez sur "Annonces" dans le menu
+2. Vous verrez la liste de toutes les annonces
+3. Pour AJOUTER une annonce :
+   - Cliquez sur "+ Nouvelle annonce"
+   - Remplissez les champs :
+     * Type (info/success/warning/error)
+     * Titre de l'annonce
+     * Message
+     * Date de début (quand elle s'affiche)
+     * Date de fin (quand elle disparaît)
+     * Actif (cochez pour l'afficher immédiatement)
+   - Cliquez sur "Enregistrer"
+
+4. Pour MODIFIER une annonce :
+   - Cliquez sur l'icône crayon (✏️) sur l'annonce
+   - Modifiez les champs souhaités
+   - Cliquez sur "Enregistrer"
+
+5. Pour SUPPRIMER une annonce :
+   - Cliquez sur l'icône poubelle (🗑️)
+   - Confirmez la suppression
+
+💡 Astuce : Les annonces expirées ne s'affichent plus automatiquement !
+
+
+📋 SECTION 6 : NOS SERVICES
+---------------------------
+Localisation : Section "Nos Services" avec cartes
+
+✅ MODIFIABLE DEPUIS : Dashboard > Services (⚖️)
+
+Comment modifier :
+1. Cliquez sur "Services" dans le menu
+2. Vous verrez la liste de tous les services
+
+3. Pour AJOUTER un service :
+   - Cliquez sur "+ Nouveau Service"
+   - Remplissez TOUS les champs :
+     
+     🔹 Onglet "Informations de base" :
+     * Titre du service (ex: "Droit de la famille")
+     * Slug (URL, ex: "droit-famille")
+     * Catégorie (choisir dans la liste)
+     * Icône (choisir parmi 17 icônes disponibles)
+     * Description courte (affichée sur la carte)
+     * Description complète (détails du service)
+     * Ordre d'affichage (nombre, ex: 1, 2, 3...)
+     
+     🔹 Onglet "Caractéristiques" :
+     * Ajoutez des fonctionnalités (ex: "Divorce amiable")
+     * Cliquez sur "+" pour ajouter
+     * Cliquez sur "X" pour supprimer
+     
+     🔹 Onglet "Bénéfices" :
+     * Ajoutez des avantages (ex: "Accompagnement personnalisé")
+     * Cliquez sur "+" pour ajouter
+     
+     🔹 Onglet "Détails & SEO" :
+     * Durée estimée (ex: "2-4 semaines")
+     * ⚠️  Prix : N'EST PLUS AFFICHÉ sur le site
+     * Titre SEO (pour Google)
+     * Description SEO
+     * Mots-clés (séparés par virgules)
+   
+   - Cliquez sur "Créer le service"
+
+4. Pour MODIFIER un service :
+   - Cliquez sur l'icône crayon (✏️)
+   - Modifiez les champs souhaités
+   - Cliquez sur "Mettre à jour"
+
+5. Pour SUPPRIMER un service :
+   - Cliquez sur l'icône poubelle (🗑️)
+   - Confirmez la suppression
+
+💡 Astuce : Les prix ne sont plus affichés sur le site public !
+
+
+📋 SECTION 7 : POURQUOI NOUS CHOISIR
+------------------------------------
+Localisation : Section avec 6 cartes (Expertise, Approche humaine, etc.)
+
+⚠️  Modification : Contenu codé en dur, contactez le développeur.
+
+
+📋 SECTION 8 : NOTRE ÉQUIPE
+---------------------------
+Localisation : Section avec photos des avocats
+
+✅ MODIFIABLE DEPUIS : Dashboard > Équipe (👥)
+
+Comment modifier :
+1. Cliquez sur "Équipe" dans le menu
+2. Vous verrez tous les membres de l'équipe
+
+3. Pour AJOUTER un membre :
+   - Cliquez sur "+ Nouveau membre"
+   - Remplissez les champs :
+     * Nom complet
+     * Poste/Fonction (ex: "Avocat Senior")
+     * Biographie (présentation du membre)
+     * Photo (URL de l'image ou téléchargement)
+     * Spécialités (ex: "Droit des affaires, Droit fiscal")
+     * Email professionnel
+     * Téléphone
+     * Réseaux sociaux (LinkedIn, Twitter, etc.)
+     * Ordre d'affichage
+   - Cliquez sur "Enregistrer"
+
+4. Pour MODIFIER un membre :
+   - Cliquez sur le membre dans la liste
+   - Modifiez les informations
+   - Cliquez sur "Mettre à jour"
+
+5. Pour SUPPRIMER un membre :
+   - Cliquez sur l'icône poubelle (🗑️)
+   - Confirmez
+
+
+📋 SECTION 9 : TÉMOIGNAGES CLIENTS
+----------------------------------
+Localisation : Section avec avis clients
+
+✅ MODIFIABLE DEPUIS : Dashboard > Témoignages (⭐)
+
+Comment modifier :
+1. Cliquez sur "Témoignages" dans le menu
+
+2. Pour AJOUTER un témoignage :
+   - Cliquez sur "+ Nouveau témoignage"
+   - Remplissez :
+     * Nom du client
+     * Poste/Entreprise
+     * Message/Avis (témoignage complet)
+     * Note (1 à 5 étoiles)
+     * Photo (optionnel)
+     * Actif (pour l'afficher)
+   - Cliquez sur "Enregistrer"
+
+3. Pour MODIFIER :
+   - Cliquez sur l'icône crayon (✏️)
+   - Modifiez et sauvegardez
+
+4. Pour SUPPRIMER :
+   - Cliquez sur l'icône poubelle (🗑️)
+
+💡 Astuce : Seuls les témoignages marqués "Actif" s'affichent !
+
+
+📋 SECTION 10 : FAQ (QUESTIONS FRÉQUENTES)
+------------------------------------------
+Localisation : Section avec questions/réponses dépliables
+
+⚠️  Modification : Contenu codé en dur avec 8 questions pré-configurées.
+    Pour modifier, contactez le développeur.
+
+
+📋 SECTION 11 : APPEL À L'ACTION (CTA)
+--------------------------------------
+Localisation : Section bleue "Prêt à Résoudre Votre Problème Juridique ?"
+
+⚠️  Modification : Contenu codé en dur, contactez le développeur.
+
+
+📋 SECTION 12 : HORAIRES D'OUVERTURE
+------------------------------------
+Localisation : En bas de page, avant le footer
+
+✅ MODIFIABLE DEPUIS : Dashboard > Horaires (🕒)
+
+Comment modifier :
+1. Cliquez sur "Horaires" dans le menu
+2. Vous verrez les 7 jours de la semaine
+
+3. Pour MODIFIER un jour :
+   - Sélectionnez le jour (Lundi, Mardi, etc.)
+   - Cochez "Ouvert" si le cabinet est ouvert ce jour
+   - Si ouvert :
+     * Heure d'ouverture du matin (ex: 08:00)
+     * Heure de fermeture du matin (ex: 12:00)
+     * Heure d'ouverture de l'après-midi (ex: 14:00)
+     * Heure de fermeture de l'après-midi (ex: 18:00)
+   - Si fermé :
+     * Décochez "Ouvert"
+   - Cliquez sur "Enregistrer les modifications"
+
+💡 Astuce : Les modifications sont immédiatement visibles sur le site !
+
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│                 PAGE SERVICES (https://axe-legal.vercel.app/services)   │
+└─────────────────────────────────────────────────────────────────────────┘
+
+✅ MODIFIABLE DEPUIS : Dashboard > Services (⚖️)
+
+Cette page affiche TOUS les services en détail.
+Modification : Identique à la section Services de la page d'accueil (voir ci-dessus)
+
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│                  PAGE ÉQUIPE (https://axe-legal.vercel.app/equipe)      │
+└─────────────────────────────────────────────────────────────────────────┘
+
+✅ MODIFIABLE DEPUIS : Dashboard > Équipe (👥)
+
+Cette page affiche TOUS les membres de l'équipe avec biographies complètes.
+Modification : Identique à la section Équipe (voir ci-dessus)
+
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│              PAGE PROCESSUS (https://axe-legal.vercel.app/processus)    │
+└─────────────────────────────────────────────────────────────────────────┘
+
+✅ MODIFIABLE DEPUIS : Dashboard > Processus (🔄)
+
+Comment modifier :
+1. Cliquez sur "Processus" dans le menu
+2. Vous verrez la liste des étapes du processus
+
+3. Pour AJOUTER une étape :
+   - Cliquez sur "+ Nouvelle étape"
+   - Remplissez :
+     * Numéro de l'étape (1, 2, 3...)
+     * Titre de l'étape
+     * Description détaillée
+     * Icône (choisir dans la liste)
+     * Durée estimée (optionnel)
+   - Cliquez sur "Enregistrer"
+
+4. Pour MODIFIER une étape :
+   - Cliquez sur l'icône crayon (✏️)
+   - Modifiez et sauvegardez
+
+5. Pour SUPPRIMER :
+   - Cliquez sur l'icône poubelle (🗑️)
+
+💡 Les étapes sont affichées dans l'ordre des numéros !
+
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│           PAGE TÉMOIGNAGES (https://axe-legal.vercel.app/temoignages)   │
+└─────────────────────────────────────────────────────────────────────────┘
+
+✅ MODIFIABLE DEPUIS : Dashboard > Témoignages (⭐)
+
+Affiche tous les témoignages actifs.
+Modification : Identique à la section Témoignages (voir ci-dessus)
+
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│             PAGE LEGALTECH (https://axe-legal.vercel.app/legaltech)     │
+└─────────────────────────────────────────────────────────────────────────┘
+
+✅ MODIFIABLE DEPUIS : Dashboard > Paramètres (⚙️)
+
+Cette page affiche les catégories juridiques avec guides détaillés.
+
+Comment modifier :
+1. Cliquez sur "Paramètres" dans le menu
+2. Vous verrez 9 catégories juridiques pré-configurées :
+   - Droit de la Famille
+   - Droit Immobilier
+   - Droit des Affaires
+   - Droit du Travail
+   - Droit des Contrats
+   - Succession & Héritage
+   - Accidents & Préjudices
+   - Droit de la Construction
+   - Recouvrement de Créances
+
+3. Pour MODIFIER une catégorie :
+   - Cliquez sur la carte de la catégorie
+   - Le formulaire s'ouvre à droite avec 3 onglets :
+   
+   🔹 Onglet "Basique" :
+     * ID de la catégorie (ne pas modifier !)
+     * Titre
+     * Description courte
+     * Titre du guide détaillé
+     * Icône (10 icônes disponibles)
+     * Couleur (10 couleurs disponibles)
+     * Ordre d'affichage
+     * Délai estimé (ex: "6 à 18 mois")
+     * Coût indicatif (ex: "Variable selon complexité")
+     * Point d'attention (avertissement)
+     * Actif (pour afficher sur le site)
+   
+   🔹 Onglet "Étapes" :
+     * Liste des étapes de la procédure
+     * Ajouter une étape :
+       - Titre (ex: "1. Consultation juridique initiale")
+       - Description détaillée
+       - Cliquez sur "+ Ajouter cette étape"
+     * Supprimer : Cliquez sur X
+   
+   🔹 Onglet "Documents" :
+     * Liste des documents à préparer
+     * Ajouter un document :
+       - Tapez le nom (ex: "Acte de mariage")
+       - Appuyez sur Entrée ou cliquez sur "+"
+     * Supprimer : Cliquez sur X
+   
+   - Cliquez sur "Enregistrer"
+
+4. Pour AJOUTER une nouvelle catégorie :
+   - Cliquez sur "+ Ajouter une catégorie"
+   - Remplissez tous les champs (mêmes onglets)
+   - Cliquez sur "Enregistrer"
+
+5. Pour SUPPRIMER une catégorie :
+   - Cliquez sur l'icône poubelle (🗑️) sur la carte
+   - Confirmez la suppression
+
+💡 Astuce : Utilisez le champ de recherche en haut pour filtrer !
+
+
+┌─────────────────────────────────────────────────────────────────────────┐
+│           PAGE CONSULTATIONS (Demandes de consultation)                 │
+└─────────────────────────────────────────────────────────────────────────┘
+
+✅ ACCESSIBLE DEPUIS : Dashboard > Consultations (📅)
+
+Cette page affiche toutes les demandes de consultation des clients.
+
+Comment consulter :
+1. Cliquez sur "Consultations" dans le menu
+2. Vous verrez la liste de toutes les demandes avec :
+   - Nom du client
+   - Email
+   - Téléphone
+   - Type de service demandé
+   - Message
+   - Date et heure préférées
+   - Statut (En attente, Confirmée, Annulée, Terminée)
+
+3. Pour MODIFIER le statut :
+   - Cliquez sur la demande
+   - Changez le statut
+   - Ajoutez des notes si nécessaire
+   - Sauvegardez
+
+💡 Les clients soumettent leurs demandes via le formulaire du site.
+
+================================================================================
+                    SECTION 4 : CONSEILS ET BONNES PRATIQUES
+================================================================================
+
+✅ SÉCURITÉ
+-----------
+1. NE PARTAGEZ JAMAIS vos identifiants de connexion
+2. Déconnectez-vous après chaque session
+3. Changez votre mot de passe régulièrement
+4. N'utilisez pas le même mot de passe sur d'autres sites
+
+✅ GESTION DU CONTENU
+---------------------
+1. Vérifiez toujours l'orthographe avant de publier
+2. Utilisez des descriptions claires et professionnelles
+3. Mettez à jour régulièrement les témoignages
+4. Gardez les horaires d'ouverture à jour
+5. Supprimez les annonces expirées
+
+✅ IMAGES
+---------
+1. Utilisez des images professionnelles de haute qualité
+2. Formats recommandés : JPG, PNG
+3. Taille optimale : 1200x800 pixels
+4. Compression : Utilisez TinyPNG.com pour réduire la taille
+
+✅ RÉFÉRENCEMENT (SEO)
+----------------------
+1. Remplissez toujours les champs SEO des services
+2. Utilisez des mots-clés pertinents
+3. Écrivez des descriptions uniques
+4. Évitez le contenu dupliqué
+
+================================================================================
+                        SECTION 5 : RÉSOLUTION DE PROBLÈMES
+================================================================================
+
+❌ PROBLÈME : Je ne peux pas me connecter
+------------------------------------------
+Solutions :
+1. Vérifiez que vous utilisez le bon email : admin@axelegal.com
+2. Vérifiez le mot de passe : admin123
+3. Videz le cache de votre navigateur (Ctrl+Shift+Suppr)
+4. Essayez un autre navigateur
+5. Vérifiez votre connexion Internet
+
+❌ PROBLÈME : Les modifications ne s'affichent pas
+--------------------------------------------------
+Solutions :
+1. Rafraîchissez la page (F5 ou Ctrl+R)
+2. Videz le cache du navigateur
+3. Attendez 1-2 minutes (temps de propagation)
+4. Vérifiez que vous avez cliqué sur "Enregistrer"
+
+❌ PROBLÈME : Une image ne s'affiche pas
+-----------------------------------------
+Solutions :
+1. Vérifiez l'URL de l'image
+2. Assurez-vous que l'image est accessible publiquement
+3. Vérifiez le format (JPG, PNG, GIF uniquement)
+4. Réduisez la taille si l'image est trop lourde (>5 MB)
+
+❌ PROBLÈME : Je ne trouve pas une section
+-------------------------------------------
+Solutions :
+1. Utilisez la fonction recherche du navigateur (Ctrl+F)
+2. Consultez ce guide pour localiser la section
+3. Vérifiez le menu de navigation du dashboard
+
+================================================================================
+                    SECTION 6 : INFORMATIONS TECHNIQUES
+================================================================================
+
+🌐 URLs IMPORTANTES
+-------------------
+Site public : https://axe-legal.vercel.app
+Dashboard admin : https://axe-legal.vercel.app/admin
+Page de connexion : https://axe-legal.vercel.app/admin/login
+Firebase Console : https://console.firebase.google.com
+
+🗄️ BASE DE DONNÉES
+------------------
+Toutes les données sont stockées dans Firebase Firestore.
+Collections disponibles :
+- services (Services juridiques)
+- team (Membres de l'équipe)
+- processes (Étapes du processus)
+- testimonials (Témoignages clients)
+- announcements (Annonces)
+- businessHours (Horaires d'ouverture)
+- legalCategories (Catégories juridiques LegalTech)
+
+📱 COMPATIBILITÉ
+----------------
+✅ Ordinateurs (Windows, Mac, Linux)
+✅ Tablettes (iPad, Android)
+✅ Smartphones (iPhone, Android)
+✅ Navigateurs : Chrome, Firefox, Safari, Edge
+
+================================================================================
+                        SECTION 7 : CONTACT SUPPORT
+================================================================================
+
+🆘 BESOIN D'AIDE ?
+------------------
+Si vous rencontrez un problème non résolu dans ce guide :
+
+1. Consultez d'abord la section "Résolution de problèmes"
+2. Vérifiez votre connexion Internet
+3. Essayez de vous déconnecter et reconnecter
+4. Contactez le support technique
+
+📧 Email du développeur : [À COMPLÉTER]
+📱 Téléphone support : [À COMPLÉTER]
+
+================================================================================
+                            ANNEXE : RÉCAPITULATIF
+================================================================================
+
+📊 TABLEAU RÉCAPITULATIF DES SECTIONS MODIFIABLES
+--------------------------------------------------
+
+┌──────────────────────────────┬─────────────────────┬──────────────────┐
+│ Section du Site              │ Modifiable ?        │ Via Dashboard    │
+├──────────────────────────────┼─────────────────────┼──────────────────┤
+│ Hero (Page d'accueil)        │ ❌ Non              │ -                │
+│ À propos                     │ ❌ Non              │ -                │
+│ Certifications               │ ❌ Non              │ -                │
+│ Statistiques                 │ ❌ Non              │ -                │
+│ Annonces                     │ ✅ Oui              │ Annonces (📢)    │
+│ Services                     │ ✅ Oui              │ Services (⚖️)    │
+│ Pourquoi nous choisir        │ ❌ Non              │ -                │
+│ Équipe                       │ ✅ Oui              │ Équipe (👥)      │
+│ Témoignages                  │ ✅ Oui              │ Témoignages (⭐) │
+│ FAQ                          │ ❌ Non              │ -                │
+│ CTA (Appel à l'action)       │ ❌ Non              │ -                │
+│ Horaires d'ouverture         │ ✅ Oui              │ Horaires (🕒)    │
+│ Page Processus               │ ✅ Oui              │ Processus (🔄)   │
+│ Page LegalTech               │ ✅ Oui              │ Paramètres (⚙️)  │
+│ Demandes de consultation     │ ✅ Consultation     │ Consultations    │
+└──────────────────────────────┴─────────────────────┴──────────────────┘
+
+================================================================================
+                                FIN DU GUIDE
+================================================================================
+
+📌 Version : 1.0
+📅 Date : 12 novembre 2025
+✍️  Auteur : Équipe de développement Axe Legal
+
+💡 Ce guide sera mis à jour régulièrement. Consultez-le fréquemment !
+
+================================================================================
