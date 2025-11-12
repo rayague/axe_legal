@@ -34,3 +34,8 @@ ui-debug.log
 .env
 .env.local
 .env.production
+
+# Firebase Service Account Keys (NEVER COMMIT THESE!)
+*firebase*.json
+serviceAccountKey.json
+axe-legal-*.json
