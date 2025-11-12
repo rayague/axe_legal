@@ -32,14 +32,15 @@ interface ProcessStep {
   title: string;
   description: string;
   order: number;
+  iconName?: string;
+  duration?: string;
+  details?: string[];
+  color?: string;
 }
 
 interface EnrichedProcessStep extends ProcessStep {
   icon: LucideIcon;
   number: string;
-  details: string[];
-  duration: string;
-  color: string;
 }
 
 // Map icon names to actual icon components
@@ -55,7 +56,16 @@ const iconMap: { [key: string]: LucideIcon } = {
   Target,
   Award,
   TrendingUp,
-  Sparkles
+  Sparkles,
+  GitBranch,
+  Zap: Sparkles, // Fallback si Zap n'est pas importé
+  Heart: Users, // Fallback
+  Star: Award // Fallback
+};
+
+const getIconFromName = (iconName?: string): LucideIcon => {
+  if (!iconName) return Phone;
+  return iconMap[iconName] || Phone;
 };
 
 const defaultProcessSteps: EnrichedProcessStep[] = [
@@ -196,27 +206,19 @@ export default function Process() {
     }
   };
 
-  // Enrichir les étapes de la base de données avec les icônes et couleurs
+  // Enrichir les étapes de la base de données avec les icônes
   const enrichProcessSteps = (steps: ProcessStep[]): EnrichedProcessStep[] => {
-    const colors = [
-      "from-blue-500/10 to-blue-600/10",
-      "from-purple-500/10 to-purple-600/10",
-      "from-green-500/10 to-green-600/10",
-      "from-orange-500/10 to-orange-600/10",
-      "from-teal-500/10 to-teal-600/10",
-      "from-pink-500/10 to-pink-600/10"
-    ];
-    
-    const icons = [Phone, MessageSquare, FileText, Scale, CheckCircle, Users];
-    
-    return steps.map((step, index) => ({
-      ...step,
-      icon: icons[index % icons.length],
-      number: String(index + 1).padStart(2, '0'),
-      details: [], // Pas de détails depuis la DB pour l'instant
-      duration: "Variable",
-      color: colors[index % colors.length]
-    }));
+    return steps
+      .sort((a, b) => a.order - b.order)
+      .map((step, index) => ({
+        ...step,
+        icon: getIconFromName(step.iconName),
+        number: String(index + 1).padStart(2, '0'),
+        // Utiliser les valeurs de la DB, sinon valeurs par défaut
+        duration: step.duration || "Variable",
+        color: step.color || "from-blue-500/10 to-blue-600/10",
+        details: step.details || []
+      }));
   };
 
   // Utiliser les données Firebase si disponibles, sinon les données par défaut
