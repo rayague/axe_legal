@@ -182,19 +182,11 @@ export const ServicesSection = () => {
                     </ul>
                   )}
 
-                  {(service.pricing || service.duration) && (
-                    <div className="flex gap-4 text-sm text-muted-foreground pt-2 border-t">
-                      {service.pricing && (
-                        <span className="flex items-center gap-1">
-                          <DollarSign className="h-4 w-4" />
-                          {service.pricing}
-                        </span>
-                      )}
-                      {service.duration && (
-                        <span className="flex items-center gap-1">
-                          ⏱️ {service.duration}
-                        </span>
-                      )}
+                  {service.duration && (
+                    <div className="flex gap-2 text-sm text-muted-foreground pt-2 border-t">
+                      <span className="flex items-center gap-1">
+                        ⏱️ {service.duration}
+                      </span>
                     </div>
                   )}
                 </div>

@@ -9,6 +9,9 @@ import { StatsSection } from "@/components/StatsSection";
 import { Footer } from "@/components/Footer";
 import AnnouncementsSection from "@/components/AnnouncementsSection";
 import { BusinessHoursDisplay } from "@/components/BusinessHoursDisplay";
+import WhyChooseUsSection from "@/components/WhyChooseUsSection";
+import FAQSection from "@/components/FAQSection";
+import CTASection from "@/components/CTASection";
 
 const Index = () => {
   return (
@@ -36,12 +39,23 @@ const Index = () => {
           </div>
         </section>
         
+        <WhyChooseUsSection />
         <TeamSection />
         <TestimonialsSection />
+        <FAQSection />
+        <CTASection />
         
         {/* Section Horaires d'ouverture */}
         <section className="py-20 bg-gray-50">
           <div className="container mx-auto px-4">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+                Nous Sommes à Votre Écoute
+              </h2>
+              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                Notre équipe est disponible pour répondre à vos besoins juridiques. Consultez nos horaires d'ouverture.
+              </p>
+            </div>
             <div className="max-w-2xl mx-auto">
               <BusinessHoursDisplay />
             </div>

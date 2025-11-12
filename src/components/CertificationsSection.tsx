@@ -27,7 +27,10 @@ export const CertificationsSection = () => {
     <section className="py-16 bg-primary text-white">
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto text-center mb-12 animate-fade-in-up">
-          <h2 className="text-3xl md:text-4xl font-display font-bold mb-2">Reconnu et Certifié</h2>
+          <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">Reconnu et Certifié</h2>
+          <p className="text-lg text-white/90">
+            Notre expertise juridique reconnue au service de votre réussite
+          </p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
