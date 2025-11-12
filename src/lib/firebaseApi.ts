@@ -537,6 +537,33 @@ export interface Notification {
   createdAt?: Date;
 }
 
+// ============= LEGAL CATEGORIES (Catégories Juridiques) =============
+
+export interface LegalCategoryStep {
+  title: string;
+  description: string;
+}
+
+export interface LegalCategory {
+  id?: string;
+  categoryId: string;
+  iconName: string;
+  title: string;
+  description: string;
+  color: string;
+  borderColor: string;
+  order: number;
+  guidanceTitle: string;
+  steps: LegalCategoryStep[];
+  documents: string[];
+  timeline: string;
+  cost: string;
+  warning?: string;
+  isActive: boolean;
+  createdAt?: Date;
+  updatedAt?: Date;
+}
+
 export const getNotifications = async (): Promise<Notification[]> => {
   const q = query(collection(db, 'notifications'), orderBy('createdAt', 'desc'));
   const querySnapshot = await getDocs(q);
@@ -579,4 +606,65 @@ export const markAllNotificationsAsRead = async (): Promise<void> => {
   await Promise.all(
     unreadNotifications.map(n => markNotificationAsRead(n.id))
   );
+};
+
+// ============= LEGAL CATEGORIES =============
+
+export const getLegalCategories = async (): Promise<LegalCategory[]> => {
+  const q = query(collection(db, 'legalCategories'), orderBy('order', 'asc'));
+  const querySnapshot = await getDocs(q);
+  return querySnapshot.docs.map(doc => ({
+    id: doc.id,
+    ...convertTimestamp(doc.data())
+  } as LegalCategory));
+};
+
+export const getLegalCategoryById = async (id: string): Promise<LegalCategory | null> => {
+  const docRef = doc(db, 'legalCategories', id);
+  const docSnap = await getDoc(docRef);
+  
+  if (!docSnap.exists()) {
+    return null;
+  }
+  
+  return {
+    id: docSnap.id,
+    ...convertTimestamp(docSnap.data())
+  } as LegalCategory;
+};
+
+export const getLegalCategoryByCategoryId = async (categoryId: string): Promise<LegalCategory | null> => {
+  const q = query(collection(db, 'legalCategories'), where('categoryId', '==', categoryId));
+  const querySnapshot = await getDocs(q);
+  
+  if (querySnapshot.empty) {
+    return null;
+  }
+  
+  const docData = querySnapshot.docs[0];
+  return {
+    id: docData.id,
+    ...convertTimestamp(docData.data())
+  } as LegalCategory;
+};
+
+export const addLegalCategory = async (category: Omit<LegalCategory, 'id'>): Promise<LegalCategory> => {
+  const docRef = await addDoc(collection(db, 'legalCategories'), {
+    ...category,
+    createdAt: Timestamp.now(),
+    updatedAt: Timestamp.now()
+  });
+  const newDoc = await getDoc(docRef);
+  return { id: newDoc.id, ...convertTimestamp(newDoc.data()) } as LegalCategory;
+};
+
+export const updateLegalCategory = async (id: string, category: Partial<LegalCategory>): Promise<void> => {
+  await updateDoc(doc(db, 'legalCategories', id), {
+    ...category,
+    updatedAt: Timestamp.now()
+  });
+};
+
+export const deleteLegalCategory = async (id: string): Promise<void> => {
+  await deleteDoc(doc(db, 'legalCategories', id));
 };

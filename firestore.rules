@@ -81,5 +81,11 @@ service cloud.firestore {
       allow read: if true;
       allow write: if isAuthenticated();
     }
+    
+    // Collection legalCategories - Lecture publique, écriture pour authentifiés
+    match /legalCategories/{categoryId} {
+      allow read: if true;
+      allow write: if isAuthenticated();
+    }
   }
 }
