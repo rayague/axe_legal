@@ -218,9 +218,16 @@ export default function Process() {
     }));
   };
 
+  // Utiliser les données de la DB si disponibles, sinon les données par défaut
   const processSteps = dbProcessSteps.length > 0 
     ? enrichProcessSteps(dbProcessSteps) 
     : defaultProcessSteps;
+
+  console.log('Process Debug:', { 
+    dbStepsCount: dbProcessSteps.length, 
+    isLoading, 
+    processStepsCount: processSteps.length 
+  });
 
   return (
     <div className="min-h-screen bg-background">
@@ -269,11 +276,6 @@ export default function Process() {
                 <div className="text-center py-12">
                   <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
                   <p className="mt-4 text-muted-foreground">Chargement des étapes...</p>
-                </div>
-              ) : processSteps.length === 0 ? (
-                <div className="text-center py-12">
-                  <GitBranch className="h-16 w-16 text-muted-foreground mx-auto mb-4" />
-                  <p className="text-muted-foreground">Aucune étape de processus disponible pour le moment.</p>
                 </div>
               ) : (
                 <div className="relative">
