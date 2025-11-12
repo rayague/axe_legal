@@ -6,7 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { getAnnouncements } from "@/lib/firebaseApi";
+import { getAnnouncements, type Announcement } from "@/lib/firebaseApi";
 import {
   Gift,
   TrendingUp,
@@ -21,25 +21,13 @@ import {
   Sparkles,
   ArrowRight,
   CheckCircle,
+  Info,
+  Zap,
+  PartyPopper,
 } from "lucide-react";
 import heroLegal from "@/assets/hero-legal.jpg";
-
-interface Announcement {
-  id: string;
-  title: string;
-  description: string;
-  content: string;
-  type: "promotion" | "opportunity" | "event" | "news";
-  icon: string;
-  color: string;
-  startDate: string;
-  endDate: string;
-  isActive: boolean;
-  isFeatured: boolean;
-  order: number;
-  link?: string;
-  imageUrl?: string;
-}
+import { format } from 'date-fns';
+import { fr } from 'date-fns/locale';
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   Gift,
@@ -50,13 +38,40 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   Briefcase,
   AlertCircle,
   Tag,
+  Info,
+  Zap,
+  PartyPopper,
 };
 
 const typeLabels: Record<string, string> = {
   promotion: "Promotion",
-  opportunity: "Opportunité",
   event: "Événement",
-  news: "Actualité",
+  info: "Information",
+  warning: "Avertissement",
+  success: "Succès",
+  urgent: "Urgent",
+};
+
+const getTypeIcon = (type: string) => {
+  switch (type) {
+    case 'warning': return AlertCircle;
+    case 'success': return CheckCircle;
+    case 'urgent': return Zap;
+    case 'event': return PartyPopper;
+    case 'promotion': return Gift;
+    default: return Info;
+  }
+};
+
+const getTypeColor = (type: string) => {
+  switch (type) {
+    case 'warning': return 'from-yellow-500 to-orange-500';
+    case 'success': return 'from-green-500 to-emerald-500';
+    case 'urgent': return 'from-red-500 to-pink-500';
+    case 'event': return 'from-purple-500 to-indigo-500';
+    case 'promotion': return 'from-blue-500 to-cyan-500';
+    default: return 'from-gray-500 to-slate-500';
+  }
 };
 
 export default function AnnouncementsPage() {
@@ -80,16 +95,17 @@ export default function AnnouncementsPage() {
   };
 
   const filteredAnnouncements = selectedType === "all"
-    ? announcements
-    : announcements.filter((a) => a.type === selectedType);
+    ? announcements.filter(a => a.isActive !== false)
+    : announcements.filter((a) => a.type === selectedType && a.isActive !== false);
 
-  const featuredAnnouncements = announcements.filter((a) => a.isFeatured);
+  const featuredAnnouncements = announcements.filter((a) => a.priority === 'high' && a.isActive !== false);
 
-  const isExpired = (endDate: string) => {
-    return new Date(endDate) < new Date();
+  const isExpired = (endDate?: Date) => {
+    return endDate ? new Date(endDate) < new Date() : false;
   };
 
-  const daysRemaining = (endDate: string) => {
+  const daysRemaining = (endDate?: Date) => {
+    if (!endDate) return 0;
     const days = Math.ceil((new Date(endDate).getTime() - new Date().getTime()) / (1000 * 60 * 60 * 24));
     return days > 0 ? days : 0;
   };
@@ -143,53 +159,60 @@ export default function AnnouncementsPage() {
 
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-7xl mx-auto">
                 {featuredAnnouncements.map((announcement) => {
-                  const Icon = iconMap[announcement.icon] || Gift;
+                  const Icon = getTypeIcon(announcement.type);
                   const expired = isExpired(announcement.endDate);
                   const remaining = daysRemaining(announcement.endDate);
+                  const colorClass = getTypeColor(announcement.type);
 
                   return (
                     <Card
                       key={announcement.id}
                       className="group hover:shadow-2xl transition-all duration-300 border-2 border-primary/30 relative overflow-hidden"
                     >
-                      <div className={`absolute top-0 left-0 right-0 h-2 bg-gradient-to-r ${announcement.color}`} />
+                      <div className={`absolute top-0 left-0 right-0 h-2 bg-gradient-to-r ${colorClass}`} />
                       <CardContent className="p-6">
                         <div className="flex items-start justify-between mb-4">
-                          <div className={`p-4 rounded-xl bg-gradient-to-br ${announcement.color} text-white shadow-lg`}>
+                          <div className={`p-4 rounded-xl bg-gradient-to-br ${colorClass} text-white shadow-lg`}>
                             <Icon className="h-7 w-7" />
                           </div>
                           <Badge className="bg-yellow-100 text-yellow-800 border-yellow-300">
-                            {typeLabels[announcement.type]}
+                            {typeLabels[announcement.type] || announcement.type}
                           </Badge>
                         </div>
 
-                        {announcement.imageUrl && (
-                          <div className="mb-4 rounded-lg overflow-hidden">
-                            <img
-                              src={announcement.imageUrl}
-                              alt={announcement.title}
-                              className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
-                            />
-                          </div>
+                        {announcement.subtitle && (
+                          <p className="text-sm text-primary font-semibold mb-2">{announcement.subtitle}</p>
                         )}
 
                         <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">
                           {announcement.title}
                         </h3>
-                        <p className="text-muted-foreground mb-4 line-clamp-3">
-                          {announcement.description}
+                        <p className="text-muted-foreground mb-4 line-clamp-3 whitespace-pre-wrap">
+                          {announcement.content}
                         </p>
 
-                        <div className="flex items-center gap-2 text-sm mb-4 p-3 rounded-lg bg-muted">
-                          <Clock className="h-4 w-4" />
-                          {expired ? (
-                            <span className="text-red-600 font-bold">Offre expirée</span>
-                          ) : (
-                            <span className="text-green-600 font-bold">
-                              Plus que {remaining} jour{remaining > 1 ? "s" : ""} !
-                            </span>
-                          )}
-                        </div>
+                        {announcement.tags && announcement.tags.length > 0 && (
+                          <div className="flex flex-wrap gap-1 mb-4">
+                            {announcement.tags.map((tag, idx) => (
+                              <Badge key={idx} variant="secondary" className="text-xs">
+                                {tag}
+                              </Badge>
+                            ))}
+                          </div>
+                        )}
+
+                        {announcement.endDate && (
+                          <div className="flex items-center gap-2 text-sm mb-4 p-3 rounded-lg bg-muted">
+                            <Clock className="h-4 w-4" />
+                            {expired ? (
+                              <span className="text-red-600 font-bold">Offre expirée</span>
+                            ) : (
+                              <span className="text-green-600 font-bold">
+                                Plus que {remaining} jour{remaining > 1 ? "s" : ""} !
+                              </span>
+                            )}
+                          </div>
+                        )}
 
                         {announcement.link && (
                           <Button
@@ -198,8 +221,8 @@ export default function AnnouncementsPage() {
                             variant={expired ? "outline" : "default"}
                             disabled={expired}
                           >
-                            <a href={announcement.link}>
-                              {expired ? "Offre terminée" : "Profiter de l'offre"}
+                            <a href={announcement.link} target="_blank" rel="noopener noreferrer">
+                              {announcement.linkText || (expired ? "Offre terminée" : "En savoir plus")}
                               {!expired && <ArrowRight className="h-4 w-4 transition-transform group-hover/btn:translate-x-1" />}
                             </a>
                           </Button>
@@ -245,15 +268,6 @@ export default function AnnouncementsPage() {
               </Button>
               <Button
                 size="lg"
-                variant={selectedType === "opportunity" ? "default" : "outline"}
-                onClick={() => setSelectedType("opportunity")}
-                className="gap-2"
-              >
-                <TrendingUp className="h-4 w-4" />
-                Opportunités
-              </Button>
-              <Button
-                size="lg"
                 variant={selectedType === "event" ? "default" : "outline"}
                 onClick={() => setSelectedType("event")}
                 className="gap-2"
@@ -263,12 +277,21 @@ export default function AnnouncementsPage() {
               </Button>
               <Button
                 size="lg"
-                variant={selectedType === "news" ? "default" : "outline"}
-                onClick={() => setSelectedType("news")}
+                variant={selectedType === "info" ? "default" : "outline"}
+                onClick={() => setSelectedType("info")}
                 className="gap-2"
               >
-                <Megaphone className="h-4 w-4" />
-                Actualités
+                <Info className="h-4 w-4" />
+                Informations
+              </Button>
+              <Button
+                size="lg"
+                variant={selectedType === "urgent" ? "default" : "outline"}
+                onClick={() => setSelectedType("urgent")}
+                className="gap-2"
+              >
+                <Zap className="h-4 w-4" />
+                Urgents
               </Button>
             </div>
 
@@ -284,59 +307,66 @@ export default function AnnouncementsPage() {
                 </div>
               ) : (
                 filteredAnnouncements.map((announcement) => {
-                  const Icon = iconMap[announcement.icon] || Gift;
+                  const Icon = getTypeIcon(announcement.type);
                   const expired = isExpired(announcement.endDate);
                   const remaining = daysRemaining(announcement.endDate);
+                  const colorClass = getTypeColor(announcement.type);
 
                   return (
                     <Card
                       key={announcement.id}
                       className={`group hover:shadow-xl transition-all duration-300 border-2 ${
-                        announcement.isFeatured ? "border-primary/30" : "border-border"
+                        announcement.priority === 'high' ? "border-primary/30" : "border-border"
                       } ${expired ? "opacity-70" : ""}`}
                     >
                       <CardContent className="p-6">
                         <div className="flex items-start justify-between mb-4">
-                          <div className={`p-3 rounded-lg bg-gradient-to-br ${announcement.color} text-white`}>
+                          <div className={`p-3 rounded-lg bg-gradient-to-br ${colorClass} text-white`}>
                             <Icon className="h-6 w-6" />
                           </div>
                           <div className="flex flex-col items-end gap-2">
                             <Badge variant="outline">
-                              {typeLabels[announcement.type]}
+                              {typeLabels[announcement.type] || announcement.type}
                             </Badge>
-                            {announcement.isFeatured && (
+                            {announcement.priority === 'high' && (
                               <Star className="h-5 w-5 fill-yellow-400 text-yellow-400" />
                             )}
                           </div>
                         </div>
 
-                        {announcement.imageUrl && (
-                          <div className="mb-4 rounded-lg overflow-hidden">
-                            <img
-                              src={announcement.imageUrl}
-                              alt={announcement.title}
-                              className="w-full h-40 object-cover group-hover:scale-105 transition-transform duration-300"
-                            />
-                          </div>
+                        {announcement.subtitle && (
+                          <p className="text-sm text-primary font-semibold mb-2">{announcement.subtitle}</p>
                         )}
 
                         <h3 className="text-lg font-bold mb-2 group-hover:text-primary transition-colors">
                           {announcement.title}
                         </h3>
-                        <p className="text-muted-foreground text-sm mb-4 line-clamp-3">
-                          {announcement.description}
+                        <p className="text-muted-foreground text-sm mb-4 line-clamp-3 whitespace-pre-wrap">
+                          {announcement.content}
                         </p>
 
-                        <div className="flex items-center gap-2 text-xs text-muted-foreground mb-4 p-2 rounded bg-muted/50">
-                          <Clock className="h-3 w-3" />
-                          {expired ? (
-                            <span className="text-red-600 font-semibold">Expiré</span>
-                          ) : (
-                            <span>
-                              Valable jusqu'au {new Date(announcement.endDate).toLocaleDateString("fr-FR")}
-                            </span>
-                          )}
-                        </div>
+                        {announcement.tags && announcement.tags.length > 0 && (
+                          <div className="flex flex-wrap gap-1 mb-3">
+                            {announcement.tags.map((tag, idx) => (
+                              <Badge key={idx} variant="secondary" className="text-xs">
+                                {tag}
+                              </Badge>
+                            ))}
+                          </div>
+                        )}
+
+                        {announcement.endDate && (
+                          <div className="flex items-center gap-2 text-xs text-muted-foreground mb-4 p-2 rounded bg-muted/50">
+                            <Clock className="h-3 w-3" />
+                            {expired ? (
+                              <span className="text-red-600 font-semibold">Expiré</span>
+                            ) : (
+                              <span>
+                                Valable jusqu'au {format(new Date(announcement.endDate), 'dd MMM yyyy', { locale: fr })}
+                              </span>
+                            )}
+                          </div>
+                        )}
 
                         {announcement.link && (
                           <Button
@@ -346,8 +376,8 @@ export default function AnnouncementsPage() {
                             variant={expired ? "outline" : "default"}
                             disabled={expired}
                           >
-                            <a href={announcement.link}>
-                              En savoir plus
+                            <a href={announcement.link} target="_blank" rel="noopener noreferrer">
+                              {announcement.linkText || "En savoir plus"}
                               <ExternalLink className="h-4 w-4" />
                             </a>
                           </Button>

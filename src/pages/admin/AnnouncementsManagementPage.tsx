@@ -2,48 +2,48 @@ import { useState, useEffect } from 'react';
 import { useToast } from '@/hooks/use-toast';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
-import { Card } from '@/components/ui/card';
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-} from '@/components/ui/dialog';
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
-import { Plus, Edit, Trash2, Search, Megaphone } from 'lucide-react';
-import { getAnnouncements, addAnnouncement, updateAnnouncement, deleteAnnouncement } from '@/lib/firebaseApi';
-
-interface Announcement {
-  id?: string;
-  title: string;
-  content: string;
-  type: string;
-}
+import { Badge } from '@/components/ui/badge';
+import { ScrollArea } from '@/components/ui/scroll-area';
+import { Switch } from '@/components/ui/switch';
+import { Calendar } from '@/components/ui/calendar';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import { Plus, Edit, Trash2, Search, Megaphone, Calendar as CalendarIcon, Link, Tag, X, AlertCircle, CheckCircle2, Info, Zap, PartyPopper } from 'lucide-react';
+import { getAnnouncements, addAnnouncement, updateAnnouncement, deleteAnnouncement, type Announcement } from '@/lib/firebaseApi';
+import { format } from 'date-fns';
+import { fr } from 'date-fns/locale';
+import { cn } from '@/lib/utils';
 
 export default function AnnouncementsManagementPage() {
   const { toast } = useToast();
-
   const [announcements, setAnnouncements] = useState<Announcement[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState('');
-  const [createDialogOpen, setCreateDialogOpen] = useState(false);
-  const [editDialogOpen, setEditDialogOpen] = useState(false);
-  const [selectedAnnouncement, setSelectedAnnouncement] = useState<Announcement | null>(null);
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [editingAnnouncement, setEditingAnnouncement] = useState<Announcement | null>(null);
   const [formData, setFormData] = useState<Partial<Announcement>>({
     title: '',
+    subtitle: '',
     content: '',
     type: 'info',
+    priority: 'medium',
+    isActive: true,
+    link: '',
+    linkText: '',
+    author: '',
+    tags: [],
+    startDate: undefined,
+    endDate: undefined,
   });
+  const [newTag, setNewTag] = useState('');
+
+  useEffect(() => {
+    fetchAnnouncements();
+  }, []);
 
   const fetchAnnouncements = async () => {
     try {
@@ -60,65 +60,118 @@ export default function AnnouncementsManagementPage() {
     }
   };
 
-  useEffect(() => {
-    fetchAnnouncements();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
   const filteredAnnouncements = announcements.filter((announcement) =>
-    announcement.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    announcement.content.toLowerCase().includes(searchQuery.toLowerCase())
+    announcement.title?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    announcement.content?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    announcement.subtitle?.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
-  const handleCreate = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = async () => {
     try {
-      await addAnnouncement(formData as Omit<Announcement, 'id'>);
-      toast({ title: 'Succès', description: 'Annonce ajoutée avec succès' });
-      setCreateDialogOpen(false);
+      if (editingAnnouncement) {
+        await updateAnnouncement(editingAnnouncement.id!, formData);
+        toast({ title: 'Succès', description: 'Annonce modifiée avec succès' });
+      } else {
+        await addAnnouncement(formData as Omit<Announcement, 'id'>);
+        toast({ title: 'Succès', description: 'Annonce ajoutée avec succès' });
+      }
+      setDialogOpen(false);
       resetForm();
       fetchAnnouncements();
     } catch (error) {
-      toast({ title: 'Erreur', description: 'Impossible d\'ajouter l\'annonce', variant: 'destructive' });
-    }
-  };
-
-  const handleUpdate = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!selectedAnnouncement) return;
-
-    try {
-      await updateAnnouncement(selectedAnnouncement.id!, formData);
-      toast({ title: 'Succès', description: 'Annonce modifiée avec succès' });
-      setEditDialogOpen(false);
-      resetForm();
-      fetchAnnouncements();
-    } catch (error) {
-      toast({ title: 'Erreur', description: 'Impossible de modifier l\'annonce', variant: 'destructive' });
+      toast({ title: 'Erreur', description: 'Impossible de sauvegarder l\'annonce', variant: 'destructive' });
     }
   };
 
   const handleDelete = async (id: string) => {
     if (!confirm('Voulez-vous vraiment supprimer cette annonce ?')) return;
-
     try {
       await deleteAnnouncement(id);
-      setAnnouncements((prev) => prev.filter((a) => a.id !== id));
       toast({ title: 'Succès', description: 'Annonce supprimée avec succès' });
+      fetchAnnouncements();
     } catch (error) {
       toast({ title: 'Erreur', description: 'Impossible de supprimer l\'annonce', variant: 'destructive' });
     }
   };
 
-  const openEditDialog = (announcement: Announcement) => {
-    setSelectedAnnouncement(announcement);
-    setFormData({ title: announcement.title, content: announcement.content, type: announcement.type });
-    setEditDialogOpen(true);
+  const handleEdit = (announcement: Announcement) => {
+    setEditingAnnouncement(announcement);
+    setFormData({
+      title: announcement.title,
+      subtitle: announcement.subtitle || '',
+      content: announcement.content,
+      type: announcement.type,
+      priority: announcement.priority,
+      isActive: announcement.isActive,
+      link: announcement.link || '',
+      linkText: announcement.linkText || '',
+      author: announcement.author || '',
+      tags: announcement.tags || [],
+      startDate: announcement.startDate,
+      endDate: announcement.endDate,
+    });
+    setDialogOpen(true);
   };
 
   const resetForm = () => {
-    setFormData({ title: '', content: '', type: 'info' });
-    setSelectedAnnouncement(null);
+    setEditingAnnouncement(null);
+    setFormData({
+      title: '',
+      subtitle: '',
+      content: '',
+      type: 'info',
+      priority: 'medium',
+      isActive: true,
+      link: '',
+      linkText: '',
+      author: '',
+      tags: [],
+      startDate: undefined,
+      endDate: undefined,
+    });
+    setNewTag('');
+  };
+
+  const addTag = () => {
+    if (newTag.trim() && !formData.tags?.includes(newTag.trim())) {
+      setFormData({ ...formData, tags: [...(formData.tags || []), newTag.trim()] });
+      setNewTag('');
+    }
+  };
+
+  const removeTag = (tag: string) => {
+    setFormData({ ...formData, tags: formData.tags?.filter(t => t !== tag) });
+  };
+
+  const getTypeIcon = (type: string) => {
+    switch (type) {
+      case 'warning': return <AlertCircle className="h-4 w-4" />;
+      case 'success': return <CheckCircle2 className="h-4 w-4" />;
+      case 'urgent': return <Zap className="h-4 w-4" />;
+      case 'event': return <PartyPopper className="h-4 w-4" />;
+      case 'promotion': return <Megaphone className="h-4 w-4" />;
+      default: return <Info className="h-4 w-4" />;
+    }
+  };
+
+  const getTypeColor = (type: string) => {
+    switch (type) {
+      case 'warning': return 'bg-yellow-100 text-yellow-800 border-yellow-200';
+      case 'success': return 'bg-green-100 text-green-800 border-green-200';
+      case 'urgent': return 'bg-red-100 text-red-800 border-red-200';
+      case 'event': return 'bg-purple-100 text-purple-800 border-purple-200';
+      case 'promotion': return 'bg-blue-100 text-blue-800 border-blue-200';
+      default: return 'bg-gray-100 text-gray-800 border-gray-200';
+    }
+  };
+
+  const getPriorityBadge = (priority: string) => {
+    switch (priority) {
+      case 'high': return <Badge variant="destructive">Haute</Badge>;
+      case 'medium': return <Badge variant="default">Moyenne</Badge>;
+      case 'low': return <Badge variant="secondary">Basse</Badge>;
+      default: return null;
+    }
   };
 
   if (loading) {
@@ -130,14 +183,20 @@ export default function AnnouncementsManagementPage() {
   }
 
   return (
-    <div className="p-8">
-      <div className="mb-8">
-        <h1 className="text-3xl font-bold mb-2">Gestion des Annonces</h1>
-        <p className="text-muted-foreground">Gérez vos annonces et actualités</p>
+    <div className="container mx-auto py-8 px-4">
+      <div className="flex justify-between items-center mb-8">
+        <div>
+          <h1 className="text-3xl font-bold mb-2">Gestion des Annonces</h1>
+          <p className="text-muted-foreground">Gérez vos annonces et actualités juridiques</p>
+        </div>
+        <Button onClick={() => { resetForm(); setDialogOpen(true); }}>
+          <Plus className="h-4 w-4 mr-2" />
+          Nouvelle Annonce
+        </Button>
       </div>
 
-      <div className="flex gap-4 mb-6">
-        <div className="flex-1 relative">
+      <div className="mb-6">
+        <div className="relative">
           <Search className="absolute left-3 top-3 h-4 w-4 text-muted-foreground" />
           <Input
             placeholder="Rechercher une annonce..."
@@ -146,142 +205,267 @@ export default function AnnouncementsManagementPage() {
             className="pl-10"
           />
         </div>
-        <Button onClick={() => setCreateDialogOpen(true)}>
-          <Plus className="h-4 w-4 mr-2" />
-          Ajouter une annonce
-        </Button>
       </div>
 
       <div className="grid gap-4">
         {filteredAnnouncements.map((announcement) => (
-          <Card key={announcement.id} className="p-6">
-            <div className="flex items-start justify-between">
-              <div className="flex gap-4 flex-1">
-                <Megaphone className="h-6 w-6 text-primary flex-shrink-0" />
+          <Card key={announcement.id} className={cn("border-l-4", !announcement.isActive && "opacity-60")}>
+            <CardHeader>
+              <div className="flex items-start justify-between gap-4">
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-2">
-                    <h3 className="font-bold">{announcement.title}</h3>
-                    <span className="text-xs px-2 py-1 rounded bg-primary/10 text-primary">{announcement.type}</span>
+                    <div className={cn("p-1.5 rounded", getTypeColor(announcement.type))}>
+                      {getTypeIcon(announcement.type)}
+                    </div>
+                    <CardTitle className="text-xl">{announcement.title}</CardTitle>
+                    {!announcement.isActive && <Badge variant="outline">Inactive</Badge>}
                   </div>
-                  <p className="text-sm text-muted-foreground">{announcement.content}</p>
+                  {announcement.subtitle && (
+                    <CardDescription className="text-base font-medium mb-2">
+                      {announcement.subtitle}
+                    </CardDescription>
+                  )}
+                  <div className="flex flex-wrap gap-2 mb-3">
+                    {getPriorityBadge(announcement.priority)}
+                    <Badge variant="outline" className={getTypeColor(announcement.type)}>
+                      {announcement.type}
+                    </Badge>
+                    {announcement.tags?.map(tag => (
+                      <Badge key={tag} variant="secondary">
+                        <Tag className="h-3 w-3 mr-1" />
+                        {tag}
+                      </Badge>
+                    ))}
+                  </div>
+                  <p className="text-sm text-muted-foreground whitespace-pre-wrap">{announcement.content}</p>
+                  {announcement.link && (
+                    <a href={announcement.link} target="_blank" rel="noopener noreferrer" className="text-sm text-primary hover:underline mt-2 inline-flex items-center gap-1">
+                      <Link className="h-3 w-3" />
+                      {announcement.linkText || 'En savoir plus'}
+                    </a>
+                  )}
+                  <div className="flex gap-4 mt-3 text-xs text-muted-foreground">
+                    {announcement.startDate && (
+                      <span>Début: {format(new Date(announcement.startDate), 'dd MMM yyyy', { locale: fr })}</span>
+                    )}
+                    {announcement.endDate && (
+                      <span>Fin: {format(new Date(announcement.endDate), 'dd MMM yyyy', { locale: fr })}</span>
+                    )}
+                    {announcement.author && <span>Par: {announcement.author}</span>}
+                  </div>
+                </div>
+                <div className="flex gap-2">
+                  <Button variant="outline" size="sm" onClick={() => handleEdit(announcement)}>
+                    <Edit className="h-3 w-3 mr-1" />
+                    Modifier
+                  </Button>
+                  <Button variant="outline" size="sm" onClick={() => handleDelete(announcement.id!)}>
+                    <Trash2 className="h-3 w-3 mr-1" />
+                    Supprimer
+                  </Button>
                 </div>
               </div>
-              <div className="flex gap-2">
-                <Button variant="outline" size="sm" onClick={() => openEditDialog(announcement)}>
-                  <Edit className="h-3 w-3 mr-1" />
-                  Modifier
-                </Button>
-                <Button variant="outline" size="sm" onClick={() => handleDelete(announcement.id!)}>
-                  <Trash2 className="h-3 w-3 mr-1" />
-                  Supprimer
-                </Button>
-              </div>
-            </div>
+            </CardHeader>
           </Card>
         ))}
       </div>
 
-      {/* Create Dialog */}
-      <Dialog open={createDialogOpen} onOpenChange={setCreateDialogOpen}>
-        <DialogContent className="max-w-2xl">
+      <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
+        <DialogContent className="max-w-3xl max-h-[90vh]">
           <DialogHeader>
-            <DialogTitle>Ajouter une annonce</DialogTitle>
-            <DialogDescription>Ajoutez une nouvelle annonce</DialogDescription>
+            <DialogTitle>
+              {editingAnnouncement ? 'Modifier l\'annonce' : 'Nouvelle annonce'}
+            </DialogTitle>
+            <DialogDescription>
+              Remplissez tous les détails de l'annonce
+            </DialogDescription>
           </DialogHeader>
-          <form onSubmit={handleCreate}>
-            <div className="space-y-4">
-              <div>
-                <Label>Titre</Label>
-                <Input
-                  value={formData.title}
-                  onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                  required
-                />
-              </div>
-              <div>
-                <Label>Contenu</Label>
-                <Textarea
-                  value={formData.content}
-                  onChange={(e) => setFormData({ ...formData, content: e.target.value })}
-                  rows={4}
-                  required
-                />
-              </div>
-              <div>
-                <Label>Type</Label>
-                <Select value={formData.type} onValueChange={(value) => setFormData({ ...formData, type: value })}>
-                  <SelectTrigger>
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="info">Info</SelectItem>
-                    <SelectItem value="warning">Avertissement</SelectItem>
-                    <SelectItem value="success">Succès</SelectItem>
-                    <SelectItem value="promotion">Promotion</SelectItem>
-                    <SelectItem value="event">Événement</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-            </div>
-            <DialogFooter className="mt-6">
-              <Button type="button" variant="outline" onClick={() => setCreateDialogOpen(false)}>
-                Annuler
-              </Button>
-              <Button type="submit">Ajouter</Button>
-            </DialogFooter>
-          </form>
-        </DialogContent>
-      </Dialog>
 
-      {/* Edit Dialog */}
-      <Dialog open={editDialogOpen} onOpenChange={setEditDialogOpen}>
-        <DialogContent className="max-w-2xl">
-          <DialogHeader>
-            <DialogTitle>Modifier l'annonce</DialogTitle>
-            <DialogDescription>Modifiez l'annonce</DialogDescription>
-          </DialogHeader>
-          <form onSubmit={handleUpdate}>
-            <div className="space-y-4">
-              <div>
-                <Label>Titre</Label>
+          <ScrollArea className="max-h-[60vh] pr-4">
+            <div className="grid gap-4 py-4">
+              <div className="grid gap-2">
+                <Label htmlFor="title">Titre *</Label>
                 <Input
+                  id="title"
                   value={formData.title}
                   onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                  required
+                  placeholder="Titre principal de l'annonce"
                 />
               </div>
-              <div>
-                <Label>Contenu</Label>
+
+              <div className="grid gap-2">
+                <Label htmlFor="subtitle">Sous-titre</Label>
+                <Input
+                  id="subtitle"
+                  value={formData.subtitle}
+                  onChange={(e) => setFormData({ ...formData, subtitle: e.target.value })}
+                  placeholder="Sous-titre ou résumé court"
+                />
+              </div>
+
+              <div className="grid gap-2">
+                <Label htmlFor="content">Contenu *</Label>
                 <Textarea
+                  id="content"
                   value={formData.content}
                   onChange={(e) => setFormData({ ...formData, content: e.target.value })}
-                  rows={4}
-                  required
+                  rows={6}
+                  placeholder="Contenu détaillé de l'annonce..."
                 />
               </div>
-              <div>
-                <Label>Type</Label>
-                <Select value={formData.type} onValueChange={(value) => setFormData({ ...formData, type: value })}>
-                  <SelectTrigger>
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="info">Info</SelectItem>
-                    <SelectItem value="warning">Avertissement</SelectItem>
-                    <SelectItem value="success">Succès</SelectItem>
-                    <SelectItem value="promotion">Promotion</SelectItem>
-                    <SelectItem value="event">Événement</SelectItem>
-                  </SelectContent>
-                </Select>
+
+              <div className="grid grid-cols-2 gap-4">
+                <div className="grid gap-2">
+                  <Label>Type *</Label>
+                  <Select value={formData.type} onValueChange={(value) => setFormData({ ...formData, type: value as any })}>
+                    <SelectTrigger>
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="info">Information</SelectItem>
+                      <SelectItem value="warning">Avertissement</SelectItem>
+                      <SelectItem value="success">Succès</SelectItem>
+                      <SelectItem value="promotion">Promotion</SelectItem>
+                      <SelectItem value="event">Événement</SelectItem>
+                      <SelectItem value="urgent">Urgent</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <div className="grid gap-2">
+                  <Label>Priorité *</Label>
+                  <Select value={formData.priority} onValueChange={(value) => setFormData({ ...formData, priority: value as any })}>
+                    <SelectTrigger>
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="low">Basse</SelectItem>
+                      <SelectItem value="medium">Moyenne</SelectItem>
+                      <SelectItem value="high">Haute</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-4">
+                <div className="grid gap-2">
+                  <Label>Date de début</Label>
+                  <Popover>
+                    <PopoverTrigger asChild>
+                      <Button variant="outline" className={cn("justify-start text-left font-normal", !formData.startDate && "text-muted-foreground")}>
+                        <CalendarIcon className="mr-2 h-4 w-4" />
+                        {formData.startDate ? format(new Date(formData.startDate), 'dd MMM yyyy', { locale: fr }) : "Sélectionner"}
+                      </Button>
+                    </PopoverTrigger>
+                    <PopoverContent className="w-auto p-0">
+                      <Calendar
+                        mode="single"
+                        selected={formData.startDate ? new Date(formData.startDate) : undefined}
+                        onSelect={(date) => setFormData({ ...formData, startDate: date })}
+                        locale={fr}
+                      />
+                    </PopoverContent>
+                  </Popover>
+                </div>
+
+                <div className="grid gap-2">
+                  <Label>Date de fin</Label>
+                  <Popover>
+                    <PopoverTrigger asChild>
+                      <Button variant="outline" className={cn("justify-start text-left font-normal", !formData.endDate && "text-muted-foreground")}>
+                        <CalendarIcon className="mr-2 h-4 w-4" />
+                        {formData.endDate ? format(new Date(formData.endDate), 'dd MMM yyyy', { locale: fr }) : "Sélectionner"}
+                      </Button>
+                    </PopoverTrigger>
+                    <PopoverContent className="w-auto p-0">
+                      <Calendar
+                        mode="single"
+                        selected={formData.endDate ? new Date(formData.endDate) : undefined}
+                        onSelect={(date) => setFormData({ ...formData, endDate: date })}
+                        locale={fr}
+                      />
+                    </PopoverContent>
+                  </Popover>
+                </div>
+              </div>
+
+              <div className="grid gap-2">
+                <Label htmlFor="link">Lien externe (optionnel)</Label>
+                <Input
+                  id="link"
+                  type="url"
+                  value={formData.link}
+                  onChange={(e) => setFormData({ ...formData, link: e.target.value })}
+                  placeholder="https://exemple.com"
+                />
+              </div>
+
+              <div className="grid gap-2">
+                <Label htmlFor="linkText">Texte du lien</Label>
+                <Input
+                  id="linkText"
+                  value={formData.linkText}
+                  onChange={(e) => setFormData({ ...formData, linkText: e.target.value })}
+                  placeholder="En savoir plus"
+                />
+              </div>
+
+              <div className="grid gap-2">
+                <Label htmlFor="author">Auteur</Label>
+                <Input
+                  id="author"
+                  value={formData.author}
+                  onChange={(e) => setFormData({ ...formData, author: e.target.value })}
+                  placeholder="Nom de l'auteur"
+                />
+              </div>
+
+              <div className="grid gap-2">
+                <Label>Tags / Catégories</Label>
+                <div className="flex gap-2">
+                  <Input
+                    value={newTag}
+                    onChange={(e) => setNewTag(e.target.value)}
+                    onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), addTag())}
+                    placeholder="Ajouter un tag"
+                  />
+                  <Button type="button" variant="outline" onClick={addTag}>
+                    <Plus className="h-4 w-4" />
+                  </Button>
+                </div>
+                <div className="flex flex-wrap gap-2 mt-2">
+                  {formData.tags?.map(tag => (
+                    <Badge key={tag} variant="secondary" className="gap-1">
+                      {tag}
+                      <X className="h-3 w-3 cursor-pointer" onClick={() => removeTag(tag)} />
+                    </Badge>
+                  ))}
+                </div>
+              </div>
+
+              <div className="flex items-center justify-between border rounded-lg p-4">
+                <div className="space-y-0.5">
+                  <Label>Annonce active</Label>
+                  <p className="text-sm text-muted-foreground">
+                    L'annonce sera visible sur le site public
+                  </p>
+                </div>
+                <Switch
+                  checked={formData.isActive}
+                  onCheckedChange={(checked) => setFormData({ ...formData, isActive: checked })}
+                />
               </div>
             </div>
-            <DialogFooter className="mt-6">
-              <Button type="button" variant="outline" onClick={() => setEditDialogOpen(false)}>
-                Annuler
-              </Button>
-              <Button type="submit">Enregistrer</Button>
-            </DialogFooter>
-          </form>
+          </ScrollArea>
+
+          <DialogFooter>
+            <Button variant="outline" onClick={() => setDialogOpen(false)}>
+              Annuler
+            </Button>
+            <Button onClick={handleSubmit}>
+              {editingAnnouncement ? 'Mettre à jour' : 'Créer'}
+            </Button>
+          </DialogFooter>
         </DialogContent>
       </Dialog>
     </div>

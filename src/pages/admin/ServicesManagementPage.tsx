@@ -209,8 +209,10 @@ export default function ServicesManagementPage() {
                     {service.features.length} fonctionnalité{service.features.length > 1 ? 's' : ''}
                   </p>
                 )}
-                {service.pricing && (
-                  <p className="font-semibold text-primary">{service.pricing}</p>
+                {service.benefits && service.benefits.length > 0 && (
+                  <p className="text-muted-foreground">
+                    {service.benefits.length} avantage{service.benefits.length > 1 ? 's' : ''}
+                  </p>
                 )}
               </div>
             </CardContent>

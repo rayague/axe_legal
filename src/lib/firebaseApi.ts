@@ -64,11 +64,22 @@ export interface Testimonial {
 }
 
 export interface Announcement {
-  id: string;
+  id?: string;
   title: string;
+  subtitle?: string;
   content: string;
-  type: 'info' | 'warning' | 'success';
+  type: 'info' | 'warning' | 'success' | 'promotion' | 'event' | 'urgent';
+  priority: 'low' | 'medium' | 'high';
+  startDate?: Date;
+  endDate?: Date;
+  isActive: boolean;
+  link?: string;
+  linkText?: string;
+  author?: string;
+  tags?: string[];
+  attachments?: string[];
   createdAt?: Date;
+  updatedAt?: Date;
 }
 
 export interface Message {
@@ -362,10 +373,27 @@ export const deleteConsultation = async (id: string): Promise<void> => {
 
 // ============= SETTINGS =============
 
+export interface DaySchedule {
+  isOpen: boolean;
+  openTime?: string;
+  closeTime?: string;
+  breakStart?: string;
+  breakEnd?: string;
+  note?: string;
+}
+
 export interface BusinessHours {
-  weekdays: string;
-  saturday: string;
-  sunday: string;
+  monday: DaySchedule;
+  tuesday: DaySchedule;
+  wednesday: DaySchedule;
+  thursday: DaySchedule;
+  friday: DaySchedule;
+  saturday: DaySchedule;
+  sunday: DaySchedule;
+  holidays?: string[];
+  exceptionalClosure?: { date: string; reason: string }[];
+  timezone?: string;
+  lastUpdated?: Date;
 }
 
 export const getBusinessHours = async (): Promise<BusinessHours> => {
@@ -373,19 +401,41 @@ export const getBusinessHours = async (): Promise<BusinessHours> => {
   const docSnap = await getDoc(docRef);
   
   if (docSnap.exists()) {
-    return docSnap.data() as BusinessHours;
+    const data = docSnap.data();
+    return {
+      ...data,
+      lastUpdated: data.lastUpdated?.toDate?.() || new Date()
+    } as BusinessHours;
   }
   
   // Valeurs par défaut
+  const defaultSchedule: DaySchedule = {
+    isOpen: true,
+    openTime: '08:00',
+    closeTime: '18:00'
+  };
+  
   return {
-    weekdays: '08:00 - 18:00',
-    saturday: '09:00 - 13:00',
-    sunday: 'Fermé'
+    monday: defaultSchedule,
+    tuesday: defaultSchedule,
+    wednesday: defaultSchedule,
+    thursday: defaultSchedule,
+    friday: defaultSchedule,
+    saturday: { isOpen: true, openTime: '09:00', closeTime: '13:00' },
+    sunday: { isOpen: false },
+    holidays: [],
+    exceptionalClosure: [],
+    timezone: 'Europe/Paris',
+    lastUpdated: new Date()
   };
 };
 
 export const updateBusinessHours = async (hours: BusinessHours): Promise<void> => {
-  await updateDoc(doc(db, 'settings', 'business_hours'), hours);
+  const dataToUpdate = {
+    ...hours,
+    lastUpdated: Timestamp.now()
+  };
+  await updateDoc(doc(db, 'settings', 'business_hours'), dataToUpdate);
 };
 
 // ============= CASES (Dossiers) =============
