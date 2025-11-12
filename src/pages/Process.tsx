@@ -34,6 +34,14 @@ interface ProcessStep {
   order: number;
 }
 
+interface EnrichedProcessStep extends ProcessStep {
+  icon: LucideIcon;
+  number: string;
+  details: string[];
+  duration: string;
+  color: string;
+}
+
 // Map icon names to actual icon components
 const iconMap: { [key: string]: LucideIcon } = {
   Phone,
@@ -50,7 +58,7 @@ const iconMap: { [key: string]: LucideIcon } = {
   Sparkles
 };
 
-const processSteps = [
+const defaultProcessSteps: EnrichedProcessStep[] = [
   {
     icon: Phone,
     number: "01",
@@ -161,7 +169,7 @@ const guarantees = [
 ];
 
 export default function Process() {
-  const [processSteps, setProcessSteps] = useState<ProcessStep[]>([]);
+  const [dbProcessSteps, setDbProcessSteps] = useState<ProcessStep[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const { toast } = useToast();
 
@@ -174,7 +182,7 @@ export default function Process() {
     try {
       setIsLoading(true);
       const data = await getProcessSteps();
-      setProcessSteps(data as ProcessStep[]);
+      setDbProcessSteps(data as ProcessStep[]);
     } catch (error) {
       console.error('Error fetching process steps:', error);
       toast({
@@ -186,6 +194,33 @@ export default function Process() {
       setIsLoading(false);
     }
   };
+
+  // Enrichir les étapes de la base de données avec les icônes et couleurs
+  const enrichProcessSteps = (steps: ProcessStep[]): EnrichedProcessStep[] => {
+    const colors = [
+      "from-blue-500/10 to-blue-600/10",
+      "from-purple-500/10 to-purple-600/10",
+      "from-green-500/10 to-green-600/10",
+      "from-orange-500/10 to-orange-600/10",
+      "from-teal-500/10 to-teal-600/10",
+      "from-pink-500/10 to-pink-600/10"
+    ];
+    
+    const icons = [Phone, MessageSquare, FileText, Scale, CheckCircle, Users];
+    
+    return steps.map((step, index) => ({
+      ...step,
+      icon: icons[index % icons.length],
+      number: String(index + 1).padStart(2, '0'),
+      details: [], // Pas de détails depuis la DB pour l'instant
+      duration: "Variable",
+      color: colors[index % colors.length]
+    }));
+  };
+
+  const processSteps = dbProcessSteps.length > 0 
+    ? enrichProcessSteps(dbProcessSteps) 
+    : defaultProcessSteps;
 
   return (
     <div className="min-h-screen bg-background">
@@ -247,7 +282,7 @@ export default function Process() {
 
                   <div className="space-y-12">
                     {processSteps.map((step, index) => {
-                      const Icon = iconMap[step.icon] || Phone;
+                      const Icon = step.icon;
                       const isEven = index % 2 === 0;
                       
                       return (
@@ -306,24 +341,26 @@ export default function Process() {
                                   {step.description}
                                 </p>
 
-                                <div className="space-y-3">
-                                  <h4 className="font-semibold text-sm flex items-center gap-2">
-                                    <div className="h-1 w-8 bg-primary rounded"></div>
-                                    Points Clés
-                                  </h4>
-                                  <ul className="space-y-2">
-                                    {step.details.map((detail, i) => (
-                                      <li key={i} className="flex items-start gap-3 text-sm">
-                                        <div className="mt-1 flex-shrink-0">
-                                          <div className="h-5 w-5 rounded-full bg-primary/20 flex items-center justify-center">
-                                            <CheckCircle className="h-3 w-3 text-primary" />
+                                {step.details && step.details.length > 0 && (
+                                  <div className="space-y-3">
+                                    <h4 className="font-semibold text-sm flex items-center gap-2">
+                                      <div className="h-1 w-8 bg-primary rounded"></div>
+                                      Points Clés
+                                    </h4>
+                                    <ul className="space-y-2">
+                                      {step.details.map((detail, i) => (
+                                        <li key={i} className="flex items-start gap-3 text-sm">
+                                          <div className="mt-1 flex-shrink-0">
+                                            <div className="h-5 w-5 rounded-full bg-primary/20 flex items-center justify-center">
+                                              <CheckCircle className="h-3 w-3 text-primary" />
+                                            </div>
                                           </div>
-                                        </div>
-                                        <span className="text-muted-foreground flex-1">{detail}</span>
-                                      </li>
-                                    ))}
-                                  </ul>
-                                </div>
+                                          <span className="text-muted-foreground flex-1">{detail}</span>
+                                        </li>
+                                      ))}
+                                    </ul>
+                                  </div>
+                                )}
                               </Card>
                             </div>
                           </div>
