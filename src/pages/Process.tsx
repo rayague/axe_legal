@@ -170,28 +170,20 @@ const guarantees = [
 
 export default function Process() {
   const [dbProcessSteps, setDbProcessSteps] = useState<ProcessStep[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false); // Changé à false pour test
   const { toast } = useToast();
 
   useEffect(() => {
     fetchProcessSteps();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const fetchProcessSteps = async () => {
     try {
-      setIsLoading(true);
       const data = await getProcessSteps();
+      console.log('Données Firebase reçues:', data);
       setDbProcessSteps(data as ProcessStep[]);
     } catch (error) {
       console.error('Error fetching process steps:', error);
-      toast({
-        title: "Erreur",
-        description: "Impossible de charger les étapes du processus",
-        variant: "destructive",
-      });
-    } finally {
-      setIsLoading(false);
     }
   };
 
@@ -218,16 +210,10 @@ export default function Process() {
     }));
   };
 
-  // Utiliser les données de la DB si disponibles, sinon les données par défaut
-  const processSteps = dbProcessSteps.length > 0 
-    ? enrichProcessSteps(dbProcessSteps) 
-    : defaultProcessSteps;
+  // TOUJOURS utiliser les données par défaut pour l'instant
+  const processSteps = defaultProcessSteps;
 
-  console.log('Process Debug:', { 
-    dbStepsCount: dbProcessSteps.length, 
-    isLoading, 
-    processStepsCount: processSteps.length 
-  });
+  console.log('Process Page - Étapes à afficher:', processSteps.length);
 
   return (
     <div className="min-h-screen bg-background">
@@ -272,17 +258,11 @@ export default function Process() {
         <section className="py-20 bg-background">
           <div className="container mx-auto px-4">
             <div className="max-w-5xl mx-auto">
-              {isLoading ? (
-                <div className="text-center py-12">
-                  <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
-                  <p className="mt-4 text-muted-foreground">Chargement des étapes...</p>
-                </div>
-              ) : (
-                <div className="relative">
-                  {/* Timeline Line - Hidden on mobile */}
-                  <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary/50 via-primary/30 to-primary/10 transform -translate-x-1/2"></div>
+              <div className="relative">
+                {/* Timeline Line - Hidden on mobile */}
+                <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary/50 via-primary/30 to-primary/10 transform -translate-x-1/2"></div>
 
-                  <div className="space-y-12">
+                <div className="space-y-12">
                     {processSteps.map((step, index) => {
                       const Icon = step.icon;
                       const isEven = index % 2 === 0;
@@ -371,7 +351,6 @@ export default function Process() {
                     })}
                   </div>
                 </div>
-              )}
             </div>
           </div>
         </section>
