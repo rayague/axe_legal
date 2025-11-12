@@ -40,9 +40,13 @@ export default function ProcessManagementPage() {
 
   const fetchSteps = async () => {
     try {
+      console.log('🔍 Chargement des étapes du processus...');
       const data = await getProcessSteps();
+      console.log('✅ Données reçues:', data);
+      console.log('📊 Nombre d\'étapes:', data.length);
       setSteps(data as ProcessStep[]);
     } catch (error) {
+      console.error('❌ Erreur lors du chargement:', error);
       toast({
         title: 'Erreur',
         description: 'Impossible de charger les étapes',
@@ -61,6 +65,9 @@ export default function ProcessManagementPage() {
   const filteredSteps = steps.filter((step) =>
     step.title.toLowerCase().includes(searchQuery.toLowerCase())
   );
+
+  console.log('📋 Étapes totales:', steps.length);
+  console.log('🔎 Étapes filtrées:', filteredSteps.length);
 
   const handleCreate = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -145,31 +152,55 @@ export default function ProcessManagementPage() {
       </div>
 
       <div className="grid gap-4">
-        {filteredSteps.map((step) => (
-          <Card key={step.id} className="p-6">
-            <div className="flex items-start justify-between">
-              <div className="flex-1">
-                <div className="flex items-center gap-2 mb-2">
-                  <div className="w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold">
-                    {step.order}
-                  </div>
-                  <h3 className="font-bold text-lg">{step.title}</h3>
-                </div>
-                <p className="text-sm text-muted-foreground">{step.description}</p>
-              </div>
-              <div className="flex gap-2">
-                <Button variant="outline" size="sm" onClick={() => openEditDialog(step)}>
-                  <Edit className="h-3 w-3 mr-1" />
-                  Modifier
-                </Button>
-                <Button variant="outline" size="sm" onClick={() => handleDelete(step.id!)}>
-                  <Trash2 className="h-3 w-3 mr-1" />
-                  Supprimer
-                </Button>
-              </div>
+        {filteredSteps.length === 0 ? (
+          <Card className="p-12 text-center">
+            <div className="text-muted-foreground">
+              {searchQuery ? (
+                <>
+                  <Search className="h-12 w-12 mx-auto mb-4 opacity-50" />
+                  <p className="text-lg font-medium">Aucune étape trouvée</p>
+                  <p className="text-sm">Essayez un autre terme de recherche</p>
+                </>
+              ) : (
+                <>
+                  <Plus className="h-12 w-12 mx-auto mb-4 opacity-50" />
+                  <p className="text-lg font-medium">Aucune étape de processus</p>
+                  <p className="text-sm mb-4">Commencez par ajouter votre première étape</p>
+                  <Button onClick={() => setCreateDialogOpen(true)}>
+                    <Plus className="h-4 w-4 mr-2" />
+                    Ajouter une étape
+                  </Button>
+                </>
+              )}
             </div>
           </Card>
-        ))}
+        ) : (
+          filteredSteps.map((step) => (
+            <Card key={step.id} className="p-6">
+              <div className="flex items-start justify-between">
+                <div className="flex-1">
+                  <div className="flex items-center gap-2 mb-2">
+                    <div className="w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold">
+                      {step.order}
+                    </div>
+                    <h3 className="font-bold text-lg">{step.title}</h3>
+                  </div>
+                  <p className="text-sm text-muted-foreground">{step.description}</p>
+                </div>
+                <div className="flex gap-2">
+                  <Button variant="outline" size="sm" onClick={() => openEditDialog(step)}>
+                    <Edit className="h-3 w-3 mr-1" />
+                    Modifier
+                  </Button>
+                  <Button variant="outline" size="sm" onClick={() => handleDelete(step.id!)}>
+                    <Trash2 className="h-3 w-3 mr-1" />
+                    Supprimer
+                  </Button>
+                </div>
+              </div>
+            </Card>
+          ))
+        )}
       </div>
 
       {/* Create Dialog */}

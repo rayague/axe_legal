@@ -239,7 +239,7 @@ export const deleteTeamMember = async (id: string): Promise<void> => {
 // ============= PROCESS =============
 
 export const getProcessSteps = async (): Promise<ProcessStep[]> => {
-  const q = query(collection(db, 'process'), orderBy('order', 'asc'));
+  const q = query(collection(db, 'processes'), orderBy('order', 'asc'));
   const querySnapshot = await getDocs(q);
   return querySnapshot.docs.map(doc => ({
     id: doc.id,
@@ -248,7 +248,7 @@ export const getProcessSteps = async (): Promise<ProcessStep[]> => {
 };
 
 export const addProcessStep = async (step: Omit<ProcessStep, 'id'>): Promise<ProcessStep> => {
-  const docRef = await addDoc(collection(db, 'process'), {
+  const docRef = await addDoc(collection(db, 'processes'), {
     ...step,
     createdAt: Timestamp.now()
   });
@@ -257,11 +257,11 @@ export const addProcessStep = async (step: Omit<ProcessStep, 'id'>): Promise<Pro
 };
 
 export const updateProcessStep = async (id: string, step: Partial<ProcessStep>): Promise<void> => {
-  await updateDoc(doc(db, 'process', id), step);
+  await updateDoc(doc(db, 'processes', id), step);
 };
 
 export const deleteProcessStep = async (id: string): Promise<void> => {
-  await deleteDoc(doc(db, 'process', id));
+  await deleteDoc(doc(db, 'processes', id));
 };
 
 // ============= TESTIMONIALS =============
