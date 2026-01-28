@@ -35,8 +35,61 @@ const AdminLogin = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200 p-4">
-      <Card className="w-full max-w-md shadow-2xl">
+    <div className="min-h-screen relative overflow-hidden flex items-center justify-center p-4">
+      <div className="absolute inset-0 -z-10 bg-gradient-to-br from-background via-background to-muted" />
+      <div
+        className="absolute inset-0 -z-10 opacity-70"
+        style={{
+          backgroundImage:
+            "radial-gradient(1200px 700px at 10% 20%, hsl(var(--primary) / 0.16), transparent 40%), radial-gradient(900px 600px at 90% 80%, hsl(var(--accent) / 0.12), transparent 45%)",
+        }}
+      />
+      <div
+        className="absolute inset-0 -z-10 opacity-[0.35]"
+        style={{
+          backgroundImage:
+            "radial-gradient(circle at 1px 1px, rgba(0,0,0,0.08) 1px, transparent 0)",
+          backgroundSize: "44px 44px",
+        }}
+      />
+
+      <div className="absolute -z-10 inset-0 pointer-events-none">
+        <div
+          className="absolute rounded-full blur-3xl opacity-70 [animation:axe-float-1_12s_ease-in-out_infinite] motion-reduce:[animation:none]"
+          style={{
+            width: 520,
+            height: 520,
+            left: "-10%",
+            top: "-12%",
+            background:
+              "radial-gradient(circle at 30% 30%, hsl(var(--primary) / 0.55), hsl(var(--primary) / 0.18))",
+          }}
+        />
+        <div
+          className="absolute rounded-full blur-3xl opacity-70 [animation:axe-float-2_10s_ease-in-out_infinite] motion-reduce:[animation:none]"
+          style={{
+            width: 440,
+            height: 440,
+            right: "-8%",
+            top: "8%",
+            background:
+              "radial-gradient(circle at 70% 35%, hsl(var(--primary) / 0.35), hsl(var(--primary) / 0.14))",
+          }}
+        />
+        <div
+          className="absolute rounded-full blur-3xl opacity-65 [animation:axe-float-3_14s_ease-in-out_infinite] motion-reduce:[animation:none]"
+          style={{
+            width: 380,
+            height: 380,
+            left: "28%",
+            bottom: "-14%",
+            background:
+              "radial-gradient(circle at 60% 60%, hsl(var(--accent) / 0.30), hsl(var(--accent) / 0.12))",
+          }}
+        />
+      </div>
+
+      <Card className="w-full max-w-md shadow-2xl bg-white/80 backdrop-blur-md border-white/60">
         <CardHeader className="space-y-2 text-center">
           <div className="mx-auto w-16 h-16 bg-primary rounded-full flex items-center justify-center mb-4">
             <Scale className="h-8 w-8 text-white" />

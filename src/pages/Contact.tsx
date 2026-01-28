@@ -20,9 +20,9 @@ import {
 import { Link } from "react-router-dom";
 import PageHero from "@/components/PageHero";
 import contactHero from "@/assets/team-office.jpg";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useToast } from "@/hooks/use-toast";
-import { addMessage } from "@/lib/firebaseApi";
+import { addMessage, getBusinessHours, type BusinessHours, type DaySchedule } from "@/lib/firebaseApi";
 
 const Contact = () => {
   const { toast } = useToast();
@@ -34,6 +34,57 @@ const Contact = () => {
     message: ""
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const fallbackBusinessHours: BusinessHours = {
+    monday: { isOpen: true, openTime: '08:00', closeTime: '18:00' },
+    tuesday: { isOpen: true, openTime: '08:00', closeTime: '18:00' },
+    wednesday: { isOpen: true, openTime: '08:00', closeTime: '18:00' },
+    thursday: { isOpen: true, openTime: '08:00', closeTime: '18:00' },
+    friday: { isOpen: true, openTime: '08:00', closeTime: '18:00' },
+    saturday: { isOpen: true, openTime: '09:00', closeTime: '13:00' },
+    sunday: { isOpen: false },
+    holidays: [],
+    exceptionalClosure: [],
+    timezone: 'Europe/Paris',
+    lastUpdated: new Date(),
+  };
+
+  const [businessHours, setBusinessHours] = useState<BusinessHours>(fallbackBusinessHours);
+  const [isBusinessHoursLoading, setIsBusinessHoursLoading] = useState(true);
+
+  useEffect(() => {
+    let isMounted = true;
+
+    getBusinessHours()
+      .then((data) => {
+        if (!isMounted) return;
+        if (data) setBusinessHours(data);
+      })
+      .catch((error) => {
+        console.error("Erreur lors du chargement des horaires:", error);
+      })
+      .finally(() => {
+        if (!isMounted) return;
+        setIsBusinessHoursLoading(false);
+      });
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  const formatSchedule = (schedule: DaySchedule) => {
+    if (!schedule?.isOpen) return 'Fermé';
+
+    let text = `${schedule.openTime || ''} - ${schedule.closeTime || ''}`.trim();
+    if (schedule.breakStart && schedule.breakEnd) {
+      text += ` (pause ${schedule.breakStart} - ${schedule.breakEnd})`;
+    }
+    if (schedule.note) {
+      text += ` • ${schedule.note}`;
+    }
+    return text;
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -313,9 +364,33 @@ const Contact = () => {
                         <div className="flex-1">
                           <h3 className="font-semibold text-lg mb-2">Horaires d'Ouverture</h3>
                           <div className="space-y-1 text-muted-foreground text-sm">
-                            <p><span className="font-medium">Lun - Ven:</span> 08:00 - 18:00</p>
-                            <p><span className="font-medium">Samedi:</span> 09:00 - 13:00</p>
-                            <p><span className="font-medium">Dimanche:</span> Fermé</p>
+                            {isBusinessHoursLoading ? (
+                              <p>Chargement...</p>
+                            ) : (
+                              <>
+                                <p>
+                                  <span className="font-medium">Lundi:</span> {formatSchedule(businessHours.monday)}
+                                </p>
+                                <p>
+                                  <span className="font-medium">Mardi:</span> {formatSchedule(businessHours.tuesday)}
+                                </p>
+                                <p>
+                                  <span className="font-medium">Mercredi:</span> {formatSchedule(businessHours.wednesday)}
+                                </p>
+                                <p>
+                                  <span className="font-medium">Jeudi:</span> {formatSchedule(businessHours.thursday)}
+                                </p>
+                                <p>
+                                  <span className="font-medium">Vendredi:</span> {formatSchedule(businessHours.friday)}
+                                </p>
+                                <p>
+                                  <span className="font-medium">Samedi:</span> {formatSchedule(businessHours.saturday)}
+                                </p>
+                                <p>
+                                  <span className="font-medium">Dimanche:</span> {formatSchedule(businessHours.sunday)}
+                                </p>
+                              </>
+                            )}
                           </div>
                         </div>
                       </div>
