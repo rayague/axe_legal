@@ -122,6 +122,159 @@ const LegalTech = () => {
           large
         />
 
+        {/* Annonce de lancement LegalTech */}
+        <section className="py-20 bg-gradient-to-b from-background via-primary/5 to-background" id="announcement">
+          <div className="container mx-auto px-4">
+            <div className="max-w-4xl mx-auto">
+              {/* Badge d'annonce */}
+              <div className="text-center mb-8 animate-pulse">
+                <Badge className="text-lg px-6 py-2 bg-gradient-to-r from-primary to-primary/80 text-white border-none shadow-lg">
+                  <Scale className="h-5 w-5 mr-2" />
+                  Nouveauté 2026
+                </Badge>
+              </div>
+
+              {/* Titre principal */}
+              <div className="text-center space-y-6 mb-12">
+                <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
+                  <span className="bg-gradient-to-r from-primary via-primary/90 to-primary/80 bg-clip-text text-transparent">
+                    AXE LEGAL
+                  </span>
+                  <br />
+                  <span className="text-foreground">
+                    se lance dans le
+                  </span>
+                  <br />
+                  <span className="text-yellow-400">
+                    Legal Tech
+                  </span>
+                </h2>
+                
+                <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
+                  Nous préparons pour vous une plateforme révolutionnaire qui transformera 
+                  la manière dont vous accédez aux services juridiques.
+                </p>
+              </div>
+
+              {/* Card principale avec informations */}
+              <Card className="border-2 border-primary/20 shadow-2xl overflow-hidden">
+                <div className="bg-gradient-to-br from-primary/10 via-primary/5 to-transparent p-8 md:p-12">
+                  <CardHeader className="p-0 mb-8">
+                    <div className="flex items-center justify-center mb-6">
+                      <div className="h-20 w-20 rounded-full bg-primary/20 flex items-center justify-center animate-bounce">
+                        <Scale className="h-10 w-10 text-primary" />
+                      </div>
+                    </div>
+                    <CardTitle className="text-3xl md:text-4xl text-center mb-4">
+                      Bientôt Disponible
+                    </CardTitle>
+                    <CardDescription className="text-center text-lg">
+                      Notre assistant juridique intelligent arrive prochainement
+                    </CardDescription>
+                  </CardHeader>
+                  
+                  <CardContent className="p-0 space-y-8">
+                    {/* Ce que vous pourrez faire */}
+                    <div className="space-y-4">
+                      <h3 className="text-2xl font-semibold text-center mb-6">
+                        Ce que vous pourrez faire :
+                      </h3>
+                      
+                      <div className="grid md:grid-cols-2 gap-4">
+                        <div className="flex items-start gap-3 p-4 rounded-lg bg-background/50 backdrop-blur-sm border border-primary/10">
+                          <CheckCircle className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
+                          <div>
+                            <p className="font-semibold mb-1">Simulateur de démarches</p>
+                            <p className="text-sm text-muted-foreground">
+                              Découvrez les étapes juridiques adaptées à votre situation
+                            </p>
+                          </div>
+                        </div>
+                        
+                        <div className="flex items-start gap-3 p-4 rounded-lg bg-background/50 backdrop-blur-sm border border-primary/10">
+                          <CheckCircle className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
+                          <div>
+                            <p className="font-semibold mb-1">Guidance personnalisée</p>
+                            <p className="text-sm text-muted-foreground">
+                              Obtenez des recommandations sur mesure pour vos besoins
+                            </p>
+                          </div>
+                        </div>
+                        
+                        <div className="flex items-start gap-3 p-4 rounded-lg bg-background/50 backdrop-blur-sm border border-primary/10">
+                          <CheckCircle className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
+                          <div>
+                            <p className="font-semibold mb-1">Documents intelligents</p>
+                            <p className="text-sm text-muted-foreground">
+                              Préparez automatiquement vos dossiers juridiques
+                            </p>
+                          </div>
+                        </div>
+                        
+                        <div className="flex items-start gap-3 p-4 rounded-lg bg-background/50 backdrop-blur-sm border border-primary/10">
+                          <CheckCircle className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
+                          <div>
+                            <p className="font-semibold mb-1">Suivi en temps réel</p>
+                            <p className="text-sm text-muted-foreground">
+                              Suivez l'avancement de vos procédures juridiques
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Alerte informative */}
+                    <Alert className="border-primary/50 bg-primary/5">
+                      <Info className="h-5 w-5 text-primary" />
+                      <AlertDescription>
+                        <p className="font-semibold mb-2">Restez informé du lancement</p>
+                        <p className="text-sm">
+                          Notre plateforme Legal Tech est en phase finale de développement. 
+                          Nous mettons tout en œuvre pour vous offrir une expérience exceptionnelle 
+                          alliant technologie et expertise juridique.
+                        </p>
+                      </AlertDescription>
+                    </Alert>
+
+                    {/* Call-to-actions */}
+                    <div className="text-center space-y-4 pt-4">
+                      <p className="text-muted-foreground mb-4">
+                        En attendant, notre équipe d'avocats reste à votre entière disposition
+                      </p>
+                      <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                        <Button size="lg" className="shadow-lg" asChild>
+                          <Link to="/consultation">
+                            <Phone className="mr-2 h-5 w-5" />
+                            Prendre rendez-vous
+                          </Link>
+                        </Button>
+                        <Button size="lg" variant="outline" className="shadow-lg" asChild>
+                          <Link to="/contact">
+                            <Mail className="mr-2 h-5 w-5" />
+                            Nous contacter
+                          </Link>
+                        </Button>
+                      </div>
+                    </div>
+                  </CardContent>
+                </div>
+              </Card>
+
+              {/* Message de confiance */}
+              <div className="mt-12 text-center">
+                <p className="text-lg text-muted-foreground italic">
+                  "L'innovation au service de la justice, l'expertise au service de vos droits"
+                </p>
+                <p className="text-sm text-muted-foreground mt-2">
+                  — L'équipe AXE LEGAL
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* CONTENU EXISTANT MIS EN COMMENTAIRE - SERA RÉACTIVÉ LORS DU LANCEMENT */}
+        {/* 
         {!showGuidance && (
           <section className="py-16 bg-gradient-to-b from-background to-primary/5" id="simulation">
             <div className="container mx-auto px-4">
@@ -412,6 +565,7 @@ const LegalTech = () => {
             </div>
           </section>
         )}
+        */}
       </main>
       <Footer />
     </div>

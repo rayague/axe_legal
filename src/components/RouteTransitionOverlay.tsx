@@ -57,9 +57,10 @@ export default function RouteTransitionOverlay({ durationMs, phase }: Props) {
       const ctx = spriteCanvas.getContext("2d");
       if (ctx) {
         const gradient = ctx.createRadialGradient(32, 32, 0, 32, 32, 32);
-        gradient.addColorStop(0, "rgba(255,255,255,1)");
-        gradient.addColorStop(0.25, "rgba(255,239,200,0.95)");
-        gradient.addColorStop(0.6, "rgba(212,175,55,0.35)");
+        // Couleurs bleues de la charte graphique
+        gradient.addColorStop(0, "rgba(59,130,246,1)"); // Bleu clair
+        gradient.addColorStop(0.25, "rgba(37,99,235,0.95)"); // Bleu moyen
+        gradient.addColorStop(0.6, "rgba(29,78,216,0.35)"); // Bleu foncé
         gradient.addColorStop(1, "rgba(0,0,0,0)");
         ctx.fillStyle = gradient;
         ctx.fillRect(0, 0, 64, 64);
@@ -102,7 +103,7 @@ export default function RouteTransitionOverlay({ durationMs, phase }: Props) {
           twinkleSpeed[i] = opts.twinkleSpeedMin + Math.random() * (opts.twinkleSpeedMax - opts.twinkleSpeedMin);
 
           const mix = Math.random() * opts.whiteMixMax;
-          const c = gold.clone().lerp(soft, mix);
+          const c = primaryBlue.clone().lerp(lightBlue, mix);
           colors[i * 3 + 0] = c.r;
           colors[i * 3 + 1] = c.g;
           colors[i * 3 + 2] = c.b;
@@ -134,8 +135,9 @@ export default function RouteTransitionOverlay({ durationMs, phase }: Props) {
         return { count, geometry, material, points, colors, theta, phi, baseRadius, twinklePhase, twinkleSpeed };
       };
 
-      const gold = new THREE.Color(0xd4af37);
-      const soft = new THREE.Color(0xfff2cc);
+      // Couleurs bleues de la charte graphique (HSL: 217 91% 40% et 217 91% 50%)
+      const primaryBlue = new THREE.Color(0x1d4ed8); // Bleu principal
+      const lightBlue = new THREE.Color(0x3b82f6); // Bleu clair
 
       const core = makeStarLayer({
         count: 1600,
@@ -160,7 +162,7 @@ export default function RouteTransitionOverlay({ durationMs, phase }: Props) {
       });
 
       const ringGeom = new THREE.TorusGeometry(2.35, 0.02, 10, 280);
-      const ringMat = new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.12 });
+      const ringMat = new THREE.MeshBasicMaterial({ color: 0x3b82f6, transparent: true, opacity: 0.12 });
       const ring = new THREE.Mesh(ringGeom, ringMat);
       ring.rotation.x = Math.PI / 2.35;
       scene.add(ring);
@@ -283,23 +285,75 @@ export default function RouteTransitionOverlay({ durationMs, phase }: Props) {
 
   return (
     <div className={`fixed inset-0 z-[9999] pointer-events-auto ${fadeClass}`} aria-hidden>
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-slate-950 to-slate-900" />
-      <div className="absolute inset-0" style={{ backgroundImage: "radial-gradient(circle at 30% 20%, rgba(212,175,55,0.18), transparent 55%), radial-gradient(circle at 70% 80%, rgba(255,255,255,0.08), transparent 60%)" }} />
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950" />
+      <div 
+        className="absolute inset-0 opacity-20" 
+        style={{ 
+          backgroundImage: `
+            radial-gradient(circle at 30% 20%, hsl(217 91% 40% / 0.18), transparent 55%), 
+            radial-gradient(circle at 70% 80%, hsl(217 91% 50% / 0.12), transparent 60%),
+            radial-gradient(circle at 50% 50%, hsl(217 91% 40% / 0.08), transparent 70%)
+          ` 
+        }} 
+      />
 
       <div ref={containerRef} className="absolute inset-0" />
 
       <div className="absolute inset-0 flex items-center justify-center">
-        <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md px-6 py-4 text-center shadow-2xl">
-          <div className="text-sm tracking-[0.25em] uppercase text-white/70">Axe Legal</div>
-          <div className="mt-1 text-lg font-semibold text-white">Chargement</div>
-          <div className="mt-2 h-[2px] w-56 overflow-hidden rounded bg-white/10">
-            <div
-              className="h-full bg-gradient-to-r from-yellow-200/80 via-yellow-400/70 to-yellow-200/80"
-              style={{ width: `${progress}%`, transition: `width ${durationMs}ms linear` }}
-            />
+        <div className="relative">
+          {/* Effet de glow bleu derrière */}
+          <div className="absolute inset-0 -m-4 bg-primary/10 rounded-3xl blur-2xl" />
+          
+          {/* Card principale */}
+          <div className="relative rounded-2xl border border-white/10 bg-slate-900/80 backdrop-blur-xl px-8 py-6 text-center shadow-2xl">
+            <div className="text-xs tracking-[0.3em] uppercase text-white/50 mb-2">Axe Legal</div>
+            <div className="text-xl font-bold text-primary-light">
+              Chargement
+            </div>
+            
+            <div className="mt-4 h-[3px] w-64 overflow-hidden rounded-full bg-white/5 relative">
+              <div
+                className="h-full bg-gradient-to-r from-primary via-primary-light to-primary relative"
+                style={{ 
+                  width: `${progress}%`, 
+                  transition: `width ${durationMs}ms cubic-bezier(0.4, 0, 0.2, 1)`,
+                  backgroundSize: '200% 100%',
+                }}
+              >
+                {/* Effet brillant qui se déplace */}
+                <div 
+                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/50 to-transparent animate-shimmer"
+                />
+              </div>
+            </div>
+            
+            {/* Points de chargement */}
+            <div className="flex justify-center space-x-1.5 mt-4">
+              {[0, 1, 2].map((i) => (
+                <div
+                  key={i}
+                  className="w-1.5 h-1.5 bg-primary-light/70 rounded-full animate-bounce"
+                  style={{
+                    animationDelay: `${i * 0.15}s`,
+                    animationDuration: '1s'
+                  }}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </div>
+      
+      {/* Animation CSS pour l'effet shimmer */}
+      <style>{`
+        @keyframes shimmer {
+          0% { transform: translateX(-100%); }
+          100% { transform: translateX(100%); }
+        }
+        .animate-shimmer {
+          animation: shimmer 2s ease-in-out infinite;
+        }
+      `}</style>
     </div>
   );
 }

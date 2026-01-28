@@ -9,62 +9,67 @@ type Props = {
 
 export default function RouteTransitionManager({ children, durationMs = 3000 }: Props) {
   const location = useLocation();
-  const [visible, setVisible] = useState(false);
+  const [visible, setVisible] = useState(true); // Commence visible pour le chargement initial
   const [phase, setPhase] = useState<"enter" | "exit">("enter");
   const timeoutRef = useRef<number | null>(null);
   const exitTimeoutRef = useRef<number | null>(null);
   const scrollStateRef = useRef<{ overflow: string; paddingRight: string } | null>(null);
+  const isFirstRender = useRef(true); // Pour détecter le premier rendu
 
   useEffect(() => {
-    if (timeoutRef.current) window.clearTimeout(timeoutRef.current);
-    if (exitTimeoutRef.current) window.clearTimeout(exitTimeoutRef.current);
+    // Gérer le chargement initial uniquement
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      
+      const body = document.body;
+      const prev = {
+        overflow: body.style.overflow,
+        paddingRight: body.style.paddingRight,
+      };
+      scrollStateRef.current = prev;
 
-    const body = document.body;
-    const prev = {
-      overflow: body.style.overflow,
-      paddingRight: body.style.paddingRight,
-    };
-    scrollStateRef.current = prev;
+      const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+      body.style.overflow = "hidden";
+      if (scrollbarWidth > 0) {
+        body.style.paddingRight = `${scrollbarWidth}px`;
+      }
 
-    const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
-    body.style.overflow = "hidden";
-    if (scrollbarWidth > 0) {
-      body.style.paddingRight = `${scrollbarWidth}px`;
+      setVisible(true);
+      setPhase("enter");
+
+      const fadeOutMs = 250;
+      const safeDuration = Math.max(durationMs, fadeOutMs);
+      const exitAt = Math.max(0, safeDuration - fadeOutMs);
+
+      exitTimeoutRef.current = window.setTimeout(() => {
+        setPhase("exit");
+      }, exitAt);
+
+      timeoutRef.current = window.setTimeout(() => {
+        setVisible(false);
+
+        const saved = scrollStateRef.current;
+        if (saved) {
+          body.style.overflow = saved.overflow;
+          body.style.paddingRight = saved.paddingRight;
+          scrollStateRef.current = null;
+        }
+      }, safeDuration);
+
+      return () => {
+        if (timeoutRef.current) window.clearTimeout(timeoutRef.current);
+        if (exitTimeoutRef.current) window.clearTimeout(exitTimeoutRef.current);
+
+        const saved = scrollStateRef.current;
+        if (saved) {
+          body.style.overflow = saved.overflow;
+          body.style.paddingRight = saved.paddingRight;
+          scrollStateRef.current = null;
+        }
+      };
     }
-
-    setVisible(true);
-    setPhase("enter");
-
-    const fadeOutMs = 250;
-    const safeDuration = Math.max(durationMs, fadeOutMs);
-    const exitAt = Math.max(0, safeDuration - fadeOutMs);
-
-    exitTimeoutRef.current = window.setTimeout(() => {
-      setPhase("exit");
-    }, exitAt);
-
-    timeoutRef.current = window.setTimeout(() => {
-      setVisible(false);
-
-      const saved = scrollStateRef.current;
-      if (saved) {
-        body.style.overflow = saved.overflow;
-        body.style.paddingRight = saved.paddingRight;
-        scrollStateRef.current = null;
-      }
-    }, safeDuration);
-
-    return () => {
-      if (timeoutRef.current) window.clearTimeout(timeoutRef.current);
-      if (exitTimeoutRef.current) window.clearTimeout(exitTimeoutRef.current);
-
-      const saved = scrollStateRef.current;
-      if (saved) {
-        body.style.overflow = saved.overflow;
-        body.style.paddingRight = saved.paddingRight;
-        scrollStateRef.current = null;
-      }
-    };
+    
+    // Ne rien faire pour les transitions de routes (navigation fluide)
   }, [location.key, durationMs]);
 
   return (
