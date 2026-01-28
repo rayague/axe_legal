@@ -398,11 +398,12 @@ export default function Consultation() {
                 <h3 className="text-xl font-bold mb-6 text-center">Ou contactez-nous directement</h3>
                 <div className="grid sm:grid-cols-2 gap-4">
                   <Button variant="outline" size="lg" className="gap-2 h-14 group border-2" asChild>
-                    <a href="tel:+22901977475">
+                    <a href="tel:+229019774759
+3">
                       <Phone className="h-5 w-5 text-primary" />
                       <div className="text-left">
                         <div className="text-xs text-muted-foreground">Appelez-nous</div>
-                        <div className="font-semibold group-hover:text-primary transition-colors">+229 01 97 74 75</div>
+                        <div className="font-semibold group-hover:text-primary transition-colors">+229 01 97 74 75 93</div>
                       </div>
                     </a>
                   </Button>

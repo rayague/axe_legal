@@ -137,7 +137,8 @@ const Contact = () => {
           )}
           subtitle={"Notre équipe d'experts est à votre disposition pour répondre à vos questions et vous accompagner dans vos démarches juridiques. Première consultation offerte."}
           ctaText="Appeler maintenant"
-          ctaLink="tel:+22901977475"
+          ctaLink="tel:+229019774759
+3"
           imageSrc={contactHero}
           large
         />
@@ -301,10 +302,11 @@ const Contact = () => {
                         <div className="flex-1">
                           <h3 className="font-semibold text-lg mb-2">Téléphone</h3>
                           <a 
-                            href="tel:+22901977475" 
+                            href="tel:+229019774759
+3" 
                             className="text-muted-foreground hover:text-primary transition-colors text-lg font-medium"
                           >
-                            +229 01 97 74 75
+                            +229 01 97 74 75 93
                           </a>
                           <p className="text-sm text-muted-foreground mt-1">
                             Du lundi au vendredi, 8h - 18h
@@ -408,7 +410,8 @@ const Contact = () => {
                           contactez-nous directement par téléphone.
                         </p>
                         <Button variant="outline" className="w-full" asChild>
-                          <a href="tel:+22901977475">
+                          <a href="tel:+229019774759
+3">
                             <Phone className="h-4 w-4 mr-2" />
                             Appeler Maintenant
                           </a>

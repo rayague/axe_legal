@@ -237,7 +237,8 @@ export const Header = () => {
             })}
 
             <div className="pt-4 border-t border-border mt-4">
-              <a href="tel:+22901977475" className="flex items-center gap-3 px-4 py-3 rounded-md hover:bg-secondary/40">
+              <a href="tel:+229019774759
+3" className="flex items-center gap-3 px-4 py-3 rounded-md hover:bg-secondary/40">
                 <Phone className="h-5 w-5 text-primary" />
                 <span>Appelez-nous</span>
               </a>
