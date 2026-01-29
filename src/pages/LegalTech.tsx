@@ -115,7 +115,7 @@ const LegalTech = () => {
               Juridiques
             </>
           )}
-          subtitle={"Découvrez les démarches juridiques adaptées à votre situation en quelques clics. Notre système vous guide étape par étape dans la résolution de vos problèmes légaux."}
+          subtitle={"Nos solutions numériques. Les outils juridiques automatisés qui vous font avancer et gagner du temps."}
           ctaText="Commencer la simulation"
           ctaLink="#simulation"
           imageSrc={heroLegal}
@@ -137,22 +137,14 @@ const LegalTech = () => {
               {/* Titre principal */}
               <div className="text-center space-y-6 mb-12">
                 <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-                  <span className="bg-gradient-to-r from-primary via-primary/90 to-primary/80 bg-clip-text text-transparent">
-                    AXE LEGAL
-                  </span>
-                  <br />
-                  <span className="text-foreground">
-                    se lance dans le
-                  </span>
-                  <br />
                   <span className="text-yellow-400">
-                    Legal Tech
+                    la LegalTech
                   </span>
                 </h2>
                 
                 <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-                  Nous préparons pour vous une plateforme révolutionnaire qui transformera 
-                  la manière dont vous accédez aux services juridiques.
+                  Une plateforme qui vous offre des solutions pour réaliser de façon automatisée 
+                  des travaux en droit et fiscalité des affaires.
                 </p>
               </div>
 
