@@ -17,8 +17,11 @@ export default function RouteTransitionManager({ children, durationMs = 3000 }: 
   const isFirstRender = useRef(true); // Pour détecter le premier rendu
 
   useEffect(() => {
-    // Gérer le chargement initial uniquement
-    if (isFirstRender.current) {
+    // Désactiver l'animation pour les pages admin/login
+    const isAdminLoginPage = location.pathname === '/admin/login' || location.pathname === '/login';
+    
+    // Gérer le chargement initial uniquement si ce n'est pas la page de login
+    if (isFirstRender.current && !isAdminLoginPage) {
       isFirstRender.current = false;
       
       const body = document.body;
@@ -67,6 +70,10 @@ export default function RouteTransitionManager({ children, durationMs = 3000 }: 
           scrollStateRef.current = null;
         }
       };
+    } else if (isFirstRender.current && isAdminLoginPage) {
+      // Pour la page de login, on désactive immédiatement l'animation
+      isFirstRender.current = false;
+      setVisible(false);
     }
     
     // Ne rien faire pour les transitions de routes (navigation fluide)
