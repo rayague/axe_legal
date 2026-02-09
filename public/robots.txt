@@ -12,3 +12,6 @@ Allow: /
 
 User-agent: *
 Allow: /
+
+# Sitemap pour découvrir toutes les pages du site
+Sitemap: https://www.axe-legal.bj/sitemap.xml

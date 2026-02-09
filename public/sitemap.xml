@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+  <!-- Page d'accueil - Priorité maximale -->
+  <url>
+    <loc>https://www.axe-legal.bj/</loc>
+    <lastmod>2025-02-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  
+  <!-- Services juridiques - Priorité haute -->
+  <url>
+    <loc>https://www.axe-legal.bj/services</loc>
+    <lastmod>2025-02-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Équipe de juristes - Priorité haute -->
+  <url>
+    <loc>https://www.axe-legal.bj/team</loc>
+    <lastmod>2025-02-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Contact - Priorité haute -->
+  <url>
+    <loc>https://www.axe-legal.bj/contact</loc>
+    <lastmod>2025-02-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Consultation gratuite - Priorité moyenne -->
+  <url>
+    <loc>https://www.axe-legal.bj/consultation</loc>
+    <lastmod>2025-02-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Témoignages clients - Priorité moyenne -->
+  <url>
+    <loc>https://www.axe-legal.bj/testimonials</loc>
+    <lastmod>2025-02-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Processus juridique - Priorité moyenne -->
+  <url>
+    <loc>https://www.axe-legal.bj/process</loc>
+    <lastmod>2025-02-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Outils LegalTech - Priorité moyenne -->
+  <url>
+    <loc>https://www.axe-legal.bj/legaltech</loc>
+    <lastmod>2025-02-09</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Mentions légales - Priorité basse -->
+  <url>
+    <loc>https://www.axe-legal.bj/mentions-legales</loc>
+    <lastmod>2025-02-09</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  
+  <!-- Politique de confidentialité - Priorité basse -->
+  <url>
+    <loc>https://www.axe-legal.bj/confidentialite</loc>
+    <lastmod>2025-02-09</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  
+  <!-- Page 404 personnalisée - Non indexée mais présente pour cohérence -->
+  <url>
+    <loc>https://www.axe-legal.bj/404</loc>
+    <lastmod>2025-02-09</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.1</priority>
+  </url>
+</urlset>
