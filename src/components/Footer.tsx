@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { Scale, Phone, Mail, MapPin, Facebook, Linkedin, CheckCircle, Briefcase, FileText, Users } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 
 // Small inner component to render the logo image if available,
 // otherwise fall back to the brand icon. Keeps a tiny local state
@@ -20,8 +22,6 @@ function Logo() {
     <Scale className="h-5 w-5 text-primary" aria-hidden />
   );
 }
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -61,15 +61,6 @@ export const Footer = () => {
                 <span>La Cellule de Traitement de l'Information Financière</span>
               </li>
             </ul>
-
-            <div className="flex gap-3 mt-6">
-              <a href="#" aria-label="Facebook" className="inline-flex items-center justify-center h-10 w-10 rounded-md bg-slate-800 hover:bg-primary transition-colors">
-                <Facebook className="h-5 w-5 text-slate-100" aria-hidden />
-              </a>
-              <a href="#" aria-label="LinkedIn" className="inline-flex items-center justify-center h-10 w-10 rounded-md bg-slate-800 hover:bg-primary transition-colors">
-                <Linkedin className="h-5 w-5 text-slate-100" aria-hidden />
-              </a>
-            </div>
           </div>
 
           {/* Column 2: Nos Prestations + Informations Légales */}
@@ -111,7 +102,7 @@ export const Footer = () => {
           </div>
 
           {/* Column 3: Contact */}
-          <div>
+          <div className="flex flex-col h-full">
             <h3 className="font-bold text-lg mb-4 text-white">Contact</h3>
             <div className="text-slate-200 text-sm space-y-4">
               <div>
@@ -145,6 +136,27 @@ export const Footer = () => {
                   Voir sur Google Maps
                 </a>
               </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="pb-12">
+          <div className="flex justify-center">
+            <div className="flex gap-3">
+              <a
+                href="#"
+                aria-label="Facebook"
+                className="inline-flex items-center justify-center h-11 w-11 rounded-full bg-[#1877F2] hover:bg-[#166FE5] transition-colors"
+              >
+                <Facebook className="h-5 w-5 text-white" aria-hidden />
+              </a>
+              <a
+                href="#"
+                aria-label="LinkedIn"
+                className="inline-flex items-center justify-center h-11 w-11 rounded-full bg-[#0A66C2] hover:bg-[#004182] transition-colors"
+              >
+                <Linkedin className="h-5 w-5 text-white" aria-hidden />
+              </a>
             </div>
           </div>
         </div>
