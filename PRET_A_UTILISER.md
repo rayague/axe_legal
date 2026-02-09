@@ -70,7 +70,7 @@ https://console.firebase.google.com/project/axe-legal-f91cd/firestore/data
 Une fois connecté à l'admin, ajoutez:
 
 1. **Services** (4-5 services juridiques)
-2. **Équipe** (vos avocats)
+2. **Équipe** (vos juristes)
 3. **Témoignages** (avis clients)
 4. **Annonces** (nouveautés)
 

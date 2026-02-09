@@ -48,7 +48,7 @@ export const TeamSection = () => {
           <p className="text-accent font-semibold mb-2">Notre Équipe</p>
           <h2 className="text-3xl lg:text-4xl font-bold">Experts Juridiques de Renom</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto mt-3">
-            Une équipe pluridisciplinaire d'avocats expérimentés, reconnus pour leur expertise et
+            Une équipe pluridisciplinaire de professionnels du droit, reconnus pour leur expertise et
             leur engagement envers l'excellence juridique.
           </p>
         </div>

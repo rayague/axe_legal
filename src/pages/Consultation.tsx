@@ -159,7 +159,7 @@ export default function Consultation() {
                     Experts Dédiés
                   </h3>
                   <p className="text-muted-foreground leading-relaxed">
-                    Rencontrez un avocat spécialisé dans votre domaine pour des conseils adaptés
+                    Rencontrez un conseiller juridique spécialisé dans votre domaine pour des conseils adaptés
                   </p>
                 </Card>
               </div>

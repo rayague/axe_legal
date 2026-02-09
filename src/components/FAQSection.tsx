@@ -14,10 +14,10 @@ export const FAQSection = () => {
       question: "Quels documents dois-je préparer pour ma première consultation ?",
       answer: "Pour optimiser notre rencontre, apportez tous les documents liés à votre affaire : contrats, courriers, preuves, jugements antérieurs, pièces d'identité, etc. Si vous n'avez pas tous les documents, ne vous inquiétez pas, nous vous guiderons."
     },
-    {
-      question: "Combien de temps dure une procédure juridique ?",
-      answer: "La durée varie selon la complexité de l'affaire. Une procédure simple peut prendre 3 à 6 mois, tandis qu'un litige complexe peut s'étendre sur 12 à 24 mois. Nous vous tiendrons informé à chaque étape."
-    },
+    // {
+    //   question: "Combien de temps dure une procédure juridique ?",
+    //   answer: "La durée varie selon la complexité de l'affaire. Une procédure simple peut prendre 3 à 6 mois, tandis qu'un litige complexe peut s'étendre sur 12 à 24 mois. Nous vous tiendrons informé à chaque étape."
+    // },
     {
       question: "Proposez-vous des facilités de paiement ?",
       answer: "Oui, nous comprenons que les frais juridiques peuvent représenter un investissement. Nous proposons des plans de paiement flexibles et des forfaits adaptés à votre budget. Contactez-nous pour discuter des options."

@@ -40,7 +40,7 @@ export const Footer = () => {
               <Logo />
               <h3 className="text-xl font-bold text-white">AXE LEGAL</h3>
             </div>
-            <p className="text-slate-200 mt-4">Cabinet d'affaires spécialisé dans l'accompagnement juridique des entreprises et particuliers au Bénin.</p>
+            <p className="text-slate-200 mt-4">Cabinet de conseils juridiques et d'assistance fiscale.</p>
 
             <h4 className="font-semibold mt-6 text-white">Composition de l'équipe :</h4>
             <ul className="mt-3 space-y-3 text-slate-200 text-sm">

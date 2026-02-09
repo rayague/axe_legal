@@ -111,7 +111,7 @@ Voir les guides détaillés :
 ### Partie publique
 - ✅ Page d'accueil avec hero section
 - ✅ Présentation des services juridiques
-- ✅ Équipe d'avocats
+- ✅ Équipe de juristes
 - ✅ Processus de travail
 - ✅ Témoignages clients
 - ✅ **Simulateur juridique LegalTech** (9 catégories)

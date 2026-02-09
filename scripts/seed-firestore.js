@@ -55,21 +55,21 @@ const seedData = {
     },
     {
       name: "Me. Marie KOSSOU",
-      role: "Avocate Associée - Droit Immobilier",
+      role: "Juriste Associée - Droit Immobilier",
       bio: "Spécialiste en droit immobilier avec une expertise reconnue en transactions complexes et contentieux.",
       image: "/assets/images/team-legal.jpg",
       createdAt: Timestamp.now()
     },
     {
       name: "Me. Serge HOUNKANRIN",
-      role: "Avocat - Droit du Travail",
-      bio: "Expert en droit social et relations collectives du travail. Formé à l'École des Avocats de Paris.",
+      role: "Juriste - Droit du Travail",
+      bio: "Expert en droit social et relations collectives du travail. Formé en droit à Paris.",
       image: "/assets/images/team-fiscal.jpg",
       createdAt: Timestamp.now()
     },
     {
       name: "Me. Claudine AGOSSOU",
-      role: "Avocate - Droit Fiscal",
+      role: "Juriste - Droit Fiscal",
       bio: "Spécialiste en fiscalité d'entreprise et contentieux fiscal. Master 2 Droit Fiscal - Université de Bordeaux.",
       image: "/assets/images/team-finance.jpg",
       createdAt: Timestamp.now()

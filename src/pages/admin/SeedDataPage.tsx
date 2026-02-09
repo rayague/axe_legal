@@ -45,9 +45,9 @@ export default function SeedDataPage() {
 
       // Équipe
       const team = [
-        { name: 'Me Jean Dupont', role: 'Avocat Senior', bio: '15 ans d\'expérience en droit des affaires', image: 'https://ui-avatars.com/api/?name=Jean+Dupont&size=200&background=1e40af&color=fff', createdAt: Timestamp.now() },
-        { name: 'Me Sophie Martin', role: 'Avocate Fiscaliste', bio: 'Experte en fiscalité d\'entreprise', image: 'https://ui-avatars.com/api/?name=Sophie+Martin&size=200&background=7c3aed&color=fff', createdAt: Timestamp.now() },
-        { name: 'Me Pierre Kouassi', role: 'Avocat Immobilier', bio: 'Spécialiste en droit foncier', image: 'https://ui-avatars.com/api/?name=Pierre+Kouassi&size=200&background=ea580c&color=fff', createdAt: Timestamp.now() }
+        { name: 'Me Jean Dupont', role: 'Juriste Senior', bio: '15 ans d\'expérience en droit des affaires', image: 'https://ui-avatars.com/api/?name=Jean+Dupont&size=200&background=1e40af&color=fff', createdAt: Timestamp.now() },
+        { name: 'Me Sophie Martin', role: 'Juriste Fiscaliste', bio: 'Experte en fiscalité d\'entreprise', image: 'https://ui-avatars.com/api/?name=Sophie+Martin&size=200&background=7c3aed&color=fff', createdAt: Timestamp.now() },
+        { name: 'Me Pierre Kouassi', role: 'Juriste Immobilier', bio: 'Spécialiste en droit foncier', image: 'https://ui-avatars.com/api/?name=Pierre+Kouassi&size=200&background=ea580c&color=fff', createdAt: Timestamp.now() }
       ];
 
       for (const member of team) {

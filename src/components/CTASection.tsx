@@ -52,7 +52,11 @@ export const CTASection = () => {
               <Phone className="h-6 w-6" />
               <div className="text-left">
                 <p className="text-sm text-white/70">Appelez-nous</p>
-                <p className="font-semibold text-lg">+229 XX XX XX XX</p>
+                <div className="font-semibold text-lg leading-snug">
+                  <div>+229 01 97 74 75 93</div>
+                  <div>+229 01 65 65 68 25</div>
+                  <div>+229 01 40 66 69 38</div>
+                </div>
               </div>
             </div>
             

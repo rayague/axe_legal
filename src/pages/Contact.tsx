@@ -137,13 +137,13 @@ const Contact = () => {
           )}
           subtitle={"Notre équipe d'experts est à votre disposition pour répondre à vos questions et vous accompagner dans vos démarches juridiques. Première consultation offerte."}
           ctaText="Appeler maintenant"
-          ctaLink="tel:+229019774759
-3"
+          ctaLink="tel:+2290197747593"
           imageSrc={contactHero}
           large
         />
 
         {/* Quick Contact Stats */}
+        {/*
         <section className="py-12 bg-gradient-to-b from-background to-primary/5">
           <div className="container mx-auto px-4">
             <div className="max-w-5xl mx-auto">
@@ -175,6 +175,7 @@ const Contact = () => {
             </div>
           </div>
         </section>
+        */}
 
         {/* Main Contact Section */}
         <section className="py-16 bg-background">
@@ -301,13 +302,26 @@ const Contact = () => {
                         </div>
                         <div className="flex-1">
                           <h3 className="font-semibold text-lg mb-2">Téléphone</h3>
-                          <a 
-                            href="tel:+229019774759
-3" 
-                            className="text-muted-foreground hover:text-primary transition-colors text-lg font-medium"
-                          >
-                            +229 01 97 74 75 93
-                          </a>
+                          <div className="space-y-1">
+                            <a
+                              href="tel:+2290197747593"
+                              className="block text-muted-foreground hover:text-primary transition-colors text-lg font-medium"
+                            >
+                              +229 01 97 74 75 93
+                            </a>
+                            <a
+                              href="tel:+2290165656825"
+                              className="block text-muted-foreground hover:text-primary transition-colors text-lg font-medium"
+                            >
+                              +229 01 65 65 68 25
+                            </a>
+                            <a
+                              href="tel:+2290140666938"
+                              className="block text-muted-foreground hover:text-primary transition-colors text-lg font-medium"
+                            >
+                              +229 01 40 66 69 38
+                            </a>
+                          </div>
                           <p className="text-sm text-muted-foreground mt-1">
                             Du lundi au vendredi, 8h - 18h
                           </p>
@@ -347,7 +361,7 @@ const Contact = () => {
                         <div className="flex-1">
                           <h3 className="font-semibold text-lg mb-2">Adresse</h3>
                           <p className="text-muted-foreground">
-                            Cotonou, Bénin
+                            Godomey échangeur, en direction Calavi-Cotonou, côté opposé à la mosquée.
                           </p>
                           <p className="text-sm text-muted-foreground mt-1">
                             Sur rendez-vous uniquement
@@ -400,6 +414,7 @@ const Contact = () => {
                   </div>
 
                   {/* Emergency Contact */}
+                  {/*
                   <Card className="p-6 bg-gradient-to-br from-primary/10 to-primary/5 border-2 border-primary/20">
                     <div className="flex items-start gap-3 mb-3">
                       <Calendar className="h-5 w-5 text-primary mt-1" />
@@ -410,8 +425,7 @@ const Contact = () => {
                           contactez-nous directement par téléphone.
                         </p>
                         <Button variant="outline" className="w-full" asChild>
-                          <a href="tel:+229019774759
-3">
+                          <a href="tel:+2290197747593">
                             <Phone className="h-4 w-4 mr-2" />
                             Appeler Maintenant
                           </a>
@@ -419,55 +433,8 @@ const Contact = () => {
                       </div>
                     </div>
                   </Card>
+                  */}
                 </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Why Contact Us Section */}
-        <section className="py-16 bg-gradient-to-br from-primary/5 via-background to-primary/10">
-          <div className="container mx-auto px-4">
-            <div className="max-w-4xl mx-auto text-center">
-              <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                Pourquoi Nous <span className="text-primary">Contacter</span> ?
-              </h2>
-              <p className="text-muted-foreground mb-12">
-                Nous sommes là pour vous accompagner dans toutes vos démarches juridiques
-              </p>
-
-              <div className="grid md:grid-cols-2 gap-6">
-                <Card className="p-6 text-left border-2 hover:border-primary/50 transition-all">
-                  <CheckCircle className="h-8 w-8 text-primary mb-4" />
-                  <h3 className="font-bold text-lg mb-2">Consultation Gratuite</h3>
-                  <p className="text-muted-foreground text-sm">
-                    Bénéficiez d'une première consultation sans frais pour évaluer votre situation
-                  </p>
-                </Card>
-
-                <Card className="p-6 text-left border-2 hover:border-primary/50 transition-all">
-                  <CheckCircle className="h-8 w-8 text-primary mb-4" />
-                  <h3 className="font-bold text-lg mb-2">Expertise Complète</h3>
-                  <p className="text-muted-foreground text-sm">
-                    Accédez à une équipe pluridisciplinaire couvrant tous les domaines du droit
-                  </p>
-                </Card>
-
-                <Card className="p-6 text-left border-2 hover:border-primary/50 transition-all">
-                  <CheckCircle className="h-8 w-8 text-primary mb-4" />
-                  <h3 className="font-bold text-lg mb-2">Accompagnement Personnalisé</h3>
-                  <p className="text-muted-foreground text-sm">
-                    Solutions sur mesure adaptées à votre situation spécifique
-                  </p>
-                </Card>
-
-                <Card className="p-6 text-left border-2 hover:border-primary/50 transition-all">
-                  <CheckCircle className="h-8 w-8 text-primary mb-4" />
-                  <h3 className="font-bold text-lg mb-2">Confidentialité Garantie</h3>
-                  <p className="text-muted-foreground text-sm">
-                    Protection totale de vos informations et respect du secret professionnel
-                  </p>
-                </Card>
               </div>
             </div>
           </div>

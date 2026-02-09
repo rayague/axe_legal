@@ -128,7 +128,7 @@ export default function Testimonials() {
                     <div>
                       <h3 className="font-bold text-lg mb-2">Expertise Reconnue</h3>
                       <p className="text-muted-foreground text-sm">
-                        Une équipe d'avocats hautement qualifiés avec une expertise pointue dans chaque domaine du droit
+                        Une équipe de juristes hautement qualifiés avec une expertise pointue dans chaque domaine du droit
                       </p>
                     </div>
                   </div>

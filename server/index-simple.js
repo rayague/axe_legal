@@ -269,7 +269,7 @@ function createDefaultTeamMembers() {
     {
       id: 1,
       name: "Me. Alexandre KOFFI",
-      role: "Avocat Associé",
+      role: "Juriste Associé",
       title: "Expert en Droit des Affaires et Fiscalité",
       bio: "Diplômé de l'Université Paris 1 Panthéon-Sorbonne, Me. Alexandre KOFFI possède plus de 15 ans d'expérience en droit des affaires et fiscalité. Il accompagne les entreprises dans leurs opérations complexes de restructuration, fusion-acquisition et optimisation fiscale.",
       specialties: ["Droit des affaires", "Droit fiscal", "Fusions-acquisitions"],
@@ -287,7 +287,7 @@ function createDefaultTeamMembers() {
       order: 1,
       languages: ["Français", "Anglais", "Allemand"],
       certifications: [
-        "Avocat inscrit au Barreau de Cotonou",
+        "Professionnel du droit inscrit au Barreau de Cotonou",
         "Médiateur certifié en droit commercial"
       ],
       achievements: [
@@ -300,13 +300,13 @@ function createDefaultTeamMembers() {
     {
       id: 2,
       name: "Me. Fatou DIALLO",
-      role: "Avocat Associé",
+      role: "Juriste Associée",
       title: "Spécialiste en Droit Immobilier et Foncier",
       bio: "Me. Fatou DIALLO est une référence en droit immobilier et foncier avec une expertise particulière dans la sécurisation des titres fonciers et le contentieux immobilier. Elle a traité plus de 200 dossiers de purge de titres fonciers.",
       specialties: ["Droit immobilier", "Droit administratif", "Contentieux"],
       education: [
         "Master 2 Droit Immobilier - Université de Bordeaux",
-        "CAPA - École des Avocats du Grand Ouest",
+        "CAPA - École de formation juridique du Grand Ouest",
         "Formation en Droit Foncier Béninois - Université d'Abomey-Calavi"
       ],
       experience: "12 ans d'expérience en droit immobilier et foncier. Spécialisée dans les transactions immobilières complexes et le contentieux foncier.",
@@ -318,7 +318,7 @@ function createDefaultTeamMembers() {
       order: 2,
       languages: ["Français", "Anglais"],
       certifications: [
-        "Avocat inscrit au Barreau de Cotonou",
+        "Professionnel du droit inscrit au Barreau de Cotonou",
         "Expert en évaluation immobilière"
       ],
       achievements: [
@@ -331,13 +331,13 @@ function createDefaultTeamMembers() {
     {
       id: 3,
       name: "Me. Moussa TRAORE",
-      role: "Avocat Senior",
+      role: "Juriste Senior",
       title: "Expert en Droit du Travail et Relations Sociales",
       bio: "Spécialisé en droit du travail et relations sociales, Me. Moussa TRAORE conseille aussi bien les entreprises que les salariés dans la gestion de leurs relations professionnelles et la résolution des conflits sociaux.",
       specialties: ["Droit du travail", "Droit de la famille", "Contentieux"],
       education: [
         "Master 2 Droit Social - Université Lyon 2",
-        "CAPA - École des Avocats de Lyon",
+        "CAPA - École de formation juridique de Lyon",
         "Diplôme en Gestion des Ressources Humaines"
       ],
       experience: "10 ans d'expérience en droit social et conseil RH. Intervient régulièrement en formation auprès des DRH.",
@@ -349,7 +349,7 @@ function createDefaultTeamMembers() {
       order: 3,
       languages: ["Français", "Anglais"],
       certifications: [
-        "Avocat inscrit au Barreau de Cotonou",
+        "Professionnel du droit inscrit au Barreau de Cotonou",
         "Formateur certifié en droit du travail"
       ],
       achievements: [
@@ -362,13 +362,13 @@ function createDefaultTeamMembers() {
     {
       id: 4,
       name: "Me. Sophie MENSAH",
-      role: "Avocat",
+      role: "Juriste",
       title: "Spécialiste en Contentieux et Recouvrement",
       bio: "Me. Sophie MENSAH est spécialisée dans le contentieux civil et commercial ainsi que le recouvrement de créances. Son approche stratégique et sa ténacité font d'elle une redoutable plaidante.",
       specialties: ["Contentieux", "Droit commercial", "Arbitrage"],
       education: [
         "Master 2 Droit Processuel - Université de Nantes",
-        "CAPA - École des Avocats de l'Ouest",
+        "CAPA - École de formation juridique de l'Ouest",
         "Formation en Arbitrage Commercial International"
       ],
       experience: "8 ans d'expérience en contentieux et recouvrement. Taux de réussite de 85% dans les dossiers de recouvrement.",
@@ -380,7 +380,7 @@ function createDefaultTeamMembers() {
       order: 4,
       languages: ["Français", "Anglais", "Espagnol"],
       certifications: [
-        "Avocat inscrit au Barreau de Cotonou",
+        "Professionnel du droit inscrit au Barreau de Cotonou",
         "Arbitre accrédité à la CCJA"
       ],
       achievements: [
@@ -619,7 +619,7 @@ function createDefaultAnnouncements() {
       id: '1',
       title: 'Consultation Juridique Offerte',
       description: 'Profitez d\'une consultation gratuite de 30 minutes pour analyser votre situation juridique',
-      content: 'Nous offrons actuellement une consultation juridique gratuite de 30 minutes pour tous les nouveaux clients. Un de nos avocats expérimentés analysera votre situation et vous conseillera sur les meilleures options qui s\'offrent à vous. Cette offre est valable pour tous les domaines du droit.',
+      content: 'Nous offrons actuellement une consultation juridique gratuite de 30 minutes pour tous les nouveaux clients. Un de nos professionnels du droit expérimentés analysera votre situation et vous conseillera sur les meilleures options qui s\'offrent à vous. Cette offre est valable pour tous les domaines du droit.',
       type: 'promotion',
       icon: 'Gift',
       color: 'from-blue-500 to-blue-600',

@@ -60,28 +60,28 @@ export async function seedFirestoreData() {
     const team = [
       {
         name: 'Me Jean Dupont',
-        role: 'Avocat Senior - Droit des Affaires',
+        role: 'Juriste Senior - Droit des Affaires',
         bio: 'Plus de 15 ans d\'expérience en droit des affaires et fiscalité. Spécialisé dans les fusions-acquisitions.',
         image: 'https://ui-avatars.com/api/?name=Jean+Dupont&size=200&background=1e40af&color=fff',
         createdAt: Timestamp.now()
       },
       {
         name: 'Me Sophie Martin',
-        role: 'Avocate - Droit Fiscal',
+        role: 'Juriste - Droit Fiscal',
         bio: 'Experte en fiscalité des entreprises et optimisation fiscale. Diplômée HEC Paris.',
         image: 'https://ui-avatars.com/api/?name=Sophie+Martin&size=200&background=7c3aed&color=fff',
         createdAt: Timestamp.now()
       },
       {
         name: 'Me Pierre Kouassi',
-        role: 'Avocat - Droit Immobilier',
+        role: 'Juriste - Droit Immobilier',
         bio: 'Spécialiste en transactions immobilières et droit foncier depuis 10 ans.',
         image: 'https://ui-avatars.com/api/?name=Pierre+Kouassi&size=200&background=ea580c&color=fff',
         createdAt: Timestamp.now()
       },
       {
         name: 'Me Marie Diallo',
-        role: 'Avocate - Droit du Travail',
+        role: 'Juriste - Droit du Travail',
         bio: 'Défense des droits des salariés et conseil aux entreprises en droit social.',
         image: 'https://ui-avatars.com/api/?name=Marie+Diallo&size=200&background=059669&color=fff',
         createdAt: Timestamp.now()

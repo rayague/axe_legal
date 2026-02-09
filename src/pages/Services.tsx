@@ -95,7 +95,7 @@ const Services = () => {
                   <ul className="space-y-2 text-sm text-muted-foreground">
                     <li className="flex items-start gap-2">
                       <ArrowRight className="h-4 w-4 text-primary mt-0.5 shrink-0" />
-                      <span>Une équipe d'avocats expérimentés et spécialisés</span>
+                      <span>Une équipe composée de professionnels expérimentés et spécialisés</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <ArrowRight className="h-4 w-4 text-primary mt-0.5 shrink-0" />

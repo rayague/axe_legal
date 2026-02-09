@@ -11,7 +11,7 @@ export const AboutSection = () => {
           </div>
           <h2 className="text-3xl md:text-4xl font-display font-bold">Excellence et Innovation Juridique</h2>
           <p>
-            Fondé en 2020, Axe Legal s'est imposé comme l'un des cabinets d'avocats les plus respectés
+            Fondé en 2020, Axe Legal s'est imposé comme l'un des cabinets de conseil juridique les plus respectés
             du Bénin. Notre mission est de fournir des solutions juridiques innovantes et sur mesure
             à nos clients, qu'ils soient entrepreneurs, entreprises ou particuliers.
           </p>

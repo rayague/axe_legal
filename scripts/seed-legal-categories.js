@@ -26,7 +26,7 @@ const legalCategories = [
     steps: [
       {
         title: "1. Consultation juridique initiale",
-        description: "Rencontrez un avocat spécialisé en droit de la famille pour évaluer votre situation (régime matrimonial, biens, enfants)."
+        description: "Rencontrez un professionnel du droit spécialisé en droit de la famille pour évaluer votre situation (régime matrimonial, biens, enfants)."
       },
       {
         title: "2. Tentative de conciliation",
@@ -38,7 +38,7 @@ const legalCategories = [
       },
       {
         title: "4. Dépôt de la requête",
-        description: "Votre avocat dépose une requête en divorce auprès du tribunal compétent avec toutes les pièces justificatives."
+        description: "Un professionnel du droit dépose une requête en divorce auprès du tribunal compétent avec toutes les pièces justificatives."
       },
       {
         title: "5. Négociation des modalités",
@@ -173,7 +173,7 @@ const legalCategories = [
     steps: [
       {
         title: "1. Consultation préalable",
-        description: "Rencontrez un avocat spécialisé en droit du travail pour évaluer la situation et vos droits."
+        description: "Rencontrez un professionnel du droit spécialisé en droit du travail pour évaluer la situation et vos droits."
       },
       {
         title: "2. Mise en demeure",
@@ -206,7 +206,7 @@ const legalCategories = [
       "Certificat de travail"
     ],
     timeline: "3 à 12 mois selon la complexité",
-    cost: "Honoraires d'avocat + frais de procédure",
+    cost: "Honoraires de conseil juridique + frais de procédure",
     warning: "Respectez les délais de prescription pour agir en justice (généralement 2 ans).",
     isActive: true
   },
@@ -222,7 +222,7 @@ const legalCategories = [
     steps: [
       {
         title: "1. Analyse du contrat",
-        description: "Examen approfondi du contrat litigieux par un avocat spécialisé pour identifier les clauses problématiques."
+        description: "Examen approfondi du contrat litigieux par un professionnel du droit pour identifier les clauses problématiques."
       },
       {
         title: "2. Tentative de règlement amiable",
@@ -255,7 +255,7 @@ const legalCategories = [
       "Témoignages"
     ],
     timeline: "4 à 18 mois selon la complexité",
-    cost: "Honoraires d'avocat + frais de justice",
+    cost: "Honoraires de conseil juridique + frais de justice",
     warning: "Vérifiez les clauses de résolution et les juridictions compétentes dans votre contrat.",
     isActive: true
   },
@@ -353,8 +353,8 @@ const legalCategories = [
       "Expertises médicales"
     ],
     timeline: "6 mois à 3 ans selon la gravité et les négociations",
-    cost: "Honoraires d'avocat (souvent au résultat) + frais d'expertise",
-    warning: "Ne signez aucune transaction avec l'assurance sans l'avis d'un avocat.",
+    cost: "Honoraires de conseil juridique (souvent au résultat) + frais d'expertise",
+    warning: "Ne signez aucune transaction avec l'assurance sans l'avis d'un professionnel du droit.",
     isActive: true
   },
   {
@@ -402,7 +402,7 @@ const legalCategories = [
       "Attestations d'assurance"
     ],
     timeline: "6 mois à 2 ans selon la gravité",
-    cost: "Expertise + honoraires d'avocat",
+    cost: "Expertise + honoraires de conseil juridique",
     warning: "Les garanties ont des délais : parfait achèvement (1 an), biennale (2 ans), décennale (10 ans).",
     isActive: true
   },
@@ -451,7 +451,7 @@ const legalCategories = [
       "Mise en demeure"
     ],
     timeline: "2 à 12 mois selon la réactivité du débiteur",
-    cost: "Frais d'huissier + honoraires d'avocat (souvent au résultat)",
+    cost: "Frais d'huissier + honoraires de conseil juridique (souvent au résultat)",
     warning: "La prescription est de 5 ans pour les créances commerciales.",
     isActive: true
   }

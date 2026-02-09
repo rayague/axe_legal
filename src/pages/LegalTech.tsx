@@ -186,7 +186,7 @@ const LegalTech = () => {
                         <div className="flex items-start gap-3 p-4 rounded-lg bg-background/50 backdrop-blur-sm border border-primary/10">
                           <CheckCircle className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
                           <div>
-                            <p className="font-semibold mb-1">Guidance personnalisée</p>
+                            <p className="font-semibold mb-1">Accompagnement personnalisé</p>
                             <p className="text-sm text-muted-foreground">
                               Obtenez des recommandations sur mesure pour vos besoins
                             </p>
@@ -208,7 +208,7 @@ const LegalTech = () => {
                           <div>
                             <p className="font-semibold mb-1">Suivi en temps réel</p>
                             <p className="text-sm text-muted-foreground">
-                              Suivez l'avancement de vos procédures juridiques
+                              Vos dossiers sont rigoureusement suivis
                             </p>
                           </div>
                         </div>
@@ -231,7 +231,7 @@ const LegalTech = () => {
                     {/* Call-to-actions */}
                     <div className="text-center space-y-4 pt-4">
                       <p className="text-muted-foreground mb-4">
-                        En attendant, notre équipe d'avocats reste à votre entière disposition
+                        En attendant, notre équipe reste à votre entière disposition
                       </p>
                       <div className="flex flex-col sm:flex-row gap-4 justify-center">
                         <Button size="lg" className="shadow-lg" asChild>
@@ -484,14 +484,14 @@ const LegalTech = () => {
                       <div className="h-2 w-2 rounded-full bg-primary mt-2"></div>
                       <p className="text-sm">
                         <strong>Consultez un professionnel :</strong> Cette simulation est informative. Chaque situation est unique 
-                        et mérite une analyse personnalisée par un avocat spécialisé.
+                        et mérite une analyse personnalisée par un professionnel du droit.
                       </p>
                     </div>
                     <div className="flex items-start gap-3">
                       <div className="h-2 w-2 rounded-full bg-primary mt-2"></div>
                       <p className="text-sm">
                         <strong>Préparez votre dossier :</strong> Rassemblez tous les documents avant votre première consultation 
-                        pour gagner du temps et faciliter le travail de votre avocat.
+                        pour gagner du temps et faciliter l'analyse de votre dossier.
                       </p>
                     </div>
                   </CardContent>
@@ -503,7 +503,7 @@ const LegalTech = () => {
                       Besoin d'un Accompagnement Personnalisé ?
                     </h3>
                     <p className="text-white/90 max-w-2xl mx-auto">
-                      Notre équipe d'avocats spécialisés est à votre disposition pour vous accompagner 
+                      Notre équipe de juristes spécialisés est à votre disposition pour vous accompagner 
                       dans toutes vos démarches juridiques. Prenez rendez-vous dès maintenant pour une 
                       consultation adaptée à votre situation.
                     </p>
@@ -537,7 +537,7 @@ const LegalTech = () => {
                 </h3>
                 <p className="text-lg text-muted-foreground mb-8">
                   Notre simulateur vous offre un aperçu des démarches juridiques nécessaires. 
-                  Pour un accompagnement complet et personnalisé, notre équipe d'avocats est à votre disposition.
+                  Pour un accompagnement complet et personnalisé, notre équipe de juristes est à votre disposition.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Button size="lg" asChild>
