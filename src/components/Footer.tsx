@@ -1,8 +1,6 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { Scale, Phone, Mail, MapPin, Facebook, Linkedin, CheckCircle, Briefcase, FileText, Users } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 
 // Small inner component to render the logo image if available,
 // otherwise fall back to the brand icon. Keeps a tiny local state
