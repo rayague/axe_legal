@@ -82,7 +82,7 @@ export default function Testimonials() {
                     <ThumbsUp className="h-7 w-7 text-primary" />
                   </div>
                   <div className="text-4xl font-extrabold text-primary mb-2">
-                    <AnimatedCounter value={98} suffix="%" />
+                    <AnimatedCounter value={95} suffix="%" />
                   </div>
                   <div className="text-sm text-muted-foreground font-medium">Recommandations</div>
                 </Card>

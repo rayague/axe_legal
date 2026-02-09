@@ -236,7 +236,7 @@ export default function Team() {
               
               <div className="text-center animate-scale-in bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20" style={{ animationDelay: "200ms" }}>
                 <div className="text-5xl font-extrabold text-white mb-2">
-                  <AnimatedCounter value={98} suffix="%" />
+                  <AnimatedCounter value={95} suffix="%" />
                 </div>
                 <div className="text-white/90 font-medium">Taux de Réussite</div>
                 <p className="text-white/70 text-sm mt-2">Satisfaction garantie</p>
@@ -290,7 +290,7 @@ export default function Team() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-20 bg-gradient-to-br from-primary/10 via-background to-primary/5">
+        {/* <section className="py-20 bg-gradient-to-br from-primary/10 via-background to-primary/5">
           <div className="container mx-auto px-4">
             <Card className="max-w-4xl mx-auto p-8 md:p-12 text-center border-2 border-primary/20 shadow-xl">
               <div className="space-y-6">
@@ -329,7 +329,7 @@ export default function Team() {
               </div>
             </Card>
           </div>
-        </section>
+        </section> */}
       </main>
 
       <Footer />
