@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Link } from "react-router-dom";
 import { useEffect, useRef } from "react";
-import { Phone, ArrowRight, Building2, Award, ShieldCheck, Lightbulb } from "lucide-react";
+import { Phone, ArrowRight, Building2, Award, ShieldCheck, Lightbulb, Globe2 } from "lucide-react";
 import TypedText from "@/components/TypedText";
 import Carousel from "@/components/Carousel";
 import heroImage from "@/assets/hero-legal.jpg";
@@ -76,6 +76,18 @@ export const HeroSection = () => {
                 juridiques efficaces, une expertise solide et un service hautement
                 professionnel depuis 2020.
               </p>
+
+              <div className="w-full rounded-xl border border-primary/20 bg-primary/5 px-4 py-3">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                  <div className="flex items-center gap-2 text-primary font-semibold">
+                    <Globe2 className="h-5 w-5" />
+                    <span>Service disponible en anglais</span>
+                  </div>
+                  <div className="text-sm text-muted-foreground">
+                    English available for consultations & legal support
+                  </div>
+                </div>
+              </div>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-4">

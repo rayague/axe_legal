@@ -4,7 +4,7 @@ import { ServicesSection } from "@/components/ServicesSection";
 import PageHero from "@/components/PageHero";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { ArrowRight, Phone, Mail } from "lucide-react";
+import { ArrowRight, Phone, Mail, Globe2 } from "lucide-react";
 import servicesHero from "@/assets/business-law.jpg";
 
 const Services = () => {
@@ -28,6 +28,19 @@ const Services = () => {
 
         <section className="py-24 bg-background" id="services">
           <div className="container mx-auto px-4">
+            <div className="mb-10">
+              <div className="w-full rounded-xl border border-primary/20 bg-primary/5 px-4 py-3">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                  <div className="flex items-center gap-2 text-primary font-semibold">
+                    <Globe2 className="h-5 w-5" />
+                    <span>Service disponible en anglais</span>
+                  </div>
+                  <div className="text-sm text-muted-foreground">
+                    English available for consultations & legal support
+                  </div>
+                </div>
+              </div>
+            </div>
             <ServicesSection />
           </div>
         </section>

@@ -134,27 +134,27 @@ export const Footer = () => {
                   Voir sur Google Maps
                 </a>
               </div>
-            </div>
-          </div>
-        </div>
 
-        <div className="pb-12">
-          <div className="flex justify-center">
-            <div className="flex gap-3">
-              <a
-                href="#"
-                aria-label="Facebook"
-                className="inline-flex items-center justify-center h-11 w-11 rounded-full bg-[#1877F2] hover:bg-[#166FE5] transition-colors"
-              >
-                <Facebook className="h-5 w-5 text-white" aria-hidden />
-              </a>
-              <a
-                href="#"
-                aria-label="LinkedIn"
-                className="inline-flex items-center justify-center h-11 w-11 rounded-full bg-[#0A66C2] hover:bg-[#004182] transition-colors"
-              >
-                <Linkedin className="h-5 w-5 text-white" aria-hidden />
-              </a>
+              <div className="flex gap-3 pt-1">
+                <a
+                  href="https://www.facebook.com/profile.php?id=100092728800155"
+                  aria-label="Facebook"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center justify-center h-9 w-9 rounded-full bg-[#1877F2] hover:bg-[#166FE5] transition-colors"
+                >
+                  <Facebook className="h-4 w-4 text-white" aria-hidden />
+                </a>
+                <a
+                  href="https://www.linkedin.com/in/axe-legal-0134991b2"
+                  aria-label="LinkedIn"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="inline-flex items-center justify-center h-9 w-9 rounded-full bg-[#0A66C2] hover:bg-[#004182] transition-colors"
+                >
+                  <Linkedin className="h-4 w-4 text-white" aria-hidden />
+                </a>
+              </div>
             </div>
           </div>
         </div>
