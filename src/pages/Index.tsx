@@ -13,12 +13,33 @@ import WhyChooseUsSection from "@/components/WhyChooseUsSection";
 import FAQSection from "@/components/FAQSection";
 import CTASection from "@/components/CTASection";
 import { useTranslation } from "react-i18next";
+import { Helmet } from "react-helmet-async";
 
 const Index = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   return (
     <div className="min-h-screen">
+      <Helmet>
+        <html lang={i18n.language} />
+        <title>
+          {i18n.language === 'en' 
+            ? 'Axe Legal - Premier Legal Advisory Firm in Benin'
+            : 'Axe Legal - Cabinet de Conseil Juridique d\'Excellence au Bénin'
+          }
+        </title>
+        <meta name="description" content={
+          i18n.language === 'en'
+            ? 'Leading legal advisory firm in Benin. Expertise in business law, taxation, real estate and personalized legal support since 2008.'
+            : 'Cabinet de conseil juridique de référence au Bénin. Expertise en droit des affaires, fiscalité, immobilier et accompagnement juridique personnalisé depuis 2008.'
+        } />
+        <meta name="keywords" content={
+          i18n.language === 'en'
+            ? 'legal advisory Benin, law firm, business law, taxation, real estate law, Cotonou, legal experts Benin'
+            : 'conseil juridique Bénin, cabinet d\'avocats, droit des affaires, fiscalité, droit immobilier, Cotonou, juristes Bénin'
+        } />
+        <meta name="author" content="Axe Legal" />
+      </Helmet>
       <Header />
       <main>
         <HeroSection />
