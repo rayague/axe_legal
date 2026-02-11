@@ -1,15 +1,32 @@
 import { useState } from 'react';
-import { collection, addDoc, getDocs, deleteDoc, doc, Timestamp } from 'firebase/firestore';
+import { collection, addDoc, getDocs, deleteDoc, doc, setDoc, Timestamp } from 'firebase/firestore';
 import { db } from '@/lib/firebase';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Database, Trash2, RefreshCw, Check } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import { migrateLocalizedContent } from '@/migrateLocalizedContent';
 
 export default function SeedDataPage() {
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
   const [stats, setStats] = useState({ services: 0, team: 0, testimonials: 0, processes: 0, announcements: 0 });
+
+  const migrateI18n = async () => {
+    setLoading(true);
+    try {
+      const summary = await migrateLocalizedContent();
+      toast({
+        title: 'Succès',
+        description: `Migration i18n terminée (services: ${summary.services?.updated ?? 0}, team: ${summary.team?.updated ?? 0}, testimonials: ${summary.testimonials?.updated ?? 0}, processes: ${summary.processes?.updated ?? 0}, announcements: ${summary.announcements?.updated ?? 0}, legalCategories: ${summary.legalCategories?.updated ?? 0})`,
+      });
+    } catch (error) {
+      toast({ title: 'Erreur', description: 'Impossible de migrer les contenus i18n', variant: 'destructive' });
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const checkData = async () => {
     try {
@@ -42,6 +59,26 @@ export default function SeedDataPage() {
       for (const service of services) {
         await addDoc(collection(db, 'services'), service);
       }
+
+      await setDoc(doc(db, 'services', 'droit-de-la-famille-successions'), {
+        title: 'Droit de la Famille & Successions',
+        slug: 'droit-de-la-famille-successions',
+        icon: 'Heart',
+        category: 'Droit de la famille',
+        shortDescription: 'Accompagnement juridique personnalisé pour la protection des personnes, des biens et des liens familiaux, dans le respect du droit béninois.',
+        description: 'Accompagnement juridique personnalisé pour la protection des personnes, des biens et des liens familiaux, dans le respect du droit béninois.',
+        features: [
+          'Conseil et assistance en matière de mariage (régimes matrimoniaux, droits et obligations des époux)',
+          'Divorce et séparation : accompagnement juridique et conseil à la protection des intérêts des parties',
+          'Successions : assistance à l’ouverture, l’organisation et le règlement successoral',
+          'Assistance dans les démarches administratives et judiciaires liées au droit de la famille'
+        ],
+        benefits: [],
+        pricing: 'Sur devis',
+        duration: 'Variable selon le dossier',
+        order: 50,
+        createdAt: Timestamp.now()
+      }, { merge: true });
 
       // Équipe
       const team = [
@@ -182,6 +219,10 @@ export default function SeedDataPage() {
             <Button onClick={seedData} disabled={loading}>
               <Database className="mr-2 h-4 w-4" />
               {loading ? 'Ajout en cours...' : 'Ajouter Données de Test'}
+            </Button>
+            <Button onClick={migrateI18n} variant="secondary" disabled={loading}>
+              <Check className="mr-2 h-4 w-4" />
+              Migrer i18n (FR→EN)
             </Button>
             <Button onClick={clearAll} variant="destructive" disabled={loading}>
               <Trash2 className="mr-2 h-4 w-4" />

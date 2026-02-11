@@ -4,6 +4,8 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Star, Quote, User } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { getTestimonials } from "@/lib/firebaseApi";
+import { pickLocalizedString, getCurrentLang } from "@/lib/i18nFields";
+import { useTranslation } from "react-i18next";
 
 interface Testimonial {
   id?: string;
@@ -18,6 +20,9 @@ export const TestimonialsSection = () => {
   const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const { toast } = useToast();
+  const { t, i18n } = useTranslation();
+
+  const currentLang = getCurrentLang(i18n);
 
   useEffect(() => {
     fetchTestimonials();
@@ -32,8 +37,8 @@ export const TestimonialsSection = () => {
     } catch (error) {
       console.error('Error fetching testimonials:', error);
       toast({
-        title: "Erreur",
-        description: "Impossible de charger les témoignages",
+        title: t("testimonials_section.toast_error_title", { defaultValue: "Erreur" }),
+        description: t("testimonials_section.toast_error_desc", { defaultValue: "Impossible de charger les témoignages" }),
         variant: "destructive",
       });
     } finally {
@@ -55,22 +60,23 @@ export const TestimonialsSection = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Témoignages <span className="text-primary">Authentiques</span>
+            {t("testimonials_section.title_prefix", { defaultValue: "Témoignages" })}{" "}
+            <span className="text-primary">{t("testimonials_section.title_highlight", { defaultValue: "Authentiques" })}</span>
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Découvrez ce que nos clients disent de notre accompagnement juridique
+            {t("testimonials_section.subtitle", { defaultValue: "Découvrez ce que nos clients disent de notre accompagnement juridique" })}
           </p>
         </div>
 
         {isLoading ? (
           <div className="text-center py-12">
             <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
-            <p className="mt-4 text-muted-foreground">Chargement des témoignages...</p>
+            <p className="mt-4 text-muted-foreground">{t("testimonials_section.loading", { defaultValue: "Chargement des témoignages..." })}</p>
           </div>
         ) : testimonials.length === 0 ? (
           <div className="text-center py-12">
             <Quote className="h-16 w-16 text-muted-foreground mx-auto mb-4" />
-            <p className="text-muted-foreground">Aucun témoignage disponible pour le moment.</p>
+            <p className="text-muted-foreground">{t("testimonials_section.empty", { defaultValue: "Aucun témoignage disponible pour le moment." })}</p>
           </div>
         ) : (
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
@@ -96,7 +102,7 @@ export const TestimonialsSection = () => {
 
                   {/* Content */}
                   <p className="text-muted-foreground leading-relaxed text-base min-h-[100px]">
-                    "{item.content}"
+                    "{pickLocalizedString(item.content, currentLang)}"
                   </p>
 
                   {/* Author */}
@@ -114,7 +120,7 @@ export const TestimonialsSection = () => {
                         {item.name}
                       </div>
                       <div className="text-sm text-muted-foreground">
-                        {item.role}
+                        {pickLocalizedString(item.role, currentLang)}
                       </div>
                     </div>
                   </div>

@@ -23,9 +23,12 @@ import contactHero from "@/assets/team-office.jpg";
 import { useEffect, useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { addMessage, getBusinessHours, type BusinessHours, type DaySchedule } from "@/lib/firebaseApi";
+import { Trans, useTranslation } from "react-i18next";
 
 const Contact = () => {
   const { toast } = useToast();
+  const { t } = useTranslation();
+
   const [formData, setFormData] = useState({
     nom: "",
     email: "",
@@ -74,11 +77,11 @@ const Contact = () => {
   }, []);
 
   const formatSchedule = (schedule: DaySchedule) => {
-    if (!schedule?.isOpen) return 'Fermé';
+    if (!schedule?.isOpen) return t('business_hours.closed', { defaultValue: 'Fermé' });
 
     let text = `${schedule.openTime || ''} - ${schedule.closeTime || ''}`.trim();
     if (schedule.breakStart && schedule.breakEnd) {
-      text += ` (pause ${schedule.breakStart} - ${schedule.breakEnd})`;
+      text += ` (${t('business_hours.break', { defaultValue: 'pause' })} ${schedule.breakStart} - ${schedule.breakEnd})`;
     }
     if (schedule.note) {
       text += ` • ${schedule.note}`;
@@ -100,8 +103,8 @@ const Contact = () => {
       });
 
       toast({
-        title: "Message envoyé !",
-        description: "Nous vous répondrons dans les plus brefs délais.",
+        title: t("pages.contact.toast_success_title", { defaultValue: "Message envoyé !" }),
+        description: t("pages.contact.toast_success_desc", { defaultValue: "Nous vous répondrons dans les plus brefs délais." }),
       });
       
       // Reset form
@@ -115,8 +118,8 @@ const Contact = () => {
     } catch (error) {
       console.error('Erreur lors de l\'envoi du message:', error);
       toast({
-        title: "Erreur",
-        description: "Une erreur est survenue. Veuillez réessayer.",
+        title: t("common.error", { defaultValue: "Erreur" }),
+        description: t("common.try_again", { defaultValue: "Une erreur est survenue. Veuillez réessayer." }),
         variant: "destructive",
       });
     } finally {
@@ -129,14 +132,15 @@ const Contact = () => {
       <Header />
       <main>
         <PageHero
-          eyebrow="Contactez-Nous"
+          eyebrow={t("pages.contact.hero_eyebrow", { defaultValue: "Contactez-Nous" })}
           title={(
             <>
-              Parlons de Votre <span className="text-yellow-400">Projet Juridique</span>
+              {t("pages.contact.hero_title_prefix", { defaultValue: "Parlons de Votre" })}{" "}
+              <span className="text-yellow-400">{t("pages.contact.hero_title_highlight", { defaultValue: "Projet Juridique" })}</span>
             </>
           )}
-          subtitle={"Notre équipe d'experts est à votre disposition pour répondre à vos questions et vous accompagner dans vos démarches juridiques. Première consultation offerte."}
-          ctaText="Appeler maintenant"
+          subtitle={t("pages.contact.hero_subtitle", { defaultValue: "Notre équipe d'experts est à votre disposition pour répondre à vos questions et vous accompagner dans vos démarches juridiques. Première consultation offerte." })}
+          ctaText={t("pages.contact.hero_cta", { defaultValue: "Appeler maintenant" })}
           ctaLink="tel:+2290197747593"
           imageSrc={contactHero}
           large
@@ -187,13 +191,14 @@ const Contact = () => {
                   <div className="mb-8">
                     <Badge className="mb-4" variant="outline">
                       <Send className="h-4 w-4 mr-2" />
-                      Formulaire de Contact
+                      {t("pages.contact.form_badge", { defaultValue: "Formulaire de Contact" })}
                     </Badge>
                     <h2 className="text-3xl font-bold mb-3">
-                      Envoyez-nous un <span className="text-primary">Message</span>
+                      {t("pages.contact.form_title_prefix", { defaultValue: "Envoyez-nous un" })}{" "}
+                      <span className="text-primary">{t("pages.contact.form_title_highlight", { defaultValue: "Message" })}</span>
                     </h2>
                     <p className="text-muted-foreground">
-                      Remplissez le formulaire ci-dessous et nous vous recontacterons dans les plus brefs délais.
+                      {t("pages.contact.form_subtitle", { defaultValue: "Remplissez le formulaire ci-dessous et nous vous recontacterons dans les plus brefs délais." })}
                     </p>
                   </div>
 
@@ -202,10 +207,10 @@ const Contact = () => {
                       <div className="grid md:grid-cols-2 gap-4">
                         <div>
                           <label className="text-sm font-medium mb-2 block">
-                            Nom complet <span className="text-destructive">*</span>
+                            {t("pages.contact.field_full_name", { defaultValue: "Nom complet" })} <span className="text-destructive">*</span>
                           </label>
                           <Input 
-                            placeholder="Jean Dupont" 
+                            placeholder={t("pages.contact.placeholder_full_name", { defaultValue: "Jean Dupont" })}
                             required
                             value={formData.nom}
                             onChange={(e) => setFormData({...formData, nom: e.target.value})}
@@ -213,11 +218,11 @@ const Contact = () => {
                         </div>
                         <div>
                           <label className="text-sm font-medium mb-2 block">
-                            Email <span className="text-destructive">*</span>
+                            {t("pages.contact.field_email", { defaultValue: "Email" })} <span className="text-destructive">*</span>
                           </label>
                           <Input 
                             type="email" 
-                            placeholder="jean@exemple.com" 
+                            placeholder={t("pages.contact.placeholder_email", { defaultValue: "jean@exemple.com" })}
                             required
                             value={formData.email}
                             onChange={(e) => setFormData({...formData, email: e.target.value})}
@@ -227,11 +232,11 @@ const Contact = () => {
 
                       <div>
                         <label className="text-sm font-medium mb-2 block">
-                          Téléphone
+                          {t("pages.contact.field_phone", { defaultValue: "Téléphone" })}
                         </label>
                         <Input 
                           type="tel" 
-                          placeholder="+229 XX XX XX XX" 
+                          placeholder={t("pages.contact.placeholder_phone", { defaultValue: "+229 XX XX XX XX" })}
                           value={formData.telephone}
                           onChange={(e) => setFormData({...formData, telephone: e.target.value})}
                         />
@@ -239,10 +244,10 @@ const Contact = () => {
 
                       <div>
                         <label className="text-sm font-medium mb-2 block">
-                          Objet de la demande
+                          {t("pages.contact.field_subject", { defaultValue: "Objet de la demande" })}
                         </label>
                         <Input 
-                          placeholder="Ex: Consultation en droit des affaires" 
+                          placeholder={t("pages.contact.placeholder_subject", { defaultValue: "Ex: Consultation en droit des affaires" })}
                           value={formData.sujet}
                           onChange={(e) => setFormData({...formData, sujet: e.target.value})}
                         />
@@ -250,10 +255,10 @@ const Contact = () => {
 
                       <div>
                         <label className="text-sm font-medium mb-2 block">
-                          Votre message <span className="text-destructive">*</span>
+                          {t("pages.contact.field_message", { defaultValue: "Votre message" })} <span className="text-destructive">*</span>
                         </label>
                         <Textarea 
-                          placeholder="Décrivez votre situation ou vos besoins juridiques..." 
+                          placeholder={t("pages.contact.placeholder_message", { defaultValue: "Décrivez votre situation ou vos besoins juridiques..." })}
                           rows={6}
                           required
                           value={formData.message}
@@ -263,15 +268,20 @@ const Contact = () => {
 
                       <Button className="w-full group" size="lg" type="submit" disabled={isSubmitting}>
                         <Send className="h-4 w-4 mr-2" />
-                        {isSubmitting ? "Envoi en cours..." : "Envoyer le Message"}
+                        {isSubmitting
+                          ? t("pages.contact.submitting", { defaultValue: "Envoi en cours..." })
+                          : t("pages.contact.submit", { defaultValue: "Envoyer le Message" })}
                         {!isSubmitting && <ArrowRight className="h-4 w-4 ml-2 transition-transform group-hover:translate-x-1" />}
                       </Button>
 
                       <p className="text-xs text-muted-foreground text-center">
-                        En soumettant ce formulaire, vous acceptez notre{" "}
-                        <Link to="/confidentialite" className="text-primary hover:underline">
-                          politique de confidentialité
-                        </Link>
+                        <Trans
+                          i18nKey="pages.contact.privacy_notice"
+                          defaults="En soumettant ce formulaire, vous acceptez notre <1>politique de confidentialité</1>."
+                          components={{
+                            1: <Link to="/confidentialite" className="text-primary hover:underline" />,
+                          }}
+                        />
                       </p>
                     </form>
                   </Card>
@@ -282,13 +292,14 @@ const Contact = () => {
                   <div>
                     <Badge className="mb-4" variant="outline">
                       <Phone className="h-4 w-4 mr-2" />
-                      Coordonnées
+                      {t("pages.contact.info_badge", { defaultValue: "Coordonnées" })}
                     </Badge>
                     <h2 className="text-3xl font-bold mb-3">
-                      Nos <span className="text-primary">Coordonnées</span>
+                      {t("pages.contact.info_title_prefix", { defaultValue: "Nos" })}{" "}
+                      <span className="text-primary">{t("pages.contact.info_title_highlight", { defaultValue: "Coordonnées" })}</span>
                     </h2>
                     <p className="text-muted-foreground mb-6">
-                      Plusieurs moyens pour nous joindre facilement
+                      {t("pages.contact.info_subtitle", { defaultValue: "Plusieurs moyens pour nous joindre facilement" })}
                     </p>
                   </div>
 
@@ -301,7 +312,7 @@ const Contact = () => {
                           </div>
                         </div>
                         <div className="flex-1">
-                          <h3 className="font-semibold text-lg mb-2">Téléphone</h3>
+                          <h3 className="font-semibold text-lg mb-2">{t("pages.contact.card_phone_title", { defaultValue: "Téléphone" })}</h3>
                           <div className="space-y-1">
                             <a
                               href="tel:+2290197747593"
@@ -323,7 +334,7 @@ const Contact = () => {
                             </a>
                           </div>
                           <p className="text-sm text-muted-foreground mt-1">
-                            Du lundi au vendredi, 8h - 18h
+                            {t("pages.contact.phone_availability", { defaultValue: "Du lundi au vendredi, 8h - 18h" })}
                           </p>
                         </div>
                       </div>
@@ -337,7 +348,7 @@ const Contact = () => {
                           </div>
                         </div>
                         <div className="flex-1">
-                          <h3 className="font-semibold text-lg mb-2">Email</h3>
+                          <h3 className="font-semibold text-lg mb-2">{t("pages.contact.card_email_title", { defaultValue: "Email" })}</h3>
                           <a 
                             href="mailto:contact@axelegal.bj" 
                             className="text-muted-foreground hover:text-primary transition-colors break-all"
@@ -345,7 +356,7 @@ const Contact = () => {
                             contact@axelegal.bj
                           </a>
                           <p className="text-sm text-muted-foreground mt-1">
-                            Réponse sous 24h
+                            {t("pages.contact.email_response_time", { defaultValue: "Réponse sous 24h" })}
                           </p>
                         </div>
                       </div>
@@ -359,12 +370,12 @@ const Contact = () => {
                           </div>
                         </div>
                         <div className="flex-1">
-                          <h3 className="font-semibold text-lg mb-2">Adresse</h3>
+                          <h3 className="font-semibold text-lg mb-2">{t("pages.contact.card_address_title", { defaultValue: "Adresse" })}</h3>
                           <p className="text-muted-foreground">
-                            Godomey échangeur, en direction Calavi-Cotonou, côté opposé à la mosquée.
+                            {t("pages.contact.address_value", { defaultValue: "Godomey échangeur, en direction Calavi-Cotonou, côté opposé à la mosquée." })}
                           </p>
                           <p className="text-sm text-muted-foreground mt-1">
-                            Sur rendez-vous uniquement
+                            {t("pages.contact.by_appointment", { defaultValue: "Sur rendez-vous uniquement" })}
                           </p>
                         </div>
                       </div>
@@ -378,32 +389,32 @@ const Contact = () => {
                           </div>
                         </div>
                         <div className="flex-1">
-                          <h3 className="font-semibold text-lg mb-2">Horaires d'Ouverture</h3>
+                          <h3 className="font-semibold text-lg mb-2">{t('business_hours.title', { defaultValue: "Horaires d'ouverture" })}</h3>
                           <div className="space-y-1 text-muted-foreground text-sm">
                             {isBusinessHoursLoading ? (
-                              <p>Chargement...</p>
+                              <p>{t('pages.contact.hours_loading', { defaultValue: 'Chargement...' })}</p>
                             ) : (
                               <>
                                 <p>
-                                  <span className="font-medium">Lundi:</span> {formatSchedule(businessHours.monday)}
+                                  <span className="font-medium">{t('business_hours.days.monday', { defaultValue: 'Lundi' })}:</span> {formatSchedule(businessHours.monday)}
                                 </p>
                                 <p>
-                                  <span className="font-medium">Mardi:</span> {formatSchedule(businessHours.tuesday)}
+                                  <span className="font-medium">{t('business_hours.days.tuesday', { defaultValue: 'Mardi' })}:</span> {formatSchedule(businessHours.tuesday)}
                                 </p>
                                 <p>
-                                  <span className="font-medium">Mercredi:</span> {formatSchedule(businessHours.wednesday)}
+                                  <span className="font-medium">{t('business_hours.days.wednesday', { defaultValue: 'Mercredi' })}:</span> {formatSchedule(businessHours.wednesday)}
                                 </p>
                                 <p>
-                                  <span className="font-medium">Jeudi:</span> {formatSchedule(businessHours.thursday)}
+                                  <span className="font-medium">{t('business_hours.days.thursday', { defaultValue: 'Jeudi' })}:</span> {formatSchedule(businessHours.thursday)}
                                 </p>
                                 <p>
-                                  <span className="font-medium">Vendredi:</span> {formatSchedule(businessHours.friday)}
+                                  <span className="font-medium">{t('business_hours.days.friday', { defaultValue: 'Vendredi' })}:</span> {formatSchedule(businessHours.friday)}
                                 </p>
                                 <p>
-                                  <span className="font-medium">Samedi:</span> {formatSchedule(businessHours.saturday)}
+                                  <span className="font-medium">{t('business_hours.days.saturday', { defaultValue: 'Samedi' })}:</span> {formatSchedule(businessHours.saturday)}
                                 </p>
                                 <p>
-                                  <span className="font-medium">Dimanche:</span> {formatSchedule(businessHours.sunday)}
+                                  <span className="font-medium">{t('business_hours.days.sunday', { defaultValue: 'Dimanche' })}:</span> {formatSchedule(businessHours.sunday)}
                                 </p>
                               </>
                             )}

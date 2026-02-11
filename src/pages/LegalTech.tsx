@@ -29,7 +29,9 @@ import {
 } from "lucide-react";
 import heroLegal from "@/assets/hero-legal.jpg";
 import { getLegalCategories, LegalCategory } from "@/lib/firebaseApi";
+import { pickLocalizedString, getCurrentLang } from "@/lib/i18nFields";
 import { useToast } from "@/hooks/use-toast";
+import { useTranslation } from "react-i18next";
 
 // Map icon names to actual icon components
 const iconMap: { [key: string]: LucideIcon } = {
@@ -60,6 +62,9 @@ const LegalTech = () => {
   const [selectedCategory, setSelectedCategory] = useState<EnrichedCategory | null>(null);
   const [showGuidance, setShowGuidance] = useState(false);
   const { toast } = useToast();
+  const { t, i18n } = useTranslation();
+
+  const currentLang = getCurrentLang(i18n);
 
   useEffect(() => {
     fetchCategories();
@@ -84,8 +89,8 @@ const LegalTech = () => {
     } catch (error) {
       console.error('❌ Erreur lors de la récupération:', error);
       toast({
-        title: "Erreur",
-        description: "Impossible de charger les catégories juridiques",
+        title: t("common.error", { defaultValue: "Erreur" }),
+        description: t("pages.legaltech.toast_error_desc", { defaultValue: "Impossible de charger les catégories juridiques" }),
         variant: "destructive"
       });
     } finally {
@@ -108,15 +113,16 @@ const LegalTech = () => {
       <Header />
       <main>
         <PageHero
-          eyebrow="Assistant Juridique Intelligent"
+          eyebrow={t("pages.legaltech.hero_eyebrow", { defaultValue: "Assistant Juridique Intelligent" })}
           title={(
             <>
-              Simulateur de <span className="text-yellow-400">Démarches</span><br />
-              Juridiques
+              {t("pages.legaltech.hero_title_prefix", { defaultValue: "Simulateur de" })}{" "}
+              <span className="text-yellow-400">{t("pages.legaltech.hero_title_highlight", { defaultValue: "Démarches" })}</span><br />
+              {t("pages.legaltech.hero_title_suffix", { defaultValue: "Juridiques" })}
             </>
           )}
-          subtitle={"Nos solutions numériques. Les outils juridiques automatisés qui vous font avancer et gagner du temps."}
-          ctaText="Commencer la simulation"
+          subtitle={t("pages.legaltech.hero_subtitle", { defaultValue: "Nos solutions numériques. Les outils juridiques automatisés qui vous font avancer et gagner du temps." })}
+          ctaText={t("pages.legaltech.hero_cta", { defaultValue: "Commencer la simulation" })}
           ctaLink="#simulation"
           imageSrc={heroLegal}
           large
@@ -130,7 +136,7 @@ const LegalTech = () => {
               <div className="text-center mb-8 animate-pulse">
                 <Badge className="text-lg px-6 py-2 bg-gradient-to-r from-primary to-primary/80 text-white border-none shadow-lg">
                   <Scale className="h-5 w-5 mr-2" />
-                  Nouveauté 2026
+                  {t("pages.legaltech.launch_badge", { defaultValue: "Nouveauté 2026" })}
                 </Badge>
               </div>
 
@@ -138,13 +144,12 @@ const LegalTech = () => {
               <div className="text-center space-y-6 mb-12">
                 <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
                   <span className="text-yellow-400">
-                    la LegalTech
+                    {t("pages.legaltech.launch_title", { defaultValue: "la LegalTech" })}
                   </span>
                 </h2>
                 
                 <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-                  Une plateforme qui vous offre des solutions pour réaliser de façon automatisée 
-                  des travaux en droit et fiscalité des affaires.
+                  {t("pages.legaltech.launch_subtitle", { defaultValue: "Une plateforme qui vous offre des solutions pour réaliser de façon automatisée des travaux en droit et fiscalité des affaires." })}
                 </p>
               </div>
 
@@ -158,10 +163,10 @@ const LegalTech = () => {
                       </div>
                     </div>
                     <CardTitle className="text-3xl md:text-4xl text-center mb-4">
-                      Bientôt Disponible
+                      {t("pages.legaltech.card_title", { defaultValue: "Bientôt Disponible" })}
                     </CardTitle>
                     <CardDescription className="text-center text-lg">
-                      Notre assistant juridique intelligent arrive prochainement
+                      {t("pages.legaltech.card_subtitle", { defaultValue: "Notre assistant juridique intelligent arrive prochainement" })}
                     </CardDescription>
                   </CardHeader>
                   
@@ -169,16 +174,16 @@ const LegalTech = () => {
                     {/* Ce que vous pourrez faire */}
                     <div className="space-y-4">
                       <h3 className="text-2xl font-semibold text-center mb-6">
-                        Ce que vous pourrez faire :
+                        {t("pages.legaltech.features_title", { defaultValue: "Ce que vous pourrez faire :" })}
                       </h3>
                       
                       <div className="grid md:grid-cols-2 gap-4">
                         <div className="flex items-start gap-3 p-4 rounded-lg bg-background/50 backdrop-blur-sm border border-primary/10">
                           <CheckCircle className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
                           <div>
-                            <p className="font-semibold mb-1">Simulateur de démarches</p>
+                            <p className="font-semibold mb-1">{t("pages.legaltech.features.items.0.title", { defaultValue: "Simulateur de démarches" })}</p>
                             <p className="text-sm text-muted-foreground">
-                              Découvrez les étapes juridiques adaptées à votre situation
+                              {t("pages.legaltech.features.items.0.desc", { defaultValue: "Découvrez les étapes juridiques adaptées à votre situation" })}
                             </p>
                           </div>
                         </div>
@@ -186,9 +191,9 @@ const LegalTech = () => {
                         <div className="flex items-start gap-3 p-4 rounded-lg bg-background/50 backdrop-blur-sm border border-primary/10">
                           <CheckCircle className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
                           <div>
-                            <p className="font-semibold mb-1">Accompagnement personnalisé</p>
+                            <p className="font-semibold mb-1">{t("pages.legaltech.features.items.1.title", { defaultValue: "Accompagnement personnalisé" })}</p>
                             <p className="text-sm text-muted-foreground">
-                              Obtenez des recommandations sur mesure pour vos besoins
+                              {t("pages.legaltech.features.items.1.desc", { defaultValue: "Obtenez des recommandations sur mesure pour vos besoins" })}
                             </p>
                           </div>
                         </div>
@@ -196,9 +201,9 @@ const LegalTech = () => {
                         <div className="flex items-start gap-3 p-4 rounded-lg bg-background/50 backdrop-blur-sm border border-primary/10">
                           <CheckCircle className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
                           <div>
-                            <p className="font-semibold mb-1">Documents intelligents</p>
+                            <p className="font-semibold mb-1">{t("pages.legaltech.features.items.2.title", { defaultValue: "Documents intelligents" })}</p>
                             <p className="text-sm text-muted-foreground">
-                              Préparez automatiquement vos dossiers juridiques
+                              {t("pages.legaltech.features.items.2.desc", { defaultValue: "Préparez automatiquement vos dossiers juridiques" })}
                             </p>
                           </div>
                         </div>
@@ -206,9 +211,9 @@ const LegalTech = () => {
                         <div className="flex items-start gap-3 p-4 rounded-lg bg-background/50 backdrop-blur-sm border border-primary/10">
                           <CheckCircle className="h-6 w-6 text-primary flex-shrink-0 mt-1" />
                           <div>
-                            <p className="font-semibold mb-1">Suivi en temps réel</p>
+                            <p className="font-semibold mb-1">{t("pages.legaltech.features.items.3.title", { defaultValue: "Suivi en temps réel" })}</p>
                             <p className="text-sm text-muted-foreground">
-                              Vos dossiers sont rigoureusement suivis
+                              {t("pages.legaltech.features.items.3.desc", { defaultValue: "Vos dossiers sont rigoureusement suivis" })}
                             </p>
                           </div>
                         </div>
@@ -219,11 +224,9 @@ const LegalTech = () => {
                     <Alert className="border-primary/50 bg-primary/5">
                       <Info className="h-5 w-5 text-primary" />
                       <AlertDescription>
-                        <p className="font-semibold mb-2">Restez informé du lancement</p>
+                        <p className="font-semibold mb-2">{t("pages.legaltech.alert_title", { defaultValue: "Restez informé du lancement" })}</p>
                         <p className="text-sm">
-                          Notre plateforme Legal Tech est en phase finale de développement. 
-                          Nous mettons tout en œuvre pour vous offrir une expérience exceptionnelle 
-                          alliant technologie et expertise juridique.
+                          {t("pages.legaltech.alert_text", { defaultValue: "Notre plateforme Legal Tech est en phase finale de développement. Nous mettons tout en œuvre pour vous offrir une expérience exceptionnelle alliant technologie et expertise juridique." })}
                         </p>
                       </AlertDescription>
                     </Alert>
@@ -231,19 +234,19 @@ const LegalTech = () => {
                     {/* Call-to-actions */}
                     <div className="text-center space-y-4 pt-4">
                       <p className="text-muted-foreground mb-4">
-                        En attendant, notre équipe reste à votre entière disposition
+                        {t("pages.legaltech.cta_intro", { defaultValue: "En attendant, notre équipe reste à votre entière disposition" })}
                       </p>
                       <div className="flex flex-col sm:flex-row gap-4 justify-center">
                         <Button size="lg" className="shadow-lg" asChild>
                           <Link to="/consultation">
                             <Phone className="mr-2 h-5 w-5" />
-                            Prendre rendez-vous
+                            {t("pages.legaltech.cta_book", { defaultValue: "Prendre rendez-vous" })}
                           </Link>
                         </Button>
                         <Button size="lg" variant="outline" className="shadow-lg" asChild>
                           <Link to="/contact">
                             <Mail className="mr-2 h-5 w-5" />
-                            Nous contacter
+                            {t("common.contact_us", { defaultValue: "Contactez-nous" })}
                           </Link>
                         </Button>
                       </div>
@@ -255,10 +258,10 @@ const LegalTech = () => {
               {/* Message de confiance */}
               <div className="mt-12 text-center">
                 <p className="text-lg text-muted-foreground italic">
-                  "L'innovation au service de la justice, l'expertise au service de vos droits"
+                  {t("pages.legaltech.quote", { defaultValue: "\"L'innovation au service de la justice, l'expertise au service de vos droits\"" })}
                 </p>
                 <p className="text-sm text-muted-foreground mt-2">
-                  — L'équipe AXE LEGAL
+                  {t("pages.legaltech.quote_author", { defaultValue: "— L'équipe AXE LEGAL" })}
                 </p>
               </div>
             </div>
@@ -320,15 +323,15 @@ const LegalTech = () => {
 
                             <div>
                               <h3 className="font-bold text-xl mb-2 group-hover:text-primary transition-colors">
-                                {category.title}
+                                {pickLocalizedString(category.title, currentLang)}
                               </h3>
                               <p className="text-muted-foreground text-sm">
-                                {category.description}
+                                {pickLocalizedString(category.description, currentLang)}
                               </p>
                             </div>
 
                             <div className="flex items-center text-sm text-primary font-medium group-hover:translate-x-2 transition-transform">
-                              Voir les démarches
+                              {t("pages.legaltech.select_category_cta", { defaultValue: "Voir les démarches" })}
                               <ChevronRight className="h-4 w-4 ml-1" />
                             </div>
                           </div>
@@ -383,16 +386,16 @@ const LegalTech = () => {
                 </Button>
 
                 <div className="mb-12">
-                  <h2 className="text-4xl font-bold mb-6">{selectedCategory.guidanceTitle}</h2>
+                  <h2 className="text-4xl font-bold mb-6">{pickLocalizedString(selectedCategory.guidanceTitle, currentLang)}</h2>
                   
                   <div className="grid md:grid-cols-3 gap-4 mb-6">
                     <Card className="p-4 bg-blue-50 dark:bg-blue-950 border-blue-200">
                       <div className="text-sm text-muted-foreground mb-1">Délai estimé</div>
-                      <div className="font-semibold">{selectedCategory.timeline}</div>
+                      <div className="font-semibold">{pickLocalizedString(selectedCategory.timeline, currentLang)}</div>
                     </Card>
                     <Card className="p-4 bg-green-50 dark:bg-green-950 border-green-200">
                       <div className="text-sm text-muted-foreground mb-1">Coût indicatif</div>
-                      <div className="font-semibold">{selectedCategory.cost}</div>
+                      <div className="font-semibold">{pickLocalizedString(selectedCategory.cost, currentLang)}</div>
                     </Card>
                     <Card className="p-4 bg-purple-50 dark:bg-purple-950 border-purple-200">
                       <div className="text-sm text-muted-foreground mb-1">Documents requis</div>
@@ -404,7 +407,7 @@ const LegalTech = () => {
                     <Alert className="border-orange-500/50 bg-orange-50 dark:bg-orange-950">
                       <AlertCircle className="h-5 w-5 text-orange-500" />
                       <AlertDescription className="text-orange-900 dark:text-orange-100">
-                        <strong>Point d'attention :</strong> {selectedCategory.warning}
+                        <strong>Point d'attention :</strong> {pickLocalizedString(selectedCategory.warning, currentLang)}
                       </AlertDescription>
                     </Alert>
                   )}
@@ -431,8 +434,8 @@ const LegalTech = () => {
                               </div>
                             </div>
                             <div className="flex-1 pb-6 border-b last:border-0">
-                              <h3 className="font-bold text-lg mb-2">{step.title}</h3>
-                              <p className="text-muted-foreground">{step.description}</p>
+                              <h3 className="font-bold text-lg mb-2">{pickLocalizedString(step.title, currentLang)}</h3>
+                              <p className="text-muted-foreground">{pickLocalizedString(step.description, currentLang)}</p>
                             </div>
                           </div>
                         ))}

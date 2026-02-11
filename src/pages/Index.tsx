@@ -12,8 +12,11 @@ import { BusinessHoursDisplay } from "@/components/BusinessHoursDisplay";
 import WhyChooseUsSection from "@/components/WhyChooseUsSection";
 import FAQSection from "@/components/FAQSection";
 import CTASection from "@/components/CTASection";
+import { useTranslation } from "react-i18next";
 
 const Index = () => {
+  const { t } = useTranslation();
+
   return (
     <div className="min-h-screen">
       <Header />
@@ -29,10 +32,10 @@ const Index = () => {
           <div className="container mx-auto px-4">
             <div className="text-center mb-16">
               <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-                Nos Services
+                {t("pages.home.services_title", { defaultValue: "Nos Services" })}
               </h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                Des solutions juridiques complètes adaptées à vos besoins
+                {t("pages.home.services_subtitle", { defaultValue: "Des solutions juridiques complètes adaptées à vos besoins" })}
               </p>
             </div>
             <ServicesSection />
@@ -50,10 +53,10 @@ const Index = () => {
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
               <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-                Nous Sommes à Votre Écoute
+                {t("pages.home.hours_title", { defaultValue: "Nous Sommes à Votre Écoute" })}
               </h2>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                Notre équipe est disponible pour répondre à vos besoins juridiques. Consultez nos horaires d'ouverture.
+                {t("pages.home.hours_subtitle", { defaultValue: "Notre équipe est disponible pour répondre à vos besoins juridiques. Consultez nos horaires d'ouverture." })}
               </p>
             </div>
             <div className="max-w-2xl mx-auto">

@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { getAnnouncements, type Announcement } from "@/lib/firebaseApi";
+import { pickLocalizedString, getCurrentLang } from "@/lib/i18nFields";
 import {
   Gift,
   TrendingUp,
@@ -27,7 +28,8 @@ import {
 } from "lucide-react";
 import heroLegal from "@/assets/hero-legal.jpg";
 import { format } from 'date-fns';
-import { fr } from 'date-fns/locale';
+import { fr, enUS } from 'date-fns/locale';
+import { useTranslation } from "react-i18next";
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   Gift,
@@ -41,15 +43,6 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   Info,
   Zap,
   PartyPopper,
-};
-
-const typeLabels: Record<string, string> = {
-  promotion: "Promotion",
-  event: "Événement",
-  info: "Information",
-  warning: "Avertissement",
-  success: "Succès",
-  urgent: "Urgent",
 };
 
 const getTypeIcon = (type: string) => {
@@ -78,6 +71,10 @@ export default function AnnouncementsPage() {
   const [announcements, setAnnouncements] = useState<Announcement[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [selectedType, setSelectedType] = useState<string>("all");
+  const { t, i18n } = useTranslation();
+
+  const dateLocale = i18n.language?.startsWith("fr") ? fr : enUS;
+  const currentLang = getCurrentLang(i18n);
 
   useEffect(() => {
     fetchAnnouncements();
@@ -88,7 +85,7 @@ export default function AnnouncementsPage() {
       const data = await getAnnouncements();
       setAnnouncements(data as Announcement[]);
     } catch (error) {
-      console.error("Erreur lors du chargement des annonces:", error);
+      console.error(t("pages.announcements.console_error_loading", { defaultValue: "Erreur lors du chargement des annonces:" }), error);
     } finally {
       setIsLoading(false);
     }
@@ -115,7 +112,7 @@ export default function AnnouncementsPage() {
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto mb-4"></div>
-          <p className="text-muted-foreground">Chargement des annonces...</p>
+          <p className="text-muted-foreground">{t("pages.announcements.loading", { defaultValue: "Chargement des annonces..." })}</p>
         </div>
       </div>
     );
@@ -127,14 +124,15 @@ export default function AnnouncementsPage() {
       
       <main>
         <PageHero
-          eyebrow="Annonces & Opportunités"
+          eyebrow={t("pages.announcements.hero_eyebrow", { defaultValue: "Annonces & Opportunités" })}
           title={(
             <>
-              Nos Dernières <span className="text-yellow-400">Opportunités</span>
+              {t("pages.announcements.hero_title_prefix", { defaultValue: "Nos Dernières" })}{" "}
+              <span className="text-yellow-400">{t("pages.announcements.hero_title_highlight", { defaultValue: "Opportunités" })}</span>
             </>
           )}
-          subtitle="Découvrez nos offres spéciales, promotions et opportunités exclusives. Ne manquez pas ces chances uniques de bénéficier de nos services juridiques à des conditions avantageuses !"
-          ctaText="Voir les offres"
+          subtitle={t("pages.announcements.hero_subtitle", { defaultValue: "Découvrez nos offres spéciales, promotions et opportunités exclusives. Ne manquez pas ces chances uniques de bénéficier de nos services juridiques à des conditions avantageuses !" })}
+          ctaText={t("pages.announcements.hero_cta", { defaultValue: "Voir les offres" })}
           ctaLink="#annonces"
           imageSrc={heroLegal}
           large
@@ -147,13 +145,13 @@ export default function AnnouncementsPage() {
               <div className="text-center mb-12">
                 <Badge className="mb-4" variant="outline">
                   <Sparkles className="h-4 w-4 mr-2" />
-                  En Vedette
+                  {t("pages.announcements.featured_badge", { defaultValue: "En Vedette" })}
                 </Badge>
                 <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                  🌟 <span className="text-primary">Dernières Opportunités</span>
+                  🌟 <span className="text-primary">{t("pages.announcements.featured_title", { defaultValue: "Dernières Opportunités" })}</span>
                 </h2>
                 <p className="text-muted-foreground max-w-2xl mx-auto">
-                  Nos meilleures offres du moment - Profitez-en avant qu'il ne soit trop tard !
+                  {t("pages.announcements.featured_subtitle", { defaultValue: "Nos meilleures offres du moment - Profitez-en avant qu'il ne soit trop tard !" })}
                 </p>
               </div>
 
@@ -176,19 +174,21 @@ export default function AnnouncementsPage() {
                             <Icon className="h-7 w-7" />
                           </div>
                           <Badge className="bg-yellow-100 text-yellow-800 border-yellow-300">
-                            {typeLabels[announcement.type] || announcement.type}
+                            {t(`pages.announcements.types.${announcement.type}`, { defaultValue: announcement.type })}
                           </Badge>
                         </div>
 
                         {announcement.subtitle && (
-                          <p className="text-sm text-primary font-semibold mb-2">{announcement.subtitle}</p>
+                          <p className="text-sm text-primary font-semibold mb-2">
+                            {pickLocalizedString(announcement.subtitle, currentLang)}
+                          </p>
                         )}
 
                         <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">
-                          {announcement.title}
+                          {pickLocalizedString(announcement.title, currentLang)}
                         </h3>
                         <p className="text-muted-foreground mb-4 line-clamp-3 whitespace-pre-wrap">
-                          {announcement.content}
+                          {pickLocalizedString(announcement.content, currentLang)}
                         </p>
 
                         {announcement.tags && announcement.tags.length > 0 && (
@@ -205,10 +205,14 @@ export default function AnnouncementsPage() {
                           <div className="flex items-center gap-2 text-sm mb-4 p-3 rounded-lg bg-muted">
                             <Clock className="h-4 w-4" />
                             {expired ? (
-                              <span className="text-red-600 font-bold">Offre expirée</span>
+                              <span className="text-red-600 font-bold">{t("pages.announcements.expired", { defaultValue: "Offre expirée" })}</span>
                             ) : (
                               <span className="text-green-600 font-bold">
-                                Plus que {remaining} jour{remaining > 1 ? "s" : ""} !
+                                {t("pages.announcements.remaining_days", {
+                                  defaultValue: "Plus que {{count}} jour{{plural}} !",
+                                  count: remaining,
+                                  plural: remaining > 1 ? "s" : "",
+                                })}
                               </span>
                             )}
                           </div>
@@ -222,7 +226,7 @@ export default function AnnouncementsPage() {
                             disabled={expired}
                           >
                             <a href={announcement.link} target="_blank" rel="noopener noreferrer">
-                              {announcement.linkText || (expired ? "Offre terminée" : "En savoir plus")}
+                              {pickLocalizedString(announcement.linkText, currentLang) || (expired ? t("pages.announcements.offer_ended", { defaultValue: "Offre terminée" }) : t("pages.announcements.learn_more", { defaultValue: "En savoir plus" }))}
                               {!expired && <ArrowRight className="h-4 w-4 transition-transform group-hover/btn:translate-x-1" />}
                             </a>
                           </Button>
@@ -241,10 +245,11 @@ export default function AnnouncementsPage() {
           <div className="container mx-auto px-4">
             <div className="text-center mb-8">
               <h2 className="text-2xl md:text-3xl font-bold mb-4">
-                Toutes Nos <span className="text-primary">Annonces</span>
+                {t("pages.announcements.all_title_prefix", { defaultValue: "Toutes Nos" })}{" "}
+                <span className="text-primary">{t("pages.announcements.all_title_highlight", { defaultValue: "Annonces" })}</span>
               </h2>
               <p className="text-muted-foreground mb-8">
-                Filtrez par catégorie pour trouver ce qui vous intéresse
+                {t("pages.announcements.all_subtitle", { defaultValue: "Filtrez par catégorie pour trouver ce qui vous intéresse" })}
               </p>
             </div>
 
@@ -255,7 +260,7 @@ export default function AnnouncementsPage() {
                 onClick={() => setSelectedType("all")}
                 className="gap-2"
               >
-                Toutes les annonces
+                {t("pages.announcements.filter_all", { defaultValue: "Toutes les annonces" })}
               </Button>
               <Button
                 size="lg"
@@ -264,7 +269,7 @@ export default function AnnouncementsPage() {
                 className="gap-2"
               >
                 <Gift className="h-4 w-4" />
-                Promotions
+                {t("pages.announcements.filter_promotion", { defaultValue: "Promotions" })}
               </Button>
               <Button
                 size="lg"
@@ -273,7 +278,7 @@ export default function AnnouncementsPage() {
                 className="gap-2"
               >
                 <Calendar className="h-4 w-4" />
-                Événements
+                {t("pages.announcements.filter_event", { defaultValue: "Événements" })}
               </Button>
               <Button
                 size="lg"
@@ -282,7 +287,7 @@ export default function AnnouncementsPage() {
                 className="gap-2"
               >
                 <Info className="h-4 w-4" />
-                Informations
+                {t("pages.announcements.filter_info", { defaultValue: "Informations" })}
               </Button>
               <Button
                 size="lg"
@@ -291,7 +296,7 @@ export default function AnnouncementsPage() {
                 className="gap-2"
               >
                 <Zap className="h-4 w-4" />
-                Urgents
+                {t("pages.announcements.filter_urgent", { defaultValue: "Urgents" })}
               </Button>
             </div>
 
@@ -300,9 +305,9 @@ export default function AnnouncementsPage() {
               {filteredAnnouncements.length === 0 ? (
                 <div className="col-span-full text-center py-16">
                   <Megaphone className="h-20 w-20 text-muted-foreground mx-auto mb-6" />
-                  <h3 className="text-2xl font-bold mb-2">Aucune annonce disponible</h3>
+                  <h3 className="text-2xl font-bold mb-2">{t("pages.announcements.empty_title", { defaultValue: "Aucune annonce disponible" })}</h3>
                   <p className="text-muted-foreground">
-                    Revenez bientôt pour découvrir nos prochaines offres
+                    {t("pages.announcements.empty_subtitle", { defaultValue: "Revenez bientôt pour découvrir nos prochaines offres" })}
                   </p>
                 </div>
               ) : (
@@ -326,7 +331,7 @@ export default function AnnouncementsPage() {
                           </div>
                           <div className="flex flex-col items-end gap-2">
                             <Badge variant="outline">
-                              {typeLabels[announcement.type] || announcement.type}
+                              {t(`pages.announcements.types.${announcement.type}`, { defaultValue: announcement.type })}
                             </Badge>
                             {announcement.priority === 'high' && (
                               <Star className="h-5 w-5 fill-yellow-400 text-yellow-400" />
@@ -335,14 +340,16 @@ export default function AnnouncementsPage() {
                         </div>
 
                         {announcement.subtitle && (
-                          <p className="text-sm text-primary font-semibold mb-2">{announcement.subtitle}</p>
+                          <p className="text-sm text-primary font-semibold mb-2">
+                            {pickLocalizedString(announcement.subtitle, currentLang)}
+                          </p>
                         )}
 
                         <h3 className="text-lg font-bold mb-2 group-hover:text-primary transition-colors">
-                          {announcement.title}
+                          {pickLocalizedString(announcement.title, currentLang)}
                         </h3>
                         <p className="text-muted-foreground text-sm mb-4 line-clamp-3 whitespace-pre-wrap">
-                          {announcement.content}
+                          {pickLocalizedString(announcement.content, currentLang)}
                         </p>
 
                         {announcement.tags && announcement.tags.length > 0 && (
@@ -359,10 +366,11 @@ export default function AnnouncementsPage() {
                           <div className="flex items-center gap-2 text-xs text-muted-foreground mb-4 p-2 rounded bg-muted/50">
                             <Clock className="h-3 w-3" />
                             {expired ? (
-                              <span className="text-red-600 font-semibold">Expiré</span>
+                              <span className="text-red-600 font-semibold">{t("pages.announcements.expired_short", { defaultValue: "Expiré" })}</span>
                             ) : (
                               <span>
-                                Valable jusqu'au {format(new Date(announcement.endDate), 'dd MMM yyyy', { locale: fr })}
+                                {t("pages.announcements.valid_until", { defaultValue: "Valable jusqu'au" })}{" "}
+                                {format(new Date(announcement.endDate), 'dd MMM yyyy', { locale: dateLocale })}
                               </span>
                             )}
                           </div>
@@ -377,7 +385,7 @@ export default function AnnouncementsPage() {
                             disabled={expired}
                           >
                             <a href={announcement.link} target="_blank" rel="noopener noreferrer">
-                              {announcement.linkText || "En savoir plus"}
+                              {pickLocalizedString(announcement.linkText, currentLang) || t("pages.announcements.learn_more", { defaultValue: "En savoir plus" })}
                               <ExternalLink className="h-4 w-4" />
                             </a>
                           </Button>
@@ -401,24 +409,24 @@ export default function AnnouncementsPage() {
                 </div>
                 
                 <h2 className="text-3xl md:text-4xl font-bold">
-                  Ne Manquez Aucune <span className="text-primary">Opportunité</span>
+                  {t("pages.announcements.cta_title_prefix", { defaultValue: "Ne Manquez Aucune" })}{" "}
+                  <span className="text-primary">{t("pages.announcements.cta_title_highlight", { defaultValue: "Opportunité" })}</span>
                 </h2>
                 
                 <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                  Contactez-nous dès maintenant pour bénéficier de nos offres exclusives et 
-                  découvrir comment nous pouvons vous accompagner dans vos projets juridiques.
+                  {t("pages.announcements.cta_subtitle", { defaultValue: "Contactez-nous dès maintenant pour bénéficier de nos offres exclusives et découvrir comment nous pouvons vous accompagner dans vos projets juridiques." })}
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
                   <Button size="lg" className="group" asChild>
                     <Link to="/contact">
-                      Nous Contacter
+                      {t("common.contact_us", { defaultValue: "Contactez-nous" })}
                       <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                     </Link>
                   </Button>
                   <Button size="lg" variant="outline" asChild>
                     <Link to="/services">
-                      Nos Services
+                      {t("nav.services", { defaultValue: "Services" })}
                     </Link>
                   </Button>
                 </div>
@@ -427,15 +435,15 @@ export default function AnnouncementsPage() {
                   <div className="flex flex-wrap justify-center gap-6 text-sm text-muted-foreground">
                     <div className="flex items-center gap-2">
                       <CheckCircle className="h-4 w-4 text-primary" />
-                      <span>Offres exclusives</span>
+                      <span>{t("pages.announcements.cta_pill_exclusive", { defaultValue: "Offres exclusives" })}</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <CheckCircle className="h-4 w-4 text-primary" />
-                      <span>Tarifs préférentiels</span>
+                      <span>{t("pages.announcements.cta_pill_pricing", { defaultValue: "Tarifs préférentiels" })}</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <CheckCircle className="h-4 w-4 text-primary" />
-                      <span>Réponse rapide</span>
+                      <span>{t("pages.announcements.cta_pill_fast", { defaultValue: "Réponse rapide" })}</span>
                     </div>
                   </div>
                 </div>

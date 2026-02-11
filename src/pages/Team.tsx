@@ -26,9 +26,11 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { getTeamMembers } from "@/lib/firebaseApi";
+import { pickLocalizedString, getCurrentLang } from "@/lib/i18nFields";
 import teamLeader from "@/assets/team-leader.jpg";
 import AnimatedCounter from "@/components/AnimatedCounter";
 import { useToast } from "@/hooks/use-toast";
+import { useTranslation } from "react-i18next";
 
 interface TeamMember {
   id?: string;
@@ -42,6 +44,9 @@ export default function Team() {
   const [teamMembers, setTeamMembers] = useState<TeamMember[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const { toast } = useToast();
+  const { t, i18n } = useTranslation();
+
+  const currentLang = getCurrentLang(i18n);
 
   useEffect(() => {
     fetchTeamMembers();
@@ -56,8 +61,8 @@ export default function Team() {
     } catch (error) {
       console.error('Error fetching team members:', error);
       toast({
-        title: "Erreur",
-        description: "Impossible de charger les membres de l'équipe",
+        title: t("common.error", { defaultValue: "Erreur" }),
+        description: t("pages.team.toast_error_desc", { defaultValue: "Impossible de charger les membres de l'équipe" }),
         variant: "destructive",
       });
     } finally {
@@ -68,23 +73,23 @@ export default function Team() {
   const values = [
     {
       icon: Award,
-      title: "Excellence",
-      description: "Nous visons la perfection dans chaque dossier et nous engageons à fournir des prestations juridiques de la plus haute qualité."
+      title: t("pages.team.values.0.title", { defaultValue: "Excellence" }),
+      description: t("pages.team.values.0.desc", { defaultValue: "Nous visons la perfection dans chaque dossier et nous engageons à fournir des prestations juridiques de la plus haute qualité." })
     },
     {
       icon: Shield,
-      title: "Intégrité",
-      description: "L'éthique et la transparence guident toutes nos actions. Nous construisons des relations de confiance durables avec nos clients."
+      title: t("pages.team.values.1.title", { defaultValue: "Intégrité" }),
+      description: t("pages.team.values.1.desc", { defaultValue: "L'éthique et la transparence guident toutes nos actions. Nous construisons des relations de confiance durables avec nos clients." })
     },
     {
       icon: Lightbulb,
-      title: "Innovation",
-      description: "Nous adoptons les technologies juridiques modernes pour offrir des solutions efficaces et adaptées aux enjeux contemporains."
+      title: t("pages.team.values.2.title", { defaultValue: "Innovation" }),
+      description: t("pages.team.values.2.desc", { defaultValue: "Nous adoptons les technologies juridiques modernes pour offrir des solutions efficaces et adaptées aux enjeux contemporains." })
     },
     {
       icon: Target,
-      title: "Résultats",
-      description: "Notre focus est mis sur l'atteinte des objectifs de nos clients avec des stratégies éprouvées et une exécution rigoureuse."
+      title: t("pages.team.values.3.title", { defaultValue: "Résultats" }),
+      description: t("pages.team.values.3.desc", { defaultValue: "Notre focus est mis sur l'atteinte des objectifs de nos clients avec des stratégies éprouvées et une exécution rigoureuse." })
     }
   ];
 
@@ -94,15 +99,15 @@ export default function Team() {
       
       <main>
         <PageHero
-          eyebrow="Notre Équipe"
+          eyebrow={t("pages.team.hero_eyebrow", { defaultValue: "Notre Équipe" })}
           title={(
             <>
-              Une Équipe d'<span className="text-yellow-400">Experts</span><br />
-              à Votre Service
+              {t("pages.team.hero_title_prefix", { defaultValue: "Une Équipe d'" })}<span className="text-yellow-400">{t("pages.team.hero_title_highlight", { defaultValue: "Experts" })}</span><br />
+              {t("pages.team.hero_title_suffix", { defaultValue: "à Votre Service" })}
             </>
           )}
-          subtitle={"Des professionnels du droit hautement qualifiés, organisés en cellules spécialisées pour vous offrir une expertise complète et une approche pluridisciplinaire de vos problématiques juridiques."}
-          ctaText="Rencontrer l'équipe"
+          subtitle={t("pages.team.hero_subtitle", { defaultValue: "Des professionnels du droit hautement qualifiés, organisés en cellules spécialisées pour vous offrir une expertise complète et une approche pluridisciplinaire de vos problématiques juridiques." })}
+          ctaText={t("pages.team.hero_cta", { defaultValue: "Rencontrer l'équipe" })}
           ctaLink="/contact"
           imageSrc={teamLeader}
           large
@@ -114,16 +119,14 @@ export default function Team() {
             <div className="max-w-4xl mx-auto text-center space-y-6">
               <Badge className="mb-4" variant="outline">
                 <Trophy className="h-4 w-4 mr-2" />
-                Excellence & Expertise
+                {t("pages.team.intro_badge", { defaultValue: "Excellence & Expertise" })}
               </Badge>
               <h2 className="text-3xl md:text-4xl font-bold">
-                Une Organisation au Service de <span className="text-primary">Votre Réussite</span>
+                {t("pages.team.intro_title_prefix", { defaultValue: "Une Organisation au Service de" })}{" "}
+                <span className="text-primary">{t("pages.team.intro_title_highlight", { defaultValue: "Votre Réussite" })}</span>
               </h2>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                Notre cabinet s'appuie sur une structure organisationnelle innovante, avec des cellules 
-                spécialisées qui travaillent en synergie pour vous apporter des solutions juridiques 
-                complètes et performantes. Chaque cellule regroupe des experts reconnus dans leur domaine, 
-                garantissant une expertise pointue et une réactivité optimale.
+                {t("pages.team.intro_paragraph", { defaultValue: "Notre cabinet s'appuie sur une structure organisationnelle innovante, avec des cellules spécialisées qui travaillent en synergie pour vous apporter des solutions juridiques complètes et performantes. Chaque cellule regroupe des experts reconnus dans leur domaine, garantissant une expertise pointue et une réactivité optimale." })}
               </p>
             </div>
           </div>
@@ -133,21 +136,21 @@ export default function Team() {
         <section className="py-20 bg-background">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-4">Notre Équipe de Juristes</h2>
+              <h2 className="text-3xl font-bold mb-4">{t("pages.team.grid_title", { defaultValue: "Notre Équipe de Juristes" })}</h2>
               <p className="text-muted-foreground max-w-2xl mx-auto">
-                Découvrez les professionnels du droit qui composent notre équipe et leurs domaines d'expertise
+                {t("pages.team.grid_subtitle", { defaultValue: "Découvrez les professionnels du droit qui composent notre équipe et leurs domaines d'expertise" })}
               </p>
             </div>
 
             {isLoading ? (
               <div className="text-center py-12">
                 <div className="inline-block animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
-                <p className="mt-4 text-muted-foreground">Chargement de l'équipe...</p>
+                <p className="mt-4 text-muted-foreground">{t("pages.team.loading", { defaultValue: "Chargement de l'équipe..." })}</p>
               </div>
             ) : teamMembers.length === 0 ? (
               <div className="text-center py-12">
                 <Users className="h-16 w-16 text-muted-foreground mx-auto mb-4" />
-                <p className="text-muted-foreground">Aucun membre de l'équipe à afficher pour le moment.</p>
+                <p className="text-muted-foreground">{t("pages.team.empty", { defaultValue: "Aucun membre de l'équipe à afficher pour le moment." })}</p>
               </div>
             ) : (
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
@@ -174,7 +177,7 @@ export default function Team() {
                       {/* Badge Role */}
                       <div className="absolute top-4 right-4">
                         <Badge className="bg-primary/90 backdrop-blur-sm">
-                          {member.role}
+                          {pickLocalizedString(member.role, currentLang)}
                         </Badge>
                       </div>
 
@@ -183,13 +186,13 @@ export default function Team() {
                         <h3 className="text-2xl font-bold text-foreground mb-1">
                           {member.name}
                         </h3>
-                        <p className="text-primary font-semibold">{member.role}</p>
+                        <p className="text-primary font-semibold">{pickLocalizedString(member.role, currentLang)}</p>
                       </div>
                     </div>
 
                     <div className="p-6 space-y-4">
                       <p className="text-muted-foreground leading-relaxed text-sm">
-                        {member.bio}
+                        {pickLocalizedString(member.bio, currentLang)}
                       </p>
                     </div>
                   </Card>
@@ -210,10 +213,10 @@ export default function Team() {
           <div className="container mx-auto px-4 relative z-10">
             <div className="text-center mb-12">
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                Notre Impact en Chiffres
+                {t("stats_section.title", { defaultValue: "Notre Impact en Chiffres" })}
               </h2>
               <p className="text-white/90 max-w-2xl mx-auto">
-                Des résultats concrets qui témoignent de notre engagement et de notre expertise
+                {t("pages.team.stats_subtitle", { defaultValue: "Des résultats concrets qui témoignent de notre engagement et de notre expertise" })}
               </p>
             </div>
 
@@ -222,32 +225,32 @@ export default function Team() {
                 <div className="text-5xl font-extrabold text-white mb-2">
                   <AnimatedCounter value={150} suffix="+" />
                 </div>
-                <div className="text-white/90 font-medium">Clients Accompagnés</div>
-                <p className="text-white/70 text-sm mt-2">Entreprises et particuliers</p>
+                <div className="text-white/90 font-medium">{t("stats.clients_supported", { defaultValue: "Clients Accompagnés" })}</div>
+                <p className="text-white/70 text-sm mt-2">{t("pages.team.stats_clients_note", { defaultValue: "Entreprises et particuliers" })}</p>
               </div>
               
               <div className="text-center animate-scale-in bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20" style={{ animationDelay: "100ms" }}>
                 <div className="text-5xl font-extrabold text-white mb-2">
                   <AnimatedCounter value={500} suffix="+" />
                 </div>
-                <div className="text-white/90 font-medium">Dossiers Traités</div>
-                <p className="text-white/70 text-sm mt-2">Avec succès et rigueur</p>
+                <div className="text-white/90 font-medium">{t("stats.cases_handled", { defaultValue: "Dossiers Traités" })}</div>
+                <p className="text-white/70 text-sm mt-2">{t("pages.team.stats_cases_note", { defaultValue: "Avec succès et rigueur" })}</p>
               </div>
               
               <div className="text-center animate-scale-in bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20" style={{ animationDelay: "200ms" }}>
                 <div className="text-5xl font-extrabold text-white mb-2">
                   <AnimatedCounter value={95} suffix="%" />
                 </div>
-                <div className="text-white/90 font-medium">Taux de Réussite</div>
-                <p className="text-white/70 text-sm mt-2">Satisfaction garantie</p>
+                <div className="text-white/90 font-medium">{t("stats.success_rate", { defaultValue: "Taux de Réussite" })}</div>
+                <p className="text-white/70 text-sm mt-2">{t("pages.team.stats_success_note", { defaultValue: "Satisfaction garantie" })}</p>
               </div>
               
               <div className="text-center animate-scale-in bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20" style={{ animationDelay: "300ms" }}>
                 <div className="text-5xl font-extrabold text-white mb-2">
                   <AnimatedCounter value={5} suffix="+" />
                 </div>
-                <div className="text-white/90 font-medium">Années d'Expérience</div>
-                <p className="text-white/70 text-sm mt-2">Expertise éprouvée</p>
+                <div className="text-white/90 font-medium">{t("stats.years_experience", { defaultValue: "Années d'Expérience" })}</div>
+                <p className="text-white/70 text-sm mt-2">{t("pages.team.stats_years_note", { defaultValue: "Expertise éprouvée" })}</p>
               </div>
             </div>
           </div>
@@ -259,13 +262,14 @@ export default function Team() {
             <div className="text-center mb-12">
               <Badge className="mb-4" variant="outline">
                 <Briefcase className="h-4 w-4 mr-2" />
-                Nos Valeurs
+                {t("pages.team.values_badge", { defaultValue: "Nos Valeurs" })}
               </Badge>
               <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                Les Piliers de Notre <span className="text-primary">Engagement</span>
+                {t("pages.team.values_title_prefix", { defaultValue: "Les Piliers de Notre" })}{" "}
+                <span className="text-primary">{t("pages.team.values_title_highlight", { defaultValue: "Engagement" })}</span>
               </h2>
               <p className="text-muted-foreground max-w-2xl mx-auto">
-                Des valeurs fortes qui guident notre action quotidienne et façonnent notre relation avec nos clients
+                {t("pages.team.values_subtitle", { defaultValue: "Des valeurs fortes qui guident notre action quotidienne et façonnent notre relation avec nos clients" })}
               </p>
             </div>
 

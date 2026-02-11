@@ -3,6 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import { Link } from "react-router-dom";
 import { useEffect, useRef } from "react";
 import { Phone, ArrowRight, Building2, Award, ShieldCheck, Lightbulb, Globe2 } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import TypedText from "@/components/TypedText";
 import Carousel from "@/components/Carousel";
 import heroImage from "@/assets/hero-legal.jpg";
@@ -14,6 +15,8 @@ import AnimatedCounter from "@/components/AnimatedCounter";
 import SimpleCarousel from "@/components/SimpleCarousel";
 
 export const HeroSection = () => {
+  const { t } = useTranslation();
+
   // parallax for blobs
   const blob1Ref = useRef<HTMLDivElement | null>(null);
   const blob2Ref = useRef<HTMLDivElement | null>(null);
@@ -60,31 +63,29 @@ export const HeroSection = () => {
           <div className="space-y-8 animate-fade-in-up">
             <Badge className="bg-primary/10 text-primary border-primary/20 hover:bg-primary/20 gap-2 px-4 py-2">
               <Building2 className="h-4 w-4" />
-              <span>Cabinet d'Excellence Juridique</span>
+              <span>{t("hero.badge", { defaultValue: "Cabinet d'Excellence Juridique" })}</span>
             </Badge>
 
             <div className="space-y-4">
                 <h1 className="text-5xl lg:text-6xl font-bold leading-tight">
-                  Votre Partenaire{' '}
+                  {t("hero.title_prefix", { defaultValue: "Votre Partenaire" })}{" "}
                   <span className="text-primary inline-block whitespace-nowrap min-w-[9ch]">
-                    <TypedText text="Juridique" />
+                    <TypedText text={t("hero.title_typed", { defaultValue: "Juridique" })} />
                   </span>{' '}
-                  <span className="block lg:inline">de Confiance au Bénin</span>
+                  <span className="block lg:inline">{t("hero.title_suffix", { defaultValue: "de Confiance au Bénin" })}</span>
                 </h1>
               <p className="text-xl text-muted-foreground leading-relaxed">
-                Nous accompagnons entreprises et particuliers avec des solutions
-                juridiques efficaces, une expertise solide et un service hautement
-                professionnel depuis 2020.
+                {t("hero.subtitle", { defaultValue: "Nous accompagnons entreprises et particuliers avec des solutions juridiques efficaces, une expertise solide et un service hautement professionnel depuis 2020." })}
               </p>
 
-              <div className="w-full rounded-xl border border-primary/20 bg-primary/5 px-4 py-3">
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
-                  <div className="flex items-center gap-2 text-primary font-semibold">
+              <div className="w-full max-w-2xl mx-auto rounded-xl border border-primary/20 bg-primary/5 px-4 py-3 text-center">
+                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-center gap-2">
+                  <div className="flex items-center justify-center gap-2 text-primary font-semibold">
                     <Globe2 className="h-5 w-5" />
-                    <span>Service disponible en anglais</span>
+                    <span>{t("banners.english_available_title", { defaultValue: "Service disponible en anglais" })}</span>
                   </div>
                   <div className="text-sm text-muted-foreground">
-                    English available for consultations & legal support
+                    {t("banners.english_available_subtitle", { defaultValue: "English available for consultations & legal support" })}
                   </div>
                 </div>
               </div>
@@ -98,7 +99,7 @@ export const HeroSection = () => {
               >
                 <Link to="/consultation">
                   <Phone className="h-5 w-5" />
-                  <span>Consultation Gratuite</span>
+                  <span>{t("nav.free_consultation", { defaultValue: "Consultation Gratuite" })}</span>
                   <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                 </Link>
               </Button>
@@ -109,7 +110,7 @@ export const HeroSection = () => {
                 asChild
               >
                 <Link to="/services">
-                  Découvrir nos Services
+                  {t("common.discover_services", { defaultValue: "Découvrir nos Services" })}
                 </Link>
               </Button>
             </div>
@@ -120,19 +121,19 @@ export const HeroSection = () => {
                 <div className="text-3xl md:text-4xl font-extrabold text-primary">
                   <AnimatedCounter value={500} suffix="+" />
                 </div>
-                <div className="text-sm text-muted-foreground">Clients Accompagnés</div>
+                <div className="text-sm text-muted-foreground">{t("stats.clients_supported", { defaultValue: "Clients Accompagnés" })}</div>
               </div>
               <div>
                 <div className="text-3xl md:text-4xl font-extrabold text-primary">
                   <AnimatedCounter value={1000} suffix="+" />
                 </div>
-                <div className="text-sm text-muted-foreground">Dossiers Traités</div>
+                <div className="text-sm text-muted-foreground">{t("stats.cases_handled", { defaultValue: "Dossiers Traités" })}</div>
               </div>
               <div>
                 <div className="text-3xl md:text-4xl font-extrabold text-primary">
                   <AnimatedCounter value={95} suffix="%" />
                 </div>
-                <div className="text-sm text-muted-foreground">Taux de Réussite</div>
+                <div className="text-sm text-muted-foreground">{t("stats.success_rate", { defaultValue: "Taux de Réussite" })}</div>
               </div>
             </div>
           </div>

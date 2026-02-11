@@ -7,43 +7,46 @@ import {
   Clock, 
   Award 
 } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 export const WhyChooseUsSection = () => {
+  const { t } = useTranslation();
+
   const reasons = [
     {
       icon: Target,
-      title: "Expertise Ciblée",
-      description: "Une connaissance approfondie du droit béninois et des réalités locales pour des conseils précis et adaptés.",
+      title: t("why_choose_us.reasons.expertise_title", { defaultValue: "Expertise Ciblée" }),
+      description: t("why_choose_us.reasons.expertise_desc", { defaultValue: "Une connaissance approfondie du droit béninois et des réalités locales pour des conseils précis et adaptés." }),
       color: "from-blue-500 to-blue-600"
     },
     {
       icon: HeartHandshake,
-      title: "Approche Humaine",
-      description: "Nous plaçons la relation client au cœur de notre pratique avec écoute, empathie et transparence totale.",
+      title: t("why_choose_us.reasons.human_title", { defaultValue: "Approche Humaine" }),
+      description: t("why_choose_us.reasons.human_desc", { defaultValue: "Nous plaçons la relation client au cœur de notre pratique avec écoute, empathie et transparence totale." }),
       color: "from-rose-500 to-rose-600"
     },
     {
       icon: TrendingUp,
-      title: "Résultats Probants",
-      description: "95% de taux de réussite grâce à notre stratégie juridique rigoureuse et notre engagement sans faille.",
+      title: t("why_choose_us.reasons.results_title", { defaultValue: "Résultats Probants" }),
+      description: t("why_choose_us.reasons.results_desc", { defaultValue: "95% de taux de réussite grâce à notre stratégie juridique rigoureuse et notre engagement sans faille." }),
       color: "from-green-500 to-green-600"
     },
     {
       icon: Shield,
-      title: "Confidentialité Absolue",
-      description: "Protection maximale de vos informations avec le secret professionnel le plus strict garanti.",
+      title: t("why_choose_us.reasons.confidentiality_title", { defaultValue: "Confidentialité Absolue" }),
+      description: t("why_choose_us.reasons.confidentiality_desc", { defaultValue: "Protection maximale de vos informations avec le secret professionnel le plus strict garanti." }),
       color: "from-purple-500 to-purple-600"
     },
     {
       icon: Clock,
-      title: "Disponibilité 24/7",
-      description: "Une équipe réactive disponible pour les urgences juridiques, même en dehors des heures de bureau.",
+      title: t("why_choose_us.reasons.availability_title", { defaultValue: "Disponibilité 24/7" }),
+      description: t("why_choose_us.reasons.availability_desc", { defaultValue: "Une équipe réactive disponible pour les urgences juridiques, même en dehors des heures de bureau." }),
       color: "from-amber-500 to-amber-600"
     },
     {
       icon: Award,
-      title: "Excellence Reconnue",
-      description: "Cabinet primé et recommandé par nos clients pour la qualité exceptionnelle de nos prestations.",
+      title: t("why_choose_us.reasons.excellence_title", { defaultValue: "Excellence Reconnue" }),
+      description: t("why_choose_us.reasons.excellence_desc", { defaultValue: "Cabinet primé et recommandé par nos clients pour la qualité exceptionnelle de nos prestations." }),
       color: "from-teal-500 to-teal-600"
     }
   ];
@@ -53,10 +56,10 @@ export const WhyChooseUsSection = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Pourquoi Choisir Axe Legal ?
+            {t("why_choose_us.title", { defaultValue: "Pourquoi Choisir Axe Legal ?" })}
           </h2>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            Découvrez les valeurs et engagements qui font de nous votre partenaire juridique de confiance
+            {t("why_choose_us.subtitle", { defaultValue: "Découvrez les valeurs et engagements qui font de nous votre partenaire juridique de confiance" })}
           </p>
         </div>
 

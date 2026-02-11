@@ -26,6 +26,8 @@ import {
 } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { getProcessSteps } from "@/lib/firebaseApi";
+import { pickLocalizedString, getCurrentLang } from "@/lib/i18nFields";
+import { useTranslation } from "react-i18next";
 
 interface ProcessStep {
   id?: string;
@@ -68,113 +70,113 @@ const getIconFromName = (iconName?: string): LucideIcon => {
   return iconMap[iconName] || Phone;
 };
 
-const defaultProcessSteps: EnrichedProcessStep[] = [
+const getDefaultProcessSteps = (t: (key: string, options?: any) => string): EnrichedProcessStep[] => [
   {
     icon: Phone,
     number: "01",
-    title: "Premier Contact",
-    description: "Contactez-nous par téléphone, email ou via notre formulaire en ligne. Nous vous répondons sous 24h pour une première prise de contact.",
+    title: t("pages.process.steps.0.title", { defaultValue: "Premier Contact" }),
+    description: t("pages.process.steps.0.description", { defaultValue: "Contactez-nous par téléphone, email ou via notre formulaire en ligne. Nous vous répondons sous 24h pour une première prise de contact." }),
     details: [
-      "Prise de contact initiale rapide",
-      "Écoute attentive de votre situation",
-      "Évaluation préliminaire de vos besoins",
-      "Orientation vers le bon expert"
+      t("pages.process.steps.0.details.0", { defaultValue: "Prise de contact initiale rapide" }),
+      t("pages.process.steps.0.details.1", { defaultValue: "Écoute attentive de votre situation" }),
+      t("pages.process.steps.0.details.2", { defaultValue: "Évaluation préliminaire de vos besoins" }),
+      t("pages.process.steps.0.details.3", { defaultValue: "Orientation vers le bon expert" })
     ],
-    duration: "24h",
+    duration: t("pages.process.steps.0.duration", { defaultValue: "24h" }),
     color: "from-blue-500/10 to-blue-600/10"
   },
   {
     icon: MessageSquare,
     number: "02",
-    title: "Consultation Gratuite",
-    description: "Bénéficiez d'une première consultation gratuite pour analyser votre cas en détail et identifier les meilleures solutions.",
+    title: t("pages.process.steps.1.title", { defaultValue: "Consultation Gratuite" }),
+    description: t("pages.process.steps.1.description", { defaultValue: "Bénéficiez d'une première consultation gratuite pour analyser votre cas en détail et identifier les meilleures solutions." }),
     details: [
-      "Rencontre sans engagement financier",
-      "Analyse approfondie de votre dossier",
-      "Conseils juridiques préliminaires",
-      "Questions-réponses personnalisées"
+      t("pages.process.steps.1.details.0", { defaultValue: "Rencontre sans engagement financier" }),
+      t("pages.process.steps.1.details.1", { defaultValue: "Analyse approfondie de votre dossier" }),
+      t("pages.process.steps.1.details.2", { defaultValue: "Conseils juridiques préliminaires" }),
+      t("pages.process.steps.1.details.3", { defaultValue: "Questions-réponses personnalisées" })
     ],
-    duration: "1h",
+    duration: t("pages.process.steps.1.duration", { defaultValue: "1h" }),
     color: "from-purple-500/10 to-purple-600/10"
   },
   {
     icon: FileText,
     number: "03",
-    title: "Proposition de Service",
-    description: "Nous vous présentons une proposition détaillée avec une stratégie claire et des honoraires transparents, sans surprises.",
+    title: t("pages.process.steps.2.title", { defaultValue: "Proposition de Service" }),
+    description: t("pages.process.steps.2.description", { defaultValue: "Nous vous présentons une proposition détaillée avec une stratégie claire et des honoraires transparents, sans surprises." }),
     details: [
-      "Stratégie juridique personnalisée",
-      "Honoraires transparents et détaillés",
-      "Délais estimés avec précision",
-      "Plan d'action étape par étape"
+      t("pages.process.steps.2.details.0", { defaultValue: "Stratégie juridique personnalisée" }),
+      t("pages.process.steps.2.details.1", { defaultValue: "Honoraires transparents et détaillés" }),
+      t("pages.process.steps.2.details.2", { defaultValue: "Délais estimés avec précision" }),
+      t("pages.process.steps.2.details.3", { defaultValue: "Plan d'action étape par étape" })
     ],
-    duration: "2-3 jours",
+    duration: t("pages.process.steps.2.duration", { defaultValue: "2-3 jours" }),
     color: "from-green-500/10 to-green-600/10"
   },
   {
     icon: Scale,
     number: "04",
-    title: "Action Juridique",
-    description: "Notre équipe met en œuvre la stratégie définie avec rigueur, professionnalisme et une communication régulière.",
+    title: t("pages.process.steps.3.title", { defaultValue: "Action Juridique" }),
+    description: t("pages.process.steps.3.description", { defaultValue: "Notre équipe met en œuvre la stratégie définie avec rigueur, professionnalisme et une communication régulière." }),
     details: [
-      "Rédaction des actes juridiques",
-      "Représentation légale complète",
-      "Suivi régulier et points d'étape",
-      "Communication transparente"
+      t("pages.process.steps.3.details.0", { defaultValue: "Rédaction des actes juridiques" }),
+      t("pages.process.steps.3.details.1", { defaultValue: "Représentation légale complète" }),
+      t("pages.process.steps.3.details.2", { defaultValue: "Suivi régulier et points d'étape" }),
+      t("pages.process.steps.3.details.3", { defaultValue: "Communication transparente" })
     ],
-    duration: "Variable",
+    duration: t("pages.process.steps.3.duration", { defaultValue: "Variable" }),
     color: "from-orange-500/10 to-orange-600/10"
   },
   {
     icon: CheckCircle,
     number: "05",
-    title: "Résolution & Finalisation",
-    description: "Nous assurons le suivi jusqu'à la résolution complète de votre dossier avec vérification minutieuse des résultats.",
+    title: t("pages.process.steps.4.title", { defaultValue: "Résolution & Finalisation" }),
+    description: t("pages.process.steps.4.description", { defaultValue: "Nous assurons le suivi jusqu'à la résolution complète de votre dossier avec vérification minutieuse des résultats." }),
     details: [
-      "Finalisation complète du dossier",
-      "Vérification des résultats obtenus",
-      "Archivage sécurisé des documents",
-      "Remise des documents finaux"
+      t("pages.process.steps.4.details.0", { defaultValue: "Finalisation complète du dossier" }),
+      t("pages.process.steps.4.details.1", { defaultValue: "Vérification des résultats obtenus" }),
+      t("pages.process.steps.4.details.2", { defaultValue: "Archivage sécurisé des documents" }),
+      t("pages.process.steps.4.details.3", { defaultValue: "Remise des documents finaux" })
     ],
-    duration: "1-2 semaines",
+    duration: t("pages.process.steps.4.duration", { defaultValue: "1-2 semaines" }),
     color: "from-teal-500/10 to-teal-600/10"
   },
   {
     icon: Users,
     number: "06",
-    title: "Accompagnement Continu",
-    description: "Nous restons à vos côtés pour tout besoin juridique futur et vous accompagnons dans la durée.",
+    title: t("pages.process.steps.5.title", { defaultValue: "Accompagnement Continu" }),
+    description: t("pages.process.steps.5.description", { defaultValue: "Nous restons à vos côtés pour tout besoin juridique futur et vous accompagnons dans la durée." }),
     details: [
-      "Relation de confiance pérenne",
-      "Disponibilité permanente",
-      "Conseils préventifs réguliers",
-      "Support juridique continu"
+      t("pages.process.steps.5.details.0", { defaultValue: "Relation de confiance pérenne" }),
+      t("pages.process.steps.5.details.1", { defaultValue: "Disponibilité permanente" }),
+      t("pages.process.steps.5.details.2", { defaultValue: "Conseils préventifs réguliers" }),
+      t("pages.process.steps.5.details.3", { defaultValue: "Support juridique continu" })
     ],
-    duration: "Long terme",
+    duration: t("pages.process.steps.5.duration", { defaultValue: "Long terme" }),
     color: "from-pink-500/10 to-pink-600/10"
   },
 ];
 
-const guarantees = [
+const getGuarantees = (t: (key: string, options?: any) => string) => [
   {
     icon: Clock,
-    title: "Réactivité Garantie",
-    description: "Réponse sous 24h à toute demande"
+    title: t("pages.process.guarantees.0.title", { defaultValue: "Réactivité Garantie" }),
+    description: t("pages.process.guarantees.0.description", { defaultValue: "Réponse sous 24h à toute demande" })
   },
   {
     icon: Shield,
-    title: "Confidentialité Totale",
-    description: "Protection absolue de vos informations"
+    title: t("pages.process.guarantees.1.title", { defaultValue: "Confidentialité Totale" }),
+    description: t("pages.process.guarantees.1.description", { defaultValue: "Protection absolue de vos informations" })
   },
   {
     icon: Target,
-    title: "Résultats Concrets",
-    description: "Objectifs clairs et mesurables"
+    title: t("pages.process.guarantees.2.title", { defaultValue: "Résultats Concrets" }),
+    description: t("pages.process.guarantees.2.description", { defaultValue: "Objectifs clairs et mesurables" })
   },
   {
     icon: Award,
-    title: "Excellence Juridique",
-    description: "Expertise reconnue et certifiée"
+    title: t("pages.process.guarantees.3.title", { defaultValue: "Excellence Juridique" }),
+    description: t("pages.process.guarantees.3.description", { defaultValue: "Expertise reconnue et certifiée" })
   }
 ];
 
@@ -182,6 +184,9 @@ export default function Process() {
   const [dbProcessSteps, setDbProcessSteps] = useState<ProcessStep[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const { toast } = useToast();
+  const { t, i18n } = useTranslation();
+
+  const currentLang = getCurrentLang(i18n);
 
   useEffect(() => {
     fetchProcessSteps();
@@ -198,8 +203,8 @@ export default function Process() {
       console.error('Error fetching process steps:', error);
       toast({
         variant: "destructive",
-        title: "Erreur",
-        description: "Impossible de charger les étapes du processus"
+        title: t("common.error", { defaultValue: "Erreur" }),
+        description: t("pages.process.toast_error_desc", { defaultValue: "Impossible de charger les étapes du processus" })
       });
     } finally {
       setIsLoading(false);
@@ -212,17 +217,20 @@ export default function Process() {
       .sort((a, b) => a.order - b.order)
       .map((step, index) => ({
         ...step,
+        title: pickLocalizedString(step.title, currentLang),
+        description: pickLocalizedString(step.description, currentLang),
         icon: getIconFromName(step.iconName),
         number: String(index + 1).padStart(2, '0'),
         // Utiliser les valeurs de la DB, sinon valeurs par défaut
-        duration: step.duration || "Variable",
+        duration: step.duration || t("pages.process.steps.3.duration", { defaultValue: "Variable" }),
         color: step.color || "from-blue-500/10 to-blue-600/10",
         details: step.details || []
       }));
   };
 
   // Utiliser les données Firebase si disponibles, sinon les données par défaut
-  const processSteps = dbProcessSteps.length > 0 ? enrichProcessSteps(dbProcessSteps) : defaultProcessSteps;
+  const processSteps = dbProcessSteps.length > 0 ? enrichProcessSteps(dbProcessSteps) : getDefaultProcessSteps(t);
+  const guarantees = getGuarantees(t);
 
   console.log('Process Page - DB steps:', dbProcessSteps.length, 'Final steps:', processSteps.length);
 
@@ -232,14 +240,15 @@ export default function Process() {
       
       <main>
         <PageHero
-          eyebrow="Notre Processus"
+          eyebrow={t("pages.process.hero_eyebrow", { defaultValue: "Notre Processus" })}
           title={(
             <>
-              Un Accompagnement <span className="text-yellow-400">Structuré</span>
+              {t("pages.process.hero_title_prefix", { defaultValue: "Un Accompagnement" })}{" "}
+              <span className="text-yellow-400">{t("pages.process.hero_title_highlight", { defaultValue: "Structuré" })}</span>
             </>
           )}
-          subtitle={"Découvrez notre méthodologie éprouvée en 6 étapes pour vous garantir un accompagnement juridique d'excellence, du premier contact jusqu'à la résolution de votre dossier."}
-          ctaText="Démarrer maintenant"
+          subtitle={t("pages.process.hero_subtitle", { defaultValue: "Découvrez notre méthodologie éprouvée en 6 étapes pour vous garantir un accompagnement juridique d'excellence, du premier contact jusqu'à la résolution de votre dossier." })}
+          ctaText={t("pages.process.hero_cta", { defaultValue: "Démarrer maintenant" })}
           ctaLink="/contact"
           imageSrc={processHero}
           large
@@ -251,15 +260,15 @@ export default function Process() {
             <div className="max-w-4xl mx-auto text-center space-y-6">
               <Badge className="mb-4" variant="outline">
                 <Sparkles className="h-4 w-4 mr-2" />
-                Méthodologie Éprouvée
+                {t("pages.process.intro_badge", { defaultValue: "Méthodologie Éprouvée" })}
               </Badge>
               <h2 className="text-3xl md:text-4xl font-bold">
-                Une Approche <span className="text-primary">Professionnelle</span> en 6 Étapes
+                {t("pages.process.intro_title_prefix", { defaultValue: "Une Approche" })}{" "}
+                <span className="text-primary">{t("pages.process.intro_title_highlight", { defaultValue: "Professionnelle" })}</span>{" "}
+                {t("pages.process.intro_title_suffix", { defaultValue: "en 6 Étapes" })}
               </h2>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                Notre processus a été conçu pour vous offrir clarté, transparence et efficacité à chaque étape. 
-                De la première prise de contact à l'accompagnement continu, nous vous guidons avec rigueur et 
-                professionnalisme pour atteindre vos objectifs juridiques.
+                {t("pages.process.intro_paragraph", { defaultValue: "Notre processus a été conçu pour vous offrir clarté, transparence et efficacité à chaque étape. De la première prise de contact à l'accompagnement continu, nous vous guidons avec rigueur et professionnalisme pour atteindre vos objectifs juridiques." })}
               </p>
             </div>
           </div>
@@ -272,7 +281,7 @@ export default function Process() {
               {isLoading ? (
                 <div className="text-center py-20">
                   <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto"></div>
-                  <p className="mt-4 text-muted-foreground">Chargement des étapes...</p>
+                  <p className="mt-4 text-muted-foreground">{t("pages.process.loading", { defaultValue: "Chargement des étapes..." })}</p>
                 </div>
               ) : (
                 <div className="relative">
@@ -344,7 +353,7 @@ export default function Process() {
                                   <div className="space-y-3">
                                     <h4 className="font-semibold text-sm flex items-center gap-2">
                                       <div className="h-1 w-8 bg-primary rounded"></div>
-                                      Points Clés
+                                      {t("pages.process.key_points", { defaultValue: "Points Clés" })}
                                     </h4>
                                     <ul className="space-y-2">
                                       {step.details.map((detail, i) => (
@@ -379,13 +388,15 @@ export default function Process() {
             <div className="text-center mb-12">
               <Badge className="mb-4" variant="outline">
                 <Shield className="h-4 w-4 mr-2" />
-                Nos Garanties
+                {t("pages.process.guarantees_badge", { defaultValue: "Nos Garanties" })}
               </Badge>
               <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                Nos <span className="text-primary">Engagements</span> envers Vous
+                {t("pages.process.guarantees_title_prefix", { defaultValue: "Nos" })}{" "}
+                <span className="text-primary">{t("pages.process.guarantees_title_highlight", { defaultValue: "Engagements" })}</span>{" "}
+                {t("pages.process.guarantees_title_suffix", { defaultValue: "envers Vous" })}
               </h2>
               <p className="text-muted-foreground max-w-2xl mx-auto">
-                Des garanties concrètes pour vous assurer un service de qualité exceptionnelle
+                {t("pages.process.guarantees_subtitle", { defaultValue: "Des garanties concrètes pour vous assurer un service de qualité exceptionnelle" })}
               </p>
             </div>
 
@@ -422,10 +433,10 @@ export default function Process() {
             <div className="max-w-5xl mx-auto">
               <div className="text-center mb-12">
                 <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                  Des Résultats qui Parlent d'Eux-Mêmes
+                  {t("pages.process.stats_title", { defaultValue: "Des Résultats qui Parlent d'Eux-Mêmes" })}
                 </h2>
                 <p className="text-white/90 max-w-2xl mx-auto">
-                  Notre processus éprouvé génère des résultats concrets et mesurables
+                  {t("pages.process.stats_subtitle", { defaultValue: "Notre processus éprouvé génère des résultats concrets et mesurables" })}
                 </p>
               </div>
 
@@ -435,8 +446,8 @@ export default function Process() {
                     <TrendingUp className="h-8 w-8 text-white" />
                   </div>
                   <div className="text-5xl font-extrabold text-white mb-2">98%</div>
-                  <div className="text-white/90 font-medium mb-2">Taux de Satisfaction</div>
-                  <p className="text-white/70 text-sm">Clients satisfaits de notre processus</p>
+                  <div className="text-white/90 font-medium mb-2">{t("pages.process.stats_satisfaction", { defaultValue: "Taux de Satisfaction" })}</div>
+                  <p className="text-white/70 text-sm">{t("pages.process.stats_satisfaction_note", { defaultValue: "Clients satisfaits de notre processus" })}</p>
                 </div>
 
                 <div className="text-center bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
@@ -444,8 +455,8 @@ export default function Process() {
                     <Clock className="h-8 w-8 text-white" />
                   </div>
                   <div className="text-5xl font-extrabold text-white mb-2">24h</div>
-                  <div className="text-white/90 font-medium mb-2">Temps de Réponse</div>
-                  <p className="text-white/70 text-sm">Réactivité garantie sur toute demande</p>
+                  <div className="text-white/90 font-medium mb-2">{t("pages.process.stats_response_time", { defaultValue: "Temps de Réponse" })}</div>
+                  <p className="text-white/70 text-sm">{t("pages.process.stats_response_time_note", { defaultValue: "Réactivité garantie sur toute demande" })}</p>
                 </div>
 
                 <div className="text-center bg-white/10 backdrop-blur-sm rounded-2xl p-8 border border-white/20">
@@ -453,8 +464,8 @@ export default function Process() {
                     <Award className="h-8 w-8 text-white" />
                   </div>
                   <div className="text-5xl font-extrabold text-white mb-2">500+</div>
-                  <div className="text-white/90 font-medium mb-2">Dossiers Réussis</div>
-                  <p className="text-white/70 text-sm">Grâce à notre méthodologie</p>
+                  <div className="text-white/90 font-medium mb-2">{t("pages.process.stats_cases", { defaultValue: "Dossiers Réussis" })}</div>
+                  <p className="text-white/70 text-sm">{t("pages.process.stats_cases_note", { defaultValue: "Grâce à notre méthodologie" })}</p>
                 </div>
               </div>
             </div>
@@ -471,24 +482,25 @@ export default function Process() {
                 </div>
                 
                 <h2 className="text-3xl md:text-4xl font-bold">
-                  Prêt à Démarrer <span className="text-primary">Votre Projet Juridique</span> ?
+                  {t("pages.process.cta_title_prefix", { defaultValue: "Prêt à Démarrer" })}{" "}
+                  <span className="text-primary">{t("pages.process.cta_title_highlight", { defaultValue: "Votre Projet Juridique" })}</span>{" "}
+                  {t("pages.process.cta_title_suffix", { defaultValue: "?" })}
                 </h2>
                 
                 <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                  Contactez-nous dès aujourd'hui pour bénéficier de notre première consultation gratuite 
-                  et découvrir comment notre processus peut vous aider à atteindre vos objectifs juridiques.
+                  {t("pages.process.cta_subtitle", { defaultValue: "Contactez-nous dès aujourd'hui pour bénéficier de notre première consultation gratuite et découvrir comment notre processus peut vous aider à atteindre vos objectifs juridiques." })}
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
                   <Button size="lg" className="group" asChild>
                     <Link to="/contact">
-                      Consultation Gratuite
+                      {t("pages.process.cta_primary", { defaultValue: "Consultation Gratuite" })}
                       <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                     </Link>
                   </Button>
                   <Button size="lg" variant="outline" asChild>
                     <Link to="/services">
-                      Découvrir Nos Services
+                      {t("common.discover_services", { defaultValue: "Découvrir nos Services" })}
                     </Link>
                   </Button>
                 </div>
@@ -497,15 +509,15 @@ export default function Process() {
                   <div className="flex flex-wrap justify-center gap-6 text-sm text-muted-foreground">
                     <div className="flex items-center gap-2">
                       <CheckCircle className="h-4 w-4 text-primary" />
-                      <span>Sans engagement</span>
+                      <span>{t("pages.process.cta_pill_no_commitment", { defaultValue: "Sans engagement" })}</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <CheckCircle className="h-4 w-4 text-primary" />
-                      <span>Réponse sous 24h</span>
+                      <span>{t("pages.process.cta_pill_24h", { defaultValue: "Réponse sous 24h" })}</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <CheckCircle className="h-4 w-4 text-primary" />
-                      <span>Confidentialité garantie</span>
+                      <span>{t("pages.process.cta_pill_confidentiality", { defaultValue: "Confidentialité garantie" })}</span>
                     </div>
                   </div>
                 </div>

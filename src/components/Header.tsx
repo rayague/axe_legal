@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { NavLink, Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { useTranslation } from "react-i18next";
 import {
   Menu,
   X,
@@ -16,17 +17,6 @@ import {
   Megaphone,
 } from "lucide-react";
 
-const navItems = [
-  { label: "Accueil", path: "/", icon: Home },
-  { label: "Services", path: "/services", icon: Briefcase },
-  { label: "Équipe", path: "/equipe", icon: Users },
-  { label: "LegalTech", path: "/legaltech", icon: Zap },
-  { label: "Processus", path: "/processus", icon: Settings },
-  { label: "Témoignages", path: "/temoignages", icon: Star },
-  { label: "Annonces", path: "/annonces", icon: Megaphone },
-  { label: "Contact", path: "/contact", icon: Mail },
-];
-
 export const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -35,6 +25,67 @@ export const Header = () => {
   const headerRef = useRef<HTMLElement | null>(null);
   const underlineRef = useRef<HTMLDivElement | null>(null);
   const location = useLocation();
+  const { t, i18n } = useTranslation();
+
+  const currentLang = i18n.language === "en" ? "en" : "fr";
+
+  const navItems = [
+    { label: t("nav.home", { defaultValue: "Accueil" }), path: "/", icon: Home },
+    { label: t("nav.services", { defaultValue: "Services" }), path: "/services", icon: Briefcase },
+    { label: t("nav.team", { defaultValue: "Équipe" }), path: "/equipe", icon: Users },
+    { label: t("nav.legaltech", { defaultValue: "LegalTech" }), path: "/legaltech", icon: Zap },
+    { label: t("nav.process", { defaultValue: "Processus" }), path: "/processus", icon: Settings },
+    { label: t("nav.testimonials", { defaultValue: "Témoignages" }), path: "/temoignages", icon: Star },
+    { label: t("nav.announcements", { defaultValue: "Annonces" }), path: "/annonces", icon: Megaphone },
+    { label: t("nav.contact", { defaultValue: "Contact" }), path: "/contact", icon: Mail },
+  ];
+
+  const setLang = (lng: "fr" | "en") => {
+    if (lng === currentLang) return;
+    void i18n.changeLanguage(lng);
+  };
+
+  const LangSwitch = ({ size = "sm" }: { size?: "sm" | "md" }) => {
+    const isMd = size === "md";
+    const baseBtn = isMd ? "h-9 w-10 text-xs" : "h-8 w-9 text-[11px]";
+
+    return (
+      <div
+        className={`inline-flex items-center rounded-full border border-border bg-muted/40 p-0.5 shadow-sm ${isMd ? "" : ""}`}
+        role="group"
+        aria-label={t("nav.language", { defaultValue: "Langue" })}
+      >
+        <button
+          type="button"
+          onClick={() => setLang("fr")}
+          className={`${baseBtn} rounded-full font-semibold tracking-wide transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
+            currentLang === "fr"
+              ? "bg-white text-foreground shadow border border-border"
+              : "text-muted-foreground hover:text-foreground"
+          }`}
+          aria-pressed={currentLang === "fr"}
+          aria-label={t("nav.language_fr", { defaultValue: "Français" })}
+          title={t("nav.language_fr", { defaultValue: "Français" })}
+        >
+          FR
+        </button>
+        <button
+          type="button"
+          onClick={() => setLang("en")}
+          className={`${baseBtn} rounded-full font-semibold tracking-wide transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background ${
+            currentLang === "en"
+              ? "bg-white text-foreground shadow border border-border"
+              : "text-muted-foreground hover:text-foreground"
+          }`}
+          aria-pressed={currentLang === "en"}
+          aria-label={t("nav.language_en", { defaultValue: "English" })}
+          title={t("nav.language_en", { defaultValue: "English" })}
+        >
+          EN
+        </button>
+      </div>
+    );
+  };
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 20);
@@ -144,7 +195,7 @@ export const Header = () => {
           </Link>
 
           {/* Desktop Nav */}
-          <nav ref={navRef} className="hidden xl:flex items-center gap-4 relative flex-1 justify-center mx-4" aria-label="Navigation principale">
+          <nav ref={navRef} className="hidden xl:flex items-center gap-2 relative flex-1 justify-center mx-4 min-w-0" aria-label="Navigation principale">
             {navItems.map((item) => {
               const Icon = item.icon;
               return (
@@ -153,7 +204,7 @@ export const Header = () => {
                   to={item.path}
                   end={item.path === "/"}
                   className={({ isActive }) =>
-                    `nav-link flex items-center gap-2 px-2.5 py-2 rounded-md text-sm font-medium transition-all duration-150 ${
+                    `nav-link flex items-center gap-2 px-2 py-2 rounded-md text-sm font-medium transition-all duration-150 ${
                       isActive
                         ? "text-primary font-bold bg-primary/10 shadow-sm"
                         : "text-muted-foreground hover:text-foreground hover:bg-secondary"
@@ -169,9 +220,10 @@ export const Header = () => {
           </nav>
 
           {/* CTA Button */}
-          <div className="hidden xl:flex items-center flex-shrink-0">
+          <div className="hidden xl:flex items-center flex-shrink-0 gap-2">
+            <LangSwitch size="md" />
             <Button size="sm" className="bg-primary hover:bg-primary/90 shadow-sm whitespace-nowrap" asChild>
-              <Link to="/consultation">Consultation Gratuite</Link>
+              <Link to="/consultation">{t("nav.free_consultation", { defaultValue: "Consultation Gratuite" })}</Link>
             </Button>
           </div>
 
@@ -237,13 +289,18 @@ export const Header = () => {
             })}
 
             <div className="pt-4 border-t border-border mt-4">
+              <div className="flex items-center justify-between px-4 py-3 rounded-md bg-secondary/30">
+                <span className="text-sm font-medium">{t("nav.language", { defaultValue: "Langue" })}</span>
+                <LangSwitch />
+              </div>
+
               <a href="tel:+2290197747593" className="flex items-center gap-3 px-4 py-3 rounded-md hover:bg-secondary/40">
                 <Phone className="h-5 w-5 text-primary" />
-                <span>Appelez-nous</span>
+                <span>{t("nav.call_us", { defaultValue: "Appelez-nous" })}</span>
               </a>
               <Button className="w-full mt-3" asChild>
                 <Link to="/consultation" onClick={() => setIsMobileMenuOpen(false)}>
-                  Consultation Gratuite
+                  {t("nav.free_consultation", { defaultValue: "Consultation Gratuite" })}
                 </Link>
               </Button>
             </div>

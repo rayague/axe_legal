@@ -1,55 +1,53 @@
 import { Card } from "@/components/ui/card";
 import { Users, TrendingUp, FileText, BarChart } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import teamLeader from "@/assets/team-leader.jpg";
 import teamFiscal from "@/assets/team-fiscal.jpg";
 import teamLegal from "@/assets/team-legal.jpg";
 import teamFinance from "@/assets/team-finance.jpg";
 
-const teamMembers = [
-  {
-    title: "l'Associé-Gérant",
-    subtitle: "Direction & Stratégie",
-    description:
-      "Pilote la stratégie globale du cabinet et assure la direction des opérations avec une vision d'excellence et d'innovation juridique.",
-    icon: Users,
-    image: teamLeader,
-  },
-  {
-    title: "Cellule de l'Intelligence Fiscale",
-    subtitle: "Optimisation & Défense Fiscale",
-    description:
-      "Expertise pointue en fiscalité, optimisation fiscale et défense des intérêts face aux administrations fiscales.",
-    icon: TrendingUp,
-    image: teamFiscal,
-  },
-  {
-    title: "Cellule des Actes Juridiques et de la Gouvernance d'Entreprise",
-    subtitle: "Gouvernance d'Entreprise",
-    description:
-      "Spécialisée dans la rédaction d'actes juridiques, la gouvernance d'entreprise et l'accompagnement des structures organisationnelles.",
-    icon: FileText,
-    image: teamLegal,
-  },
-  {
-    title: "Cellule de Traitement de l'Information Financière",
-    subtitle: "Analyse & Intelligence Financière",
-    description:
-      "Expertise en analyse financière, traitement de données et intelligence économique pour optimiser les décisions stratégiques.",
-    icon: BarChart,
-    image: teamFinance,
-  },
-];
-
 export const TeamSection = () => {
+  const { t } = useTranslation();
+
+  const teamMembers = [
+    {
+      title: t("team_section.members.0.title", { defaultValue: "l'Associé-Gérant" }),
+      subtitle: t("team_section.members.0.subtitle", { defaultValue: "Direction & Stratégie" }),
+      description: t("team_section.members.0.description", { defaultValue: "Pilote la stratégie globale du cabinet et assure la direction des opérations avec une vision d'excellence et d'innovation juridique." }),
+      icon: Users,
+      image: teamLeader,
+    },
+    {
+      title: t("team_section.members.1.title", { defaultValue: "Cellule de l'Intelligence Fiscale" }),
+      subtitle: t("team_section.members.1.subtitle", { defaultValue: "Optimisation & Défense Fiscale" }),
+      description: t("team_section.members.1.description", { defaultValue: "Expertise pointue en fiscalité, optimisation fiscale et défense des intérêts face aux administrations fiscales." }),
+      icon: TrendingUp,
+      image: teamFiscal,
+    },
+    {
+      title: t("team_section.members.2.title", { defaultValue: "Cellule des Actes Juridiques et de la Gouvernance d'Entreprise" }),
+      subtitle: t("team_section.members.2.subtitle", { defaultValue: "Gouvernance d'Entreprise" }),
+      description: t("team_section.members.2.description", { defaultValue: "Spécialisée dans la rédaction d'actes juridiques, la gouvernance d'entreprise et l'accompagnement des structures organisationnelles." }),
+      icon: FileText,
+      image: teamLegal,
+    },
+    {
+      title: t("team_section.members.3.title", { defaultValue: "Cellule de Traitement de l'Information Financière" }),
+      subtitle: t("team_section.members.3.subtitle", { defaultValue: "Analyse & Intelligence Financière" }),
+      description: t("team_section.members.3.description", { defaultValue: "Expertise en analyse financière, traitement de données et intelligence économique pour optimiser les décisions stratégiques." }),
+      icon: BarChart,
+      image: teamFinance,
+    },
+  ];
+
   return (
     <section className="py-16 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <p className="text-accent font-semibold mb-2">Notre Équipe</p>
-          <h2 className="text-3xl lg:text-4xl font-bold">Experts Juridiques de Renom</h2>
+          <p className="text-accent font-semibold mb-2">{t("team_section.eyebrow", { defaultValue: "Notre Équipe" })}</p>
+          <h2 className="text-3xl lg:text-4xl font-bold">{t("team_section.title", { defaultValue: "Experts Juridiques de Renom" })}</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto mt-3">
-            Une équipe pluridisciplinaire de professionnels du droit, reconnus pour leur expertise et
-            leur engagement envers l'excellence juridique.
+            {t("team_section.subtitle", { defaultValue: "Une équipe pluridisciplinaire de professionnels du droit, reconnus pour leur expertise et leur engagement envers l'excellence juridique." })}
           </p>
         </div>
 

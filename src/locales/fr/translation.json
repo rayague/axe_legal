@@ -1,0 +1,744 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "services": "Services",
+    "team": "Équipe",
+    "legaltech": "LegalTech",
+    "process": "Processus",
+    "testimonials": "Témoignages",
+    "announcements": "Annonces",
+    "contact": "Contact",
+    "consultation_free": "Consultation Gratuite",
+    "call_us": "Appelez-nous",
+    "language": "Langue",
+    "free_consultation": "Consultation Gratuite"
+  },
+  "common": {
+    "discover_services": "Découvrir nos Services",
+    "request_consultation": "Demander une Consultation",
+    "call": "Nous Appeler",
+    "contact_us": "Contactez-nous",
+    "error": "Erreur",
+    "try_again": "Une erreur est survenue. Veuillez réessayer.",
+    "write_us": "Écrivez-nous",
+    "print_download": "Imprimer / Télécharger"
+  },
+  "banners": {
+    "english_available_title": "Service disponible en anglais",
+    "english_available_subtitle": "English available for consultations & legal support"
+  },
+  "hero": {
+    "badge": "Cabinet d'Excellence Juridique",
+    "title_prefix": "Votre Partenaire",
+    "title_typed": "Juridique",
+    "title_suffix": "de Confiance au Bénin",
+    "subtitle": "Nous accompagnons entreprises et particuliers avec des solutions juridiques efficaces, une expertise solide et un service hautement professionnel depuis 2020."
+  },
+  "stats": {
+    "clients_supported": "Clients Accompagnés",
+    "cases_handled": "Dossiers Traités",
+    "success_rate": "Taux de Réussite",
+    "years_experience": "Années d'Expérience"
+  },
+  "about": {
+    "badge": "Notre Histoire",
+    "title": "Excellence et Innovation Juridique",
+    "p1": "Fondé en 2020, Axe Legal s'est imposé comme l'un des cabinets de conseil juridique les plus respectés du Bénin. Notre mission est de fournir des solutions juridiques innovantes et sur mesure à nos clients, qu'ils soient entrepreneurs, entreprises ou particuliers.",
+    "p2": "Nous combinons une expertise technique pointue avec une approche humaine et personnalisée, garantissant à nos clients un accompagnement de qualité à chaque étape de leur parcours juridique.",
+    "features": {
+      "strategy_title": "Approche stratégique",
+      "strategy_desc": "Conseils sur-mesure et plans d'action concrets pour protéger et faire croître vos intérêts.",
+      "responsiveness_title": "Réactivité",
+      "responsiveness_desc": "Interventions rapides, priorisation des urgences et respect strict des délais procéduraux.",
+      "support_title": "Accompagnement",
+      "support_desc": "Un suivi dédié, explications claires et une relation de confiance au fil du dossier.",
+      "excellence_title": "Excellence",
+      "excellence_desc": "Pratiques rigoureuses et expertise reconnue pour des résultats durables et mesurables."
+    },
+    "image_alt": "Cabinet Axe Legal - Équipe professionnelle",
+    "image_badge": "5+ ans d'expérience",
+    "caption_title": "Excellence Juridique",
+    "caption_subtitle": "Au service de nos clients"
+  },
+  "why_choose_us": {
+    "title": "Pourquoi Choisir Axe Legal ?",
+    "subtitle": "Découvrez les valeurs et engagements qui font de nous votre partenaire juridique de confiance",
+    "reasons": {
+      "expertise_title": "Expertise Ciblée",
+      "expertise_desc": "Une connaissance approfondie du droit béninois et des réalités locales pour des conseils précis et adaptés.",
+      "human_title": "Approche Humaine",
+      "human_desc": "Nous plaçons la relation client au cœur de notre pratique avec écoute, empathie et transparence totale.",
+      "results_title": "Résultats Probants",
+      "results_desc": "95% de taux de réussite grâce à notre stratégie juridique rigoureuse et notre engagement sans faille.",
+      "confidentiality_title": "Confidentialité Absolue",
+      "confidentiality_desc": "Protection maximale de vos informations avec le secret professionnel le plus strict garanti.",
+      "availability_title": "Disponibilité 24/7",
+      "availability_desc": "Une équipe réactive disponible pour les urgences juridiques, même en dehors des heures de bureau.",
+      "excellence_title": "Excellence Reconnue",
+      "excellence_desc": "Cabinet primé et recommandé par nos clients pour la qualité exceptionnelle de nos prestations."
+    }
+  },
+  "faq": {
+    "badge": "Questions Fréquentes",
+    "title": "Vous Avez des Questions ?",
+    "subtitle": "Retrouvez les réponses aux questions les plus fréquentes sur nos services juridiques",
+    "bottom_text": "Vous ne trouvez pas la réponse à votre question ?",
+    "items": {
+      "0": {
+        "q": "Combien coûte une consultation juridique ?",
+        "a": "La première consultation est gratuite. Elle nous permet d'évaluer votre situation et de vous proposer un devis personnalisé adapté à vos besoins spécifiques. Nos tarifs sont transparents et compétitifs."
+      },
+      "1": {
+        "q": "Quels documents dois-je préparer pour ma première consultation ?",
+        "a": "Pour optimiser notre rencontre, apportez tous les documents liés à votre affaire : contrats, courriers, preuves, jugements antérieurs, pièces d'identité, etc. Si vous n'avez pas tous les documents, ne vous inquiétez pas, nous vous guiderons."
+      },
+      "2": {
+        "q": "Proposez-vous des facilités de paiement ?",
+        "a": "Oui, nous comprenons que les frais juridiques peuvent représenter un investissement. Nous proposons des plans de paiement flexibles et des forfaits adaptés à votre budget. Contactez-nous pour discuter des options."
+      },
+      "3": {
+        "q": "Puis-je vous contacter en dehors des heures de bureau ?",
+        "a": "Absolument ! Pour les urgences juridiques, nous offrons un service d'assistance 24/7. Vous pouvez nous joindre par téléphone, email ou WhatsApp. Nous nous engageons à répondre dans les plus brefs délais."
+      },
+      "4": {
+        "q": "Travaillez-vous avec des entreprises ou uniquement des particuliers ?",
+        "a": "Nous accompagnons aussi bien les particuliers que les entreprises (PME, startups, grandes entreprises). Nos services couvrent le droit des affaires, le droit du travail, les contrats commerciaux et bien plus encore."
+      },
+      "5": {
+        "q": "Quelle est votre zone d'intervention géographique ?",
+        "a": "Nous intervenons principalement au Bénin, avec un focus sur Cotonou et sa région. Toutefois, nous pouvons également traiter des dossiers dans d'autres villes du pays et même à l'international selon les besoins."
+      },
+      "6": {
+        "q": "Comment garantissez-vous la confidentialité de mes informations ?",
+        "a": "Le secret professionnel est au cœur de notre métier. Toutes vos informations sont strictement confidentielles et protégées. Nous utilisons des systèmes sécurisés et ne partageons jamais vos données sans votre consentement explicite."
+      }
+    }
+  },
+  "cta": {
+    "title": "Prêt à Résoudre Votre Problème Juridique ?",
+    "subtitle": "Ne laissez pas vos questions juridiques sans réponse. Notre équipe d'experts est prête à vous accompagner avec professionnalisme et dévouement.",
+    "book_free_consultation": "Réserver une Consultation Gratuite",
+    "available_now": "Disponible maintenant pour vous assister"
+  },
+  "stats_section": {
+    "title": "Notre Impact en Chiffres",
+    "subtitle": "Des résultats concrets qui témoignent de notre engagement envers l'excellence"
+  },
+  "announcements": {
+    "title": "🎯 Dernières Annonces",
+    "subtitle": "Découvrez nos dernières actualités et annonces",
+    "types": {
+      "promotion": "Promotion",
+      "opportunity": "Opportunité",
+      "event": "Événement",
+      "news": "Actualité"
+    }
+  },
+  "services_section": {
+    "loading": "Chargement des services...",
+    "empty_title": "Aucun service disponible",
+    "empty_text": "Aucun service n'est actuellement disponible.",
+    "error_text": "Une erreur s'est produite lors du chargement des services.",
+    "more_features": "+ {{count}} autres fonctionnalités"
+  },
+  "testimonials_section": {
+    "title_prefix": "Témoignages",
+    "title_highlight": "Authentiques",
+    "subtitle": "Découvrez ce que nos clients disent de notre accompagnement juridique",
+    "loading": "Chargement des témoignages...",
+    "empty": "Aucun témoignage disponible pour le moment.",
+    "toast_error_title": "Erreur",
+    "toast_error_desc": "Impossible de charger les témoignages"
+  },
+  "business_hours": {
+    "title": "Horaires d'ouverture",
+    "closed": "Fermé",
+    "break": "pause",
+    "exceptional_closure": "Fermé exceptionnellement aujourd'hui :",
+    "holidays_label": "Jours fériés (fermé) :",
+    "days": {
+      "monday": "Lundi",
+      "tuesday": "Mardi",
+      "wednesday": "Mercredi",
+      "thursday": "Jeudi",
+      "friday": "Vendredi",
+      "saturday": "Samedi",
+      "sunday": "Dimanche"
+    }
+  },
+  "certifications": {
+    "title": "Reconnu et Certifié",
+    "subtitle": "Notre expertise juridique reconnue au service de votre réussite",
+    "items": {
+      "0": {
+        "title": "Droit des Affaires",
+        "subtitle": "Expert en droit des affaires et contrats commerciaux"
+      },
+      "1": {
+        "title": "Excellence",
+        "subtitle": "Prix du meilleur cabinet 2023"
+      },
+      "2": {
+        "title": "Confidentialité",
+        "subtitle": "Garantie absolue"
+      }
+    }
+  },
+  "team_section": {
+    "eyebrow": "Notre Équipe",
+    "title": "Experts Juridiques de Renom",
+    "subtitle": "Une équipe pluridisciplinaire de professionnels du droit, reconnus pour leur expertise et leur engagement envers l'excellence juridique.",
+    "members": {
+      "0": {
+        "title": "l'Associé-Gérant",
+        "subtitle": "Direction & Stratégie",
+        "description": "Pilote la stratégie globale du cabinet et assure la direction des opérations avec une vision d'excellence et d'innovation juridique."
+      },
+      "1": {
+        "title": "Cellule de l'Intelligence Fiscale",
+        "subtitle": "Optimisation & Défense Fiscale",
+        "description": "Expertise pointue en fiscalité, optimisation fiscale et défense des intérêts face aux administrations fiscales."
+      },
+      "2": {
+        "title": "Cellule des Actes Juridiques et de la Gouvernance d'Entreprise",
+        "subtitle": "Gouvernance d'Entreprise",
+        "description": "Spécialisée dans la rédaction d'actes juridiques, la gouvernance d'entreprise et l'accompagnement des structures organisationnelles."
+      },
+      "3": {
+        "title": "Cellule de Traitement de l'Information Financière",
+        "subtitle": "Analyse & Intelligence Financière",
+        "description": "Expertise en analyse financière, traitement de données et intelligence économique pour optimiser les décisions stratégiques."
+      }
+    }
+  },
+  "footer": {
+    "tagline": "Cabinet de conseils juridiques et d'assistance fiscale.",
+    "team_composition": "Composition de l'équipe :",
+    "associate_manager": "L'Associé-Gérant",
+    "tax_intelligence_unit": "La Cellule de l'Intelligence Fiscale",
+    "legal_governance_unit": "La Cellule des Actes Juridiques et de la Gouvernance d'Entreprise",
+    "financial_info_unit": "La Cellule de Traitement de l'Information Financière",
+    "our_services": "Nos Prestations",
+    "we_work_under": "Nous travaillons sous :",
+    "service_mode_1": "Prestations sous contrat de trois mois au moins avec paiement mensuel ou trimestriel",
+    "service_mode_2": "Prestation instantanée avec paiement à la tâche ou par mission",
+    "legal_info": "Informations Légales",
+    "trade_register": "Registre du commerce :",
+    "tax_id": "Identifiant fiscal :",
+    "contact": "Contact",
+    "address": "Adresse",
+    "address_value": "Godomey échangeur, en direction Calavi-Cotonou, côté opposé à la mosquée.",
+    "phone": "Téléphone",
+    "see_on_maps": "Voir sur Google Maps",
+    "rights": "Tous droits réservés.",
+    "legal_mentions": "Mentions Légales",
+    "privacy": "Confidentialité"
+  },
+  "pages": {
+    "home": {
+      "services_title": "Nos Services",
+      "services_subtitle": "Des solutions juridiques complètes adaptées à vos besoins",
+      "hours_title": "Nous Sommes à Votre Écoute",
+      "hours_subtitle": "Notre équipe est disponible pour répondre à vos besoins juridiques. Consultez nos horaires d'ouverture."
+    },
+    "contact": {
+      "hero_eyebrow": "Contactez-Nous",
+      "hero_title_prefix": "Parlons de Votre",
+      "hero_title_highlight": "Projet Juridique",
+      "hero_subtitle": "Notre équipe d'experts est à votre disposition pour répondre à vos questions et vous accompagner dans vos démarches juridiques. Première consultation offerte.",
+      "hero_cta": "Appeler maintenant",
+      "toast_success_title": "Message envoyé !",
+      "toast_success_desc": "Nous vous répondrons dans les plus brefs délais.",
+      "form_badge": "Formulaire de Contact",
+      "form_title_prefix": "Envoyez-nous un",
+      "form_title_highlight": "Message",
+      "form_subtitle": "Remplissez le formulaire ci-dessous et nous vous recontacterons dans les plus brefs délais.",
+      "field_full_name": "Nom complet",
+      "placeholder_full_name": "Jean Dupont",
+      "field_email": "Email",
+      "placeholder_email": "jean@exemple.com",
+      "field_phone": "Téléphone",
+      "placeholder_phone": "+229 XX XX XX XX",
+      "field_subject": "Objet de la demande",
+      "placeholder_subject": "Ex: Consultation en droit des affaires",
+      "field_message": "Votre message",
+      "placeholder_message": "Décrivez votre situation ou vos besoins juridiques...",
+      "submitting": "Envoi en cours...",
+      "submit": "Envoyer le Message",
+      "privacy_notice": "En soumettant ce formulaire, vous acceptez notre <1>politique de confidentialité</1>.",
+      "info_badge": "Coordonnées",
+      "info_title_prefix": "Nos",
+      "info_title_highlight": "Coordonnées",
+      "info_subtitle": "Plusieurs moyens pour nous joindre facilement",
+      "card_phone_title": "Téléphone",
+      "phone_availability": "Du lundi au vendredi, 8h - 18h",
+      "card_email_title": "Email",
+      "email_response_time": "Réponse sous 24h",
+      "card_address_title": "Adresse",
+      "address_value": "Godomey échangeur, en direction Calavi-Cotonou, côté opposé à la mosquée.",
+      "by_appointment": "Sur rendez-vous uniquement",
+      "hours_loading": "Chargement..."
+    },
+    "consultation": {
+      "hero_eyebrow": "Consultation Juridique",
+      "hero_title_prefix": "Réservez Votre",
+      "hero_title_highlight": "Consultation Gratuite",
+      "hero_subtitle": "Bénéficiez d'une première consultation gratuite avec nos experts juridiques. Nous analysons votre situation et vous proposons des solutions adaptées à vos besoins.",
+      "hero_cta": "Réserver maintenant",
+      "toast_success_title": "Demande envoyée !",
+      "toast_success_desc": "Nous vous contacterons bientôt pour confirmer votre consultation.",
+      "services": {
+        "0": "Droit des Affaires",
+        "1": "Fiscalité",
+        "2": "Droit Immobilier",
+        "3": "Droit du Travail",
+        "4": "Recouvrement",
+        "5": "Marchés Publics"
+      },
+      "benefits_badge": "Avantages",
+      "benefits_title_prefix": "Pourquoi Choisir Notre",
+      "benefits_title_highlight": "Consultation Gratuite",
+      "benefits_title_suffix": "?",
+      "benefits_subtitle": "Un premier rendez-vous sans engagement pour évaluer votre situation juridique",
+      "benefits": {
+        "items": {
+          "0": {
+            "title": "100% Gratuit",
+            "desc": "Première consultation entièrement gratuite et sans aucun engagement de votre part"
+          },
+          "1": {
+            "title": "Réponse Sous 24h",
+            "desc": "Nous vous recontactons rapidement pour confirmer votre rendez-vous et préparer votre dossier"
+          },
+          "2": {
+            "title": "Experts Dédiés",
+            "desc": "Rencontrez un conseiller juridique spécialisé dans votre domaine pour des conseils adaptés"
+          }
+        }
+      },
+      "process_title_prefix": "Déroulement de la",
+      "process_title_highlight": "Consultation",
+      "process_subtitle": "Voici comment se déroule votre première rencontre avec nos experts",
+      "process": {
+        "items": {
+          "0": {
+            "title": "1. Écoute Attentive",
+            "desc": "Nous prenons le temps d'écouter votre situation, vos préoccupations et vos objectifs"
+          },
+          "1": {
+            "title": "2. Analyse Approfondie",
+            "desc": "Examen détaillé de votre dossier et identification des enjeux juridiques"
+          },
+          "2": {
+            "title": "3. Solutions Personnalisées",
+            "desc": "Présentation des options juridiques disponibles et de nos recommandations"
+          },
+          "3": {
+            "title": "4. Proposition Claire",
+            "desc": "Devis transparent avec honoraires détaillés et plan d'action précis"
+          }
+        }
+      },
+      "form_badge": "Formulaire de Réservation",
+      "form_title_prefix": "Réservez Votre",
+      "form_title_highlight": "Rendez-vous",
+      "form_subtitle": "Remplissez le formulaire ci-dessous et nous vous contacterons rapidement",
+      "field_full_name": "Nom complet",
+      "placeholder_full_name": "Jean Dupont",
+      "field_email": "Email",
+      "placeholder_email": "jean@exemple.com",
+      "field_phone": "Téléphone",
+      "placeholder_phone": "+229 XX XX XX XX",
+      "field_service": "Service concerné",
+      "select_service": "Sélectionnez un service",
+      "field_date": "Date souhaitée",
+      "field_time": "Heure préférée",
+      "field_description": "Décrivez brièvement votre situation",
+      "placeholder_description": "Expliquez en quelques mots votre besoin juridique...",
+      "submitting": "Envoi en cours...",
+      "submit": "Réserver ma Consultation Gratuite",
+      "privacy_notice": "En soumettant ce formulaire, vous acceptez d'être contacté par notre équipe et notre <1>politique de confidentialité</1>.",
+      "contact_direct": "Ou contactez-nous directement",
+      "faq_title_prefix": "Questions",
+      "faq_title_highlight": "Fréquentes",
+      "faq": {
+        "items": {
+          "0": {
+            "q": "La consultation est-elle vraiment gratuite ?",
+            "a": "Oui, absolument ! La première consultation est entièrement gratuite et sans engagement. C'est l'occasion d'évaluer votre situation et de déterminer comment nous pouvons vous aider."
+          },
+          "1": {
+            "q": "Combien de temps dure la consultation ?",
+            "a": "La consultation dure généralement entre 45 minutes et 1 heure. Nous prenons le temps nécessaire pour bien comprendre votre situation et vous conseiller efficacement."
+          },
+          "2": {
+            "q": "Dois-je apporter des documents ?",
+            "a": "Si vous avez des documents pertinents (contrats, courriers, etc.), nous vous conseillons de les apporter. Cela nous aidera à mieux analyser votre dossier."
+          },
+          "3": {
+            "q": "La consultation peut-elle se faire en ligne ?",
+            "a": "Oui, nous proposons également des consultations par visioconférence pour plus de flexibilité. Indiquez votre préférence lors de la prise de rendez-vous."
+          }
+        }
+      }
+    },
+    "transition_demo": {
+      "hero_eyebrow": "Démo Animation",
+      "hero_title_prefix": "Transition",
+      "hero_title_highlight": "Three.js",
+      "hero_subtitle": "Cette page sert de démonstration. Naviguez vers d'autres pages pour voir l'animation de transition (3 secondes) au chargement et lors des changements de route.",
+      "hero_cta": "Aller à l'accueil",
+      "test_title": "Tester la transition",
+      "test_subtitle": "Cliquez sur ces liens pour déclencher la transition. Vous pouvez aussi utiliser la navigation du site.",
+      "tip_title": "Astuce",
+      "tip_text": "Pour simuler un rechargement complet, faites F5 sur n'importe quelle page: l'animation se relance."
+    },
+    "testimonials": {
+      "hero_eyebrow": "Témoignages Clients",
+      "hero_title_prefix": "La Confiance de Nos",
+      "hero_title_highlight": "Clients",
+      "hero_subtitle": "Découvrez les témoignages authentiques de nos clients satisfaits. Leur réussite est notre fierté et témoigne de notre engagement envers l'excellence juridique.",
+      "hero_cta": "Rejoignez-les",
+      "stats_badge": "Notre Impact",
+      "stats_title_prefix": "Des Chiffres qui",
+      "stats_title_highlight": "Parlent d'Eux-Mêmes",
+      "stats_subtitle": "La satisfaction de nos clients se mesure aussi en chiffres",
+      "stats_avg_rating": "Note Moyenne",
+      "stats_happy_clients": "Clients Satisfaits",
+      "stats_recommendations": "Recommandations",
+      "trust_title_prefix": "Pourquoi Nos Clients Nous Font",
+      "trust_title_highlight": "Confiance",
+      "trust_subtitle": "Les raisons qui font de nous le partenaire juridique de choix",
+      "trust": {
+        "items": {
+          "0": {
+            "title": "Expertise Reconnue",
+            "desc": "Une équipe de juristes hautement qualifiés avec une expertise pointue dans chaque domaine du droit"
+          },
+          "1": {
+            "title": "Approche Personnalisée",
+            "desc": "Chaque dossier est unique et mérite une attention particulière et des solutions sur mesure"
+          },
+          "2": {
+            "title": "Transparence Totale",
+            "desc": "Communication claire, honoraires transparents et points réguliers sur l'avancement de votre dossier"
+          },
+          "3": {
+            "title": "Résultats Concrets",
+            "desc": "Notre focus est mis sur l'atteinte de vos objectifs avec des stratégies éprouvées et efficaces"
+          }
+        }
+      },
+      "cta_title_prefix": "Rejoignez Nos",
+      "cta_title_highlight": "Clients Satisfaits",
+      "cta_subtitle": "Faites l'expérience d'un service juridique d'excellence. Contactez-nous dès aujourd'hui pour une première consultation gratuite et découvrez comment nous pouvons vous aider.",
+      "cta_pill_free": "Consultation gratuite",
+      "cta_pill_no_commitment": "Sans engagement",
+      "cta_pill_24h": "Réponse sous 24h"
+    },
+    "team": {
+      "hero_eyebrow": "Notre Équipe",
+      "hero_title_prefix": "Une Équipe d'",
+      "hero_title_highlight": "Experts",
+      "hero_title_suffix": "à Votre Service",
+      "hero_subtitle": "Des professionnels du droit hautement qualifiés, organisés en cellules spécialisées pour vous offrir une expertise complète et une approche pluridisciplinaire de vos problématiques juridiques.",
+      "hero_cta": "Rencontrer l'équipe",
+      "toast_error_desc": "Impossible de charger les membres de l'équipe",
+      "intro_badge": "Excellence & Expertise",
+      "intro_title_prefix": "Une Organisation au Service de",
+      "intro_title_highlight": "Votre Réussite",
+      "intro_paragraph": "Notre cabinet s'appuie sur une structure organisationnelle innovante, avec des cellules spécialisées qui travaillent en synergie pour vous apporter des solutions juridiques complètes et performantes. Chaque cellule regroupe des experts reconnus dans leur domaine, garantissant une expertise pointue et une réactivité optimale.",
+      "grid_title": "Notre Équipe de Juristes",
+      "grid_subtitle": "Découvrez les professionnels du droit qui composent notre équipe et leurs domaines d'expertise",
+      "loading": "Chargement de l'équipe...",
+      "empty": "Aucun membre de l'équipe à afficher pour le moment.",
+      "stats_subtitle": "Des résultats concrets qui témoignent de notre engagement et de notre expertise",
+      "stats_clients_note": "Entreprises et particuliers",
+      "stats_cases_note": "Avec succès et rigueur",
+      "stats_success_note": "Satisfaction garantie",
+      "stats_years_note": "Expertise éprouvée",
+      "values_badge": "Nos Valeurs",
+      "values_title_prefix": "Les Piliers de Notre",
+      "values_title_highlight": "Engagement",
+      "values_subtitle": "Des valeurs fortes qui guident notre action quotidienne et façonnent notre relation avec nos clients",
+      "values": {
+        "0": {
+          "title": "Excellence",
+          "desc": "Nous visons la perfection dans chaque dossier et nous engageons à fournir des prestations juridiques de la plus haute qualité."
+        },
+        "1": {
+          "title": "Intégrité",
+          "desc": "L'éthique et la transparence guident toutes nos actions. Nous construisons des relations de confiance durables avec nos clients."
+        },
+        "2": {
+          "title": "Innovation",
+          "desc": "Nous adoptons les technologies juridiques modernes pour offrir des solutions efficaces et adaptées aux enjeux contemporains."
+        },
+        "3": {
+          "title": "Résultats",
+          "desc": "Notre focus est mis sur l'atteinte des objectifs de nos clients avec des stratégies éprouvées et une exécution rigoureuse."
+        }
+      }
+    },
+    "process": {
+      "hero_eyebrow": "Notre Processus",
+      "hero_title_prefix": "Un Accompagnement",
+      "hero_title_highlight": "Structuré",
+      "hero_subtitle": "Découvrez notre méthodologie éprouvée en 6 étapes pour vous garantir un accompagnement juridique d'excellence, du premier contact jusqu'à la résolution de votre dossier.",
+      "hero_cta": "Démarrer maintenant",
+      "toast_error_desc": "Impossible de charger les étapes du processus",
+      "intro_badge": "Méthodologie Éprouvée",
+      "intro_title_prefix": "Une Approche",
+      "intro_title_highlight": "Professionnelle",
+      "intro_title_suffix": "en 6 Étapes",
+      "intro_paragraph": "Notre processus a été conçu pour vous offrir clarté, transparence et efficacité à chaque étape. De la première prise de contact à l'accompagnement continu, nous vous guidons avec rigueur et professionnalisme pour atteindre vos objectifs juridiques.",
+      "loading": "Chargement des étapes...",
+      "key_points": "Points Clés",
+      "guarantees_badge": "Nos Garanties",
+      "guarantees_title_prefix": "Nos",
+      "guarantees_title_highlight": "Engagements",
+      "guarantees_title_suffix": "envers Vous",
+      "guarantees_subtitle": "Des garanties concrètes pour vous assurer un service de qualité exceptionnelle",
+      "guarantees": {
+        "0": { "title": "Réactivité Garantie", "description": "Réponse sous 24h à toute demande" },
+        "1": { "title": "Confidentialité Totale", "description": "Protection absolue de vos informations" },
+        "2": { "title": "Résultats Concrets", "description": "Objectifs clairs et mesurables" },
+        "3": { "title": "Excellence Juridique", "description": "Expertise reconnue et certifiée" }
+      },
+      "stats_title": "Des Résultats qui Parlent d'Eux-Mêmes",
+      "stats_subtitle": "Notre processus éprouvé génère des résultats concrets et mesurables",
+      "stats_satisfaction": "Taux de Satisfaction",
+      "stats_satisfaction_note": "Clients satisfaits de notre processus",
+      "stats_response_time": "Temps de Réponse",
+      "stats_response_time_note": "Réactivité garantie sur toute demande",
+      "stats_cases": "Dossiers Réussis",
+      "stats_cases_note": "Grâce à notre méthodologie",
+      "cta_title_prefix": "Prêt à Démarrer",
+      "cta_title_highlight": "Votre Projet Juridique",
+      "cta_title_suffix": "?",
+      "cta_subtitle": "Contactez-nous dès aujourd'hui pour bénéficier de notre première consultation gratuite et découvrir comment notre processus peut vous aider à atteindre vos objectifs juridiques.",
+      "cta_primary": "Consultation Gratuite",
+      "cta_pill_no_commitment": "Sans engagement",
+      "cta_pill_24h": "Réponse sous 24h",
+      "cta_pill_confidentiality": "Confidentialité garantie",
+      "steps": {
+        "0": {
+          "title": "Premier Contact",
+          "description": "Contactez-nous par téléphone, email ou via notre formulaire en ligne. Nous vous répondons sous 24h pour une première prise de contact.",
+          "duration": "24h",
+          "details": {
+            "0": "Prise de contact initiale rapide",
+            "1": "Écoute attentive de votre situation",
+            "2": "Évaluation préliminaire de vos besoins",
+            "3": "Orientation vers le bon expert"
+          }
+        },
+        "1": {
+          "title": "Consultation Gratuite",
+          "description": "Bénéficiez d'une première consultation gratuite pour analyser votre cas en détail et identifier les meilleures solutions.",
+          "duration": "1h",
+          "details": {
+            "0": "Rencontre sans engagement financier",
+            "1": "Analyse approfondie de votre dossier",
+            "2": "Conseils juridiques préliminaires",
+            "3": "Questions-réponses personnalisées"
+          }
+        },
+        "2": {
+          "title": "Proposition de Service",
+          "description": "Nous vous présentons une proposition détaillée avec une stratégie claire et des honoraires transparents, sans surprises.",
+          "duration": "2-3 jours",
+          "details": {
+            "0": "Stratégie juridique personnalisée",
+            "1": "Honoraires transparents et détaillés",
+            "2": "Délais estimés avec précision",
+            "3": "Plan d'action étape par étape"
+          }
+        },
+        "3": {
+          "title": "Action Juridique",
+          "description": "Notre équipe met en œuvre la stratégie définie avec rigueur, professionnalisme et une communication régulière.",
+          "duration": "Variable",
+          "details": {
+            "0": "Rédaction des actes juridiques",
+            "1": "Représentation légale complète",
+            "2": "Suivi régulier et points d'étape",
+            "3": "Communication transparente"
+          }
+        },
+        "4": {
+          "title": "Résolution & Finalisation",
+          "description": "Nous assurons le suivi jusqu'à la résolution complète de votre dossier avec vérification minutieuse des résultats.",
+          "duration": "1-2 semaines",
+          "details": {
+            "0": "Finalisation complète du dossier",
+            "1": "Vérification des résultats obtenus",
+            "2": "Archivage sécurisé des documents",
+            "3": "Remise des documents finaux"
+          }
+        },
+        "5": {
+          "title": "Accompagnement Continu",
+          "description": "Nous restons à vos côtés pour tout besoin juridique futur et vous accompagnons dans la durée.",
+          "duration": "Long terme",
+          "details": {
+            "0": "Relation de confiance pérenne",
+            "1": "Disponibilité permanente",
+            "2": "Conseils préventifs réguliers",
+            "3": "Support juridique continu"
+          }
+        }
+      }
+    },
+    "legaltech": {
+      "hero_eyebrow": "Assistant Juridique Intelligent",
+      "hero_title_prefix": "Simulateur de",
+      "hero_title_highlight": "Démarches",
+      "hero_title_suffix": "Juridiques",
+      "hero_subtitle": "Nos solutions numériques. Les outils juridiques automatisés qui vous font avancer et gagner du temps.",
+      "hero_cta": "Commencer la simulation",
+      "toast_error_desc": "Impossible de charger les catégories juridiques",
+      "launch_badge": "Nouveauté 2026",
+      "launch_title": "la LegalTech",
+      "launch_subtitle": "Une plateforme qui vous offre des solutions pour réaliser de façon automatisée des travaux en droit et fiscalité des affaires.",
+      "card_title": "Bientôt Disponible",
+      "card_subtitle": "Notre assistant juridique intelligent arrive prochainement",
+      "features_title": "Ce que vous pourrez faire :",
+      "features": {
+        "items": {
+          "0": { "title": "Simulateur de démarches", "desc": "Découvrez les étapes juridiques adaptées à votre situation" },
+          "1": { "title": "Accompagnement personnalisé", "desc": "Obtenez des recommandations sur mesure pour vos besoins" },
+          "2": { "title": "Documents intelligents", "desc": "Préparez automatiquement vos dossiers juridiques" },
+          "3": { "title": "Suivi en temps réel", "desc": "Vos dossiers sont rigoureusement suivis" }
+        }
+      },
+      "alert_title": "Restez informé du lancement",
+      "alert_text": "Notre plateforme Legal Tech est en phase finale de développement. Nous mettons tout en œuvre pour vous offrir une expérience exceptionnelle alliant technologie et expertise juridique.",
+      "cta_intro": "En attendant, notre équipe reste à votre entière disposition",
+      "cta_book": "Prendre rendez-vous",
+      "quote": "\"L'innovation au service de la justice, l'expertise au service de vos droits\"",
+      "quote_author": "— L'équipe AXE LEGAL"
+    },
+    "announcements": {
+      "console_error_loading": "Erreur lors du chargement des annonces:",
+      "loading": "Chargement des annonces...",
+      "hero_eyebrow": "Annonces & Opportunités",
+      "hero_title_prefix": "Nos Dernières",
+      "hero_title_highlight": "Opportunités",
+      "hero_subtitle": "Découvrez nos offres spéciales, promotions et opportunités exclusives. Ne manquez pas ces chances uniques de bénéficier de nos services juridiques à des conditions avantageuses !",
+      "hero_cta": "Voir les offres",
+      "featured_badge": "En Vedette",
+      "featured_title": "Dernières Opportunités",
+      "featured_subtitle": "Nos meilleures offres du moment - Profitez-en avant qu'il ne soit trop tard !",
+      "expired": "Offre expirée",
+      "remaining_days": "Plus que {{count}} jour{{plural}} !",
+      "offer_ended": "Offre terminée",
+      "learn_more": "En savoir plus",
+      "all_title_prefix": "Toutes Nos",
+      "all_title_highlight": "Annonces",
+      "all_subtitle": "Filtrez par catégorie pour trouver ce qui vous intéresse",
+      "filter_all": "Toutes les annonces",
+      "filter_promotion": "Promotions",
+      "filter_event": "Événements",
+      "filter_info": "Informations",
+      "filter_urgent": "Urgents",
+      "empty_title": "Aucune annonce disponible",
+      "empty_subtitle": "Revenez bientôt pour découvrir nos prochaines offres",
+      "expired_short": "Expiré",
+      "valid_until": "Valable jusqu'au",
+      "cta_title_prefix": "Ne Manquez Aucune",
+      "cta_title_highlight": "Opportunité",
+      "cta_subtitle": "Contactez-nous dès maintenant pour bénéficier de nos offres exclusives et découvrir comment nous pouvons vous accompagner dans vos projets juridiques.",
+      "cta_pill_exclusive": "Offres exclusives",
+      "cta_pill_pricing": "Tarifs préférentiels",
+      "cta_pill_fast": "Réponse rapide",
+      "types": {
+        "promotion": "Promotion",
+        "event": "Événement",
+        "info": "Information",
+        "urgent": "Urgent",
+        "warning": "Alerte",
+        "success": "Succès"
+      }
+    },
+    "services": {
+      "hero_eyebrow": "Nos Expertises",
+      "hero_title_part1": "Des",
+      "hero_title_highlight": "Solutions",
+      "hero_title_part2": "Juridiques",
+      "hero_title_part3": "d'Excellence",
+      "hero_subtitle": "Une gamme complète de services juridiques adaptés aux besoins des entreprises et des particuliers, avec une approche personnalisée et des résultats garantis.",
+      "cta_title_part1": "Prêt à Bénéficier de Notre",
+      "cta_title_highlight": "Expertise Juridique",
+      "cta_paragraph": "Que vous soyez une entreprise en quête de sécurité juridique ou un particulier face à un défi légal, notre cabinet met à votre disposition son expertise reconnue et son approche personnalisée pour vous accompagner vers le succès.",
+      "stats_expertise": "Domaines d'Expertise",
+      "stats_personalized": "Approche Personnalisée",
+      "stats_availability": "Disponibilité & Réactivité",
+      "response_24h": "Réponse garantie sous 24h pour toute demande",
+      "why_choose": "Pourquoi Nous Choisir ?",
+      "why_choose_item1": "Une équipe composée de professionnels expérimentés et spécialisés",
+      "why_choose_item2": "Des solutions sur mesure adaptées à vos besoins",
+      "why_choose_item3": "Un accompagnement de A à Z dans vos démarches",
+      "commitment": "Notre Engagement",
+      "commitment_item1": "Transparence et communication régulière",
+      "commitment_item2": "Excellence et rigueur dans chaque dossier",
+      "commitment_item3": "Résultats concrets et mesurables"
+    },
+    "mentions": {
+      "title": "Mentions Légales",
+      "subtitle": "Informations légales et administratives concernant AXE LEGAL",
+      "nav_editor": "Éditeur",
+      "nav_ids": "Identifiants",
+      "nav_hosting": "Hébergement",
+      "nav_ip": "Propriété",
+      "editor_title": "Éditeur du site",
+      "editor_text": "AXE LEGAL - Cabinet d'affaires spécialisé dans l'accompagnement juridique des entreprises et particuliers au Bénin.",
+      "ids_title": "Identifiants",
+      "hosting_title": "Hébergement",
+      "hosting_text": "Le site est hébergé par le fournisseur de votre choix (hébergeur technique). Pour toute demande relative à l'hébergement, contactez l'éditeur via contact@axelegal.bj.",
+      "ip_title": "Propriété intellectuelle",
+      "ip_text": "L'ensemble des contenus présents sur ce site (textes, images, logos, icônes) est la propriété de AXE LEGAL ou est utilisé avec l'autorisation de leurs titulaires. Toute reproduction, représentation ou diffusion, totale ou partielle, est interdite sans autorisation préalable.",
+      "liability_title": "Responsabilité",
+      "liability_text": "Les informations publiées sont fournies à titre informatif. AXE LEGAL met tout en œuvre pour assurer l'exactitude des informations, mais ne peut garantir l'absence d'erreurs. L'utilisation des informations du site est sous la responsabilité de l'utilisateur.",
+      "services_terms_title": "Conditions de prestation",
+      "services_terms_text": "Nos prestations s'effectuent selon deux modes : prestations sous contrat (durée minimale : 3 mois) avec facturation mensuelle ou trimestrielle, ou prestations à la tâche/mission facturées à l'acte. Les conditions précises sont détaillées dans nos propositions et contrats.",
+      "contact_title": "Contact",
+      "contact_text": "Pour toute question relative aux présentes mentions légales, contactez-nous : <1>contact@axelegal.bj</1> ou par téléphone au +229 01 97 74 75 93."
+    },
+    "privacy": {
+      "title": "Politique de Confidentialité",
+      "subtitle": "Comment nous collectons, utilisons et protégeons vos données personnelles.",
+      "nav_data": "Données collectées",
+      "nav_purposes": "Finalités",
+      "nav_cookies": "Cookies",
+      "data_title": "Données collectées",
+      "purposes_title": "Finalités",
+      "purposes_intro": "Les données sont utilisées pour :",
+      "cookies_title": "Cookies",
+      "cookies_text": "Notre site utilise des cookies techniques et analytiques. Vous pouvez gérer vos préférences via votre navigateur. Les cookies permettant le fonctionnement du site sont nécessaires et ne peuvent être désactivés sans affecter certaines fonctionnalités.",
+      "sharing_title": "Partage et destinataires",
+      "sharing_text": "Nous ne vendons pas vos données. Elles peuvent être partagées avec des prestataires techniques (hébergement, outils d'emailing) soumis à des engagements de confidentialité.",
+      "security_title": "Sécurité",
+      "security_text": "Nous mettons en place des mesures techniques et organisationnelles pour protéger vos données contre la perte, l'altération ou l'accès non autorisé.",
+      "rights_title": "Vos droits",
+      "rights_text": "Conformément à la réglementation applicable, vous disposez d'un droit d'accès, de rectification, d'effacement, de limitation, d'opposition et de portabilité. Pour exercer vos droits, contactez-nous à <1>contact@axelegal.bj</1>.",
+      "retention_title": "Durée de conservation",
+      "retention_text": "Les données sont conservées pendant la durée nécessaire aux finalités. Les délais peuvent varier selon la nature des données et les obligations légales.",
+      "contact_title": "Contact",
+      "contact_text": "Pour toute question relative à la confidentialité : <1>contact@axelegal.bj</1>."
+    },
+    "not_found": {
+      "badge": "Page introuvable",
+      "title": "Erreur <1>{{code}}</1>",
+      "message": "La page que vous cherchez n'existe pas ou a été déplacée.",
+      "requested_path": "Chemin demandé : {{path}}",
+      "back_home": "Retour à l'accueil",
+      "contact": "Nous contacter",
+      "suggestions": "Suggestions",
+      "suggest_services": "Voir nos services",
+      "suggest_team": "Découvrir l'équipe",
+      "suggest_announcements": "Consulter les annonces",
+      "suggest_demo": "Démo animation"
+    }
+  }
+}

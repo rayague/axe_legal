@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { Scale, Phone, Mail, MapPin, Facebook, Linkedin, CheckCircle, Briefcase, FileText, Users } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 // Small inner component to render the logo image if available,
 // otherwise fall back to the brand icon. Keeps a tiny local state
@@ -23,6 +24,7 @@ function Logo() {
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const { t } = useTranslation();
 
   return (
     <footer className="bg-[#0b1722] text-slate-300 border-t border-gray-800">
@@ -38,25 +40,25 @@ export const Footer = () => {
               <Logo />
               <h3 className="text-xl font-bold text-white">AXE LEGAL</h3>
             </div>
-            <p className="text-slate-200 mt-4">Cabinet de conseils juridiques et d'assistance fiscale.</p>
+            <p className="text-slate-200 mt-4">{t("footer.tagline", { defaultValue: "Cabinet de conseils juridiques et d'assistance fiscale." })}</p>
 
-            <h4 className="font-semibold mt-6 text-white">Composition de l'équipe :</h4>
+            <h4 className="font-semibold mt-6 text-white">{t("footer.team_composition", { defaultValue: "Composition de l'équipe :" })}</h4>
             <ul className="mt-3 space-y-3 text-slate-200 text-sm">
               <li className="flex items-start gap-2">
                 <Users className="h-5 w-5 text-primary mt-0.5 shrink-0" aria-hidden />
-                <span>L'Associé-Gérant</span>
+                <span>{t("footer.associate_manager", { defaultValue: "L'Associé-Gérant" })}</span>
               </li>
               <li className="flex items-start gap-2">
                 <Briefcase className="h-5 w-5 text-primary mt-0.5 shrink-0" aria-hidden />
-                <span>La Cellule de l'Intelligence Fiscale</span>
+                <span>{t("footer.tax_intelligence_unit", { defaultValue: "La Cellule de l'Intelligence Fiscale" })}</span>
               </li>
               <li className="flex items-start gap-2">
                 <Scale className="h-5 w-5 text-primary mt-0.5 shrink-0" aria-hidden />
-                <span>La Cellule des Actes Juridiques et de la Gouvernance d'Entreprise</span>
+                <span>{t("footer.legal_governance_unit", { defaultValue: "La Cellule des Actes Juridiques et de la Gouvernance d'Entreprise" })}</span>
               </li>
               <li className="flex items-start gap-2">
                 <FileText className="h-5 w-5 text-primary mt-0.5 shrink-0" aria-hidden />
-                <span>La Cellule de Traitement de l'Information Financière</span>
+                <span>{t("footer.financial_info_unit", { defaultValue: "La Cellule de Traitement de l'Information Financière" })}</span>
               </li>
             </ul>
           </div>
@@ -65,31 +67,31 @@ export const Footer = () => {
           <div className="space-y-8">
             {/* Nos Prestations */}
             <div>
-              <h3 className="font-bold text-lg mb-4 text-white">Nos Prestations</h3>
-              <p className="font-semibold text-sm mb-3">Nous travaillons sous :</p>
+              <h3 className="font-bold text-lg mb-4 text-white">{t("footer.our_services", { defaultValue: "Nos Prestations" })}</h3>
+              <p className="font-semibold text-sm mb-3">{t("footer.we_work_under", { defaultValue: "Nous travaillons sous :" })}</p>
               <ul className="space-y-3 text-slate-200 text-sm">
                 <li className="flex items-start gap-2">
                   <CheckCircle className="h-5 w-5 text-primary mt-0.5 shrink-0" />
-                  <span>Prestations sous contrat de trois mois au moins avec paiement mensuel ou trimestriel</span>
+                  <span>{t("footer.service_mode_1", { defaultValue: "Prestations sous contrat de trois mois au moins avec paiement mensuel ou trimestriel" })}</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle className="h-5 w-5 text-primary mt-0.5 shrink-0" />
-                  <span>Prestation instantanée avec paiement à la tâche ou par mission</span>
+                  <span>{t("footer.service_mode_2", { defaultValue: "Prestation instantanée avec paiement à la tâche ou par mission" })}</span>
                 </li>
               </ul>
             </div>
 
             {/* Informations Légales */}
             <div>
-              <h3 className="font-bold text-lg mb-4 text-white">Informations Légales</h3>
+              <h3 className="font-bold text-lg mb-4 text-white">{t("footer.legal_info", { defaultValue: "Informations Légales" })}</h3>
               <ul className="text-slate-200 text-sm space-y-2">
                 <li className="flex items-start gap-2">
                   <FileText className="h-5 w-5 text-primary mt-0.5 shrink-0" aria-hidden />
-                  <span>Registre du commerce : <strong>RB/ABC/20 B 3095</strong></span>
+                  <span>{t("footer.trade_register", { defaultValue: "Registre du commerce :" })} <strong>RB/ABC/20 B 3095</strong></span>
                 </li>
                 <li className="flex items-start gap-2">
                   <FileText className="h-5 w-5 text-primary mt-0.5 shrink-0" aria-hidden />
-                  <span>Identifiant fiscal : <strong>3202011436651</strong></span>
+                  <span>{t("footer.tax_id", { defaultValue: "Identifiant fiscal :" })} <strong>3202011436651</strong></span>
                 </li>
                 <li className="flex items-start gap-2">
                   <Mail className="h-5 w-5 text-primary mt-0.5 shrink-0" aria-hidden />
@@ -101,20 +103,20 @@ export const Footer = () => {
 
           {/* Column 3: Contact */}
           <div className="flex flex-col h-full">
-            <h3 className="font-bold text-lg mb-4 text-white">Contact</h3>
+            <h3 className="font-bold text-lg mb-4 text-white">{t("footer.contact", { defaultValue: "Contact" })}</h3>
             <div className="text-slate-200 text-sm space-y-4">
               <div>
                 <div className="font-semibold mb-2 flex items-center gap-2">
                   <MapPin className="h-5 w-5 text-primary" />
-                  Adresse
+                  {t("footer.address", { defaultValue: "Adresse" })}
                 </div>
-                <p className="text-slate-300">Godomey échangeur, en direction Calavi-Cotonou, côté opposé à la mosquée.</p>
+                <p className="text-slate-300">{t("footer.address_value", { defaultValue: "Godomey échangeur, en direction Calavi-Cotonou, côté opposé à la mosquée." })}</p>
               </div>
               
               <div>
                 <div className="font-semibold mb-2 flex items-center gap-2">
                   <Phone className="h-5 w-5 text-primary" />
-                  Téléphone
+                  {t("footer.phone", { defaultValue: "Téléphone" })}
                 </div>
                 <div className="space-y-1 text-slate-300">
                   <div>+229 01 97 74 75 93</div>
@@ -131,7 +133,7 @@ export const Footer = () => {
                   className="inline-flex items-center gap-2 text-primary hover:text-primary/80 transition-colors"
                 >
                   <MapPin className="h-4 w-4" />
-                  Voir sur Google Maps
+                  {t("footer.see_on_maps", { defaultValue: "Voir sur Google Maps" })}
                 </a>
               </div>
 
@@ -163,14 +165,14 @@ export const Footer = () => {
         <div className="border-t border-slate-700 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-sm text-slate-200 text-center md:text-left">
-              © {currentYear} AXE LEGAL - Cabinet d'Affaires. Tous droits réservés. | Développement web par Ray Ague
+              © {currentYear} AXE LEGAL - Cabinet d'Affaires. {t("footer.rights", { defaultValue: "Tous droits réservés." })} | Développement web par Ray Ague
             </p>
             <div className="flex gap-6 text-sm">
               <Link to="/mentions-legales" className="text-slate-200 hover:text-primary transition-colors">
-                Mentions Légales
+                {t("footer.legal_mentions", { defaultValue: "Mentions Légales" })}
               </Link>
               <Link to="/confidentialite" className="text-slate-200 hover:text-primary transition-colors">
-                Confidentialité
+                {t("footer.privacy", { defaultValue: "Confidentialité" })}
               </Link>
             </div>
           </div>

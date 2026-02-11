@@ -18,37 +18,38 @@ import {
   User
 } from 'firebase/auth';
 import { auth, db } from './firebase';
+import { LocalizedString } from './i18nFields';
 
 // Types
 export interface Service {
   id?: string;
-  title: string;
+  title: LocalizedString;
   slug?: string;
-  description: string;
+  description: LocalizedString;
   icon?: string;
-  features?: string[];
-  benefits?: string[];
-  pricing?: string;
-  duration?: string;
+  features?: LocalizedString[];
+  benefits?: LocalizedString[];
+  pricing?: LocalizedString;
+  duration?: LocalizedString;
   order?: number;
-  metaTitle?: string;
-  metaDescription?: string;
+  metaTitle?: LocalizedString;
+  metaDescription?: LocalizedString;
   createdAt?: Date;
 }
 
 export interface TeamMember {
   id: string;
   name: string;
-  role: string;
+  role: LocalizedString;
   image?: string;
-  bio?: string;
+  bio?: LocalizedString;
   createdAt?: Date;
 }
 
 export interface ProcessStep {
   id: string;
-  title: string;
-  description: string;
+  title: LocalizedString;
+  description: LocalizedString;
   order: number;
   createdAt?: Date;
 }
@@ -56,8 +57,8 @@ export interface ProcessStep {
 export interface Testimonial {
   id: string;
   name: string;
-  role: string;
-  content: string;
+  role: LocalizedString;
+  content: LocalizedString;
   rating?: number;
   image?: string;
   createdAt?: Date;
@@ -65,16 +66,16 @@ export interface Testimonial {
 
 export interface Announcement {
   id?: string;
-  title: string;
-  subtitle?: string;
-  content: string;
+  title: LocalizedString;
+  subtitle?: LocalizedString;
+  content: LocalizedString;
   type: 'info' | 'warning' | 'success' | 'promotion' | 'event' | 'urgent';
   priority: 'low' | 'medium' | 'high';
   startDate?: Date;
   endDate?: Date;
   isActive: boolean;
   link?: string;
-  linkText?: string;
+  linkText?: LocalizedString;
   author?: string;
   tags?: string[];
   attachments?: string[];
@@ -540,25 +541,25 @@ export interface Notification {
 // ============= LEGAL CATEGORIES (Catégories Juridiques) =============
 
 export interface LegalCategoryStep {
-  title: string;
-  description: string;
+  title: LocalizedString;
+  description: LocalizedString;
 }
 
 export interface LegalCategory {
   id?: string;
   categoryId: string;
   iconName: string;
-  title: string;
-  description: string;
+  title: LocalizedString;
+  description: LocalizedString;
   color: string;
   borderColor: string;
   order: number;
-  guidanceTitle: string;
+  guidanceTitle: LocalizedString;
   steps: LegalCategoryStep[];
   documents: string[];
-  timeline: string;
-  cost: string;
-  warning?: string;
+  timeline: LocalizedString;
+  cost: LocalizedString;
+  warning?: LocalizedString;
   isActive: boolean;
   createdAt?: Date;
   updatedAt?: Date;

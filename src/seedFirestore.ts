@@ -47,6 +47,25 @@ export async function seedFirestoreData() {
         description: 'Divorces, successions, garde d\'enfants, régimes matrimoniaux',
         icon: 'Heart',
         createdAt: Timestamp.now()
+      },
+      {
+        title: 'Droit de la Famille & Successions',
+        slug: 'droit-de-la-famille-successions',
+        icon: 'Heart',
+        category: 'Droit de la famille',
+        shortDescription: 'Accompagnement juridique personnalisé pour la protection des personnes, des biens et des liens familiaux, dans le respect du droit béninois.',
+        description: 'Accompagnement juridique personnalisé pour la protection des personnes, des biens et des liens familiaux, dans le respect du droit béninois.',
+        features: [
+          'Conseil et assistance en matière de mariage (régimes matrimoniaux, droits et obligations des époux)',
+          'Divorce et séparation : accompagnement juridique et conseil à la protection des intérêts des parties',
+          'Successions : assistance à l’ouverture, l’organisation et le règlement successoral',
+          'Assistance dans les démarches administratives et judiciaires liées au droit de la famille'
+        ],
+        benefits: [],
+        pricing: 'Sur devis',
+        duration: 'Variable selon le dossier',
+        order: 50,
+        createdAt: Timestamp.now()
       }
     ];
 

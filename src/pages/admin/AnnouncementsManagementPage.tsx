@@ -14,6 +14,7 @@ import { Calendar } from '@/components/ui/calendar';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { Plus, Edit, Trash2, Search, Megaphone, Calendar as CalendarIcon, Link, Tag, X, AlertCircle, CheckCircle2, Info, Zap, PartyPopper } from 'lucide-react';
 import { getAnnouncements, addAnnouncement, updateAnnouncement, deleteAnnouncement, type Announcement } from '@/lib/firebaseApi';
+import { pickLocalizedString } from '@/lib/i18nFields';
 import { format } from 'date-fns';
 import { fr } from 'date-fns/locale';
 import { cn } from '@/lib/utils';
@@ -25,19 +26,27 @@ export default function AnnouncementsManagementPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [dialogOpen, setDialogOpen] = useState(false);
   const [editingAnnouncement, setEditingAnnouncement] = useState<Announcement | null>(null);
-  const [formData, setFormData] = useState<Partial<Announcement>>({
+  const getFr = (field: any): string => pickLocalizedString(field, 'fr');
+  const toLocalized = (nextFr: string, existing: any) => {
+    if (existing && typeof existing === 'object' && existing !== null) {
+      return { fr: nextFr, en: typeof existing.en === 'string' && existing.en ? existing.en : nextFr };
+    }
+    return { fr: nextFr, en: nextFr };
+  };
+
+  const [formData, setFormData] = useState({
     title: '',
     subtitle: '',
     content: '',
-    type: 'info',
-    priority: 'medium',
+    type: 'info' as Announcement['type'],
+    priority: 'medium' as Announcement['priority'],
     isActive: true,
     link: '',
     linkText: '',
     author: '',
-    tags: [],
-    startDate: undefined,
-    endDate: undefined,
+    tags: [] as string[],
+    startDate: undefined as Date | undefined,
+    endDate: undefined as Date | undefined,
   });
   const [newTag, setNewTag] = useState('');
 
@@ -61,18 +70,27 @@ export default function AnnouncementsManagementPage() {
   };
 
   const filteredAnnouncements = announcements.filter((announcement) =>
-    announcement.title?.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    announcement.content?.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    announcement.subtitle?.toLowerCase().includes(searchQuery.toLowerCase())
+    getFr(announcement.title)?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    getFr(announcement.content)?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    getFr(announcement.subtitle)?.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   const handleSubmit = async () => {
     try {
+      const existing = editingAnnouncement;
+      const payload: Partial<Announcement> = {
+        ...formData,
+        title: toLocalized(formData.title, existing?.title) as any,
+        subtitle: formData.subtitle ? (toLocalized(formData.subtitle, existing?.subtitle) as any) : undefined,
+        content: toLocalized(formData.content, existing?.content) as any,
+        linkText: formData.linkText ? (toLocalized(formData.linkText, existing?.linkText) as any) : undefined,
+      };
+
       if (editingAnnouncement) {
-        await updateAnnouncement(editingAnnouncement.id!, formData);
+        await updateAnnouncement(editingAnnouncement.id!, payload);
         toast({ title: 'Succès', description: 'Annonce modifiée avec succès' });
       } else {
-        await addAnnouncement(formData as Omit<Announcement, 'id'>);
+        await addAnnouncement(payload as Omit<Announcement, 'id'>);
         toast({ title: 'Succès', description: 'Annonce ajoutée avec succès' });
       }
       setDialogOpen(false);
@@ -97,14 +115,14 @@ export default function AnnouncementsManagementPage() {
   const handleEdit = (announcement: Announcement) => {
     setEditingAnnouncement(announcement);
     setFormData({
-      title: announcement.title,
-      subtitle: announcement.subtitle || '',
-      content: announcement.content,
+      title: getFr(announcement.title),
+      subtitle: announcement.subtitle ? getFr(announcement.subtitle) : '',
+      content: getFr(announcement.content),
       type: announcement.type,
       priority: announcement.priority,
       isActive: announcement.isActive,
       link: announcement.link || '',
-      linkText: announcement.linkText || '',
+      linkText: announcement.linkText ? getFr(announcement.linkText) : '',
       author: announcement.author || '',
       tags: announcement.tags || [],
       startDate: announcement.startDate,
@@ -217,12 +235,12 @@ export default function AnnouncementsManagementPage() {
                     <div className={cn("p-1.5 rounded", getTypeColor(announcement.type))}>
                       {getTypeIcon(announcement.type)}
                     </div>
-                    <CardTitle className="text-xl">{announcement.title}</CardTitle>
+                    <CardTitle className="text-xl">{getFr(announcement.title)}</CardTitle>
                     {!announcement.isActive && <Badge variant="outline">Inactive</Badge>}
                   </div>
                   {announcement.subtitle && (
                     <CardDescription className="text-base font-medium mb-2">
-                      {announcement.subtitle}
+                      {getFr(announcement.subtitle)}
                     </CardDescription>
                   )}
                   <div className="flex flex-wrap gap-2 mb-3">
@@ -237,11 +255,11 @@ export default function AnnouncementsManagementPage() {
                       </Badge>
                     ))}
                   </div>
-                  <p className="text-sm text-muted-foreground whitespace-pre-wrap">{announcement.content}</p>
+                  <p className="text-sm text-muted-foreground whitespace-pre-wrap">{getFr(announcement.content)}</p>
                   {announcement.link && (
                     <a href={announcement.link} target="_blank" rel="noopener noreferrer" className="text-sm text-primary hover:underline mt-2 inline-flex items-center gap-1">
                       <Link className="h-3 w-3" />
-                      {announcement.linkText || 'En savoir plus'}
+                      {announcement.linkText ? getFr(announcement.linkText) : 'En savoir plus'}
                     </a>
                   )}
                   <div className="flex gap-4 mt-3 text-xs text-muted-foreground">

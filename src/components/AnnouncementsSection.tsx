@@ -18,6 +18,8 @@ import {
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import { getAnnouncements } from "@/lib/firebaseApi";
+import { pickLocalizedString, getCurrentLang } from "@/lib/i18nFields";
+import { useTranslation } from "react-i18next";
 
 interface Announcement {
   id?: string;
@@ -37,16 +39,12 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   Tag,
 };
 
-const typeLabels: Record<string, string> = {
-  promotion: "Promotion",
-  opportunity: "Opportunité",
-  event: "Événement",
-  news: "Actualité",
-};
+export const AnnouncementsSection: React.FC = () => {
+  const { t, i18n } = useTranslation();
 
-export const AnnouncementsSection = () => {
   const [announcements, setAnnouncements] = useState<Announcement[]>([]);
   const [isLoading, setIsLoading] = useState(true);
+  const currentLang = getCurrentLang(i18n);
 
   useEffect(() => {
     fetchAnnouncements();
@@ -76,8 +74,8 @@ export const AnnouncementsSection = () => {
     <section className="py-20 bg-gradient-to-br from-primary/5 via-background to-secondary/5">
       <div className="container mx-auto px-4">
         <SectionHeader
-          title="🎯 Dernières Annonces"
-          subtitle="Découvrez nos dernières actualités et annonces"
+          title={t("announcements.title", { defaultValue: "🎯 Dernières Annonces" })}
+          subtitle={t("announcements.subtitle", { defaultValue: "Découvrez nos dernières actualités et annonces" })}
         />
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
@@ -94,15 +92,17 @@ export const AnnouncementsSection = () => {
                       <Megaphone className="h-6 w-6" />
                     </div>
                     <Badge variant="secondary" className="font-semibold">
-                      {typeLabels[announcement.type] || announcement.type}
+                      {t(`announcements.types.${announcement.type}`, {
+                        defaultValue: announcement.type,
+                      })}
                     </Badge>
                   </div>
 
                   <h3 className="text-xl font-bold mb-2 group-hover:text-primary transition-colors">
-                    {announcement.title}
+                    {pickLocalizedString(announcement.title, currentLang)}
                   </h3>
                   <p className="text-muted-foreground mb-4 line-clamp-3">
-                    {announcement.content}
+                    {pickLocalizedString(announcement.content, currentLang)}
                   </p>
                 </CardContent>
               </Card>
@@ -113,7 +113,7 @@ export const AnnouncementsSection = () => {
         <div className="text-center">
           <Button asChild size="lg" className="gap-2 shadow-lg">
             <Link to="/contact">
-              Nous contacter
+              {t("pages.not_found.contact", { defaultValue: "Nous contacter" })}
               <ArrowRight className="h-5 w-5" />
             </Link>
           </Button>

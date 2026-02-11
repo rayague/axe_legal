@@ -23,6 +23,8 @@ import {
   Award
 } from "lucide-react";
 import { getServices } from "@/lib/firebaseApi";
+import { pickLocalizedString, getCurrentLang } from "@/lib/i18nFields";
+import { useTranslation } from "react-i18next";
 import businessLaw from "@/assets/business-law.jpg";
 import taxLaw from "@/assets/tax-law.jpg";
 import realEstateLaw from "@/assets/real-estate-law.jpg";
@@ -64,16 +66,16 @@ const imageMap: Record<string, string> = {
 
 interface Service {
   id?: string;
-  title: string;
+  title: import("@/lib/i18nFields").LocalizedString;
   slug: string;
   icon: string;
-  shortDescription: string;
-  description: string;
-  features: string[];
-  benefits: string[];
+  shortDescription: import("@/lib/i18nFields").LocalizedString;
+  description: import("@/lib/i18nFields").LocalizedString;
+  features: Array<import("@/lib/i18nFields").LocalizedString>;
+  benefits: Array<import("@/lib/i18nFields").LocalizedString>;
   category: string;
-  pricing: string;
-  duration: string;
+  pricing: import("@/lib/i18nFields").LocalizedString;
+  duration: import("@/lib/i18nFields").LocalizedString;
   order: number;
   seoTitle?: string;
   seoDescription?: string;
@@ -81,6 +83,9 @@ interface Service {
 }
 
 export const ServicesSection = () => {
+  const { t, i18n } = useTranslation();
+  const currentLang = getCurrentLang(i18n);
+
   const location = useLocation();
   const isServicesPage = location.pathname === '/services';
   
@@ -109,7 +114,7 @@ export const ServicesSection = () => {
       <div className="flex items-center justify-center h-64">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto"></div>
-          <p className="mt-4 text-muted-foreground">Chargement des services...</p>
+          <p className="mt-4 text-muted-foreground">{t("services_section.loading", { defaultValue: "Chargement des services..." })}</p>
         </div>
       </div>
     );
@@ -118,11 +123,11 @@ export const ServicesSection = () => {
   if (error || services.length === 0) {
     return (
       <div className="text-center py-12">
-        <h3 className="text-2xl font-bold mb-4">Aucun service disponible</h3>
+        <h3 className="text-2xl font-bold mb-4">{t("services_section.empty_title", { defaultValue: "Aucun service disponible" })}</h3>
         <p className="text-muted-foreground">
           {error 
-            ? "Une erreur s'est produite lors du chargement des services." 
-            : "Aucun service n'est actuellement disponible."}
+            ? t("services_section.error_text", { defaultValue: "Une erreur s'est produite lors du chargement des services." })
+            : t("services_section.empty_text", { defaultValue: "Aucun service n'est actuellement disponible." })}
         </p>
       </div>
     );
@@ -143,7 +148,7 @@ export const ServicesSection = () => {
                 <div className="relative h-48 overflow-hidden">
                   <img
                     src={image}
-                    alt={service.title}
+                    alt={pickLocalizedString(service.title, currentLang)}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/50 to-transparent" />
@@ -153,7 +158,7 @@ export const ServicesSection = () => {
                         <IconComponent className="h-6 w-6 text-primary-foreground" />
                       </div>
                       <h3 className="text-xl font-bold text-foreground">
-                        {service.title}
+                        {pickLocalizedString(service.title, currentLang)}
                       </h3>
                     </div>
                   </div>
@@ -161,7 +166,7 @@ export const ServicesSection = () => {
 
                 <div className="p-6 space-y-4">
                   <p className="text-muted-foreground">
-                    {service.shortDescription}
+                    {pickLocalizedString(service.shortDescription, currentLang)}
                   </p>
 
                   {service.features && service.features.length > 0 && (
@@ -171,12 +176,15 @@ export const ServicesSection = () => {
                           <div className="h-5 w-5 rounded-full bg-primary/10 flex items-center justify-center mt-0.5 shrink-0">
                             <ArrowRight className="h-3 w-3 text-primary" />
                           </div>
-                          <span>{feature}</span>
+                          <span>{pickLocalizedString(feature, currentLang)}</span>
                         </li>
                       ))}
                       {!isServicesPage && service.features.length > 5 && (
                         <li className="text-sm text-muted-foreground italic">
-                          + {service.features.length - 5} autres fonctionnalités
+                          {t("services_section.more_features", {
+                            defaultValue: "+ {{count}} autres fonctionnalités",
+                            count: service.features.length - 5,
+                          })}
                         </li>
                       )}
                     </ul>
@@ -185,7 +193,7 @@ export const ServicesSection = () => {
                   {service.duration && (
                     <div className="flex gap-2 text-sm text-muted-foreground pt-2 border-t">
                       <span className="flex items-center gap-1">
-                        ⏱️ {service.duration}
+                        ⏱️ {pickLocalizedString(service.duration, currentLang)}
                       </span>
                     </div>
                   )}

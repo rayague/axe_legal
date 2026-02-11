@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useToast } from '@/hooks/use-toast';
 import { getServices, addService, updateService, deleteService, type Service } from '@/lib/firebaseApi';
+import { pickLocalizedString } from '@/lib/i18nFields';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
@@ -16,6 +17,14 @@ export default function ServicesManagementPage() {
   const [loading, setLoading] = useState(true);
   const [dialogOpen, setDialogOpen] = useState(false);
   const [editingService, setEditingService] = useState<Service | null>(null);
+
+  const getFr = (field: any): string => pickLocalizedString(field, 'fr');
+  const toLocalized = (nextFr: string, existing: any) => {
+    if (existing && typeof existing === 'object' && existing !== null) {
+      return { fr: nextFr, en: typeof existing.en === 'string' && existing.en ? existing.en : nextFr };
+    }
+    return { fr: nextFr, en: nextFr };
+  };
   const [formData, setFormData] = useState({
     title: '',
     slug: '',
@@ -51,11 +60,27 @@ export default function ServicesManagementPage() {
 
   const handleSubmit = async () => {
     try {
+      const existing = editingService;
+      const cleanedFeatures = formData.features.filter(f => f.trim() !== '');
+      const cleanedBenefits = formData.benefits.filter(b => b.trim() !== '');
+
       const serviceData = {
         ...formData,
-        features: formData.features.filter(f => f.trim() !== ''),
-        benefits: formData.benefits.filter(b => b.trim() !== ''),
-        slug: formData.slug || formData.title.toLowerCase().replace(/\s+/g, '-').replace(/[éèê]/g, 'e').replace(/[àâ]/g, 'a'),
+        title: toLocalized(formData.title, existing?.title),
+        description: toLocalized(formData.description, existing?.description),
+        pricing: formData.pricing ? toLocalized(formData.pricing, existing?.pricing) : undefined,
+        duration: formData.duration ? toLocalized(formData.duration, existing?.duration) : undefined,
+        metaTitle: formData.metaTitle ? toLocalized(formData.metaTitle, existing?.metaTitle) : undefined,
+        metaDescription: formData.metaDescription ? toLocalized(formData.metaDescription, existing?.metaDescription) : undefined,
+        features: cleanedFeatures.map((f, idx) => toLocalized(f, (existing?.features as any)?.[idx])),
+        benefits: cleanedBenefits.map((b, idx) => toLocalized(b, (existing?.benefits as any)?.[idx])),
+        slug:
+          formData.slug ||
+          formData.title
+            .toLowerCase()
+            .replace(/\s+/g, '-')
+            .replace(/[éèê]/g, 'e')
+            .replace(/[àâ]/g, 'a'),
       };
 
       if (editingService) {
@@ -80,17 +105,17 @@ export default function ServicesManagementPage() {
   const handleEdit = (service: Service) => {
     setEditingService(service);
     setFormData({
-      title: service.title,
+      title: getFr(service.title),
       slug: service.slug || '',
-      description: service.description,
+      description: getFr(service.description),
       icon: service.icon || 'Briefcase',
-      features: service.features && service.features.length > 0 ? service.features : [''],
-      benefits: service.benefits && service.benefits.length > 0 ? service.benefits : [''],
-      pricing: service.pricing || '',
-      duration: service.duration || '',
+      features: service.features && service.features.length > 0 ? (service.features as any[]).map((f) => getFr(f)) : [''],
+      benefits: service.benefits && service.benefits.length > 0 ? (service.benefits as any[]).map((b) => getFr(b)) : [''],
+      pricing: service.pricing ? getFr(service.pricing) : '',
+      duration: service.duration ? getFr(service.duration) : '',
       order: service.order || 0,
-      metaTitle: service.metaTitle || '',
-      metaDescription: service.metaDescription || '',
+      metaTitle: service.metaTitle ? getFr(service.metaTitle) : '',
+      metaDescription: service.metaDescription ? getFr(service.metaDescription) : '',
     });
     setDialogOpen(true);
   };
@@ -189,7 +214,7 @@ export default function ServicesManagementPage() {
               <div className="flex justify-between items-start">
                 <div className="flex items-center gap-2">
                   <Briefcase className="h-5 w-5 text-primary" />
-                  <CardTitle className="text-lg">{service.title}</CardTitle>
+                  <CardTitle className="text-lg">{getFr(service.title)}</CardTitle>
                 </div>
                 <div className="flex gap-2">
                   <Button variant="ghost" size="sm" onClick={() => handleEdit(service)}>
@@ -200,7 +225,7 @@ export default function ServicesManagementPage() {
                   </Button>
                 </div>
               </div>
-              <CardDescription className="line-clamp-2">{service.description}</CardDescription>
+              <CardDescription className="line-clamp-2">{getFr(service.description)}</CardDescription>
             </CardHeader>
             <CardContent>
               <div className="text-sm space-y-1">

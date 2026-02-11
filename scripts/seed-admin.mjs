@@ -38,6 +38,25 @@ const seedData = {
       description: "Optimisation fiscale, contentieux fiscal, déclarations et conseils en matière de fiscalité des entreprises et particuliers.",
       icon: "calculator",
       createdAt: admin.firestore.Timestamp.now()
+    },
+    {
+      title: "Droit de la Famille & Successions",
+      slug: "droit-de-la-famille-successions",
+      icon: "Heart",
+      category: "Droit de la famille",
+      shortDescription: "Accompagnement juridique personnalisé pour la protection des personnes, des biens et des liens familiaux, dans le respect du droit béninois.",
+      description: "Accompagnement juridique personnalisé pour la protection des personnes, des biens et des liens familiaux, dans le respect du droit béninois.",
+      features: [
+        "Conseil et assistance en matière de mariage (régimes matrimoniaux, droits et obligations des époux)",
+        "Divorce et séparation : accompagnement juridique et conseil à la protection des intérêts des parties",
+        "Successions : assistance à l’ouverture, l’organisation et le règlement successoral",
+        "Assistance dans les démarches administratives et judiciaires liées au droit de la famille"
+      ],
+      benefits: [],
+      pricing: "Sur devis",
+      duration: "Variable selon le dossier",
+      order: 50,
+      createdAt: admin.firestore.Timestamp.now()
     }
   ],
 
@@ -192,7 +211,9 @@ async function seedDatabase() {
     console.log('📋 Ajout des services...');
     const batch1 = db.batch();
     seedData.services.forEach(service => {
-      const docRef = db.collection('services').doc();
+      const docRef = service.slug
+        ? db.collection('services').doc(service.slug)
+        : db.collection('services').doc();
       batch1.set(docRef, service);
     });
     await batch1.commit();

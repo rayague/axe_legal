@@ -5,21 +5,25 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import heroLegal from "@/assets/hero-legal.jpg";
+import { useTranslation } from "react-i18next";
 
 export default function TransitionDemo() {
+  const { t } = useTranslation();
+
   return (
     <div className="min-h-screen bg-background">
       <Header />
       <main>
         <PageHero
-          eyebrow="Démo Animation"
+          eyebrow={t("pages.transition_demo.hero_eyebrow", { defaultValue: "Démo Animation" })}
           title={(
             <>
-              Transition <span className="text-yellow-400">Three.js</span>
+              {t("pages.transition_demo.hero_title_prefix", { defaultValue: "Transition" })}{" "}
+              <span className="text-yellow-400">{t("pages.transition_demo.hero_title_highlight", { defaultValue: "Three.js" })}</span>
             </>
           )}
-          subtitle="Cette page sert de démonstration. Naviguez vers d'autres pages pour voir l'animation de transition (3 secondes) au chargement et lors des changements de route."
-          ctaText="Aller à l'accueil"
+          subtitle={t("pages.transition_demo.hero_subtitle", { defaultValue: "Cette page sert de démonstration. Naviguez vers d'autres pages pour voir l'animation de transition (3 secondes) au chargement et lors des changements de route." })}
+          ctaText={t("pages.transition_demo.hero_cta", { defaultValue: "Aller à l'accueil" })}
           ctaLink="/"
           imageSrc={heroLegal}
           large
@@ -31,9 +35,9 @@ export default function TransitionDemo() {
               <Card className="p-6 border-2">
                 <div className="space-y-4">
                   <div>
-                    <h2 className="text-xl font-bold">Tester la transition</h2>
+                    <h2 className="text-xl font-bold">{t("pages.transition_demo.test_title", { defaultValue: "Tester la transition" })}</h2>
                     <p className="text-muted-foreground">
-                      Cliquez sur ces liens pour déclencher la transition. Vous pouvez aussi utiliser la navigation du site.
+                      {t("pages.transition_demo.test_subtitle", { defaultValue: "Cliquez sur ces liens pour déclencher la transition. Vous pouvez aussi utiliser la navigation du site." })}
                     </p>
                   </div>
 
@@ -71,9 +75,9 @@ export default function TransitionDemo() {
 
               <Card className="p-6 border-2">
                 <div className="space-y-2">
-                  <h3 className="text-lg font-semibold">Astuce</h3>
+                  <h3 className="text-lg font-semibold">{t("pages.transition_demo.tip_title", { defaultValue: "Astuce" })}</h3>
                   <p className="text-muted-foreground">
-                    Pour simuler un rechargement complet, faites F5 sur n'importe quelle page: l'animation se relance.
+                    {t("pages.transition_demo.tip_text", { defaultValue: "Pour simuler un rechargement complet, faites F5 sur n'importe quelle page: l'animation se relance." })}
                   </p>
                 </div>
               </Card>

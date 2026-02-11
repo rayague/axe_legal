@@ -1,0 +1,744 @@
+{
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "team": "Team",
+    "legaltech": "LegalTech",
+    "process": "Process",
+    "testimonials": "Testimonials",
+    "announcements": "Announcements",
+    "contact": "Contact",
+    "consultation_free": "Free Consultation",
+    "call_us": "Call us",
+    "language": "Language",
+    "free_consultation": "Free Consultation"
+  },
+  "common": {
+    "contact_us": "Contact us",
+    "discover_services": "Discover our services",
+    "request_consultation": "Request a consultation",
+    "call": "Call",
+    "write_us": "Email us",
+    "print_download": "Print / Download",
+    "error": "Error",
+    "try_again": "Something went wrong. Please try again."
+  },
+  "banners": {
+    "english_available_title": "Service available in English",
+    "english_available_subtitle": "English available for consultations & legal support"
+  },
+  "hero": {
+    "badge": "Excellence in legal advisory",
+    "title_prefix": "Your",
+    "title_typed": "legal",
+    "title_suffix": "partner in Benin",
+    "subtitle": "We support businesses and individuals with effective legal solutions, solid expertise, and professional service since 2020."
+  },
+  "stats": {
+    "clients_supported": "Clients supported",
+    "cases_handled": "Cases handled",
+    "success_rate": "Success rate",
+    "years_experience": "Years of experience"
+  },
+  "about": {
+    "badge": "Our story",
+    "title": "Legal excellence and innovation",
+    "p1": "Founded in 2020, Axe Legal has become one of the most respected legal advisory firms in Benin. Our mission is to provide innovative, tailor-made legal solutions to our clients—entrepreneurs, businesses and individuals.",
+    "p2": "We combine strong technical expertise with a human and personalized approach, ensuring high-quality support at every stage of your legal journey.",
+    "features": {
+      "strategy_title": "Strategic approach",
+      "strategy_desc": "Tailor-made advice and actionable roadmaps to protect and grow your interests.",
+      "responsiveness_title": "Responsiveness",
+      "responsiveness_desc": "Fast interventions, prioritization of urgent matters, and strict compliance with procedural deadlines.",
+      "support_title": "Dedicated support",
+      "support_desc": "Personal follow-up, clear explanations, and a trusted relationship throughout the matter.",
+      "excellence_title": "Excellence",
+      "excellence_desc": "Rigorous practice and recognized expertise for lasting, measurable outcomes."
+    },
+    "image_alt": "Axe Legal firm - Professional team",
+    "image_badge": "5+ years of experience",
+    "caption_title": "Legal excellence",
+    "caption_subtitle": "Serving our clients"
+  },
+  "why_choose_us": {
+    "title": "Why choose Axe Legal?",
+    "subtitle": "Discover the values and commitments that make us your trusted legal partner",
+    "reasons": {
+      "expertise_title": "Focused expertise",
+      "expertise_desc": "Deep knowledge of Beninese law and local realities for precise, practical advice.",
+      "human_title": "Human approach",
+      "human_desc": "We put the client relationship at the heart of our practice with listening, empathy and full transparency.",
+      "results_title": "Proven results",
+      "results_desc": "A 95% success rate driven by rigorous legal strategy and unwavering commitment.",
+      "confidentiality_title": "Absolute confidentiality",
+      "confidentiality_desc": "Maximum protection of your information—strict professional secrecy guaranteed.",
+      "availability_title": "Availability 24/7",
+      "availability_desc": "A responsive team available for legal emergencies, even outside business hours.",
+      "excellence_title": "Recognized excellence",
+      "excellence_desc": "An award-winning firm recommended by clients for exceptional service quality."
+    }
+  },
+  "faq": {
+    "badge": "Frequently asked questions",
+    "title": "Have questions?",
+    "subtitle": "Find answers to the most common questions about our legal services",
+    "bottom_text": "Can’t find the answer to your question?",
+    "items": {
+      "0": {
+        "q": "How much does a legal consultation cost?",
+        "a": "The first consultation is free. It allows us to assess your situation and propose a tailored quote aligned with your needs. Our fees are transparent and competitive."
+      },
+      "1": {
+        "q": "Which documents should I prepare for my first consultation?",
+        "a": "To make the most of our meeting, bring any documents related to your matter: contracts, letters, evidence, prior judgments, ID documents, etc. If you don’t have everything, don’t worry—we’ll guide you."
+      },
+      "2": {
+        "q": "Do you offer payment facilities?",
+        "a": "Yes. We understand legal fees can be an investment. We offer flexible payment plans and packages adapted to your budget. Contact us to discuss options."
+      },
+      "3": {
+        "q": "Can I contact you outside office hours?",
+        "a": "Absolutely. For legal emergencies, we provide 24/7 assistance. You can reach us by phone, email or WhatsApp. We aim to respond as quickly as possible."
+      },
+      "4": {
+        "q": "Do you work with companies or only individuals?",
+        "a": "We advise both individuals and businesses (SMEs, startups and larger companies). Our services cover business law, employment law, commercial contracts and more."
+      },
+      "5": {
+        "q": "What is your geographic coverage?",
+        "a": "We primarily operate in Benin, with a focus on Cotonou and the surrounding area. We can also handle matters in other cities and internationally depending on needs."
+      },
+      "6": {
+        "q": "How do you guarantee confidentiality of my information?",
+        "a": "Professional secrecy is core to our profession. All your information is strictly confidential and protected. We use secure systems and never share your data without explicit consent."
+      }
+    }
+  },
+  "cta": {
+    "title": "Ready to solve your legal issue?",
+    "subtitle": "Don’t leave your legal questions unanswered. Our team is ready to support you with professionalism and dedication.",
+    "book_free_consultation": "Book a free consultation",
+    "available_now": "Available now to assist you"
+  },
+  "stats_section": {
+    "title": "Our impact in numbers",
+    "subtitle": "Concrete results that reflect our commitment to excellence"
+  },
+  "announcements": {
+    "title": "🎯 Latest announcements",
+    "subtitle": "Discover our latest news and announcements",
+    "types": {
+      "promotion": "Promotion",
+      "opportunity": "Opportunity",
+      "event": "Event",
+      "news": "News"
+    }
+  },
+  "services_section": {
+    "loading": "Loading services...",
+    "empty_title": "No services available",
+    "empty_text": "No services are currently available.",
+    "error_text": "An error occurred while loading services.",
+    "more_features": "+ {{count}} more features"
+  },
+  "testimonials_section": {
+    "title_prefix": "Client",
+    "title_highlight": "testimonials",
+    "subtitle": "See what our clients say about our legal support",
+    "loading": "Loading testimonials...",
+    "empty": "No testimonials available at the moment.",
+    "toast_error_title": "Error",
+    "toast_error_desc": "Unable to load testimonials"
+  },
+  "business_hours": {
+    "title": "Opening hours",
+    "closed": "Closed",
+    "break": "break",
+    "exceptional_closure": "Exceptionally closed today:",
+    "holidays_label": "Public holidays (closed):",
+    "days": {
+      "monday": "Monday",
+      "tuesday": "Tuesday",
+      "wednesday": "Wednesday",
+      "thursday": "Thursday",
+      "friday": "Friday",
+      "saturday": "Saturday",
+      "sunday": "Sunday"
+    }
+  },
+  "certifications": {
+    "title": "Recognized and certified",
+    "subtitle": "Recognized legal expertise to support your success",
+    "items": {
+      "0": {
+        "title": "Business law",
+        "subtitle": "Expertise in business law and commercial contracts"
+      },
+      "1": {
+        "title": "Excellence",
+        "subtitle": "Best firm award 2023"
+      },
+      "2": {
+        "title": "Confidentiality",
+        "subtitle": "Absolute guarantee"
+      }
+    }
+  },
+  "team_section": {
+    "eyebrow": "Our team",
+    "title": "Renowned legal experts",
+    "subtitle": "A multidisciplinary team of legal professionals, recognized for their expertise and commitment to legal excellence.",
+    "members": {
+      "0": {
+        "title": "Managing Partner",
+        "subtitle": "Leadership & strategy",
+        "description": "Leads the firm’s overall strategy and directs operations with a vision of legal excellence and innovation."
+      },
+      "1": {
+        "title": "Tax Intelligence Unit",
+        "subtitle": "Tax optimization & defense",
+        "description": "High-level tax expertise, optimization, and defense of clients’ interests before tax authorities."
+      },
+      "2": {
+        "title": "Legal Documentation & Corporate Governance Unit",
+        "subtitle": "Corporate governance",
+        "description": "Specialized in legal drafting, corporate governance, and support for organizational structures."
+      },
+      "3": {
+        "title": "Financial Information Processing Unit",
+        "subtitle": "Analysis & financial intelligence",
+        "description": "Expertise in financial analysis, data processing and economic intelligence to support strategic decision-making."
+      }
+    }
+  },
+  "footer": {
+    "tagline": "Legal advisory and tax assistance firm.",
+    "team_composition": "Team structure:",
+    "associate_manager": "Managing Partner",
+    "tax_intelligence_unit": "Tax Intelligence Unit",
+    "legal_governance_unit": "Legal Documentation and Corporate Governance Unit",
+    "financial_info_unit": "Financial Information Processing Unit",
+    "our_services": "Our services",
+    "we_work_under": "We operate under:",
+    "service_mode_1": "Contract-based services (minimum 3 months) with monthly or quarterly billing",
+    "service_mode_2": "One-off service with per-task or per-mission billing",
+    "legal_info": "Legal information",
+    "trade_register": "Trade register:",
+    "tax_id": "Tax ID:",
+    "contact": "Contact",
+    "address": "Address",
+    "address_value": "Godomey interchange, towards Calavi-Cotonou, opposite the mosque.",
+    "phone": "Phone",
+    "see_on_maps": "View on Google Maps",
+    "rights": "All rights reserved.",
+    "legal_mentions": "Legal notice",
+    "privacy": "Privacy"
+  },
+  "pages": {
+    "home": {
+      "services_title": "Our services",
+      "services_subtitle": "Comprehensive legal solutions tailored to your needs",
+      "hours_title": "We are here to help",
+      "hours_subtitle": "Our team is available to address your legal needs. Check our opening hours."
+    },
+    "contact": {
+      "hero_eyebrow": "Contact us",
+      "hero_title_prefix": "Let’s discuss your",
+      "hero_title_highlight": "legal matter",
+      "hero_subtitle": "Our team is available to answer your questions and support you in your legal steps. First consultation offered.",
+      "hero_cta": "Call now",
+      "toast_success_title": "Message sent!",
+      "toast_success_desc": "We will reply as soon as possible.",
+      "form_badge": "Contact form",
+      "form_title_prefix": "Send us a",
+      "form_title_highlight": "message",
+      "form_subtitle": "Fill out the form below and we will get back to you as soon as possible.",
+      "field_full_name": "Full name",
+      "placeholder_full_name": "John Doe",
+      "field_email": "Email",
+      "placeholder_email": "john@example.com",
+      "field_phone": "Phone",
+      "placeholder_phone": "+229 XX XX XX XX",
+      "field_subject": "Subject",
+      "placeholder_subject": "E.g., business law consultation",
+      "field_message": "Your message",
+      "placeholder_message": "Describe your situation or legal needs...",
+      "submitting": "Sending...",
+      "submit": "Send message",
+      "privacy_notice": "By submitting this form, you agree to our <1>privacy policy</1>.",
+      "info_badge": "Contact details",
+      "info_title_prefix": "Our",
+      "info_title_highlight": "contact details",
+      "info_subtitle": "Multiple ways to reach us easily",
+      "card_phone_title": "Phone",
+      "phone_availability": "Monday to Friday, 8am - 6pm",
+      "card_email_title": "Email",
+      "email_response_time": "Reply within 24h",
+      "card_address_title": "Address",
+      "address_value": "Godomey interchange, towards Calavi-Cotonou, opposite the mosque.",
+      "by_appointment": "By appointment only",
+      "hours_loading": "Loading..."
+    },
+    "consultation": {
+      "hero_eyebrow": "Legal consultation",
+      "hero_title_prefix": "Book your",
+      "hero_title_highlight": "free consultation",
+      "hero_subtitle": "Get a first free consultation with our legal experts. We review your situation and propose solutions tailored to your needs.",
+      "hero_cta": "Book now",
+      "toast_success_title": "Request sent!",
+      "toast_success_desc": "We will contact you soon to confirm your consultation.",
+      "services": {
+        "0": "Business law",
+        "1": "Tax",
+        "2": "Real estate law",
+        "3": "Employment law",
+        "4": "Debt recovery",
+        "5": "Public procurement"
+      },
+      "benefits_badge": "Benefits",
+      "benefits_title_prefix": "Why choose our",
+      "benefits_title_highlight": "free consultation",
+      "benefits_title_suffix": "?",
+      "benefits_subtitle": "A first no-obligation meeting to assess your legal situation",
+      "benefits": {
+        "items": {
+          "0": {
+            "title": "100% free",
+            "desc": "Your first consultation is completely free and without any obligation."
+          },
+          "1": {
+            "title": "Reply within 24h",
+            "desc": "We will get back to you quickly to confirm your appointment and prepare your file."
+          },
+          "2": {
+            "title": "Dedicated experts",
+            "desc": "Meet a legal advisor specialized in your area for tailored guidance."
+          }
+        }
+      },
+      "process_title_prefix": "How the",
+      "process_title_highlight": "consultation",
+      "process_subtitle": "Here is how your first meeting with our experts will unfold",
+      "process": {
+        "items": {
+          "0": {
+            "title": "1. Careful listening",
+            "desc": "We take the time to understand your situation, concerns, and objectives."
+          },
+          "1": {
+            "title": "2. In-depth review",
+            "desc": "Detailed examination of your file and identification of key legal issues."
+          },
+          "2": {
+            "title": "3. Tailored options",
+            "desc": "Presentation of available legal options and our recommendations."
+          },
+          "3": {
+            "title": "4. Clear proposal",
+            "desc": "Transparent quote with detailed fees and a clear action plan."
+          }
+        }
+      },
+      "form_badge": "Booking form",
+      "form_title_prefix": "Book your",
+      "form_title_highlight": "appointment",
+      "form_subtitle": "Fill out the form below and we will contact you shortly",
+      "field_full_name": "Full name",
+      "placeholder_full_name": "John Doe",
+      "field_email": "Email",
+      "placeholder_email": "john@example.com",
+      "field_phone": "Phone",
+      "placeholder_phone": "+229 XX XX XX XX",
+      "field_service": "Service concerned",
+      "select_service": "Select a service",
+      "field_date": "Preferred date",
+      "field_time": "Preferred time",
+      "field_description": "Briefly describe your situation",
+      "placeholder_description": "Explain your legal need in a few words...",
+      "submitting": "Sending...",
+      "submit": "Book my free consultation",
+      "privacy_notice": "By submitting this form, you agree to be contacted by our team and accept our <1>privacy policy</1>.",
+      "contact_direct": "Or contact us directly",
+      "faq_title_prefix": "Frequently",
+      "faq_title_highlight": "asked questions",
+      "faq": {
+        "items": {
+          "0": {
+            "q": "Is the consultation really free?",
+            "a": "Yes, absolutely. The first consultation is completely free and without obligation. It’s an opportunity to assess your situation and determine how we can help."
+          },
+          "1": {
+            "q": "How long does the consultation last?",
+            "a": "The consultation usually lasts between 45 minutes and 1 hour. We take the necessary time to fully understand your situation and advise you effectively."
+          },
+          "2": {
+            "q": "Should I bring documents?",
+            "a": "If you have relevant documents (contracts, letters, etc.), we recommend bringing them. It will help us analyze your file more accurately."
+          },
+          "3": {
+            "q": "Can the consultation be done online?",
+            "a": "Yes. We also offer video consultations for greater flexibility. Indicate your preference when booking."
+          }
+        }
+      }
+    },
+    "transition_demo": {
+      "hero_eyebrow": "Animation demo",
+      "hero_title_prefix": "Transition",
+      "hero_title_highlight": "Three.js",
+      "hero_subtitle": "This page is a demonstration. Navigate to other pages to see the transition animation (3 seconds) on load and during route changes.",
+      "hero_cta": "Go to home",
+      "test_title": "Test the transition",
+      "test_subtitle": "Click these links to trigger the transition. You can also use the site navigation.",
+      "tip_title": "Tip",
+      "tip_text": "To simulate a full reload, press F5 on any page: the animation will run again."
+    },
+    "testimonials": {
+      "hero_eyebrow": "Client testimonials",
+      "hero_title_prefix": "The trust of our",
+      "hero_title_highlight": "clients",
+      "hero_subtitle": "Discover authentic testimonials from our satisfied clients. Their success is our pride and reflects our commitment to legal excellence.",
+      "hero_cta": "Join them",
+      "stats_badge": "Our impact",
+      "stats_title_prefix": "Numbers that",
+      "stats_title_highlight": "speak for themselves",
+      "stats_subtitle": "Client satisfaction can also be measured in numbers",
+      "stats_avg_rating": "Average rating",
+      "stats_happy_clients": "Satisfied clients",
+      "stats_recommendations": "Recommendations",
+      "trust_title_prefix": "Why our clients",
+      "trust_title_highlight": "trust us",
+      "trust_subtitle": "The reasons why we are the legal partner of choice",
+      "trust": {
+        "items": {
+          "0": {
+            "title": "Recognized expertise",
+            "desc": "A team of highly qualified legal professionals with deep expertise across each field of law"
+          },
+          "1": {
+            "title": "Personalized approach",
+            "desc": "Every matter is unique and deserves special attention and tailor-made solutions"
+          },
+          "2": {
+            "title": "Full transparency",
+            "desc": "Clear communication, transparent fees, and regular updates on your matter"
+          },
+          "3": {
+            "title": "Concrete results",
+            "desc": "We focus on achieving your objectives with proven, effective strategies"
+          }
+        }
+      },
+      "cta_title_prefix": "Join our",
+      "cta_title_highlight": "satisfied clients",
+      "cta_subtitle": "Experience excellence in legal service. Contact us today for a first free consultation and discover how we can help.",
+      "cta_pill_free": "Free consultation",
+      "cta_pill_no_commitment": "No obligation",
+      "cta_pill_24h": "Reply within 24h"
+    },
+    "team": {
+      "hero_eyebrow": "Our team",
+      "hero_title_prefix": "A team of",
+      "hero_title_highlight": "experts",
+      "hero_title_suffix": "at your service",
+      "hero_subtitle": "Highly qualified legal professionals, organized into specialized units to provide comprehensive expertise and a multidisciplinary approach to your legal issues.",
+      "hero_cta": "Meet the team",
+      "toast_error_desc": "Unable to load team members",
+      "intro_badge": "Excellence & expertise",
+      "intro_title_prefix": "An organization dedicated to",
+      "intro_title_highlight": "your success",
+      "intro_paragraph": "Our firm relies on an innovative organizational structure, with specialized units working in synergy to deliver complete, high-performing legal solutions. Each unit brings together recognized experts in their field, ensuring strong expertise and optimal responsiveness.",
+      "grid_title": "Our legal team",
+      "grid_subtitle": "Meet the legal professionals who make up our team and their areas of expertise",
+      "loading": "Loading the team...",
+      "empty": "No team members to display at the moment.",
+      "stats_subtitle": "Concrete results that reflect our commitment and expertise",
+      "stats_clients_note": "Businesses and individuals",
+      "stats_cases_note": "Handled with rigor and success",
+      "stats_success_note": "Satisfaction guaranteed",
+      "stats_years_note": "Proven expertise",
+      "values_badge": "Our values",
+      "values_title_prefix": "The pillars of our",
+      "values_title_highlight": "commitment",
+      "values_subtitle": "Strong values that guide our daily work and shape our relationship with clients",
+      "values": {
+        "0": {
+          "title": "Excellence",
+          "desc": "We strive for the highest standard in every matter and are committed to delivering top-quality legal services."
+        },
+        "1": {
+          "title": "Integrity",
+          "desc": "Ethics and transparency guide everything we do. We build lasting relationships of trust with our clients."
+        },
+        "2": {
+          "title": "Innovation",
+          "desc": "We adopt modern legal technologies to deliver efficient solutions aligned with today’s challenges."
+        },
+        "3": {
+          "title": "Results",
+          "desc": "We focus on achieving clients’ objectives with proven strategies and rigorous execution."
+        }
+      }
+    },
+    "process": {
+      "hero_eyebrow": "Our process",
+      "hero_title_prefix": "A",
+      "hero_title_highlight": "structured",
+      "hero_subtitle": "Discover our proven 6-step methodology to ensure excellent legal support, from the first contact to the resolution of your matter.",
+      "hero_cta": "Get started",
+      "toast_error_desc": "Unable to load process steps",
+      "intro_badge": "Proven methodology",
+      "intro_title_prefix": "A",
+      "intro_title_highlight": "professional",
+      "intro_title_suffix": "6-step approach",
+      "intro_paragraph": "Our process is designed to provide clarity, transparency, and efficiency at every step. From the first contact to ongoing support, we guide you with rigor and professionalism to achieve your legal objectives.",
+      "loading": "Loading steps...",
+      "key_points": "Key points",
+      "guarantees_badge": "Our guarantees",
+      "guarantees_title_prefix": "Our",
+      "guarantees_title_highlight": "commitments",
+      "guarantees_title_suffix": "to you",
+      "guarantees_subtitle": "Concrete guarantees to ensure exceptional service quality",
+      "guarantees": {
+        "0": { "title": "Guaranteed responsiveness", "description": "Reply within 24 hours to any request" },
+        "1": { "title": "Full confidentiality", "description": "Absolute protection of your information" },
+        "2": { "title": "Concrete results", "description": "Clear, measurable objectives" },
+        "3": { "title": "Legal excellence", "description": "Recognized, proven expertise" }
+      },
+      "stats_title": "Results that speak for themselves",
+      "stats_subtitle": "Our proven process delivers concrete, measurable outcomes",
+      "stats_satisfaction": "Satisfaction rate",
+      "stats_satisfaction_note": "Clients satisfied with our process",
+      "stats_response_time": "Response time",
+      "stats_response_time_note": "Guaranteed responsiveness for every request",
+      "stats_cases": "Successful cases",
+      "stats_cases_note": "Thanks to our methodology",
+      "cta_title_prefix": "Ready to start",
+      "cta_title_highlight": "your legal project",
+      "cta_title_suffix": "?",
+      "cta_subtitle": "Contact us today to benefit from a first free consultation and discover how our process can help you achieve your legal objectives.",
+      "cta_primary": "Free consultation",
+      "cta_pill_no_commitment": "No obligation",
+      "cta_pill_24h": "Reply within 24h",
+      "cta_pill_confidentiality": "Confidentiality guaranteed",
+      "steps": {
+        "0": {
+          "title": "First contact",
+          "description": "Contact us by phone, email, or via our online form. We will reply within 24 hours for an initial intake.",
+          "duration": "24h",
+          "details": {
+            "0": "Quick initial intake",
+            "1": "Careful listening to your situation",
+            "2": "Preliminary assessment of your needs",
+            "3": "Referral to the right expert"
+          }
+        },
+        "1": {
+          "title": "Free consultation",
+          "description": "Benefit from a first free consultation to review your case in detail and identify the best options.",
+          "duration": "1h",
+          "details": {
+            "0": "Meeting with no financial commitment",
+            "1": "In-depth review of your file",
+            "2": "Preliminary legal guidance",
+            "3": "Personalized Q&A"
+          }
+        },
+        "2": {
+          "title": "Service proposal",
+          "description": "We provide a detailed proposal with a clear strategy and transparent fees—no surprises.",
+          "duration": "2–3 days",
+          "details": {
+            "0": "Tailored legal strategy",
+            "1": "Transparent, detailed fees",
+            "2": "Accurate estimated timelines",
+            "3": "Step-by-step action plan"
+          }
+        },
+        "3": {
+          "title": "Legal action",
+          "description": "Our team implements the agreed strategy with rigor, professionalism, and regular communication.",
+          "duration": "Varies",
+          "details": {
+            "0": "Drafting of legal documents",
+            "1": "Full legal representation",
+            "2": "Regular follow-up and progress updates",
+            "3": "Transparent communication"
+          }
+        },
+        "4": {
+          "title": "Resolution & completion",
+          "description": "We follow your matter through to full resolution, with careful verification of outcomes.",
+          "duration": "1–2 weeks",
+          "details": {
+            "0": "Full completion of the matter",
+            "1": "Verification of achieved results",
+            "2": "Secure archiving of documents",
+            "3": "Delivery of final documents"
+          }
+        },
+        "5": {
+          "title": "Ongoing support",
+          "description": "We stay by your side for any future legal need and provide long-term support.",
+          "duration": "Long term",
+          "details": {
+            "0": "Lasting relationship of trust",
+            "1": "Continuous availability",
+            "2": "Regular preventive advice",
+            "3": "Ongoing legal support"
+          }
+        }
+      }
+    },
+    "legaltech": {
+      "hero_eyebrow": "Intelligent legal assistant",
+      "hero_title_prefix": "Procedure",
+      "hero_title_highlight": "simulator",
+      "hero_title_suffix": "",
+      "hero_subtitle": "Our digital solutions—automated legal tools to help you move forward and save time.",
+      "hero_cta": "Start the simulation",
+      "toast_error_desc": "Unable to load legal categories",
+      "launch_badge": "New in 2026",
+      "launch_title": "LegalTech",
+      "launch_subtitle": "A platform that provides automated solutions for business law and tax-related work.",
+      "card_title": "Coming soon",
+      "card_subtitle": "Our intelligent legal assistant will be available soon",
+      "features_title": "What you will be able to do:",
+      "features": {
+        "items": {
+          "0": { "title": "Procedure simulator", "desc": "Discover the legal steps that fit your situation" },
+          "1": { "title": "Personalized guidance", "desc": "Get tailored recommendations for your needs" },
+          "2": { "title": "Smart documents", "desc": "Prepare your legal files automatically" },
+          "3": { "title": "Real-time tracking", "desc": "Your files are monitored with rigor" }
+        }
+      },
+      "alert_title": "Stay informed about the launch",
+      "alert_text": "Our LegalTech platform is in the final stage of development. We are working to deliver an outstanding experience combining technology and legal expertise.",
+      "cta_intro": "In the meantime, our team remains fully available",
+      "cta_book": "Book an appointment",
+      "quote": "\"Innovation in the service of justice, expertise in the service of your rights\"",
+      "quote_author": "— The AXE LEGAL team"
+    },
+    "announcements": {
+      "console_error_loading": "Error while loading announcements:",
+      "loading": "Loading announcements...",
+      "hero_eyebrow": "Announcements & opportunities",
+      "hero_title_prefix": "Our latest",
+      "hero_title_highlight": "opportunities",
+      "hero_subtitle": "Discover our special offers, promotions, and exclusive opportunities. Don’t miss these unique chances to benefit from our legal services under advantageous conditions.",
+      "hero_cta": "View offers",
+      "featured_badge": "Featured",
+      "featured_title": "Latest opportunities",
+      "featured_subtitle": "Our best current offers — take advantage before it’s too late.",
+      "expired": "Offer expired",
+      "remaining_days": "Only {{count}} day{{plural}} left!",
+      "offer_ended": "Offer ended",
+      "learn_more": "Learn more",
+      "all_title_prefix": "All our",
+      "all_title_highlight": "announcements",
+      "all_subtitle": "Filter by category to find what interests you",
+      "filter_all": "All announcements",
+      "filter_promotion": "Promotions",
+      "filter_event": "Events",
+      "filter_info": "Information",
+      "filter_urgent": "Urgent",
+      "empty_title": "No announcements available",
+      "empty_subtitle": "Check back soon for our next offers",
+      "expired_short": "Expired",
+      "valid_until": "Valid until",
+      "cta_title_prefix": "Don’t miss any",
+      "cta_title_highlight": "opportunity",
+      "cta_subtitle": "Contact us now to benefit from our exclusive offers and discover how we can support your legal projects.",
+      "cta_pill_exclusive": "Exclusive offers",
+      "cta_pill_pricing": "Preferential rates",
+      "cta_pill_fast": "Fast reply",
+      "types": {
+        "promotion": "Promotion",
+        "event": "Event",
+        "info": "Information",
+        "urgent": "Urgent",
+        "warning": "Alert",
+        "success": "Success"
+      }
+    },
+    "services": {
+      "hero_eyebrow": "Our expertise",
+      "hero_title_part1": "Legal",
+      "hero_title_highlight": "solutions",
+      "hero_title_part2": "for",
+      "hero_title_part3": "excellence",
+      "hero_subtitle": "A full range of legal advisory services tailored to the needs of businesses and individuals, with a personalized approach and reliable outcomes.",
+      "cta_title_part1": "Ready to benefit from our",
+      "cta_title_highlight": "legal expertise",
+      "cta_paragraph": "Whether you are a business seeking legal certainty or an individual facing a legal challenge, our firm provides recognized expertise and a personalized approach to help you move forward with confidence.",
+      "stats_expertise": "Areas of expertise",
+      "stats_personalized": "Personalized approach",
+      "stats_availability": "Availability & responsiveness",
+      "response_24h": "Guaranteed reply within 24 hours for any request",
+      "why_choose": "Why choose us?",
+      "why_choose_item1": "A team of experienced, specialized legal professionals",
+      "why_choose_item2": "Tailor-made solutions adapted to your needs",
+      "why_choose_item3": "End-to-end support throughout your process",
+      "commitment": "Our commitment",
+      "commitment_item1": "Transparency and regular communication",
+      "commitment_item2": "Excellence and rigor on every matter",
+      "commitment_item3": "Concrete, measurable results"
+    },
+    "mentions": {
+      "title": "Legal notice",
+      "subtitle": "Legal and administrative information about AXE LEGAL",
+      "nav_editor": "Publisher",
+      "nav_ids": "Identifiers",
+      "nav_hosting": "Hosting",
+      "nav_ip": "Intellectual property",
+      "editor_title": "Website publisher",
+      "editor_text": "AXE LEGAL - Business law firm specialized in legal advisory for companies and individuals in Benin.",
+      "ids_title": "Identifiers",
+      "hosting_title": "Hosting",
+      "hosting_text": "The website is hosted by the provider of your choice (technical hosting). For any request related to hosting, contact the publisher at contact@axelegal.bj.",
+      "ip_title": "Intellectual property",
+      "ip_text": "All content on this website (texts, images, logos, icons) is the property of AXE LEGAL or is used with permission of the rights holders. Any reproduction, representation or distribution, in whole or in part, is prohibited without prior authorization.",
+      "liability_title": "Liability",
+      "liability_text": "Information is provided for informational purposes. AXE LEGAL makes every effort to ensure accuracy but cannot guarantee the absence of errors. Use of the information is under the user’s responsibility.",
+      "services_terms_title": "Service terms",
+      "services_terms_text": "Our services are provided in two ways: contract-based services (minimum duration: 3 months) billed monthly or quarterly, or one-off services billed per task/mission. Specific terms are detailed in our proposals and contracts.",
+      "contact_title": "Contact",
+      "contact_text": "For any question regarding this legal notice, contact us: <1>contact@axelegal.bj</1> or call +229 01 97 74 75 93."
+    },
+    "privacy": {
+      "title": "Privacy Policy",
+      "subtitle": "How we collect, use and protect your personal data.",
+      "nav_data": "Collected data",
+      "nav_purposes": "Purposes",
+      "nav_cookies": "Cookies",
+      "data_title": "Collected data",
+      "purposes_title": "Purposes",
+      "purposes_intro": "Data is used to:",
+      "cookies_title": "Cookies",
+      "cookies_text": "Our website uses technical and analytics cookies. You can manage your preferences in your browser. Cookies required for website operation are necessary and cannot be disabled without affecting certain features.",
+      "sharing_title": "Sharing and recipients",
+      "sharing_text": "We do not sell your data. It may be shared with technical providers (hosting, email tools) bound by confidentiality commitments.",
+      "security_title": "Security",
+      "security_text": "We implement technical and organizational measures to protect your data against loss, alteration or unauthorized access.",
+      "rights_title": "Your rights",
+      "rights_text": "In accordance with applicable regulations, you have rights of access, rectification, erasure, restriction, objection and portability. To exercise your rights, contact us at <1>contact@axelegal.bj</1>.",
+      "retention_title": "Retention period",
+      "retention_text": "Data is retained for the period necessary for the purposes. Timeframes may vary depending on the nature of the data and legal obligations.",
+      "contact_title": "Contact",
+      "contact_text": "For any privacy-related question: <1>contact@axelegal.bj</1>."
+    },
+    "not_found": {
+      "badge": "Page not found",
+      "title": "Error <1>{{code}}</1>",
+      "message": "The page you are looking for does not exist or has been moved.",
+      "requested_path": "Requested path: {{path}}",
+      "back_home": "Back to home",
+      "contact": "Contact us",
+      "suggestions": "Suggestions",
+      "suggest_services": "View our services",
+      "suggest_team": "Meet the team",
+      "suggest_announcements": "View announcements",
+      "suggest_demo": "Animation demo"
+    }
+  }
+}

@@ -18,22 +18,26 @@ import {
 } from "lucide-react";
 import AnimatedCounter from "@/components/AnimatedCounter";
 import heroLegal from "@/assets/hero-legal.jpg";
+import { useTranslation } from "react-i18next";
 
 export default function Testimonials() {
+  const { t } = useTranslation();
+
   return (
     <div className="min-h-screen bg-background">
       <Header />
       
       <main>
         <PageHero
-          eyebrow="Témoignages Clients"
+          eyebrow={t("pages.testimonials.hero_eyebrow", { defaultValue: "Témoignages Clients" })}
           title={(
             <>
-              La Confiance de Nos <span className="text-yellow-400">Clients</span>,<br />
+              {t("pages.testimonials.hero_title_prefix", { defaultValue: "La Confiance de Nos" })}{" "}
+              <span className="text-yellow-400">{t("pages.testimonials.hero_title_highlight", { defaultValue: "Clients" })}</span>,<br />
             </>
           )}
-          subtitle={"Découvrez les témoignages authentiques de nos clients satisfaits. Leur réussite est notre fierté et témoigne de notre engagement envers l'excellence juridique."}
-          ctaText="Rejoignez-les"
+          subtitle={t("pages.testimonials.hero_subtitle", { defaultValue: "Découvrez les témoignages authentiques de nos clients satisfaits. Leur réussite est notre fierté et témoigne de notre engagement envers l'excellence juridique." })}
+          ctaText={t("pages.testimonials.hero_cta", { defaultValue: "Rejoignez-les" })}
           ctaLink="/contact"
           imageSrc={heroLegal}
           large
@@ -46,13 +50,14 @@ export default function Testimonials() {
               <div className="text-center mb-12">
                 <Badge className="mb-4" variant="outline">
                   <Award className="h-4 w-4 mr-2" />
-                  Notre Impact
+                  {t("pages.testimonials.stats_badge", { defaultValue: "Notre Impact" })}
                 </Badge>
                 <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                  Des Chiffres qui <span className="text-primary">Parlent d'Eux-Mêmes</span>
+                  {t("pages.testimonials.stats_title_prefix", { defaultValue: "Des Chiffres qui" })}{" "}
+                  <span className="text-primary">{t("pages.testimonials.stats_title_highlight", { defaultValue: "Parlent d'Eux-Mêmes" })}</span>
                 </h2>
                 <p className="text-muted-foreground max-w-2xl mx-auto">
-                  La satisfaction de nos clients se mesure aussi en chiffres
+                  {t("pages.testimonials.stats_subtitle", { defaultValue: "La satisfaction de nos clients se mesure aussi en chiffres" })}
                 </p>
               </div>
 
@@ -64,7 +69,7 @@ export default function Testimonials() {
                   <div className="text-4xl font-extrabold text-primary mb-2">
                     <AnimatedCounter value={4.9} decimals={1} suffix="/5" />
                   </div>
-                  <div className="text-sm text-muted-foreground font-medium">Note Moyenne</div>
+                  <div className="text-sm text-muted-foreground font-medium">{t("pages.testimonials.stats_avg_rating", { defaultValue: "Note Moyenne" })}</div>
                 </Card>
 
                 <Card className="p-6 text-center border-2 hover:border-primary/50 transition-all hover:shadow-lg">
@@ -74,7 +79,7 @@ export default function Testimonials() {
                   <div className="text-4xl font-extrabold text-primary mb-2">
                     <AnimatedCounter value={150} suffix="+" />
                   </div>
-                  <div className="text-sm text-muted-foreground font-medium">Clients Satisfaits</div>
+                  <div className="text-sm text-muted-foreground font-medium">{t("pages.testimonials.stats_happy_clients", { defaultValue: "Clients Satisfaits" })}</div>
                 </Card>
 
                 <Card className="p-6 text-center border-2 hover:border-primary/50 transition-all hover:shadow-lg">
@@ -84,7 +89,7 @@ export default function Testimonials() {
                   <div className="text-4xl font-extrabold text-primary mb-2">
                     <AnimatedCounter value={95} suffix="%" />
                   </div>
-                  <div className="text-sm text-muted-foreground font-medium">Recommandations</div>
+                  <div className="text-sm text-muted-foreground font-medium">{t("pages.testimonials.stats_recommendations", { defaultValue: "Recommandations" })}</div>
                 </Card>
 
                 <Card className="p-6 text-center border-2 hover:border-primary/50 transition-all hover:shadow-lg">
@@ -94,7 +99,7 @@ export default function Testimonials() {
                   <div className="text-4xl font-extrabold text-primary mb-2">
                     <AnimatedCounter value={95} suffix="%" />
                   </div>
-                  <div className="text-sm text-muted-foreground font-medium">Taux de Réussite</div>
+                  <div className="text-sm text-muted-foreground font-medium">{t("stats.success_rate", { defaultValue: "Taux de Réussite" })}</div>
                 </Card>
               </div>
             </div>
@@ -110,10 +115,11 @@ export default function Testimonials() {
             <div className="max-w-4xl mx-auto">
               <div className="text-center mb-12">
                 <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                  Pourquoi Nos Clients Nous Font <span className="text-primary">Confiance</span>
+                  {t("pages.testimonials.trust_title_prefix", { defaultValue: "Pourquoi Nos Clients Nous Font" })}{" "}
+                  <span className="text-primary">{t("pages.testimonials.trust_title_highlight", { defaultValue: "Confiance" })}</span>
                 </h2>
                 <p className="text-muted-foreground">
-                  Les raisons qui font de nous le partenaire juridique de choix
+                  {t("pages.testimonials.trust_subtitle", { defaultValue: "Les raisons qui font de nous le partenaire juridique de choix" })}
                 </p>
               </div>
 
@@ -126,9 +132,9 @@ export default function Testimonials() {
                       </div>
                     </div>
                     <div>
-                      <h3 className="font-bold text-lg mb-2">Expertise Reconnue</h3>
+                      <h3 className="font-bold text-lg mb-2">{t("pages.testimonials.trust.items.0.title", { defaultValue: "Expertise Reconnue" })}</h3>
                       <p className="text-muted-foreground text-sm">
-                        Une équipe de juristes hautement qualifiés avec une expertise pointue dans chaque domaine du droit
+                        {t("pages.testimonials.trust.items.0.desc", { defaultValue: "Une équipe de juristes hautement qualifiés avec une expertise pointue dans chaque domaine du droit" })}
                       </p>
                     </div>
                   </div>
@@ -142,9 +148,9 @@ export default function Testimonials() {
                       </div>
                     </div>
                     <div>
-                      <h3 className="font-bold text-lg mb-2">Approche Personnalisée</h3>
+                      <h3 className="font-bold text-lg mb-2">{t("pages.testimonials.trust.items.1.title", { defaultValue: "Approche Personnalisée" })}</h3>
                       <p className="text-muted-foreground text-sm">
-                        Chaque dossier est unique et mérite une attention particulière et des solutions sur mesure
+                        {t("pages.testimonials.trust.items.1.desc", { defaultValue: "Chaque dossier est unique et mérite une attention particulière et des solutions sur mesure" })}
                       </p>
                     </div>
                   </div>
@@ -158,9 +164,9 @@ export default function Testimonials() {
                       </div>
                     </div>
                     <div>
-                      <h3 className="font-bold text-lg mb-2">Transparence Totale</h3>
+                      <h3 className="font-bold text-lg mb-2">{t("pages.testimonials.trust.items.2.title", { defaultValue: "Transparence Totale" })}</h3>
                       <p className="text-muted-foreground text-sm">
-                        Communication claire, honoraires transparents et points réguliers sur l'avancement de votre dossier
+                        {t("pages.testimonials.trust.items.2.desc", { defaultValue: "Communication claire, honoraires transparents et points réguliers sur l'avancement de votre dossier" })}
                       </p>
                     </div>
                   </div>
@@ -174,9 +180,9 @@ export default function Testimonials() {
                       </div>
                     </div>
                     <div>
-                      <h3 className="font-bold text-lg mb-2">Résultats Concrets</h3>
+                      <h3 className="font-bold text-lg mb-2">{t("pages.testimonials.trust.items.3.title", { defaultValue: "Résultats Concrets" })}</h3>
                       <p className="text-muted-foreground text-sm">
-                        Notre focus est mis sur l'atteinte de vos objectifs avec des stratégies éprouvées et efficaces
+                        {t("pages.testimonials.trust.items.3.desc", { defaultValue: "Notre focus est mis sur l'atteinte de vos objectifs avec des stratégies éprouvées et efficaces" })}
                       </p>
                     </div>
                   </div>
@@ -196,24 +202,24 @@ export default function Testimonials() {
                 </div>
                 
                 <h2 className="text-3xl md:text-4xl font-bold">
-                  Rejoignez Nos <span className="text-primary">Clients Satisfaits</span>
+                  {t("pages.testimonials.cta_title_prefix", { defaultValue: "Rejoignez Nos" })}{" "}
+                  <span className="text-primary">{t("pages.testimonials.cta_title_highlight", { defaultValue: "Clients Satisfaits" })}</span>
                 </h2>
                 
                 <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                  Faites l'expérience d'un service juridique d'excellence. Contactez-nous dès aujourd'hui 
-                  pour une première consultation gratuite et découvrez comment nous pouvons vous aider.
+                  {t("pages.testimonials.cta_subtitle", { defaultValue: "Faites l'expérience d'un service juridique d'excellence. Contactez-nous dès aujourd'hui pour une première consultation gratuite et découvrez comment nous pouvons vous aider." })}
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
                   <Button size="lg" className="group" asChild>
                     <Link to="/contact">
-                      Demander une Consultation
+                      {t("common.request_consultation", { defaultValue: "Demander une Consultation" })}
                       <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                     </Link>
                   </Button>
                   <Button size="lg" variant="outline" asChild>
                     <Link to="/services">
-                      Découvrir Nos Services
+                      {t("common.discover_services", { defaultValue: "Découvrir nos Services" })}
                     </Link>
                   </Button>
                 </div>
@@ -222,15 +228,15 @@ export default function Testimonials() {
                   <div className="flex flex-wrap justify-center gap-6 text-sm text-muted-foreground">
                     <div className="flex items-center gap-2">
                       <CheckCircle className="h-4 w-4 text-primary" />
-                      <span>Consultation gratuite</span>
+                      <span>{t("pages.testimonials.cta_pill_free", { defaultValue: "Consultation gratuite" })}</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <CheckCircle className="h-4 w-4 text-primary" />
-                      <span>Sans engagement</span>
+                      <span>{t("pages.testimonials.cta_pill_no_commitment", { defaultValue: "Sans engagement" })}</span>
                     </div>
                     <div className="flex items-center gap-2">
                       <CheckCircle className="h-4 w-4 text-primary" />
-                      <span>Réponse sous 24h</span>
+                      <span>{t("pages.testimonials.cta_pill_24h", { defaultValue: "Réponse sous 24h" })}</span>
                     </div>
                   </div>
                 </div>

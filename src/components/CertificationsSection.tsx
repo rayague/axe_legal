@@ -1,24 +1,27 @@
 import { Card } from "@/components/ui/card";
 import { Award, Shield, Lock } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 export const CertificationsSection = () => {
+  const { t } = useTranslation();
+
   const certifications = [
     {
       icon: Award,
-      title: "Droit des Affaires",
-      subtitle: "Expert en droit des affaires et contrats commerciaux",
+      title: t("certifications.items.0.title", { defaultValue: "Droit des Affaires" }),
+      subtitle: t("certifications.items.0.subtitle", { defaultValue: "Expert en droit des affaires et contrats commerciaux" }),
       color: "primary",
     },
     {
       icon: Shield,
-      title: "Excellence",
-      subtitle: "Prix du meilleur cabinet 2023",
+      title: t("certifications.items.1.title", { defaultValue: "Excellence" }),
+      subtitle: t("certifications.items.1.subtitle", { defaultValue: "Prix du meilleur cabinet 2023" }),
       color: "accent",
     },
     {
       icon: Lock,
-      title: "Confidentialité",
-      subtitle: "Garantie absolue",
+      title: t("certifications.items.2.title", { defaultValue: "Confidentialité" }),
+      subtitle: t("certifications.items.2.subtitle", { defaultValue: "Garantie absolue" }),
       color: "primary",
     },
   ];
@@ -27,9 +30,9 @@ export const CertificationsSection = () => {
     <section className="py-16 bg-primary text-white">
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto text-center mb-12 animate-fade-in-up">
-          <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">Reconnu et Certifié</h2>
+          <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">{t("certifications.title", { defaultValue: "Reconnu et Certifié" })}</h2>
           <p className="text-lg text-white/90">
-            Notre expertise juridique reconnue au service de votre réussite
+            {t("certifications.subtitle", { defaultValue: "Notre expertise juridique reconnue au service de votre réussite" })}
           </p>
         </div>
 
