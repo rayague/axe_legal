@@ -51,13 +51,8 @@ import {
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import {
-  getProcessSteps,
-  addProcessStep,
-  updateProcessStep,
-  deleteProcessStep,
-  ProcessStep
-} from "@/lib/firebaseApi";
+import { getProcessSteps, addProcessStep, updateProcessStep, deleteProcessStep } from "@/lib/firebaseApi";
+import { pickLocalizedString } from "@/lib/i18nFields";
 
 // Interface enrichie pour l'affichage
 interface EnrichedProcessStep extends ProcessStep {
@@ -132,10 +127,12 @@ export default function ProcessManagementPage() {
   }, []);
 
   useEffect(() => {
-    const filtered = steps.filter(step =>
-      step.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      step.description.toLowerCase().includes(searchTerm.toLowerCase())
-    );
+    const needle = searchTerm.toLowerCase();
+    const filtered = steps.filter((step) => {
+      const title = pickLocalizedString(step.title as any, 'fr').toLowerCase();
+      const description = pickLocalizedString(step.description as any, 'fr').toLowerCase();
+      return title.includes(needle) || description.includes(needle);
+    });
     setFilteredSteps(filtered);
   }, [searchTerm, steps]);
 
@@ -386,10 +383,10 @@ export default function ProcessManagementPage() {
                                     )}
                                   </div>
                                   <h3 className="font-semibold text-sm mb-1 truncate">
-                                    {step.title}
+                                    {pickLocalizedString(step.title as any, 'fr')}
                                   </h3>
                                   <p className="text-xs text-muted-foreground line-clamp-2">
-                                    {step.description}
+                                    {pickLocalizedString(step.description as any, 'fr')}
                                   </p>
                                   {step.details && step.details.length > 0 && (
                                     <div className="mt-2">
@@ -671,7 +668,7 @@ export default function ProcessManagementPage() {
           <AlertDialogHeader>
             <AlertDialogTitle>Êtes-vous sûr ?</AlertDialogTitle>
             <AlertDialogDescription>
-              Cette action est irréversible. L'étape "{stepToDelete?.title}" sera définitivement supprimée.
+              Cette action est irréversible. L'étape "{pickLocalizedString(stepToDelete?.title as any, 'fr')}" sera définitivement supprimée.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>

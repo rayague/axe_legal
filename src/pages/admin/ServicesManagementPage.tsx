@@ -6,6 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { Plus, Edit, Trash2, Briefcase, X } from 'lucide-react';
@@ -18,12 +19,17 @@ export default function ServicesManagementPage() {
   const [dialogOpen, setDialogOpen] = useState(false);
   const [editingService, setEditingService] = useState<Service | null>(null);
 
+  const [editingLang, setEditingLang] = useState<'fr' | 'en'>('fr');
+
   const getFr = (field: any): string => pickLocalizedString(field, 'fr');
-  const toLocalized = (nextFr: string, existing: any) => {
-    if (existing && typeof existing === 'object' && existing !== null) {
-      return { fr: nextFr, en: typeof existing.en === 'string' && existing.en ? existing.en : nextFr };
-    }
-    return { fr: nextFr, en: nextFr };
+  const getLangValue = (field: any, lang: 'fr' | 'en'): string => pickLocalizedString(field, lang);
+  const toLocalized = (nextValue: string, existing: any, lang: 'fr' | 'en') => {
+    const base = existing && typeof existing === 'object' && existing !== null ? existing : { fr: '', en: '' };
+    const prevFr = typeof base.fr === 'string' ? base.fr : '';
+    const prevEn = typeof base.en === 'string' ? base.en : '';
+    const fr = lang === 'fr' ? nextValue : (prevFr || nextValue);
+    const en = lang === 'en' ? nextValue : (prevEn || nextValue);
+    return { fr, en };
   };
   const [formData, setFormData] = useState({
     title: '',
@@ -42,6 +48,28 @@ export default function ServicesManagementPage() {
   useEffect(() => {
     loadServices();
   }, []);
+
+  const hydrateFormFromService = (service: Service, lang: 'fr' | 'en') => {
+    setFormData({
+      title: getLangValue(service.title, lang),
+      slug: service.slug || '',
+      description: getLangValue(service.description, lang),
+      icon: service.icon || 'Briefcase',
+      features:
+        service.features && service.features.length > 0
+          ? (service.features as any[]).map((f) => getLangValue(f, lang))
+          : [''],
+      benefits:
+        service.benefits && service.benefits.length > 0
+          ? (service.benefits as any[]).map((b) => getLangValue(b, lang))
+          : [''],
+      pricing: service.pricing ? getLangValue(service.pricing, lang) : '',
+      duration: service.duration ? getLangValue(service.duration, lang) : '',
+      order: service.order || 0,
+      metaTitle: service.metaTitle ? getLangValue(service.metaTitle, lang) : '',
+      metaDescription: service.metaDescription ? getLangValue(service.metaDescription, lang) : '',
+    });
+  };
 
   const loadServices = async () => {
     try {
@@ -66,14 +94,14 @@ export default function ServicesManagementPage() {
 
       const serviceData = {
         ...formData,
-        title: toLocalized(formData.title, existing?.title),
-        description: toLocalized(formData.description, existing?.description),
-        pricing: formData.pricing ? toLocalized(formData.pricing, existing?.pricing) : undefined,
-        duration: formData.duration ? toLocalized(formData.duration, existing?.duration) : undefined,
-        metaTitle: formData.metaTitle ? toLocalized(formData.metaTitle, existing?.metaTitle) : undefined,
-        metaDescription: formData.metaDescription ? toLocalized(formData.metaDescription, existing?.metaDescription) : undefined,
-        features: cleanedFeatures.map((f, idx) => toLocalized(f, (existing?.features as any)?.[idx])),
-        benefits: cleanedBenefits.map((b, idx) => toLocalized(b, (existing?.benefits as any)?.[idx])),
+        title: toLocalized(formData.title, existing?.title, editingLang),
+        description: toLocalized(formData.description, existing?.description, editingLang),
+        pricing: formData.pricing ? toLocalized(formData.pricing, existing?.pricing, editingLang) : undefined,
+        duration: formData.duration ? toLocalized(formData.duration, existing?.duration, editingLang) : undefined,
+        metaTitle: formData.metaTitle ? toLocalized(formData.metaTitle, existing?.metaTitle, editingLang) : undefined,
+        metaDescription: formData.metaDescription ? toLocalized(formData.metaDescription, existing?.metaDescription, editingLang) : undefined,
+        features: cleanedFeatures.map((f, idx) => toLocalized(f, (existing?.features as any)?.[idx], editingLang)),
+        benefits: cleanedBenefits.map((b, idx) => toLocalized(b, (existing?.benefits as any)?.[idx], editingLang)),
         slug:
           formData.slug ||
           formData.title
@@ -104,19 +132,7 @@ export default function ServicesManagementPage() {
 
   const handleEdit = (service: Service) => {
     setEditingService(service);
-    setFormData({
-      title: getFr(service.title),
-      slug: service.slug || '',
-      description: getFr(service.description),
-      icon: service.icon || 'Briefcase',
-      features: service.features && service.features.length > 0 ? (service.features as any[]).map((f) => getFr(f)) : [''],
-      benefits: service.benefits && service.benefits.length > 0 ? (service.benefits as any[]).map((b) => getFr(b)) : [''],
-      pricing: service.pricing ? getFr(service.pricing) : '',
-      duration: service.duration ? getFr(service.duration) : '',
-      order: service.order || 0,
-      metaTitle: service.metaTitle ? getFr(service.metaTitle) : '',
-      metaDescription: service.metaDescription ? getFr(service.metaDescription) : '',
-    });
+    hydrateFormFromService(service, editingLang);
     setDialogOpen(true);
   };
 
@@ -258,6 +274,26 @@ export default function ServicesManagementPage() {
           
           <ScrollArea className="max-h-[60vh] pr-4">
             <div className="grid gap-4 py-4">
+              <div className="grid gap-2">
+                <Label>Langue</Label>
+                <Select
+                  value={editingLang}
+                  onValueChange={(value) => {
+                    const lang = value === 'en' ? 'en' : 'fr';
+                    setEditingLang(lang);
+                    if (editingService) hydrateFormFromService(editingService, lang);
+                  }}
+                >
+                  <SelectTrigger>
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="fr">FR</SelectItem>
+                    <SelectItem value="en">EN</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+
               {/* Informations de base */}
               <div className="grid gap-2">
                 <Label htmlFor="title">Titre du service *</Label>

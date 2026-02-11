@@ -125,7 +125,7 @@
     "subtitle": "Des résultats concrets qui témoignent de notre engagement envers l'excellence"
   },
   "announcements": {
-    "title": "🎯 Dernières Annonces",
+    "title": "Dernières Annonces",
     "subtitle": "Découvrez nos dernières actualités et annonces",
     "types": {
       "promotion": "Promotion",
@@ -617,7 +617,26 @@
       "cta_intro": "En attendant, notre équipe reste à votre entière disposition",
       "cta_book": "Prendre rendez-vous",
       "quote": "\"L'innovation au service de la justice, l'expertise au service de vos droits\"",
-      "quote_author": "— L'équipe AXE LEGAL"
+      "quote_author": "— L'équipe AXE LEGAL",
+      "usefulDocuments": {
+        "title": "Documents Utiles",
+        "subtitle": "Téléchargez nos guides pour préparer votre dossier",
+        "doc1": {
+          "title": "Guide d'Utilisation - Service Juridique",
+          "description": "Guide complet pour comprendre et utiliser nos services juridiques efficacement.",
+          "size": "PDF • 342 KB"
+        },
+        "doc2": {
+          "title": "Guide d'Utilisation - Version 2.1",
+          "description": "Version mise à jour avec les dernières procédures et recommandations.",
+          "size": "PDF • 332 KB"
+        },
+        "download": "Télécharger",
+        "note": {
+          "title": "Conseil pratique",
+          "description": "Lisez attentivement ces guides avant votre première consultation. Ils vous aideront à préparer les informations nécessaires et à optimiser notre temps ensemble."
+        }
+      }
     },
     "announcements": {
       "console_error_loading": "Erreur lors du chargement des annonces:",

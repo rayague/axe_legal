@@ -19,7 +19,7 @@ const NotFound = () => {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      <main className="py-16">
+      <main className="pt-[calc(var(--site-header-height,64px)+2rem)] pb-16">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto">
             <div className="text-center mb-8">

@@ -15,12 +15,14 @@ import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { Plus, Edit, Trash2, Search, Star } from 'lucide-react';
 import { getTestimonials, addTestimonial, updateTestimonial, deleteTestimonial } from '@/lib/firebaseApi';
+import { pickLocalizedString } from '@/lib/i18nFields';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 interface Testimonial {
   id?: string;
   name: string;
-  role: string;
-  content: string;
+  role: any;
+  content: any;
   rating: number;
   image: string;
 }
@@ -34,6 +36,18 @@ export default function TestimonialsManagementPage() {
   const [createDialogOpen, setCreateDialogOpen] = useState(false);
   const [editDialogOpen, setEditDialogOpen] = useState(false);
   const [selectedTestimonial, setSelectedTestimonial] = useState<Testimonial | null>(null);
+  const [editingLang, setEditingLang] = useState<'fr' | 'en'>('fr');
+
+  const getLangValue = (field: any, lang: 'fr' | 'en'): string => pickLocalizedString(field, lang);
+  const toLocalized = (nextValue: string, existing: any, lang: 'fr' | 'en') => {
+    const base = existing && typeof existing === 'object' && existing !== null ? existing : { fr: '', en: '' };
+    const prevFr = typeof base.fr === 'string' ? base.fr : '';
+    const prevEn = typeof base.en === 'string' ? base.en : '';
+    const fr = lang === 'fr' ? nextValue : (prevFr || nextValue);
+    const en = lang === 'en' ? nextValue : (prevEn || nextValue);
+    return { fr, en };
+  };
+
   const [formData, setFormData] = useState<Partial<Testimonial>>({
     name: '',
     role: '',
@@ -64,13 +78,18 @@ export default function TestimonialsManagementPage() {
 
   const filteredTestimonials = testimonials.filter((testimonial) =>
     testimonial.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    testimonial.content.toLowerCase().includes(searchQuery.toLowerCase())
+    getLangValue(testimonial.content, 'fr').toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   const handleCreate = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await addTestimonial(formData as Omit<Testimonial, 'id'>);
+      const payload = {
+        ...formData,
+        role: toLocalized(String(formData.role || ''), undefined, editingLang),
+        content: toLocalized(String(formData.content || ''), undefined, editingLang),
+      } as any;
+      await addTestimonial(payload as Omit<Testimonial, 'id'>);
       toast({ title: 'Succès', description: 'Témoignage ajouté avec succès' });
       setCreateDialogOpen(false);
       resetForm();
@@ -85,7 +104,12 @@ export default function TestimonialsManagementPage() {
     if (!selectedTestimonial) return;
 
     try {
-      await updateTestimonial(selectedTestimonial.id!, formData);
+      const payload: Partial<Testimonial> = {
+        ...formData,
+        role: toLocalized(String(formData.role || ''), selectedTestimonial.role, editingLang) as any,
+        content: toLocalized(String(formData.content || ''), selectedTestimonial.content, editingLang) as any,
+      };
+      await updateTestimonial(selectedTestimonial.id!, payload as any);
       toast({ title: 'Succès', description: 'Témoignage modifié avec succès' });
       setEditDialogOpen(false);
       resetForm();
@@ -109,7 +133,13 @@ export default function TestimonialsManagementPage() {
 
   const openEditDialog = (testimonial: Testimonial) => {
     setSelectedTestimonial(testimonial);
-    setFormData({ name: testimonial.name, role: testimonial.role, content: testimonial.content, rating: testimonial.rating, image: testimonial.image });
+    setFormData({
+      name: testimonial.name,
+      role: getLangValue(testimonial.role, editingLang),
+      content: getLangValue(testimonial.content, editingLang),
+      rating: testimonial.rating,
+      image: testimonial.image,
+    });
     setEditDialogOpen(true);
   };
 
@@ -160,14 +190,14 @@ export default function TestimonialsManagementPage() {
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-1">
                     <h3 className="font-bold">{testimonial.name}</h3>
-                    <span className="text-sm text-muted-foreground">• {testimonial.role}</span>
+                    <span className="text-sm text-muted-foreground">• {getLangValue(testimonial.role, 'fr')}</span>
                   </div>
                   <div className="flex gap-1 mb-2">
                     {Array.from({ length: testimonial.rating || 5 }).map((_, i) => (
                       <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
                     ))}
                   </div>
-                  <p className="text-sm text-muted-foreground">{testimonial.content}</p>
+                  <p className="text-sm text-muted-foreground">{getLangValue(testimonial.content, 'fr')}</p>
                 </div>
               </div>
               <div className="flex gap-2">
@@ -194,6 +224,18 @@ export default function TestimonialsManagementPage() {
           </DialogHeader>
           <form onSubmit={handleCreate}>
             <div className="space-y-4">
+              <div>
+                <Label>Langue</Label>
+                <Select value={editingLang} onValueChange={(value) => setEditingLang(value === 'en' ? 'en' : 'fr')}>
+                  <SelectTrigger>
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="fr">FR</SelectItem>
+                    <SelectItem value="en">EN</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
               <div>
                 <Label>Nom</Label>
                 <Input
@@ -258,6 +300,31 @@ export default function TestimonialsManagementPage() {
           </DialogHeader>
           <form onSubmit={handleUpdate}>
             <div className="space-y-4">
+              <div>
+                <Label>Langue</Label>
+                <Select
+                  value={editingLang}
+                  onValueChange={(value) => {
+                    const lang = value === 'en' ? 'en' : 'fr';
+                    setEditingLang(lang);
+                    if (selectedTestimonial) {
+                      setFormData({
+                        ...formData,
+                        role: getLangValue(selectedTestimonial.role, lang),
+                        content: getLangValue(selectedTestimonial.content, lang),
+                      });
+                    }
+                  }}
+                >
+                  <SelectTrigger>
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="fr">FR</SelectItem>
+                    <SelectItem value="en">EN</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
               <div>
                 <Label>Nom</Label>
                 <Input

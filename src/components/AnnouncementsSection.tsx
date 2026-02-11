@@ -74,7 +74,8 @@ export const AnnouncementsSection: React.FC = () => {
     <section className="py-20 bg-gradient-to-br from-primary/5 via-background to-secondary/5">
       <div className="container mx-auto px-4">
         <SectionHeader
-          title={t("announcements.title", { defaultValue: "🎯 Dernières Annonces" })}
+          badge={<Megaphone className="h-4 w-4" />}
+          title={t("announcements.title", { defaultValue: "Dernières Annonces" })}
           subtitle={t("announcements.subtitle", { defaultValue: "Découvrez nos dernières actualités et annonces" })}
         />
 

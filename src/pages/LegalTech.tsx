@@ -25,6 +25,7 @@ import {
   Mail,
   ChevronRight,
   Info,
+  Download,
   LucideIcon
 } from "lucide-react";
 import heroLegal from "@/assets/hero-legal.jpg";
@@ -122,8 +123,6 @@ const LegalTech = () => {
             </>
           )}
           subtitle={t("pages.legaltech.hero_subtitle", { defaultValue: "Nos solutions numériques. Les outils juridiques automatisés qui vous font avancer et gagner du temps." })}
-          ctaText={t("pages.legaltech.hero_cta", { defaultValue: "Commencer la simulation" })}
-          ctaLink="#simulation"
           imageSrc={heroLegal}
           large
         />
@@ -255,6 +254,116 @@ const LegalTech = () => {
                 </div>
               </Card>
 
+              <div className="mt-8">
+                <Card className="border-2 border-dashed border-primary/20 bg-gradient-to-br from-slate-50 to-blue-50/30">
+                  <CardContent className="p-8">
+                    <div className="flex items-center gap-3 mb-6">
+                      <div className="p-3 bg-primary/10 rounded-full">
+                        <FileText className="h-6 w-6 text-primary" />
+                      </div>
+                      <div>
+                        <h3 className="text-xl font-bold text-slate-900">
+                          {t("pages.legaltech.usefulDocuments.title", { defaultValue: "Documents Utiles" })}
+                        </h3>
+                        <p className="text-sm text-slate-600 mt-1">
+                          {t("pages.legaltech.usefulDocuments.subtitle", { defaultValue: "Téléchargez nos guides pour préparer votre dossier" })}
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="grid md:grid-cols-2 gap-4">
+                      <div className="group relative overflow-hidden rounded-lg border border-slate-200 bg-white p-6 transition-all duration-300 hover:shadow-lg hover:border-primary/30 hover:-translate-y-1">
+                        <div className="flex items-start gap-4">
+                          <div className="p-2 bg-red-50 rounded-lg group-hover:bg-red-100 transition-colors">
+                            <FileText className="h-8 w-8 text-red-600" />
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <h4 className="font-semibold text-slate-900 mb-2 group-hover:text-primary transition-colors">
+                              {t("pages.legaltech.usefulDocuments.doc1.title", { defaultValue: "Guide d'Utilisation - Service Juridique" })}
+                            </h4>
+                            <p className="text-sm text-slate-600 mb-4 line-clamp-2">
+                              {t("pages.legaltech.usefulDocuments.doc1.description", { defaultValue: "Guide complet pour comprendre et utiliser nos services juridiques efficacement." })}
+                            </p>
+                            <div className="flex items-center justify-between">
+                              <span className="text-xs text-slate-500">
+                                {t("pages.legaltech.usefulDocuments.doc1.size", { defaultValue: "PDF • 342 KB" })}
+                              </span>
+                              <Button
+                                size="sm"
+                                variant="outline"
+                                className="group-hover:bg-primary group-hover:text-white transition-all duration-300"
+                                asChild
+                              >
+                                <a
+                                  href="/assets/documents/Notes_%20Usage%20Conseil%20Service%20Juridique-1.pdf"
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="flex items-center gap-2"
+                                >
+                                  <Download className="h-4 w-4" />
+                                  {t("pages.legaltech.usefulDocuments.download", { defaultValue: "Télécharger" })}
+                                </a>
+                              </Button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div className="group relative overflow-hidden rounded-lg border border-slate-200 bg-white p-6 transition-all duration-300 hover:shadow-lg hover:border-primary/30 hover:-translate-y-1">
+                        <div className="flex items-start gap-4">
+                          <div className="p-2 bg-blue-50 rounded-lg group-hover:bg-blue-100 transition-colors">
+                            <FileText className="h-8 w-8 text-blue-600" />
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <h4 className="font-semibold text-slate-900 mb-2 group-hover:text-primary transition-colors">
+                              {t("pages.legaltech.usefulDocuments.doc2.title", { defaultValue: "Guide d'Utilisation - Version 2.1" })}
+                            </h4>
+                            <p className="text-sm text-slate-600 mb-4 line-clamp-2">
+                              {t("pages.legaltech.usefulDocuments.doc2.description", { defaultValue: "Version mise à jour avec les dernières procédures et recommandations." })}
+                            </p>
+                            <div className="flex items-center justify-between">
+                              <span className="text-xs text-slate-500">
+                                {t("pages.legaltech.usefulDocuments.doc2.size", { defaultValue: "PDF • 332 KB" })}
+                              </span>
+                              <Button
+                                size="sm"
+                                variant="outline"
+                                className="group-hover:bg-primary group-hover:text-white transition-all duration-300"
+                                asChild
+                              >
+                                <a
+                                  href="/assets/documents/Notes_%20Usage%20Conseil%20Service%20Juridiq%20V2-1.pdf"
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="flex items-center gap-2"
+                                >
+                                  <Download className="h-4 w-4" />
+                                  {t("pages.legaltech.usefulDocuments.download", { defaultValue: "Télécharger" })}
+                                </a>
+                              </Button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="mt-6 p-4 bg-amber-50 border border-amber-200 rounded-lg">
+                      <div className="flex items-start gap-3">
+                        <Info className="h-5 w-5 text-amber-600 mt-0.5 flex-shrink-0" />
+                        <div className="text-sm">
+                          <p className="text-amber-900 font-medium mb-1">
+                            {t("pages.legaltech.usefulDocuments.note.title", { defaultValue: "Conseil pratique" })}
+                          </p>
+                          <p className="text-amber-800">
+                            {t("pages.legaltech.usefulDocuments.note.description", { defaultValue: "Lisez attentivement ces guides avant votre première consultation. Ils vous aideront à préparer les informations nécessaires et à optimiser notre temps ensemble." })}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </div>
+
               {/* Message de confiance */}
               <div className="mt-12 text-center">
                 <p className="text-lg text-muted-foreground italic">
@@ -269,7 +378,8 @@ const LegalTech = () => {
         </section>
 
         {/* CONTENU EXISTANT MIS EN COMMENTAIRE - SERA RÉACTIVÉ LORS DU LANCEMENT */}
-        {/* 
+        {false && (
+          <>
         {!showGuidance && (
           <section className="py-16 bg-gradient-to-b from-background to-primary/5" id="simulation">
             <div className="container mx-auto px-4">
@@ -500,6 +610,118 @@ const LegalTech = () => {
                   </CardContent>
                 </Card>
 
+                {/* Section Documents Utiles */}
+                <Card className="mt-8 border-2 border-dashed border-primary/20 bg-gradient-to-br from-slate-50 to-blue-50/30">
+                  <CardContent className="p-8">
+                    <div className="flex items-center gap-3 mb-6">
+                      <div className="p-3 bg-primary/10 rounded-full">
+                        <FileText className="h-6 w-6 text-primary" />
+                      </div>
+                      <div>
+                        <h3 className="text-xl font-bold text-slate-900">
+                          {t("pages.legaltech.usefulDocuments.title", { defaultValue: "Documents Utiles" })}
+                        </h3>
+                        <p className="text-sm text-slate-600 mt-1">
+                          {t("pages.legaltech.usefulDocuments.subtitle", { defaultValue: "Téléchargez nos guides pour préparer votre dossier" })}
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="grid md:grid-cols-2 gap-4">
+                      {/* Document 1 */}
+                      <div className="group relative overflow-hidden rounded-lg border border-slate-200 bg-white p-6 transition-all duration-300 hover:shadow-lg hover:border-primary/30 hover:-translate-y-1">
+                        <div className="flex items-start gap-4">
+                          <div className="p-2 bg-red-50 rounded-lg group-hover:bg-red-100 transition-colors">
+                            <FileText className="h-8 w-8 text-red-600" />
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <h4 className="font-semibold text-slate-900 mb-2 group-hover:text-primary transition-colors">
+                              {t("pages.legaltech.usefulDocuments.doc1.title", { defaultValue: "Guide d'Utilisation - Service Juridique" })}
+                            </h4>
+                            <p className="text-sm text-slate-600 mb-4 line-clamp-2">
+                              {t("pages.legaltech.usefulDocuments.doc1.description", { defaultValue: "Guide complet pour comprendre et utiliser nos services juridiques efficacement." })}
+                            </p>
+                            <div className="flex items-center justify-between">
+                              <span className="text-xs text-slate-500">
+                                {t("pages.legaltech.usefulDocuments.doc1.size", { defaultValue: "PDF • 342 KB" })}
+                              </span>
+                              <Button
+                                size="sm"
+                                variant="outline"
+                                className="group-hover:bg-primary group-hover:text-white transition-all duration-300"
+                                asChild
+                              >
+                                <a
+                                  href="/assets/documents/Notes_%20Usage%20Conseil%20Service%20Juridique-1.pdf"
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="flex items-center gap-2"
+                                >
+                                  <Download className="h-4 w-4" />
+                                  {t("pages.legaltech.usefulDocuments.download", { defaultValue: "Télécharger" })}
+                                </a>
+                              </Button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Document 2 */}
+                      <div className="group relative overflow-hidden rounded-lg border border-slate-200 bg-white p-6 transition-all duration-300 hover:shadow-lg hover:border-primary/30 hover:-translate-y-1">
+                        <div className="flex items-start gap-4">
+                          <div className="p-2 bg-blue-50 rounded-lg group-hover:bg-blue-100 transition-colors">
+                            <FileText className="h-8 w-8 text-blue-600" />
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <h4 className="font-semibold text-slate-900 mb-2 group-hover:text-primary transition-colors">
+                              {t("pages.legaltech.usefulDocuments.doc2.title", { defaultValue: "Guide d'Utilisation - Version 2.1" })}
+                            </h4>
+                            <p className="text-sm text-slate-600 mb-4 line-clamp-2">
+                              {t("pages.legaltech.usefulDocuments.doc2.description", { defaultValue: "Version mise à jour avec les dernières procédures et recommandations." })}
+                            </p>
+                            <div className="flex items-center justify-between">
+                              <span className="text-xs text-slate-500">
+                                {t("pages.legaltech.usefulDocuments.doc2.size", { defaultValue: "PDF • 332 KB" })}
+                              </span>
+                              <Button
+                                size="sm"
+                                variant="outline"
+                                className="group-hover:bg-primary group-hover:text-white transition-all duration-300"
+                                asChild
+                              >
+                                <a
+                                  href="/assets/documents/Notes_%20Usage%20Conseil%20Service%20Juridiq%20V2-1.pdf"
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="flex items-center gap-2"
+                                >
+                                  <Download className="h-4 w-4" />
+                                  {t("pages.legaltech.usefulDocuments.download", { defaultValue: "Télécharger" })}
+                                </a>
+                              </Button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Note informative */}
+                    <div className="mt-6 p-4 bg-amber-50 border border-amber-200 rounded-lg">
+                      <div className="flex items-start gap-3">
+                        <Info className="h-5 w-5 text-amber-600 mt-0.5 flex-shrink-0" />
+                        <div className="text-sm">
+                          <p className="text-amber-900 font-medium mb-1">
+                            {t("pages.legaltech.usefulDocuments.note.title", { defaultValue: "Conseil pratique" })}
+                          </p>
+                          <p className="text-amber-800">
+                            {t("pages.legaltech.usefulDocuments.note.description", { defaultValue: "Lisez attentivement ces guides avant votre première consultation. Ils vous aideront à préparer les informations nécessaires et à optimiser notre temps ensemble." })}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+
                 <div className="mt-12 p-8 bg-gradient-to-br from-primary via-primary/95 to-primary/90 rounded-xl text-white">
                   <div className="text-center space-y-6">
                     <h3 className="text-2xl md:text-3xl font-bold">
@@ -560,7 +782,9 @@ const LegalTech = () => {
             </div>
           </section>
         )}
-        */}
+
+          </>
+        )}
       </main>
       <Footer />
     </div>

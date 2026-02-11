@@ -125,7 +125,7 @@
     "subtitle": "Concrete results that reflect our commitment to excellence"
   },
   "announcements": {
-    "title": "🎯 Latest announcements",
+    "title": "Latest announcements",
     "subtitle": "Discover our latest news and announcements",
     "types": {
       "promotion": "Promotion",
@@ -617,7 +617,26 @@
       "cta_intro": "In the meantime, our team remains fully available",
       "cta_book": "Book an appointment",
       "quote": "\"Innovation in the service of justice, expertise in the service of your rights\"",
-      "quote_author": "— The AXE LEGAL team"
+      "quote_author": "— The AXE LEGAL team",
+      "usefulDocuments": {
+        "title": "Useful Documents",
+        "subtitle": "Download our guides to prepare your file",
+        "doc1": {
+          "title": "User Guide - Legal Services",
+          "description": "Complete guide to understand and use our legal services effectively.",
+          "size": "PDF • 342 KB"
+        },
+        "doc2": {
+          "title": "User Guide - Version 2.1",
+          "description": "Updated version with the latest procedures and recommendations.",
+          "size": "PDF • 332 KB"
+        },
+        "download": "Download",
+        "note": {
+          "title": "Practical tip",
+          "description": "Read these guides carefully before your first consultation. They will help you prepare the necessary information and optimize our time together."
+        }
+      }
     },
     "announcements": {
       "console_error_loading": "Error while loading announcements:",

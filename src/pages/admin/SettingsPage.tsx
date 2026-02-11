@@ -57,6 +57,7 @@ import {
   LegalCategoryStep
 } from "@/lib/firebaseApi";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { pickLocalizedString } from "@/lib/i18nFields";
 
 // Liste des icônes disponibles
 const availableIcons = [
@@ -95,8 +96,20 @@ export default function SettingsPage() {
   const [isAddingNew, setIsAddingNew] = useState(false);
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
   const [categoryToDelete, setCategoryToDelete] = useState<LegalCategory | null>(null);
+
+  const [editingLang, setEditingLang] = useState<'fr' | 'en'>('fr');
   
   const { toast } = useToast();
+
+  const getLangValue = (field: any, lang: 'fr' | 'en'): string => pickLocalizedString(field, lang);
+  const toLocalized = (nextValue: string, existing: any, lang: 'fr' | 'en') => {
+    const base = existing && typeof existing === 'object' && existing !== null ? existing : { fr: '', en: '' };
+    const prevFr = typeof base.fr === 'string' ? base.fr : '';
+    const prevEn = typeof base.en === 'string' ? base.en : '';
+    const fr = lang === 'fr' ? nextValue : (prevFr || nextValue);
+    const en = lang === 'en' ? nextValue : (prevEn || nextValue);
+    return { fr, en };
+  };
 
   // État du formulaire
   const [formData, setFormData] = useState<Partial<LegalCategory>>({
@@ -126,8 +139,8 @@ export default function SettingsPage() {
 
   useEffect(() => {
     const filtered = categories.filter(cat =>
-      cat.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      cat.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      getLangValue(cat.title, 'fr').toLowerCase().includes(searchTerm.toLowerCase()) ||
+      getLangValue(cat.description, 'fr').toLowerCase().includes(searchTerm.toLowerCase()) ||
       cat.categoryId.toLowerCase().includes(searchTerm.toLowerCase())
     );
     setFilteredCategories(filtered);
@@ -137,7 +150,6 @@ export default function SettingsPage() {
     try {
       setIsLoading(true);
       const data = await getLegalCategories();
-      console.log('📊 Catégories récupérées:', data);
       setCategories(data);
     } catch (error) {
       console.error('❌ Erreur lors de la récupération:', error);
@@ -154,7 +166,13 @@ export default function SettingsPage() {
   const handleEdit = (category: LegalCategory) => {
     setEditingCategory(category);
     setFormData({
-      ...category
+      ...category,
+      title: getLangValue(category.title, editingLang),
+      description: getLangValue(category.description, editingLang),
+      guidanceTitle: getLangValue(category.guidanceTitle, editingLang),
+      timeline: getLangValue(category.timeline, editingLang),
+      cost: getLangValue(category.cost, editingLang),
+      warning: getLangValue(category.warning, editingLang),
     });
     setIsAddingNew(false);
   };
@@ -218,17 +236,28 @@ export default function SettingsPage() {
       const dataToSave: Omit<LegalCategory, 'id'> = {
         categoryId: formData.categoryId.trim(),
         iconName: formData.iconName || "Scale",
-        title: formData.title.trim(),
-        description: formData.description.trim(),
+        title: toLocalized(formData.title.trim(), editingCategory?.title, editingLang) as any,
+        description: toLocalized(formData.description.trim(), editingCategory?.description, editingLang) as any,
         color: formData.color || "from-blue-500/10 to-blue-600/10",
         borderColor: formData.borderColor || "hover:border-blue-500/50",
         order: formData.order || 1,
-        guidanceTitle: formData.guidanceTitle?.trim() || formData.title.trim(),
-        steps: formData.steps || [],
+        guidanceTitle: toLocalized(
+          (formData.guidanceTitle?.trim() || formData.title.trim()),
+          editingCategory?.guidanceTitle,
+          editingLang
+        ) as any,
+        steps: (formData.steps || []).map((step: any, idx: number) => {
+          const existingStep = editingCategory?.steps?.[idx];
+          return {
+            ...step,
+            title: toLocalized(getLangValue(step.title, editingLang), existingStep?.title, editingLang),
+            description: toLocalized(getLangValue(step.description, editingLang), existingStep?.description, editingLang),
+          };
+        }) as any,
         documents: formData.documents || [],
-        timeline: formData.timeline?.trim() || "",
-        cost: formData.cost?.trim() || "",
-        warning: formData.warning?.trim(),
+        timeline: toLocalized((formData.timeline?.trim() || ""), editingCategory?.timeline, editingLang) as any,
+        cost: toLocalized((formData.cost?.trim() || ""), editingCategory?.cost, editingLang) as any,
+        warning: toLocalized((formData.warning?.trim() || ""), editingCategory?.warning, editingLang) as any,
         isActive: formData.isActive ?? true
       };
 
@@ -282,9 +311,13 @@ export default function SettingsPage() {
 
   const addStep = () => {
     if (currentStep.title.trim() && currentStep.description.trim()) {
+      const stepToAdd: any = {
+        title: toLocalized(currentStep.title.trim(), undefined, editingLang),
+        description: toLocalized(currentStep.description.trim(), undefined, editingLang)
+      };
       setFormData({
         ...formData,
-        steps: [...(formData.steps || []), currentStep]
+        steps: [...(formData.steps || []), stepToAdd]
       });
       setCurrentStep({ title: "", description: "" });
     }
@@ -469,10 +502,10 @@ export default function SettingsPage() {
                                     )}
                                   </div>
                                   <h3 className="font-semibold text-sm mb-1 truncate">
-                                    {category.title}
+                                    {getLangValue(category.title, 'fr')}
                                   </h3>
                                   <p className="text-xs text-muted-foreground line-clamp-2">
-                                    {category.description}
+                                    {getLangValue(category.description, 'fr')}
                                   </p>
                                   <div className="mt-2 flex flex-wrap gap-2">
                                     {category.steps && category.steps.length > 0 && (
@@ -538,6 +571,36 @@ export default function SettingsPage() {
                 </CardDescription>
               </CardHeader>
               <CardContent>
+                <div className="mb-4">
+                  <Label>Langue</Label>
+                  <Select
+                    value={editingLang}
+                    onValueChange={(value) => {
+                      const lang = value === 'en' ? 'en' : 'fr';
+                      setEditingLang(lang);
+
+                      if (editingCategory) {
+                        setFormData((prev) => ({
+                          ...prev,
+                          title: getLangValue(editingCategory.title, lang),
+                          description: getLangValue(editingCategory.description, lang),
+                          guidanceTitle: getLangValue(editingCategory.guidanceTitle, lang),
+                          timeline: getLangValue(editingCategory.timeline, lang),
+                          cost: getLangValue(editingCategory.cost, lang),
+                          warning: getLangValue(editingCategory.warning, lang),
+                        }));
+                      }
+                    }}
+                  >
+                    <SelectTrigger>
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="fr">FR</SelectItem>
+                      <SelectItem value="en">EN</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
                 <Tabs defaultValue="basic" className="w-full">
                   <TabsList className="grid w-full grid-cols-3">
                     <TabsTrigger value="basic">Basique</TabsTrigger>
@@ -716,8 +779,8 @@ export default function SettingsPage() {
                                     {index + 1}
                                   </div>
                                   <div className="flex-1 min-w-0">
-                                    <h4 className="font-semibold text-sm mb-1">{step.title}</h4>
-                                    <p className="text-xs text-muted-foreground">{step.description}</p>
+                                    <h4 className="font-semibold text-sm mb-1">{getLangValue((step as any).title, editingLang)}</h4>
+                                    <p className="text-xs text-muted-foreground">{getLangValue((step as any).description, editingLang)}</p>
                                   </div>
                                   <Button
                                     size="icon"

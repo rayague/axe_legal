@@ -15,12 +15,14 @@ import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { Plus, Edit, Trash2, Search, Users } from 'lucide-react';
 import { getTeamMembers, addTeamMember, updateTeamMember, deleteTeamMember } from '@/lib/firebaseApi';
+import { pickLocalizedString } from '@/lib/i18nFields';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
 interface TeamMember {
   id?: string;
   name: string;
-  role: string;
-  bio: string;
+  role: any;
+  bio: any;
   image: string;
 }
 
@@ -33,6 +35,19 @@ export default function TeamManagementPage() {
   const [createDialogOpen, setCreateDialogOpen] = useState(false);
   const [editDialogOpen, setEditDialogOpen] = useState(false);
   const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
+
+  const [editingLang, setEditingLang] = useState<'fr' | 'en'>('fr');
+
+  const getLangValue = (field: any, lang: 'fr' | 'en'): string => pickLocalizedString(field, lang);
+  const toLocalized = (nextValue: string, existing: any, lang: 'fr' | 'en') => {
+    const base = existing && typeof existing === 'object' && existing !== null ? existing : { fr: '', en: '' };
+    const prevFr = typeof base.fr === 'string' ? base.fr : '';
+    const prevEn = typeof base.en === 'string' ? base.en : '';
+    const fr = lang === 'fr' ? nextValue : (prevFr || nextValue);
+    const en = lang === 'en' ? nextValue : (prevEn || nextValue);
+    return { fr, en };
+  };
+
   const [formData, setFormData] = useState<Partial<TeamMember>>({
     name: '',
     role: '',
@@ -62,13 +77,18 @@ export default function TeamManagementPage() {
 
   const filteredMembers = members.filter((member) =>
     member.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    member.role.toLowerCase().includes(searchQuery.toLowerCase())
+    getLangValue(member.role, 'fr').toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   const handleCreateMember = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await addTeamMember(formData as Omit<TeamMember, 'id'>);
+      const payload = {
+        ...formData,
+        role: toLocalized(String(formData.role || ''), undefined, editingLang),
+        bio: toLocalized(String(formData.bio || ''), undefined, editingLang),
+      } as any;
+      await addTeamMember(payload as Omit<TeamMember, 'id'>);
       toast({ title: 'Succès', description: 'Membre ajouté avec succès' });
       setCreateDialogOpen(false);
       resetForm();
@@ -83,7 +103,12 @@ export default function TeamManagementPage() {
     if (!selectedMember) return;
 
     try {
-      await updateTeamMember(selectedMember.id!, formData);
+      const payload: Partial<TeamMember> = {
+        ...formData,
+        role: toLocalized(String(formData.role || ''), selectedMember.role, editingLang) as any,
+        bio: toLocalized(String(formData.bio || ''), selectedMember.bio, editingLang) as any,
+      };
+      await updateTeamMember(selectedMember.id!, payload as any);
       toast({ title: 'Succès', description: 'Membre modifié avec succès' });
       setEditDialogOpen(false);
       resetForm();
@@ -107,7 +132,12 @@ export default function TeamManagementPage() {
 
   const openEditDialog = (member: TeamMember) => {
     setSelectedMember(member);
-    setFormData({ name: member.name, role: member.role, bio: member.bio, image: member.image });
+    setFormData({
+      name: member.name,
+      role: getLangValue(member.role, editingLang),
+      bio: getLangValue(member.bio, editingLang),
+      image: member.image,
+    });
     setEditDialogOpen(true);
   };
 
@@ -160,10 +190,10 @@ export default function TeamManagementPage() {
               )}
               <div className="flex-1">
                 <h3 className="font-bold">{member.name}</h3>
-                <p className="text-sm text-muted-foreground">{member.role}</p>
+                <p className="text-sm text-muted-foreground">{getLangValue(member.role, 'fr')}</p>
               </div>
             </div>
-            <p className="text-sm text-muted-foreground mb-4 line-clamp-2">{member.bio}</p>
+            <p className="text-sm text-muted-foreground mb-4 line-clamp-2">{getLangValue(member.bio, 'fr')}</p>
             <div className="flex gap-2">
               <Button variant="outline" size="sm" onClick={() => openEditDialog(member)}>
                 <Edit className="h-3 w-3 mr-1" />
@@ -187,6 +217,18 @@ export default function TeamManagementPage() {
           </DialogHeader>
           <form onSubmit={handleCreateMember}>
             <div className="space-y-4">
+              <div>
+                <Label>Langue</Label>
+                <Select value={editingLang} onValueChange={(value) => setEditingLang(value === 'en' ? 'en' : 'fr')}>
+                  <SelectTrigger>
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="fr">FR</SelectItem>
+                    <SelectItem value="en">EN</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
               <div>
                 <Label>Nom</Label>
                 <Input
@@ -240,6 +282,31 @@ export default function TeamManagementPage() {
           </DialogHeader>
           <form onSubmit={handleUpdateMember}>
             <div className="space-y-4">
+              <div>
+                <Label>Langue</Label>
+                <Select
+                  value={editingLang}
+                  onValueChange={(value) => {
+                    const lang = value === 'en' ? 'en' : 'fr';
+                    setEditingLang(lang);
+                    if (selectedMember) {
+                      setFormData({
+                        ...formData,
+                        role: getLangValue(selectedMember.role, lang),
+                        bio: getLangValue(selectedMember.bio, lang),
+                      });
+                    }
+                  }}
+                >
+                  <SelectTrigger>
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="fr">FR</SelectItem>
+                    <SelectItem value="en">EN</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
               <div>
                 <Label>Nom</Label>
                 <Input

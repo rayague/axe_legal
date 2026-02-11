@@ -26,12 +26,16 @@ export default function AnnouncementsManagementPage() {
   const [searchQuery, setSearchQuery] = useState('');
   const [dialogOpen, setDialogOpen] = useState(false);
   const [editingAnnouncement, setEditingAnnouncement] = useState<Announcement | null>(null);
+  const [editingLang, setEditingLang] = useState<'fr' | 'en'>('fr');
   const getFr = (field: any): string => pickLocalizedString(field, 'fr');
-  const toLocalized = (nextFr: string, existing: any) => {
-    if (existing && typeof existing === 'object' && existing !== null) {
-      return { fr: nextFr, en: typeof existing.en === 'string' && existing.en ? existing.en : nextFr };
-    }
-    return { fr: nextFr, en: nextFr };
+  const getLangValue = (field: any, lang: 'fr' | 'en'): string => pickLocalizedString(field, lang);
+  const toLocalized = (nextValue: string, existing: any, lang: 'fr' | 'en') => {
+    const base = existing && typeof existing === 'object' && existing !== null ? existing : { fr: '', en: '' };
+    const prevFr = typeof base.fr === 'string' ? base.fr : '';
+    const prevEn = typeof base.en === 'string' ? base.en : '';
+    const fr = lang === 'fr' ? nextValue : (prevFr || nextValue);
+    const en = lang === 'en' ? nextValue : (prevEn || nextValue);
+    return { fr, en };
   };
 
   const [formData, setFormData] = useState({
@@ -53,6 +57,23 @@ export default function AnnouncementsManagementPage() {
   useEffect(() => {
     fetchAnnouncements();
   }, []);
+
+  const hydrateFormFromAnnouncement = (announcement: Announcement, lang: 'fr' | 'en') => {
+    setFormData({
+      title: getLangValue(announcement.title, lang),
+      subtitle: announcement.subtitle ? getLangValue(announcement.subtitle, lang) : '',
+      content: getLangValue(announcement.content, lang),
+      type: announcement.type,
+      priority: announcement.priority,
+      isActive: announcement.isActive,
+      link: announcement.link || '',
+      linkText: announcement.linkText ? getLangValue(announcement.linkText, lang) : '',
+      author: announcement.author || '',
+      tags: announcement.tags || [],
+      startDate: announcement.startDate,
+      endDate: announcement.endDate,
+    });
+  };
 
   const fetchAnnouncements = async () => {
     try {
@@ -80,10 +101,10 @@ export default function AnnouncementsManagementPage() {
       const existing = editingAnnouncement;
       const payload: Partial<Announcement> = {
         ...formData,
-        title: toLocalized(formData.title, existing?.title) as any,
-        subtitle: formData.subtitle ? (toLocalized(formData.subtitle, existing?.subtitle) as any) : undefined,
-        content: toLocalized(formData.content, existing?.content) as any,
-        linkText: formData.linkText ? (toLocalized(formData.linkText, existing?.linkText) as any) : undefined,
+        title: toLocalized(formData.title, existing?.title, editingLang) as any,
+        subtitle: formData.subtitle ? (toLocalized(formData.subtitle, existing?.subtitle, editingLang) as any) : undefined,
+        content: toLocalized(formData.content, existing?.content, editingLang) as any,
+        linkText: formData.linkText ? (toLocalized(formData.linkText, existing?.linkText, editingLang) as any) : undefined,
       };
 
       if (editingAnnouncement) {
@@ -114,20 +135,7 @@ export default function AnnouncementsManagementPage() {
 
   const handleEdit = (announcement: Announcement) => {
     setEditingAnnouncement(announcement);
-    setFormData({
-      title: getFr(announcement.title),
-      subtitle: announcement.subtitle ? getFr(announcement.subtitle) : '',
-      content: getFr(announcement.content),
-      type: announcement.type,
-      priority: announcement.priority,
-      isActive: announcement.isActive,
-      link: announcement.link || '',
-      linkText: announcement.linkText ? getFr(announcement.linkText) : '',
-      author: announcement.author || '',
-      tags: announcement.tags || [],
-      startDate: announcement.startDate,
-      endDate: announcement.endDate,
-    });
+    hydrateFormFromAnnouncement(announcement, editingLang);
     setDialogOpen(true);
   };
 
@@ -301,6 +309,26 @@ export default function AnnouncementsManagementPage() {
 
           <ScrollArea className="max-h-[60vh] pr-4">
             <div className="grid gap-4 py-4">
+              <div className="grid gap-2">
+                <Label>Langue</Label>
+                <Select
+                  value={editingLang}
+                  onValueChange={(value) => {
+                    const lang = value === 'en' ? 'en' : 'fr';
+                    setEditingLang(lang);
+                    if (editingAnnouncement) hydrateFormFromAnnouncement(editingAnnouncement, lang);
+                  }}
+                >
+                  <SelectTrigger>
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="fr">FR</SelectItem>
+                    <SelectItem value="en">EN</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+
               <div className="grid gap-2">
                 <Label htmlFor="title">Titre *</Label>
                 <Input
