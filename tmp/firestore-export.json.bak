@@ -1,0 +1,2106 @@
+{
+  "projectId": "axe-legal-f91cd",
+  "exportedAt": "2026-02-11T15:52:11.083Z",
+  "collections": {
+    "announcements": {
+      "fIGDjGFkj7j39tmSsM0h": {
+        "type": "success",
+        "createdAt": {
+          "_seconds": 1762901049,
+          "_nanoseconds": 836000000
+        },
+        "title": {
+          "fr": "Consultation Gratuite - Mois de Décembre",
+          "en": "Free Consultation - Month of December"
+        },
+        "content": {
+          "fr": "Profitez d'une consultation gratuite de 30 minutes pour toute nouvelle demande reçue avant le 31 décembre 2025.",
+          "en": "Take advantage of a free 30-minute consultation for any new request received before December 31, 2025."
+        }
+      },
+      "kojYuUMv3dFfcGjH13SY": {
+        "type": "success",
+        "createdAt": {
+          "_seconds": 1770766639,
+          "_nanoseconds": 301000000
+        },
+        "title": {
+          "fr": "Bienvenue",
+          "en": "Welcome"
+        },
+        "content": {
+          "fr": "Notre cabinet vous accueille !",
+          "en": "Our firm welcomes you!"
+        }
+      },
+      "vWCT0tA59hjiTJOItftQ": {
+        "type": "info",
+        "createdAt": {
+          "_seconds": 1762901049,
+          "_nanoseconds": 836000000
+        },
+        "title": {
+          "fr": "Nouveau: Service de Médiation",
+          "en": "New: Mediation Service"
+        },
+        "content": {
+          "fr": "Axe Legal propose désormais des services de médiation pour résoudre vos conflits à l'amiable, de manière rapide et confidentielle.",
+          "en": "Axe Legal now offers mediation services to resolve your disputes amicably, in a fast and confidential manner."
+        }
+      }
+    },
+    "legalCategories": {
+      "1pmLuBmMpykmMJ6RtS8V": {
+        "categoryId": "debt",
+        "iconName": "CreditCard",
+        "color": "from-indigo-500/10 to-indigo-600/10",
+        "borderColor": "hover:border-indigo-500/50",
+        "order": 9,
+        "documents": [
+          "Factures impayées",
+          "Bons de commande",
+          "Contrats",
+          "Preuves de livraison",
+          "Relevés de compte",
+          "Correspondances de relance",
+          "Mise en demeure"
+        ],
+        "isActive": true,
+        "createdAt": {
+          "_seconds": 1762941789,
+          "_nanoseconds": 582000000
+        },
+        "updatedAt": {
+          "_seconds": 1762941789,
+          "_nanoseconds": 582000000
+        },
+        "cost": {
+          "fr": "Frais d'huissier + honoraires d'avocat (souvent au résultat)",
+          "en": "Bailiff's fees + lawyer's fees (often success-based)"
+        },
+        "guidanceTitle": {
+          "fr": "Recouvrement de Créances",
+          "en": "Debt Recovery"
+        },
+        "description": {
+          "fr": "Dettes impayées, procédures de recouvrement",
+          "en": "Unpaid debts, recovery proceedings"
+        },
+        "timeline": {
+          "fr": "2 à 12 mois selon la réactivité du débiteur",
+          "en": "2 to 12 months depending on the debtor's responsiveness"
+        },
+        "warning": {
+          "fr": "La prescription est de 5 ans pour les créances commerciales.",
+          "en": "The limitation period is 5 years for commercial debts."
+        },
+        "title": {
+          "fr": "Recouvrement de Créances",
+          "en": "Debt Recovery"
+        },
+        "steps": [
+          {
+            "title": {
+              "fr": "1. Relances amiables",
+              "en": "1. Amicable reminders"
+            },
+            "description": {
+              "fr": "Tentatives de contact (téléphone, email, courrier simple) pour obtenir le paiement à l'amiable.",
+              "en": "Attempts to make contact (phone, email, regular mail) to obtain payment amicably."
+            }
+          },
+          {
+            "title": {
+              "fr": "2. Mise en demeure",
+              "en": "2. Formal notice"
+            },
+            "description": {
+              "fr": "Envoi d'une lettre recommandée avec AR exigeant le paiement sous un délai précis (8 à 15 jours).",
+              "en": "Sending a registered letter with acknowledgment of receipt demanding payment within a specified period (8 to 15 days)."
+            }
+          },
+          {
+            "description": {
+              "fr": "Procédure rapide devant le tribunal pour obtenir une ordonnance de paiement sans audience.",
+              "en": "Fast-track court procedure to obtain a payment order without a hearing."
+            },
+            "title": {
+              "fr": "3. Injonction de payer",
+              "en": "3. Order for payment"
+            }
+          },
+          {
+            "description": {
+              "fr": "Notification officielle de l'ordonnance au débiteur par huissier de justice.",
+              "en": "Official service of the order on the debtor by a bailiff."
+            },
+            "title": {
+              "fr": "4. Signification de l'ordonnance",
+              "en": "4. Service of the order"
+            }
+          },
+          {
+            "title": {
+              "fr": "5. Exécution forcée",
+              "en": "5. Enforcement measures"
+            },
+            "description": {
+              "fr": "Si le débiteur ne paie pas, saisie des biens mobiliers ou immobiliers, saisie sur salaire.",
+              "en": "If the debtor does not pay, seizure of movable or immovable assets, wage garnishment."
+            }
+          },
+          {
+            "title": {
+              "fr": "6. Suivi du recouvrement",
+              "en": "6. Monitoring the recovery"
+            },
+            "description": {
+              "fr": "Contrôle de l'exécution et récupération effective des sommes dues.",
+              "en": "Monitoring enforcement and effective recovery of the amounts due."
+            }
+          }
+        ]
+      },
+      "8Jhul4MkLiBgEwXpgzuf": {
+        "categoryId": "construction",
+        "iconName": "Building",
+        "color": "from-teal-500/10 to-teal-600/10",
+        "borderColor": "hover:border-teal-500/50",
+        "order": 8,
+        "documents": [
+          "Contrat de construction",
+          "Plans et devis",
+          "Factures et paiements",
+          "Photos des malfaçons",
+          "Rapport d'expertise",
+          "Correspondances avec l'entrepreneur",
+          "Attestations d'assurance"
+        ],
+        "isActive": true,
+        "createdAt": {
+          "_seconds": 1762941789,
+          "_nanoseconds": 350000000
+        },
+        "updatedAt": {
+          "_seconds": 1762941789,
+          "_nanoseconds": 350000000
+        },
+        "cost": {
+          "fr": "Expertise + honoraires d'avocat",
+          "en": "Expert assessment + lawyer's fees"
+        },
+        "guidanceTitle": {
+          "fr": "Droit de la Construction",
+          "en": "Construction Law"
+        },
+        "description": {
+          "fr": "Malfaçons, retards, garanties",
+          "en": "Defects, delays, warranties"
+        },
+        "timeline": {
+          "fr": "6 mois à 2 ans selon la gravité",
+          "en": "6 months to 2 years depending on the severity"
+        },
+        "warning": {
+          "fr": "Les garanties ont des délais : parfait achèvement (1 an), biennale (2 ans), décennale (10 ans).",
+          "en": "Warranties are subject to time limits: perfect completion (1 year), two-year warranty (2 years), ten-year warranty (10 years)."
+        },
+        "title": {
+          "fr": "Droit de la Construction",
+          "en": "Construction Law"
+        },
+        "steps": [
+          {
+            "title": {
+              "fr": "1. Constatation des désordres",
+              "en": "1. Identification of defects"
+            },
+            "description": {
+              "fr": "Documentation précise des malfaçons ou retards avec photos, vidéos et témoignages.",
+              "en": "Detailed documentation of defects or delays with photos, videos, and witness statements."
+            }
+          },
+          {
+            "description": {
+              "fr": "Courrier recommandé demandant la réparation des malfaçons dans un délai raisonnable.",
+              "en": "Registered letter requesting repair of the defects within a reasonable timeframe."
+            },
+            "title": {
+              "fr": "2. Mise en demeure de l'entrepreneur",
+              "en": "2. Formal notice to the contractor"
+            }
+          },
+          {
+            "title": {
+              "fr": "3. Expertise technique",
+              "en": "3. Technical expert assessment"
+            },
+            "description": {
+              "fr": "Faire réaliser une expertise par un professionnel indépendant pour évaluer les désordres.",
+              "en": "Have an independent professional carry out an expert assessment to evaluate the defects."
+            }
+          },
+          {
+            "description": {
+              "fr": "Selon le cas : garantie de parfait achèvement, garantie biennale ou décennale.",
+              "en": "Depending on the case: perfect completion warranty, two-year warranty, or ten-year warranty."
+            },
+            "title": {
+              "fr": "4. Activation des garanties",
+              "en": "4. Activation of warranties"
+            }
+          },
+          {
+            "description": {
+              "fr": "En cas d'urgence, saisine du tribunal en référé pour obtenir une expertise judiciaire.",
+              "en": "In case of urgency, referral to the court for summary proceedings to obtain a court-appointed expert assessment."
+            },
+            "title": {
+              "fr": "5. Procédure de référé",
+              "en": "5. Summary proceedings"
+            }
+          },
+          {
+            "title": {
+              "fr": "6. Action au fond",
+              "en": "6. Proceedings on the merits"
+            },
+            "description": {
+              "fr": "Si nécessaire, action en justice pour obtenir la réparation et/ou des dommages et intérêts.",
+              "en": "If necessary, legal action to obtain repair and/or damages."
+            }
+          }
+        ]
+      },
+      "CnDb72Cg34WNPhse6utO": {
+        "categoryId": "succession",
+        "iconName": "TrendingUp",
+        "color": "from-yellow-500/10 to-yellow-600/10",
+        "borderColor": "hover:border-yellow-500/50",
+        "order": 6,
+        "documents": [
+          "Acte de décès",
+          "Testament (si existant)",
+          "Livret de famille",
+          "Titres de propriété",
+          "Relevés bancaires",
+          "Contrats d'assurance-vie",
+          "Acte de notoriété"
+        ],
+        "isActive": true,
+        "createdAt": {
+          "_seconds": 1762941788,
+          "_nanoseconds": 555000000
+        },
+        "updatedAt": {
+          "_seconds": 1762941788,
+          "_nanoseconds": 555000000
+        },
+        "cost": {
+          "fr": "Frais de notaire + droits de succession",
+          "en": "Notary fees + inheritance tax"
+        },
+        "guidanceTitle": {
+          "fr": "Succession et Héritage",
+          "en": "Succession and Inheritance"
+        },
+        "description": {
+          "fr": "Testament, partage, droits de succession",
+          "en": "Will, distribution, inheritance tax"
+        },
+        "timeline": {
+          "fr": "6 à 24 mois selon la complexité de la succession",
+          "en": "6 to 24 months depending on the complexity of the estate"
+        },
+        "warning": {
+          "fr": "Les droits de succession doivent être payés dans les 6 mois pour éviter les pénalités.",
+          "en": "Inheritance tax must be paid within 6 months to avoid penalties."
+        },
+        "title": {
+          "fr": "Succession & Héritage",
+          "en": "Succession & Inheritance"
+        },
+        "steps": [
+          {
+            "title": {
+              "fr": "1. Déclaration de décès",
+              "en": "1. Declaration of death"
+            },
+            "description": {
+              "fr": "Obtention de l'acte de décès auprès de l'état civil dans les délais légaux.",
+              "en": "Obtaining the death certificate from the civil registry within the legal time limits."
+            }
+          },
+          {
+            "title": {
+              "fr": "2. Recherche du testament",
+              "en": "2. Search for the will"
+            },
+            "description": {
+              "fr": "Vérification de l'existence d'un testament auprès du notaire ou dans les affaires du défunt.",
+              "en": "Verification of the existence of a will with the notary or among the deceased's personal effects."
+            }
+          },
+          {
+            "title": {
+              "fr": "3. Établissement de l'acte de notoriété",
+              "en": "3. Preparation of the deed of notoriety"
+            },
+            "description": {
+              "fr": "Document établi par le notaire identifiant tous les héritiers légaux.",
+              "en": "Document drawn up by the notary identifying all legal heirs."
+            }
+          },
+          {
+            "title": {
+              "fr": "4. Inventaire des biens",
+              "en": "4. Inventory of assets"
+            },
+            "description": {
+              "fr": "Recensement complet de tous les biens mobiliers et immobiliers de la succession.",
+              "en": "Comprehensive listing of all movable and immovable assets of the estate."
+            }
+          },
+          {
+            "description": {
+              "fr": "Dépôt de la déclaration fiscale auprès des impôts dans les 6 mois suivant le décès.",
+              "en": "Filing of the tax return with the tax authorities within 6 months following the death."
+            },
+            "title": {
+              "fr": "5. Déclaration de succession",
+              "en": "5. Inheritance declaration"
+            }
+          },
+          {
+            "description": {
+              "fr": "Répartition des biens entre les héritiers selon la loi ou le testament.",
+              "en": "Distribution of the assets among the heirs in accordance with the law or the will."
+            },
+            "title": {
+              "fr": "6. Partage des biens",
+              "en": "6. Distribution of assets"
+            }
+          }
+        ]
+      },
+      "DaTjQ0mPuSHoHHS85UVt": {
+        "categoryId": "labor",
+        "iconName": "Users",
+        "color": "from-green-500/10 to-green-600/10",
+        "borderColor": "hover:border-green-500/50",
+        "order": 4,
+        "documents": [
+          "Contrat de travail",
+          "Bulletins de salaire",
+          "Attestation de travail",
+          "Correspondances avec l'employeur",
+          "Témoignages éventuels",
+          "Preuves des manquements",
+          "Certificat de travail"
+        ],
+        "isActive": true,
+        "createdAt": {
+          "_seconds": 1762941787,
+          "_nanoseconds": 780000000
+        },
+        "updatedAt": {
+          "_seconds": 1762941787,
+          "_nanoseconds": 780000000
+        },
+        "cost": {
+          "fr": "Honoraires d'avocat + frais de procédure",
+          "en": "Lawyer's fees + procedural costs"
+        },
+        "guidanceTitle": {
+          "fr": "Droit du Travail",
+          "en": "Employment Law"
+        },
+        "description": {
+          "fr": "Licenciement, contrat de travail, conflits",
+          "en": "Dismissal, employment contract, disputes"
+        },
+        "timeline": {
+          "fr": "3 à 12 mois selon la complexité",
+          "en": "3 to 12 months depending on the complexity"
+        },
+        "warning": {
+          "fr": "Respectez les délais de prescription pour agir en justice (généralement 2 ans).",
+          "en": "Comply with the limitation periods for taking legal action (generally 2 years)."
+        },
+        "title": {
+          "fr": "Droit du Travail",
+          "en": "Employment Law"
+        },
+        "steps": [
+          {
+            "description": {
+              "fr": "Rencontrez un avocat spécialisé en droit du travail pour évaluer la situation et vos droits.",
+              "en": "Meet with a lawyer specialized in employment law to assess the situation and your rights."
+            },
+            "title": {
+              "fr": "1. Consultation préalable",
+              "en": "1. Preliminary consultation"
+            }
+          },
+          {
+            "title": {
+              "fr": "2. Mise en demeure",
+              "en": "2. Formal notice"
+            },
+            "description": {
+              "fr": "Envoi d'une lettre recommandée à l'employeur pour tenter une résolution amiable du conflit.",
+              "en": "Sending a registered letter to the employer to attempt an amicable resolution of the dispute."
+            }
+          },
+          {
+            "description": {
+              "fr": "Si nécessaire, dépôt d'une plainte auprès de l'inspection du travail pour médiation.",
+              "en": "If necessary, filing a complaint with the labor inspectorate for mediation."
+            },
+            "title": {
+              "fr": "3. Saisine de l'inspection du travail",
+              "en": "3. Referral to the labor inspectorate"
+            }
+          },
+          {
+            "description": {
+              "fr": "Tentative de règlement amiable devant l'inspecteur du travail ou un conciliateur.",
+              "en": "Attempt at amicable settlement before the labor inspector or a conciliator."
+            },
+            "title": {
+              "fr": "4. Procédure de conciliation",
+              "en": "4. Conciliation procedure"
+            }
+          },
+          {
+            "description": {
+              "fr": "En cas d'échec de la conciliation, saisie du tribunal du travail pour jugement.",
+              "en": "In case of failure of conciliation, referral to the labor court for judgment."
+            },
+            "title": {
+              "fr": "5. Saisine du tribunal",
+              "en": "5. Referral to the court"
+            }
+          },
+          {
+            "title": {
+              "fr": "6. Exécution du jugement",
+              "en": "6. Enforcement of the judgment"
+            },
+            "description": {
+              "fr": "Application de la décision du tribunal (réintégration, indemnités, dommages et intérêts).",
+              "en": "Implementation of the court's decision (reinstatement, compensation, damages)."
+            }
+          }
+        ]
+      },
+      "FGckoFusN2mPJTfOD5NB": {
+        "categoryId": "business",
+        "iconName": "Briefcase",
+        "color": "from-purple-500/10 to-purple-600/10",
+        "borderColor": "hover:border-purple-500/50",
+        "order": 3,
+        "documents": [
+          "Statuts de l'entreprise",
+          "Procès-verbal de nomination des dirigeants",
+          "Attestation de dépôt de capital",
+          "Bail commercial ou titre de propriété",
+          "Pièces d'identité des associés",
+          "Certificat de domicile",
+          "Demande d'immatriculation RCCM"
+        ],
+        "isActive": true,
+        "createdAt": {
+          "_seconds": 1762941787,
+          "_nanoseconds": 236000000
+        },
+        "updatedAt": {
+          "_seconds": 1762941787,
+          "_nanoseconds": 236000000
+        },
+        "cost": {
+          "fr": "Variable selon la forme juridique (50 000 à 500 000 FCFA)",
+          "en": "Variable depending on the legal form (50,000 to 500,000 FCFA)"
+        },
+        "guidanceTitle": {
+          "fr": "Droit des Affaires",
+          "en": "Business Law"
+        },
+        "description": {
+          "fr": "Création d'entreprise, contrats commerciaux",
+          "en": "Company formation, commercial contracts"
+        },
+        "timeline": {
+          "fr": "3 à 6 semaines pour une création complète",
+          "en": "3 to 6 weeks for full incorporation"
+        },
+        "warning": {
+          "fr": "Le choix de la forme juridique a des implications fiscales et juridiques importantes.",
+          "en": "The choice of legal form has significant tax and legal implications."
+        },
+        "title": {
+          "fr": "Droit des Affaires",
+          "en": "Business Law"
+        },
+        "steps": [
+          {
+            "title": {
+              "fr": "1. Choix de la forme juridique",
+              "en": "1. Choice of legal structure"
+            },
+            "description": {
+              "fr": "Déterminez la structure adaptée : SARL, SA, SAS, entreprise individuelle, selon votre activité et vos besoins.",
+              "en": "Determine the appropriate structure: LLC, PLC, SAS, sole proprietorship, depending on your activity and needs."
+            }
+          },
+          {
+            "description": {
+              "fr": "Élaboration des statuts de l'entreprise définissant les règles de fonctionnement et de gouvernance.",
+              "en": "Drafting the company's articles of association defining operating and governance rules."
+            },
+            "title": {
+              "fr": "2. Rédaction des statuts",
+              "en": "2. Drafting of the articles of association"
+            }
+          },
+          {
+            "description": {
+              "fr": "Ouverture d'un compte bancaire professionnel et dépôt du capital minimum requis.",
+              "en": "Opening a professional bank account and depositing the required minimum share capital."
+            },
+            "title": {
+              "fr": "3. Dépôt du capital social",
+              "en": "3. Deposit of share capital"
+            }
+          },
+          {
+            "title": {
+              "fr": "4. Enregistrement au RCCM",
+              "en": "4. Registration with the RCCM"
+            },
+            "description": {
+              "fr": "Immatriculation au Registre du Commerce et du Crédit Mobilier pour obtenir votre numéro RCCM.",
+              "en": "Registration with the Trade and Personal Property Credit Register to obtain your RCCM number."
+            }
+          },
+          {
+            "description": {
+              "fr": "Inscription auprès des impôts pour l'obtention de votre Identifiant Fiscal Unique.",
+              "en": "Registration with the tax authorities to obtain your Unique Tax Identification Number."
+            },
+            "title": {
+              "fr": "5. Obtention de l'IFU",
+              "en": "5. Obtaining the IFU"
+            }
+          },
+          {
+            "title": {
+              "fr": "6. Autres formalités",
+              "en": "6. Additional formalities"
+            },
+            "description": {
+              "fr": "CNSS (sécurité sociale), assurances, autorisations sectorielles si nécessaire.",
+              "en": "CNSS (social security), insurance, sector-specific authorizations if required."
+            }
+          }
+        ]
+      },
+      "PcF13VyvEhAf8AJ7ghJ7": {
+        "categoryId": "real-estate",
+        "iconName": "Home",
+        "color": "from-blue-500/10 to-blue-600/10",
+        "borderColor": "hover:border-blue-500/50",
+        "order": 2,
+        "documents": [
+          "Titre foncier ou certificat de propriété",
+          "Attestation de non-hypothèque",
+          "Plan cadastral",
+          "Quittances de taxes foncières",
+          "Pièces d'identité",
+          "Certificat de domicile",
+          "Attestation de résidence"
+        ],
+        "isActive": true,
+        "createdAt": {
+          "_seconds": 1762941786,
+          "_nanoseconds": 978000000
+        },
+        "updatedAt": {
+          "_seconds": 1762941786,
+          "_nanoseconds": 978000000
+        },
+        "cost": {
+          "fr": "Frais de notaire (environ 10-15% du prix) + droits d'enregistrement",
+          "en": "Notary fees (approximately 10–15% of the price) + registration duties"
+        },
+        "guidanceTitle": {
+          "fr": "Droit Immobilier",
+          "en": "Real Estate Law"
+        },
+        "description": {
+          "fr": "Achat, vente, location, litiges fonciers",
+          "en": "Purchase, sale, lease, land disputes"
+        },
+        "timeline": {
+          "fr": "2 à 6 mois selon la complexité du dossier",
+          "en": "2 to 6 months depending on the complexity of the case"
+        },
+        "warning": {
+          "fr": "Toujours faire vérifier le titre de propriété par un professionnel avant tout engagement.",
+          "en": "Always have the title deed verified by a professional before any commitment."
+        },
+        "title": {
+          "fr": "Droit Immobilier",
+          "en": "Real Estate Law"
+        },
+        "steps": [
+          {
+            "description": {
+              "fr": "Contrôle du titre de propriété, vérification au registre foncier, absence de charges ou hypothèques.",
+              "en": "Verification of the title deed, check with the land registry, confirmation of absence of charges or mortgages."
+            },
+            "title": {
+              "fr": "1. Vérification juridique du bien",
+              "en": "1. Legal due diligence of the property"
+            }
+          },
+          {
+            "description": {
+              "fr": "Signature d'un avant-contrat qui engage juridiquement les parties (vendeur et acheteur).",
+              "en": "Signing of a preliminary agreement legally binding the parties (seller and buyer)."
+            },
+            "title": {
+              "fr": "2. Promesse ou compromis de vente",
+              "en": "2. Promise or sale agreement"
+            }
+          },
+          {
+            "title": {
+              "fr": "3. Constitution du dossier de financement",
+              "en": "3. Preparation of the financing file"
+            },
+            "description": {
+              "fr": "Si nécessaire, obtention d'un prêt bancaire avec toutes les garanties requises.",
+              "en": "If necessary, obtaining a bank loan with all required guarantees."
+            }
+          },
+          {
+            "description": {
+              "fr": "Passage chez le notaire pour la signature de l'acte de vente définitif en présence des deux parties.",
+              "en": "Appearance before the notary for the signing of the final deed of sale in the presence of both parties."
+            },
+            "title": {
+              "fr": "4. Acte authentique",
+              "en": "4. Notarial deed"
+            }
+          },
+          {
+            "description": {
+              "fr": "Inscription de l'acte au registre foncier pour opposabilité aux tiers et sécurité juridique.",
+              "en": "Registration of the deed with the land registry for enforceability against third parties and legal security."
+            },
+            "title": {
+              "fr": "5. Enregistrement et publicité foncière",
+              "en": "5. Registration and land publicity"
+            }
+          },
+          {
+            "description": {
+              "fr": "Transfert effectif de la propriété après paiement intégral et accomplissement des formalités.",
+              "en": "Effective transfer of ownership after full payment and completion of formalities."
+            },
+            "title": {
+              "fr": "6. Remise des clés",
+              "en": "6. Handover of keys"
+            }
+          }
+        ]
+      },
+      "PoCnxaqzaGJNNHmtrZPY": {
+        "categoryId": "contracts",
+        "iconName": "FileText",
+        "color": "from-orange-500/10 to-orange-600/10",
+        "borderColor": "hover:border-orange-500/50",
+        "order": 5,
+        "documents": [
+          "Contrat original signé",
+          "Avenants et modifications",
+          "Correspondances entre les parties",
+          "Preuves d'exécution ou manquement",
+          "Factures et paiements",
+          "Expertises éventuelles",
+          "Témoignages"
+        ],
+        "isActive": true,
+        "createdAt": {
+          "_seconds": 1762941788,
+          "_nanoseconds": 16000000
+        },
+        "updatedAt": {
+          "_seconds": 1762941788,
+          "_nanoseconds": 16000000
+        },
+        "cost": {
+          "fr": "Honoraires d'avocat + frais de justice",
+          "en": "Lawyer's fees + court costs"
+        },
+        "guidanceTitle": {
+          "fr": "Droit des Contrats",
+          "en": "Contract Law"
+        },
+        "description": {
+          "fr": "Rédaction, rupture, litiges contractuels",
+          "en": "Drafting, termination, contractual disputes"
+        },
+        "timeline": {
+          "fr": "4 à 18 mois selon la complexité",
+          "en": "4 to 18 months depending on the complexity"
+        },
+        "warning": {
+          "fr": "Vérifiez les clauses de résolution et les juridictions compétentes dans votre contrat.",
+          "en": "Check the termination clauses and competent jurisdictions in your contract."
+        },
+        "title": {
+          "fr": "Droit des Contrats",
+          "en": "Contract Law"
+        },
+        "steps": [
+          {
+            "description": {
+              "fr": "Examen approfondi du contrat litigieux par un avocat spécialisé pour identifier les clauses problématiques.",
+              "en": "In-depth review of the disputed contract by a specialized lawyer to identify problematic clauses."
+            },
+            "title": {
+              "fr": "1. Analyse du contrat",
+              "en": "1. Contract analysis"
+            }
+          },
+          {
+            "title": {
+              "fr": "2. Tentative de règlement amiable",
+              "en": "2. Attempt at amicable settlement"
+            },
+            "description": {
+              "fr": "Négociation directe avec l'autre partie pour trouver une solution sans procès.",
+              "en": "Direct negotiation with the other party to find a solution without litigation."
+            }
+          },
+          {
+            "description": {
+              "fr": "Envoi d'une lettre recommandée exigeant l'exécution ou la résolution du contrat.",
+              "en": "Sending a registered letter demanding performance or termination of the contract."
+            },
+            "title": {
+              "fr": "3. Mise en demeure",
+              "en": "3. Formal notice"
+            }
+          },
+          {
+            "title": {
+              "fr": "4. Médiation ou arbitrage",
+              "en": "4. Mediation or arbitration"
+            },
+            "description": {
+              "fr": "Si prévu au contrat, recours à un médiateur ou arbitre pour résoudre le différend.",
+              "en": "If provided for in the contract, referral to a mediator or arbitrator to resolve the dispute."
+            }
+          },
+          {
+            "title": {
+              "fr": "5. Action en justice",
+              "en": "5. Legal action"
+            },
+            "description": {
+              "fr": "Saisine du tribunal compétent pour faire valoir vos droits et obtenir réparation.",
+              "en": "Referral to the competent court to assert your rights and obtain compensation."
+            }
+          },
+          {
+            "description": {
+              "fr": "En cas de jugement favorable, procédure d'exécution pour obtenir le respect de vos droits.",
+              "en": "In the event of a favorable judgment, enforcement proceedings to secure compliance with your rights."
+            },
+            "title": {
+              "fr": "6. Exécution forcée",
+              "en": "6. Enforcement measures"
+            }
+          }
+        ]
+      },
+      "s3SqUQNfcNaHoyyj334P": {
+        "categoryId": "family",
+        "iconName": "Heart",
+        "color": "from-pink-500/10 to-pink-600/10",
+        "borderColor": "hover:border-pink-500/50",
+        "order": 1,
+        "documents": [
+          "Acte de mariage",
+          "Livret de famille",
+          "Justificatifs de revenus (3 derniers mois)",
+          "Justificatifs de domicile",
+          "Liste des biens communs et personnels",
+          "Relevés bancaires",
+          "Certificats de scolarité (si enfants)"
+        ],
+        "isActive": true,
+        "createdAt": {
+          "_seconds": 1762941786,
+          "_nanoseconds": 428000000
+        },
+        "updatedAt": {
+          "_seconds": 1762941786,
+          "_nanoseconds": 428000000
+        },
+        "cost": {
+          "fr": "Variable selon le type de divorce (amiable ou contentieux)",
+          "en": "Variable depending on the type of divorce (amicable or contentious)"
+        },
+        "guidanceTitle": {
+          "fr": "Divorce et Droit de la Famille",
+          "en": "Divorce and Family Law"
+        },
+        "description": {
+          "fr": "Divorce, garde d'enfants, pension alimentaire",
+          "en": "Divorce, child custody, child support"
+        },
+        "timeline": {
+          "fr": "6 à 18 mois selon la complexité et le type de divorce",
+          "en": "6 to 18 months depending on the complexity and type of divorce"
+        },
+        "warning": {
+          "fr": "La garde des enfants et leur intérêt supérieur sont prioritaires dans toute décision.",
+          "en": "Child custody and the best interests of the child are paramount in any decision."
+        },
+        "title": {
+          "fr": "Droit de la Famille",
+          "en": "Family Law"
+        },
+        "steps": [
+          {
+            "title": {
+              "fr": "1. Consultation juridique initiale",
+              "en": "1. Initial legal consultation"
+            },
+            "description": {
+              "fr": "Rencontrez un avocat spécialisé en droit de la famille pour évaluer votre situation (régime matrimonial, biens, enfants).",
+              "en": "Meet with a lawyer specialized in family law to assess your situation (marital regime, assets, children)."
+            }
+          },
+          {
+            "description": {
+              "fr": "Selon la loi, une tentative de conciliation amiable peut être requise avant toute procédure contentieuse.",
+              "en": "According to the law, an attempt at amicable conciliation may be required before any contentious proceedings."
+            },
+            "title": {
+              "fr": "2. Tentative de conciliation",
+              "en": "2. Attempt at conciliation"
+            }
+          },
+          {
+            "title": {
+              "fr": "3. Constitution du dossier",
+              "en": "3. Preparation of the file"
+            },
+            "description": {
+              "fr": "Rassemblez tous les documents nécessaires : acte de mariage, livret de famille, justificatifs de revenus, inventaire des biens.",
+              "en": "Gather all necessary documents: marriage certificate, family record book, proof of income, inventory of assets."
+            }
+          },
+          {
+            "description": {
+              "fr": "Votre avocat dépose une requête en divorce auprès du tribunal compétent avec toutes les pièces justificatives.",
+              "en": "Your lawyer files a divorce petition with the competent court along with all supporting documents."
+            },
+            "title": {
+              "fr": "4. Dépôt de la requête",
+              "en": "4. Filing of the petition"
+            }
+          },
+          {
+            "description": {
+              "fr": "Discussions sur la garde des enfants, pension alimentaire, partage des biens et prestation compensatoire.",
+              "en": "Discussions on child custody, child support, division of assets, and compensatory allowance."
+            },
+            "title": {
+              "fr": "5. Négociation des modalités",
+              "en": "5. Negotiation of terms"
+            }
+          },
+          {
+            "description": {
+              "fr": "Présentation devant le juge qui statuera sur toutes les mesures définitives du divorce.",
+              "en": "Appearance before the judge who will rule on all final measures of the divorce."
+            },
+            "title": {
+              "fr": "6. Audience et jugement",
+              "en": "6. Hearing and judgment"
+            }
+          }
+        ]
+      },
+      "vgLU4h8wfvYyZtjfxyUL": {
+        "categoryId": "accident",
+        "iconName": "Car",
+        "color": "from-red-500/10 to-red-600/10",
+        "borderColor": "hover:border-red-500/50",
+        "order": 7,
+        "documents": [
+          "Constat amiable ou procès-verbal",
+          "Certificats médicaux",
+          "Factures de soins",
+          "Arrêts de travail",
+          "Photos de l'accident",
+          "Témoignages",
+          "Expertises médicales"
+        ],
+        "isActive": true,
+        "createdAt": {
+          "_seconds": 1762941788,
+          "_nanoseconds": 804000000
+        },
+        "updatedAt": {
+          "_seconds": 1762941788,
+          "_nanoseconds": 804000000
+        },
+        "cost": {
+          "fr": "Honoraires d'avocat (souvent au résultat) + frais d'expertise",
+          "en": "Lawyer's fees (often success-based) + expert fees"
+        },
+        "guidanceTitle": {
+          "fr": "Accidents et Préjudices",
+          "en": "Accidents and Damages"
+        },
+        "description": {
+          "fr": "Indemnisation, responsabilité civile",
+          "en": "Compensation, civil liability"
+        },
+        "timeline": {
+          "fr": "6 mois à 3 ans selon la gravité et les négociations",
+          "en": "6 months to 3 years depending on severity and negotiations"
+        },
+        "warning": {
+          "fr": "Ne signez aucune transaction avec l'assurance sans l'avis d'un avocat.",
+          "en": "Do not sign any settlement with the insurance company without a lawyer's advice."
+        },
+        "title": {
+          "fr": "Accidents & Préjudices",
+          "en": "Accidents & Damages"
+        },
+        "steps": [
+          {
+            "title": {
+              "fr": "1. Constat et déclaration",
+              "en": "1. Report and declaration"
+            },
+            "description": {
+              "fr": "Établissement d'un constat amiable ou rapport de police/gendarmerie immédiatement après l'accident.",
+              "en": "Preparation of an amicable report or police report immediately after the accident."
+            }
+          },
+          {
+            "description": {
+              "fr": "Consultation médicale avec obtention de certificats détaillant les blessures et l'ITT (Incapacité Temporaire de Travail).",
+              "en": "Medical consultation with issuance of certificates detailing injuries and Temporary Work Incapacity (TWI)."
+            },
+            "title": {
+              "fr": "2. Soins médicaux et certificats",
+              "en": "2. Medical care and certificates"
+            }
+          },
+          {
+            "description": {
+              "fr": "Notification à votre assurance et celle du responsable dans les délais contractuels (généralement 5 jours).",
+              "en": "Notification to your insurance company and that of the liable party within the contractual time limits (generally 5 days)."
+            },
+            "title": {
+              "fr": "3. Déclaration à l'assurance",
+              "en": "3. Insurance notification"
+            }
+          },
+          {
+            "title": {
+              "fr": "4. Constitution du dossier",
+              "en": "4. Preparation of the file"
+            },
+            "description": {
+              "fr": "Rassemblement de toutes les preuves : photos, témoignages, factures médicales, arrêts de travail.",
+              "en": "Gathering all evidence: photos, witness statements, medical bills, sick leave certificates."
+            }
+          },
+          {
+            "description": {
+              "fr": "Expertise médicale pour chiffrer les préjudices corporels, matériels et moraux.",
+              "en": "Medical expert assessment to quantify bodily, material, and moral damages."
+            },
+            "title": {
+              "fr": "5. Évaluation des préjudices",
+              "en": "5. Assessment of damages"
+            }
+          },
+          {
+            "description": {
+              "fr": "Tentative de règlement amiable avec l'assurance ou action judiciaire pour obtenir l'indemnisation.",
+              "en": "Attempt at amicable settlement with the insurance company or legal action to obtain compensation."
+            },
+            "title": {
+              "fr": "6. Négociation ou action en justice",
+              "en": "6. Negotiation or legal action"
+            }
+          }
+        ]
+      }
+    },
+    "messages": {
+      "OUxumUXsneopHeD87j0B": {
+        "name": "efzerf rae",
+        "email": "madexe1056@jio1.com",
+        "phone": "+2290160932967",
+        "subject": "jhLUDIZA",
+        "message": "JQEHDLKQUEDEZ",
+        "createdAt": {
+          "_seconds": 1769612121,
+          "_nanoseconds": 97000000
+        }
+      }
+    },
+    "processes": {
+      "8Z6OIqi7ruIARQ9TPOGS": {
+        "order": 3,
+        "createdAt": {
+          "_seconds": 1762901047,
+          "_nanoseconds": 808000000
+        },
+        "description": {
+          "fr": "Élaboration d'une stratégie adaptée et présentation des options disponibles avec leurs implications.",
+          "en": "Development of an appropriate strategy and presentation of the available options with their implications."
+        },
+        "title": {
+          "fr": "Stratégie Juridique",
+          "en": "Legal Strategy"
+        }
+      },
+      "D7n5bQGNdVfjR5vSJix5": {
+        "order": 3,
+        "createdAt": {
+          "_seconds": 1770766638,
+          "_nanoseconds": 228000000
+        },
+        "description": {
+          "fr": "Plan d'action",
+          "en": "Action plan"
+        },
+        "title": {
+          "fr": "Stratégie",
+          "en": "Strategy"
+        }
+      },
+      "J4eOcP7qpPcQaZ0eiISX": {
+        "order": 2,
+        "createdAt": {
+          "_seconds": 1770766638,
+          "_nanoseconds": 228000000
+        },
+        "description": {
+          "fr": "Étude du dossier",
+          "en": "Case review"
+        },
+        "title": {
+          "fr": "Analyse",
+          "en": "Analysis"
+        }
+      },
+      "UquZL1BijtRMf9EVjwp3": {
+        "order": 4,
+        "createdAt": {
+          "_seconds": 1762901047,
+          "_nanoseconds": 808000000
+        },
+        "description": {
+          "fr": "Exécution des actions juridiques : rédaction, négociation, représentation devant les juridictions.",
+          "en": "Execution of legal actions: drafting, negotiation, representation before the courts."
+        },
+        "title": {
+          "fr": "Mise en Œuvre",
+          "en": "Implementation"
+        }
+      },
+      "j3j44KIWDnwVnCLwmH0a": {
+        "order": 4,
+        "createdAt": {
+          "_seconds": 1770766638,
+          "_nanoseconds": 228000000
+        },
+        "description": {
+          "fr": "Mise en œuvre",
+          "en": "Implementation"
+        },
+        "title": {
+          "fr": "Exécution",
+          "en": "Execution"
+        }
+      },
+      "kWUxKEDP1Qez1t1jslmE": {
+        "order": 1,
+        "createdAt": {
+          "_seconds": 1770766638,
+          "_nanoseconds": 228000000
+        },
+        "title": {
+          "fr": "Consultation",
+          "en": "Consultation"
+        },
+        "description": {
+          "fr": "Première rencontre",
+          "en": "Initial meeting"
+        }
+      },
+      "l8pab0GGzJeyZn8pYyK0": {
+        "order": 1,
+        "createdAt": {
+          "_seconds": 1762901047,
+          "_nanoseconds": 808000000
+        },
+        "description": {
+          "fr": "Analyse de votre situation et évaluation de vos besoins juridiques lors d'un entretien confidentiel.",
+          "en": "Analysis of your situation and assessment of your legal needs during a confidential meeting."
+        },
+        "title": {
+          "fr": "Consultation Initiale",
+          "en": "Initial Consultation"
+        }
+      },
+      "sSV3tylJKFb00nQJOAUx": {
+        "order": 5,
+        "createdAt": {
+          "_seconds": 1762901047,
+          "_nanoseconds": 808000000
+        },
+        "description": {
+          "fr": "Suivi régulier de l'évolution de votre dossier et ajustements si nécessaire jusqu'à sa conclusion.",
+          "en": "Regular monitoring of your case progress and adjustments if necessary until its conclusion."
+        },
+        "title": {
+          "fr": "Suivi et Accompagnement",
+          "en": "Follow-up and Support"
+        }
+      },
+      "yEVCMKjZd18ah3HBrsDd": {
+        "order": 2,
+        "createdAt": {
+          "_seconds": 1762901047,
+          "_nanoseconds": 808000000
+        },
+        "description": {
+          "fr": "Examen approfondi des documents et recherches juridiques nécessaires à votre affaire.",
+          "en": "In-depth review of documents and legal research necessary for your case."
+        },
+        "title": {
+          "fr": "Étude du Dossier",
+          "en": "Case Review"
+        }
+      }
+    },
+    "services": {
+      "7gJGhIStzY0e6SNQdive": {
+        "icon": "Heart",
+        "createdAt": {
+          "_seconds": 1770766634,
+          "_nanoseconds": 303000000
+        },
+        "description": {
+          "fr": "Divorces, successions, tutelles",
+          "en": "Divorces, inheritance, guardianship"
+        },
+        "title": {
+          "fr": "Droit de la Famille",
+          "en": "Family Law"
+        }
+      },
+      "B2yZS7xNSam8LLKHp85F": {
+        "slug": "recouvrement-creances",
+        "icon": "Coins",
+        "category": "Contentieux",
+        "order": 5,
+        "seoTitle": "Recouvrement de Créances - Axe Legal",
+        "seoDescription": "Récupérez vos créances impayées efficacement",
+        "keywords": [
+          "recouvrement créances",
+          "impayés",
+          "contentieux"
+        ],
+        "createdAt": {
+          "_seconds": 1762901045,
+          "_nanoseconds": 201000000
+        },
+        "benefits": [
+          {
+            "fr": "Récupération rapide de vos créances",
+            "en": "Fast recovery of your debts"
+          },
+          {
+            "fr": "Approche amiable privilégiée",
+            "en": "Priority given to amicable settlement"
+          },
+          {
+            "fr": "Expertise judiciaire en dernier recours",
+            "en": "Judicial expertise as a last resort"
+          }
+        ],
+        "duration": {
+          "fr": "1 mois - 1 an",
+          "en": "1 month - 1 year"
+        },
+        "features": [
+          {
+            "fr": "Phase amiable : mises en demeure et négociations directes",
+            "en": "Amicable phase: formal notices and direct negotiations"
+          },
+          {
+            "fr": "Élaboration de plans d'apurement et échéanciers de paiement",
+            "en": "Preparation of repayment plans and payment schedules"
+          },
+          {
+            "fr": "Recouvrement judiciaire : injonctions de payer et référés-provision",
+            "en": "Judicial recovery: payment orders and interim relief proceedings"
+          },
+          {
+            "fr": "Procédures d'exécution forcée et saisies conservatoires",
+            "en": "Enforcement proceedings and precautionary seizures"
+          },
+          {
+            "fr": "Saisie-attribution, saisie-vente et saisie immobilière",
+            "en": "Garnishment, asset seizure, and property foreclosure"
+          },
+          {
+            "fr": "Recouvrement de créances commerciales, civiles et fiscales",
+            "en": "Recovery of commercial, civil, and tax debts"
+          },
+          {
+            "fr": "Contentieux des impayés et suivi des procédures collectives",
+            "en": "Debt litigation and monitoring of insolvency proceedings"
+          },
+          {
+            "fr": "Négociation avec les débiteurs défaillants",
+            "en": "Negotiation with defaulting debtors"
+          },
+          {
+            "fr": "Constitution de garanties et sûretés",
+            "en": "Establishment of guarantees and securities"
+          },
+          {
+            "fr": "Conseil en prévention des impayés et sécurisation des transactions",
+            "en": "Advisory on debt prevention and transaction security"
+          }
+        ],
+        "description": {
+          "fr": "Stratégie efficace et personnalisée de recouvrement de vos créances impayées, privilégiant une approche amiable avant d'envisager les voies judiciaires.",
+          "en": "An effective and tailored strategy for recovering unpaid debts, prioritizing amicable solutions before considering legal action."
+        },
+        "shortDescription": {
+          "fr": "Stratégie efficace et personnalisée de recouvrement de vos créances impayées.",
+          "en": "Effective and tailored strategy for recovering unpaid debts."
+        },
+        "title": {
+          "fr": "Recouvrement de Créances",
+          "en": "Debt Recovery"
+        },
+        "pricing": {
+          "fr": "Pourcentage sur créances récupérées",
+          "en": "Percentage of recovered amounts"
+        }
+      },
+      "BSzaPlXzMdOBHzgQ0zID": {
+        "slug": "droit-immobilier-foncier",
+        "icon": "Home",
+        "category": "Droit immobilier",
+        "order": 3,
+        "seoTitle": "Droit Immobilier et Foncier - Axe Legal",
+        "seoDescription": "Expert en droits immobiliers et fonciers",
+        "keywords": [
+          "droit immobilier",
+          "droit foncier",
+          "acquisition immobilière"
+        ],
+        "createdAt": {
+          "_seconds": 1762901045,
+          "_nanoseconds": 201000000
+        },
+        "benefits": [
+          {
+            "fr": "Sécurisation de vos acquisitions",
+            "en": "Securing your acquisitions"
+          },
+          {
+            "fr": "Résolution des litiges fonciers",
+            "en": "Resolution of land disputes"
+          },
+          {
+            "fr": "Accompagnement de A à Z",
+            "en": "A to Z support"
+          }
+        ],
+        "duration": {
+          "fr": "2 semaines - 6 mois",
+          "en": "2 weeks - 6 months"
+        },
+        "features": [
+          {
+            "fr": "Vérification et purge des titres fonciers",
+            "en": "Verification and clearance of land titles"
+          },
+          {
+            "fr": "Due diligence immobilière et audits fonciers",
+            "en": "Real estate due diligence and land audits"
+          },
+          {
+            "fr": "Rédaction d'actes authentiques de vente et d'acquisition",
+            "en": "Drafting of authentic deeds of sale and acquisition"
+          },
+          {
+            "fr": "Assistance lors des bornages et immatriculations foncières",
+            "en": "Assistance with land surveying and registration"
+          },
+          {
+            "fr": "Négociation et rédaction de baux commerciaux et d'habitation",
+            "en": "Negotiation and drafting of commercial and residential leases"
+          },
+          {
+            "fr": "Gestion des copropriétés et règlements de copropriété",
+            "en": "Management of condominiums and condominium regulations"
+          },
+          {
+            "fr": "Contentieux fonciers et résolution des litiges de propriété",
+            "en": "Land litigation and resolution of property disputes"
+          },
+          {
+            "fr": "Droit de l'urbanisme et permis de construire",
+            "en": "Urban planning law and building permits"
+          },
+          {
+            "fr": "Montage juridique de projets immobiliers complexes",
+            "en": "Legal structuring of complex real estate projects"
+          },
+          {
+            "fr": "Promotion immobilière et VEFA",
+            "en": "Real estate development and VEFA"
+          }
+        ],
+        "description": {
+          "fr": "Sécurisation juridique complète de vos projets immobiliers et fonciers, de l'acquisition à la cession, avec une expertise approfondie du droit foncier.",
+          "en": "Complete legal security for your real estate and land projects, from acquisition to disposal, with in-depth expertise in land law."
+        },
+        "shortDescription": {
+          "fr": "Sécurisation juridique complète de vos projets immobiliers et fonciers.",
+          "en": "Complete legal security for your real estate and land projects."
+        },
+        "title": {
+          "fr": "Droit Immobilier & Foncier",
+          "en": "Real Estate & Land Law"
+        },
+        "pricing": {
+          "fr": "Sur devis",
+          "en": "Sur devis"
+        }
+      },
+      "BWNBvuaMyqeyXk9AGwEc": {
+        "icon": "Home",
+        "createdAt": {
+          "_seconds": 1770766634,
+          "_nanoseconds": 303000000
+        },
+        "description": {
+          "fr": "Transactions immobilières",
+          "en": "Real Estate Transactions"
+        },
+        "title": {
+          "fr": "Droit Immobilier",
+          "en": "Real Estate Law"
+        }
+      },
+      "E2wkhfgUFQI9QgQ6E5aw": {
+        "slug": "fiscalite-optimisation",
+        "icon": "Calculator",
+        "category": "Droit fiscal",
+        "order": 2,
+        "seoTitle": "Fiscalité et Optimisation Fiscale - Axe Legal",
+        "seoDescription": "Optimisez votre fiscalité avec nos experts",
+        "keywords": [
+          "fiscalité",
+          "optimisation fiscale",
+          "contrôle fiscal"
+        ],
+        "createdAt": {
+          "_seconds": 1762901045,
+          "_nanoseconds": 201000000
+        },
+        "benefits": [
+          {
+            "fr": "Optimisation de votre charge fiscale",
+            "en": "Optimization of your tax burden"
+          },
+          {
+            "fr": "Sécurisation face aux contrôles",
+            "en": "Security against audits"
+          },
+          {
+            "fr": "Expertise en fiscalité internationale",
+            "en": "International tax expertise"
+          }
+        ],
+        "duration": {
+          "fr": "1h - plusieurs mois",
+          "en": "1h - several months"
+        },
+        "features": [
+          {
+            "fr": "Audit fiscal et diagnostic de la situation fiscale",
+            "en": "Tax audit and tax situation diagnosis"
+          },
+          {
+            "fr": "Optimisation fiscale des entreprises et des particuliers",
+            "en": "Tax optimization for companies and individuals"
+          },
+          {
+            "fr": "Conseil en fiscalité internationale et prix de transfert",
+            "en": "International tax advice and transfer pricing"
+          },
+          {
+            "fr": "Assistance lors des contrôles fiscaux et douaniers",
+            "en": "Assistance during tax and customs audits"
+          },
+          {
+            "fr": "Défense et représentation en cas de redressement fiscal",
+            "en": "Defense and representation in case of tax reassessment"
+          },
+          {
+            "fr": "Réclamations contentieuses et recours hiérarchiques",
+            "en": "Litigation claims and hierarchical appeals"
+          },
+          {
+            "fr": "Négociation de transactions avec l'administration",
+            "en": "Negotiation of transactions with the administration"
+          },
+          {
+            "fr": "Régularisation de situations fiscales complexes",
+            "en": "Regularization of complex tax situations"
+          },
+          {
+            "fr": "Conseils en TVA, impôt sur les sociétés et impôt sur le revenu",
+            "en": "Advice on VAT, corporate tax and income tax"
+          },
+          {
+            "fr": "Planification successorale et fiscalité des donations",
+            "en": "Estate planning and donation taxation"
+          }
+        ],
+        "description": {
+          "fr": "Conseil fiscal stratégique et défense active de vos intérêts face à l'administration fiscale, avec une approche proactive d'optimisation et de sécurisation fiscale.",
+          "en": "Strategic tax advice and active defense of your interests against the tax administration, with a proactive approach to tax optimization and security."
+        },
+        "shortDescription": {
+          "fr": "Conseil fiscal stratégique et défense active de vos intérêts face à l'administration fiscale.",
+          "en": "Strategic tax advice and active defense of your interests against the tax administration."
+        },
+        "title": {
+          "fr": "Fiscalité & Optimisation",
+          "en": "Taxation & Optimization"
+        },
+        "pricing": {
+          "fr": "150€ - 300€/h",
+          "en": "150€ - 300€/h"
+        }
+      },
+      "SnkvCwGsE6N3u8f7PRTy": {
+        "icon": "Briefcase",
+        "createdAt": {
+          "_seconds": 1770766634,
+          "_nanoseconds": 303000000
+        },
+        "description": {
+          "fr": "Conseil juridique pour entreprises",
+          "en": "Conseil juridique pour entreprises"
+        },
+        "title": {
+          "fr": "Droit des Affaires",
+          "en": "Droit des Affaires"
+        }
+      },
+      "Tkzn0os9uJe2SRw6yKnu": {
+        "icon": "Users",
+        "createdAt": {
+          "_seconds": 1770766634,
+          "_nanoseconds": 303000000
+        },
+        "description": {
+          "fr": "Contrats et litiges du travail",
+          "en": "Contrats et litiges du travail"
+        },
+        "title": {
+          "fr": "Droit du Travail",
+          "en": "Droit du Travail"
+        }
+      },
+      "XQcesJt6qg4sfPHMLGnt": {
+        "slug": "marches-publics-droit-administratif",
+        "icon": "FileText",
+        "category": "Droit administratif",
+        "order": 6,
+        "seoTitle": "Marchés Publics et Droit Administratif - Axe Legal",
+        "seoDescription": "Expert en marchés publics et droit administratif",
+        "keywords": [
+          "marchés publics",
+          "droit administratif",
+          "appel d'offres"
+        ],
+        "createdAt": {
+          "_seconds": 1762901045,
+          "_nanoseconds": 201000000
+        },
+        "benefits": [
+          {
+            "fr": "Maximisation de vos chances de succès",
+            "en": "Maximization of your chances of success"
+          },
+          {
+            "fr": "Conformité réglementaire garantie",
+            "en": "Regulatory compliance guaranteed"
+          },
+          {
+            "fr": "Défense de vos intérêts",
+            "en": "Defense of your interests"
+          }
+        ],
+        "duration": {
+          "fr": "Variable",
+          "en": "Variable"
+        },
+        "features": [
+          {
+            "fr": "Conseil et assistance dans la préparation des offres publiques",
+            "en": "Advice and assistance in preparing public bids"
+          },
+          {
+            "fr": "Analyse des dossiers d'appel d'offres (DAO) et des clauses",
+            "en": "Analysis of tender documents (DAO) and clauses"
+          },
+          {
+            "fr": "Rédaction des mémoires techniques et offres financières",
+            "en": "Drafting of technical proposals and financial offers"
+          },
+          {
+            "fr": "Recours précontractuels et référés pré-contractuels",
+            "en": "Pre-contractual remedies and pre-contractual summary proceedings"
+          },
+          {
+            "fr": "Contestation des décisions d'attribution et recours en annulation",
+            "en": "Contestation of award decisions and cancellation appeals"
+          },
+          {
+            "fr": "Assistance dans l'exécution et le suivi des marchés publics",
+            "en": "Assistance in the execution and monitoring of public contracts"
+          },
+          {
+            "fr": "Contentieux des pénalités et résiliation de marchés",
+            "en": "Penalty litigation and contract termination"
+          },
+          {
+            "fr": "Conseil en droit administratif général et contentieux administratif",
+            "en": "General administrative law advice and administrative litigation"
+          },
+          {
+            "fr": "Représentation devant les juridictions administratives",
+            "en": "Representation before administrative courts"
+          },
+          {
+            "fr": "Formation aux procédures de passation des marchés publics",
+            "en": "Training in public procurement procedures"
+          }
+        ],
+        "description": {
+          "fr": "Expertise pointue en droit des marchés publics et contentieux administratif pour accompagner entreprises et collectivités dans leurs relations avec l'administration.",
+          "en": "Specialized expertise in public procurement law and administrative litigation to support companies and public entities in their relations with the administration."
+        },
+        "shortDescription": {
+          "fr": "Expertise pointue en droit des marchés publics et contentieux administratif.",
+          "en": "Specialized expertise in public procurement law and administrative litigation."
+        },
+        "title": {
+          "fr": "Marchés Publics & Droit Administratif",
+          "en": "Public Procurement & Administrative Law"
+        },
+        "pricing": {
+          "fr": "Sur devis",
+          "en": "Sur devis"
+        }
+      },
+      "dEqXMNZkkmu36JHvvdgn": {
+        "slug": "droit-des-affaires",
+        "icon": "Briefcase",
+        "category": "Droit des affaires",
+        "order": 1,
+        "seoTitle": "Droit des Affaires - Cabinet Axe Legal",
+        "seoDescription": "Expert en droit des affaires pour accompagner votre entreprise",
+        "keywords": [
+          "droit des affaires",
+          "création société",
+          "fusion acquisition"
+        ],
+        "createdAt": {
+          "_seconds": 1762901045,
+          "_nanoseconds": 201000000
+        },
+        "benefits": [
+          {
+            "fr": "Sécurisation juridique complète de vos opérations",
+            "en": "Complete legal security for your operations"
+          },
+          {
+            "fr": "Optimisation de la structure juridique",
+            "en": "Optimization of legal structure"
+          },
+          {
+            "fr": "Accompagnement personnalisé par des experts",
+            "en": "Personalized support by experts"
+          }
+        ],
+        "duration": {
+          "fr": "Variable selon le projet",
+          "en": "Variable depending on project"
+        },
+        "features": [
+          {
+            "fr": "Création et immatriculation de sociétés (SARL, SA, SAS, SCI, GIE)",
+            "en": "Creation and registration of companies (SARL, SA, SAS, SCI, GIE)"
+          },
+          {
+            "fr": "Rédaction et révision des statuts juridiques",
+            "en": "Drafting and revision of legal statutes"
+          },
+          {
+            "fr": "Gouvernance d'entreprise et conseil aux dirigeants",
+            "en": "Corporate governance and executive advisory"
+          },
+          {
+            "fr": "Opérations de fusions-acquisitions et due diligence",
+            "en": "Mergers and acquisitions operations and due diligence"
+          },
+          {
+            "fr": "Négociation et rédaction de contrats commerciaux complexes",
+            "en": "Negotiation and drafting of complex commercial contracts"
+          },
+          {
+            "fr": "Pactes d'actionnaires et conventions de partenariat",
+            "en": "Shareholder agreements and partnership conventions"
+          },
+          {
+            "fr": "Restructuration et transmission d'entreprises",
+            "en": "Restructuring and business transfer"
+          },
+          {
+            "fr": "Propriété intellectuelle et protection des marques",
+            "en": "Intellectual property and trademark protection"
+          },
+          {
+            "fr": "Conformité réglementaire et mise en conformité OHADA",
+            "en": "Regulatory compliance and OHADA compliance"
+          },
+          {
+            "fr": "Accompagnement dans les levées de fonds et augmentations de capital",
+            "en": "Support in fundraising and capital increases"
+          }
+        ],
+        "description": {
+          "fr": "Accompagnement stratégique et juridique complet des entreprises à chaque étape de leur développement, de la création à la transmission, en passant par la croissance.",
+          "en": "Complete strategic and legal support for companies at every stage of their development, from creation to transfer, including growth."
+        },
+        "shortDescription": {
+          "fr": "Accompagnement stratégique et juridique complet des entreprises à chaque étape de leur développement.",
+          "en": "Complete strategic and legal support for companies at every stage of their development."
+        },
+        "title": {
+          "fr": "Droit des Affaires",
+          "en": "Business Law"
+        },
+        "pricing": {
+          "fr": "Sur devis",
+          "en": "Sur devis"
+        }
+      },
+      "droit-de-la-famille-successions": {
+        "benefits": [],
+        "createdAt": {
+          "_seconds": 1770766636,
+          "_nanoseconds": 635000000
+        },
+        "icon": "Heart",
+        "category": "Droit de la famille",
+        "slug": "droit-de-la-famille-successions",
+        "order": 50,
+        "duration": {
+          "fr": "Variable selon le dossier",
+          "en": "Variable depending on case"
+        },
+        "features": [
+          {
+            "fr": "Conseil et assistance en matière de mariage (régimes matrimoniaux, droits et obligations des époux)",
+            "en": "Advice and assistance in marriage matters (matrimonial regimes, rights and obligations of spouses)"
+          },
+          {
+            "fr": "Divorce et séparation : accompagnement juridique et conseil à la protection des intérêts des parties",
+            "en": "Divorce and separation: legal support and advice for protecting the interests of parties"
+          },
+          {
+            "fr": "Successions : assistance à l’ouverture, l’organisation et le règlement successoral",
+            "en": "Inheritance: assistance with opening, organizing and settling estates"
+          },
+          {
+            "fr": "Assistance dans les démarches administratives et judiciaires liées au droit de la famille",
+            "en": "Assistance in administrative and judicial proceedings related to family law"
+          }
+        ],
+        "description": {
+          "fr": "Accompagnement juridique personnalisé pour la protection des personnes, des biens et des liens familiaux, dans le respect du droit béninois.",
+          "en": "Personalized legal support for the protection of persons, property and family ties, in compliance with Beninese law."
+        },
+        "shortDescription": {
+          "fr": "Accompagnement juridique personnalisé pour la protection des personnes, des biens et des liens familiaux, dans le respect du droit béninois.",
+          "en": "Personalized legal support for the protection of persons, property and family ties, in compliance with Beninese law."
+        },
+        "title": {
+          "fr": "Droit de la Famille & Successions",
+          "en": "Family Law & Inheritance"
+        },
+        "pricing": {
+          "fr": "Sur devis",
+          "en": "Sur devis"
+        }
+      },
+      "n8rUnJLSWsShQ546nbxS": {
+        "slug": "droit-travail-relations-sociales",
+        "icon": "Users",
+        "category": "Droit du travail",
+        "order": 4,
+        "seoTitle": "Droit du Travail - Cabinet Axe Legal",
+        "seoDescription": "Expert en droit du travail et relations sociales",
+        "keywords": [
+          "droit du travail",
+          "contrat de travail",
+          "licenciement"
+        ],
+        "createdAt": {
+          "_seconds": 1762901045,
+          "_nanoseconds": 201000000
+        },
+        "benefits": [
+          {
+            "fr": "Conformité avec le Code du Travail",
+            "en": "Compliance with the Labor Code"
+          },
+          {
+            "fr": "Prévention des risques sociaux",
+            "en": "Prevention of social risks"
+          },
+          {
+            "fr": "Défense de vos intérêts",
+            "en": "Defense of your interests"
+          }
+        ],
+        "duration": {
+          "fr": "1h - plusieurs semaines",
+          "en": "1h - several weeks"
+        },
+        "features": [
+          {
+            "fr": "Rédaction et révision de contrats de travail (CDD, CDI, stages)",
+            "en": "Drafting and revision of employment contracts (fixed-term, permanent, internships)"
+          },
+          {
+            "fr": "Élaboration de règlements intérieurs et notes de service",
+            "en": "Drafting of internal regulations and service notes"
+          },
+          {
+            "fr": "Conseil en gestion des relations individuelles et collectives",
+            "en": "Advice on managing individual and collective relations"
+          },
+          {
+            "fr": "Assistance dans les procédures disciplinaires et licenciements",
+            "en": "Assistance in disciplinary procedures and dismissals"
+          },
+          {
+            "fr": "Négociation d'accords collectifs et conventions d'entreprise",
+            "en": "Negotiation of collective agreements and company conventions"
+          },
+          {
+            "fr": "Conseil en restructuration et plans sociaux",
+            "en": "Advice on restructuring and social plans"
+          },
+          {
+            "fr": "Représentation devant les juridictions du travail",
+            "en": "Representation before labor courts"
+          },
+          {
+            "fr": "Audit social et mise en conformité avec la législation",
+            "en": "Social audit and compliance with legislation"
+          },
+          {
+            "fr": "Gestion des relations avec l'Inspection du Travail",
+            "en": "Management of relations with Labor Inspectorate"
+          },
+          {
+            "fr": "Formation des DRH et managers aux obligations sociales",
+            "en": "Training of HR managers and managers on social obligations"
+          }
+        ],
+        "description": {
+          "fr": "Accompagnement complet en droit social pour optimiser la gestion des ressources humaines et prévenir les risques sociaux, tout en assurant la conformité avec le Code du Travail.",
+          "en": "Complete support in labor law to optimize human resources management and prevent social risks, while ensuring compliance with the Labor Code."
+        },
+        "shortDescription": {
+          "fr": "Accompagnement complet en droit social pour optimiser la gestion des ressources humaines.",
+          "en": "Complete support in labor law to optimize human resources management."
+        },
+        "title": {
+          "fr": "Droit du Travail & Relations Sociales",
+          "en": "Labor Law & Social Relations"
+        },
+        "pricing": {
+          "fr": "200€/h",
+          "en": "200€/h"
+        }
+      },
+      "uAHdeSmQwEsX45pFnEMQ": {
+        "icon": "DollarSign",
+        "createdAt": {
+          "_seconds": 1770766634,
+          "_nanoseconds": 303000000
+        },
+        "description": {
+          "fr": "Optimisation fiscale et conformité",
+          "en": "Tax optimization and compliance"
+        },
+        "title": {
+          "fr": "Droit Fiscal",
+          "en": "Tax Law"
+        }
+      }
+    },
+    "team": {
+      "JXOQfSlHzzwwcGDJ2Qv1": {
+        "name": "Me. Claudine AGOSSOU",
+        "image": "https://ui-avatars.com/api/?name=Claudine+AGOSSOU&size=400&background=059669&color=fff&bold=true",
+        "createdAt": {
+          "_seconds": 1762901046,
+          "_nanoseconds": 680000000
+        },
+        "role": {
+          "fr": "Avocate - Droit Fiscal",
+          "en": "Lawyer - Tax Law"
+        },
+        "bio": {
+          "fr": "Spécialiste en fiscalité d'entreprise et contentieux fiscal. Master 2 Droit Fiscal - Université de Bordeaux.",
+          "en": "Specialist in corporate taxation and tax litigation. Master 2 Tax Law - University of Bordeaux."
+        }
+      },
+      "NKmkufASyAK4sDmGXci1": {
+        "name": "Me Pierre Kouassi",
+        "image": "https://ui-avatars.com/api/?name=Pierre+Kouassi&size=200&background=ea580c&color=fff",
+        "createdAt": {
+          "_seconds": 1770766636,
+          "_nanoseconds": 885000000
+        },
+        "role": {
+          "fr": "Juriste Immobilier",
+          "en": "Real Estate Lawyer"
+        },
+        "bio": {
+          "fr": "Spécialiste en droit foncier",
+          "en": "Specialist in land law"
+        }
+      },
+      "QhIdq2SBhEsDiJzHvsYA": {
+        "name": "Me. Marie KOSSOU",
+        "image": "https://ui-avatars.com/api/?name=Marie+KOSSOU&size=400&background=7c3aed&color=fff&bold=true",
+        "createdAt": {
+          "_seconds": 1762901046,
+          "_nanoseconds": 680000000
+        },
+        "role": {
+          "fr": "Avocate Associée - Droit Immobilier",
+          "en": "Partner Lawyer - Real Estate Law"
+        },
+        "bio": {
+          "fr": "Spécialiste en droit immobilier avec une expertise reconnue en transactions complexes et contentieux.",
+          "en": "Specialist in real estate law with recognized expertise in complex transactions and litigation."
+        }
+      },
+      "c3yFMK4w3fnkX95AF4ST": {
+        "name": "Me Jean Dupont",
+        "image": "https://ui-avatars.com/api/?name=Jean+Dupont&size=200&background=1e40af&color=fff",
+        "createdAt": {
+          "_seconds": 1770766636,
+          "_nanoseconds": 885000000
+        },
+        "role": {
+          "fr": "Juriste Senior",
+          "en": "Senior Lawyer"
+        },
+        "bio": {
+          "fr": "15 ans d'expérience en droit des affaires",
+          "en": "15 years of experience in business law"
+        }
+      },
+      "kb9z5pjcuo8uzVSveEkJ": {
+        "name": "Me. Jean-Baptiste ADJIBI",
+        "image": "https://ui-avatars.com/api/?name=Jean+Baptiste+ADJIBI&size=400&background=1e40af&color=fff&bold=true",
+        "createdAt": {
+          "_seconds": 1762901046,
+          "_nanoseconds": 680000000
+        },
+        "role": {
+          "fr": "Associé Principal - Droit des Affaires",
+          "en": "Managing Partner - Business Law"
+        },
+        "bio": {
+          "fr": "Plus de 15 ans d'expérience en droit des affaires et corporate. Diplômé de l'Université Paris 1 Panthéon-Sorbonne.",
+          "en": "Over 15 years of experience in business law and corporate. Graduate of Paris 1 Panthéon-Sorbonne University."
+        }
+      },
+      "wP83ejY4aUJvjTpWJxod": {
+        "name": "Me. Serge HOUNKANRIN",
+        "image": "https://ui-avatars.com/api/?name=Serge+HOUNKANRIN&size=400&background=ea580c&color=fff&bold=true",
+        "createdAt": {
+          "_seconds": 1762901046,
+          "_nanoseconds": 680000000
+        },
+        "role": {
+          "fr": "Avocat - Droit du Travail",
+          "en": "Lawyer - Labor Law"
+        },
+        "bio": {
+          "fr": "Expert en droit social et relations collectives du travail. Formé à l'École des Avocats de Paris.",
+          "en": "Expert in social law and collective labor relations. Trained at the Paris Bar School."
+        }
+      },
+      "xNW7bQcz4f8r43olgQWZ": {
+        "name": "Me Sophie Martin",
+        "image": "https://ui-avatars.com/api/?name=Sophie+Martin&size=200&background=7c3aed&color=fff",
+        "createdAt": {
+          "_seconds": 1770766636,
+          "_nanoseconds": 885000000
+        },
+        "role": {
+          "fr": "Juriste Fiscaliste",
+          "en": "Tax Lawyer"
+        },
+        "bio": {
+          "fr": "Experte en fiscalité d'entreprise",
+          "en": "Expert in corporate taxation"
+        }
+      }
+    },
+    "testimonials": {
+      "AltTYXaV96AWMxrdyP5A": {
+        "name": "Marie-Claire DOSSOU",
+        "rating": 5,
+        "image": "https://ui-avatars.com/api/?name=Marie+Claire+DOSSOU&size=200&background=f59e0b&color=fff",
+        "createdAt": {
+          "_seconds": 1762901048,
+          "_nanoseconds": 878000000
+        },
+        "role": {
+          "fr": "Salariée",
+          "en": "Employee"
+        },
+        "content": {
+          "fr": "Me. HOUNKANRIN a défendu mes droits avec acharnement lors de mon litige prud'homal. Je recommande vivement ce cabinet.",
+          "en": "Me. HOUNKANRIN defended my rights relentlessly during my labor dispute. I highly recommend this firm."
+        }
+      },
+      "FGYMRSY1c1FdgVUfRhos": {
+        "name": "Fatou Traoré",
+        "rating": 5,
+        "image": "https://ui-avatars.com/api/?name=Fatou+Traore&size=200",
+        "createdAt": {
+          "_seconds": 1770766637,
+          "_nanoseconds": 701000000
+        },
+        "role": {
+          "fr": "Entrepreneure",
+          "en": "Entrepreneur"
+        },
+        "content": {
+          "fr": "Très satisfaite de leur accompagnement.",
+          "en": "Very satisfied with their support."
+        }
+      },
+      "HpNwuiLm7raYJaCGsT9w": {
+        "name": "Ibrahim TOURÉ",
+        "rating": 5,
+        "image": "https://ui-avatars.com/api/?name=Ibrahim+TOURE&size=200&background=ec4899&color=fff",
+        "createdAt": {
+          "_seconds": 1762901048,
+          "_nanoseconds": 878000000
+        },
+        "role": {
+          "fr": "Promoteur Immobilier",
+          "en": "Real Estate Developer"
+        },
+        "content": {
+          "fr": "Grâce à Me. KOSSOU, notre transaction immobilière complexe s'est déroulée sans encombre. Un service juridique de qualité exceptionnelle.",
+          "en": "Thanks to Me. KOSSOU, our complex real estate transaction went smoothly. Exceptional quality legal service."
+        }
+      },
+      "PhJ8mGA5gD38x2PyLLCl": {
+        "name": "Amadou Bah",
+        "rating": 5,
+        "image": "https://ui-avatars.com/api/?name=Amadou+Bah&size=200",
+        "createdAt": {
+          "_seconds": 1770766637,
+          "_nanoseconds": 701000000
+        },
+        "role": {
+          "fr": "CEO, ABC Sarl",
+          "en": "CEO, ABC Sarl"
+        },
+        "content": {
+          "fr": "Service excellent et professionnel !",
+          "en": "Excellent and professional service!"
+        }
+      },
+      "To200Ie2054JzvHnZs6B": {
+        "name": "Patrick AKPO",
+        "rating": 5,
+        "image": "https://ui-avatars.com/api/?name=Patrick+AKPO&size=200&background=8b5cf6&color=fff",
+        "createdAt": {
+          "_seconds": 1762901048,
+          "_nanoseconds": 878000000
+        },
+        "role": {
+          "fr": "Chef d'Entreprise",
+          "en": "Business Owner"
+        },
+        "content": {
+          "fr": "L'équipe d'Axe Legal a optimisé notre fiscalité d'entreprise tout en respectant scrupuleusement la réglementation. Des experts de confiance.",
+          "en": "The Axe Legal team optimized our corporate taxation while strictly respecting regulations. Trustworthy experts."
+        }
+      },
+      "qbQRM4Xd9So4RmmzfN9m": {
+        "name": "Sophie MENSAH",
+        "rating": 5,
+        "image": "https://ui-avatars.com/api/?name=Sophie+MENSAH&size=200&background=3b82f6&color=fff",
+        "createdAt": {
+          "_seconds": 1762901048,
+          "_nanoseconds": 878000000
+        },
+        "role": {
+          "fr": "Directrice Générale, SARL TechBénin",
+          "en": "CEO, TechBénin SARL"
+        },
+        "content": {
+          "fr": "Axe Legal nous a accompagnés dans la restructuration de notre entreprise avec professionnalisme et réactivité. Leur expertise en droit des affaires est remarquable.",
+          "en": "Axe Legal supported us in our company restructuring with professionalism and responsiveness. Their expertise in business law is remarkable."
+        }
+      }
+    }
+  }
+}

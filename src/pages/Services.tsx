@@ -4,7 +4,7 @@ import { ServicesSection } from "@/components/ServicesSection";
 import PageHero from "@/components/PageHero";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import { ArrowRight, Phone, Mail, Globe2 } from "lucide-react";
+import { ArrowRight, Phone, Mail, Globe2, Download, FileText } from "lucide-react";
 import servicesHero from "@/assets/business-law.jpg";
 import { useTranslation } from "react-i18next";
 
@@ -49,6 +49,86 @@ const Services = () => {
               </div>
             </div>
             <ServicesSection />
+
+            <div className="mt-14 rounded-2xl border border-primary/20 bg-gradient-to-br from-primary/5 via-background to-blue-50/40 p-8">
+              <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+                <div className="flex items-start gap-4">
+                  <div className="p-3 bg-primary/10 rounded-2xl shrink-0">
+                    <FileText className="h-7 w-7 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="text-2xl md:text-3xl font-bold text-foreground">
+                      {t("pages.services.usefulDocuments.title", { defaultValue: "Documents Utiles" })}
+                    </h3>
+                    <p className="text-sm md:text-base text-muted-foreground mt-1 max-w-2xl">
+                      {t("pages.services.usefulDocuments.subtitle", { defaultValue: "Téléchargez nos notes pour préparer votre consultation et gagner du temps le jour du rendez-vous." })}
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-8 grid md:grid-cols-2 gap-4">
+                <div className="rounded-xl border border-primary/10 bg-background/70 p-5 hover:border-primary/30 hover:shadow-md transition-all">
+                  <div className="flex items-start gap-3">
+                    <div className="p-2 rounded-lg bg-primary/10">
+                      <Download className="h-5 w-5 text-primary" />
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <div className="font-semibold text-foreground">
+                        {t("pages.services.usefulDocuments.doc1", { defaultValue: "Notes d'usage - Service juridique" })}
+                      </div>
+                      <div className="text-sm text-muted-foreground mt-1">
+                        {t("pages.services.usefulDocuments.doc1_desc", { defaultValue: "Un guide clair pour comprendre le déroulement d'une consultation et préparer les informations clés." })}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="mt-4">
+                    <Button size="sm" className="shadow-sm" asChild>
+                      <a
+                        href="/assets/documents/Notes_%20Usage%20Conseil%20Service%20Juridique-1.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2"
+                      >
+                        <Download className="h-4 w-4" />
+                        {t("pages.services.usefulDocuments.cta", { defaultValue: "Télécharger" })}
+                      </a>
+                    </Button>
+                  </div>
+                </div>
+
+                <div className="rounded-xl border border-primary/10 bg-background/70 p-5 hover:border-primary/30 hover:shadow-md transition-all">
+                  <div className="flex items-start gap-3">
+                    <div className="p-2 rounded-lg bg-primary/10">
+                      <Download className="h-5 w-5 text-primary" />
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <div className="font-semibold text-foreground">
+                        {t("pages.services.usefulDocuments.doc2", { defaultValue: "Notes d'usage - Version 2.1" })}
+                      </div>
+                      <div className="text-sm text-muted-foreground mt-1">
+                        {t("pages.services.usefulDocuments.doc2_desc", { defaultValue: "Version mise à jour avec des recommandations supplémentaires et des bonnes pratiques." })}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="mt-4">
+                    <Button variant="outline" size="sm" className="shadow-sm" asChild>
+                      <a
+                        href="/assets/documents/Notes_%20Usage%20Conseil%20Service%20Juridiq%20V2-1.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2"
+                      >
+                        <Download className="h-4 w-4" />
+                        {t("pages.services.usefulDocuments.cta_v2", { defaultValue: "Télécharger (V2.1)" })}
+                      </a>
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 

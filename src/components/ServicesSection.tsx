@@ -138,7 +138,7 @@ export const ServicesSection = () => {
           {services.map((service, index) => {
             const IconComponent = iconMap[service.icon] || Briefcase;
             const image = imageMap[service.category] || businessLaw;
-            
+
             return (
               <Card
                 key={service.id}
