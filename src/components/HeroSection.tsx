@@ -119,7 +119,7 @@ export const HeroSection = () => {
             <div className="grid grid-cols-3 gap-6 pt-8 border-t border-border">
               <div>
                 <div className="text-3xl md:text-4xl font-extrabold text-primary">
-                  <AnimatedCounter value={500} suffix="+" />
+                  <AnimatedCounter value={250} suffix="+" />
                 </div>
                 <div className="text-sm text-muted-foreground">{t("stats.clients_supported", { defaultValue: "Clients Accompagnés" })}</div>
               </div>
