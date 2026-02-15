@@ -55,9 +55,8 @@ export const CTASection = () => {
               <div className="text-left">
                 <p className="text-sm text-white/70">{t("common.call_us", { defaultValue: "Appelez-nous" })}</p>
                 <div className="font-semibold text-lg leading-snug">
-                  <div>+229 01 97 74 75 93</div>
-                  <div>+229 01 65 65 68 25</div>
                   <div>+229 01 40 66 69 38</div>
+                  <div>+229 01 65 65 68 25</div>
                 </div>
               </div>
             </div>

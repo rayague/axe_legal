@@ -177,6 +177,26 @@ const getGuarantees = (t: (key: string, options?: any) => string) => [
     icon: Award,
     title: t("pages.process.guarantees.3.title", { defaultValue: "Excellence Juridique" }),
     description: t("pages.process.guarantees.3.description", { defaultValue: "Expertise reconnue et certifiée" })
+  },
+  {
+    icon: Scale,
+    title: t("pages.process.guarantees.4.title", { defaultValue: "Respect de vos droits" }),
+    description: t("pages.process.guarantees.4.description", { defaultValue: "Engagement ferme au respect de vos droits" })
+  },
+  {
+    icon: Shield,
+    title: t("pages.process.guarantees.5.title", { defaultValue: "Intégrité" }),
+    description: t("pages.process.guarantees.5.description", { defaultValue: "Une conduite irréprochable fondée sur l'éthique" })
+  },
+  {
+    icon: GitBranch,
+    title: t("pages.process.guarantees.6.title", { defaultValue: "Responsabilité professionnelle" }),
+    description: t("pages.process.guarantees.6.description", { defaultValue: "Sens élevé de responsabilité professionnelle" })
+  },
+  {
+    icon: CheckCircle,
+    title: t("pages.process.guarantees.7.title", { defaultValue: "Bonne foi" }),
+    description: t("pages.process.guarantees.7.description", { defaultValue: "Transparence et loyauté dans chaque démarche" })
   }
 ];
 
@@ -445,7 +465,7 @@ export default function Process() {
                   <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white/20 mb-4">
                     <TrendingUp className="h-8 w-8 text-white" />
                   </div>
-                  <div className="text-5xl font-extrabold text-white mb-2">98%</div>
+                  <div className="text-5xl font-extrabold text-white mb-2">95%</div>
                   <div className="text-white/90 font-medium mb-2">{t("pages.process.stats_satisfaction", { defaultValue: "Taux de Satisfaction" })}</div>
                   <p className="text-white/70 text-sm">{t("pages.process.stats_satisfaction_note", { defaultValue: "Clients satisfaits de notre processus" })}</p>
                 </div>
@@ -463,7 +483,7 @@ export default function Process() {
                   <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white/20 mb-4">
                     <Award className="h-8 w-8 text-white" />
                   </div>
-                  <div className="text-5xl font-extrabold text-white mb-2">500+</div>
+                  <div className="text-5xl font-extrabold text-white mb-2">1000+</div>
                   <div className="text-white/90 font-medium mb-2">{t("pages.process.stats_cases", { defaultValue: "Dossiers Réussis" })}</div>
                   <p className="text-white/70 text-sm">{t("pages.process.stats_cases_note", { defaultValue: "Grâce à notre méthodologie" })}</p>
                 </div>

@@ -119,9 +119,8 @@ export const Footer = () => {
                   {t("footer.phone", { defaultValue: "Téléphone" })}
                 </div>
                 <div className="space-y-1 text-slate-300">
-                  <div>+229 01 97 74 75 93</div>
-                  <div>+229 01 65 65 68 25</div>
-                  <div>+229 01 40 66 69 38</div>
+                  <div>+229 01 40 66 69 38 (WhatsApp)</div>
+                  <div>+229 01 65 65 68 25 (WhatsApp)</div>
                 </div>
               </div>
 

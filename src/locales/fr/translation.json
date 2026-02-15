@@ -49,14 +49,14 @@
       "strategy_title": "Approche stratégique",
       "strategy_desc": "Conseils sur-mesure et plans d'action concrets pour protéger et faire croître vos intérêts.",
       "responsiveness_title": "Réactivité",
-      "responsiveness_desc": "Interventions rapides, priorisation des urgences et respect strict des délais procéduraux.",
+      "responsiveness_desc": "Interventions rapides, priorisation des urgences et dans les meilleurs délais.",
       "support_title": "Accompagnement",
-      "support_desc": "Un suivi dédié, explications claires et une relation de confiance au fil du dossier.",
+      "support_desc": "Un suivi dédié, des avis, conseils et recommandations productifs.",
       "excellence_title": "Excellence",
       "excellence_desc": "Pratiques rigoureuses et expertise reconnue pour des résultats durables et mesurables."
     },
     "image_alt": "Cabinet Axe Legal - Équipe professionnelle",
-    "image_badge": "5+ ans d'expérience",
+    "image_badge": "10+ ans d'expérience",
     "caption_title": "Excellence Juridique",
     "caption_subtitle": "Au service de nos clients"
   },
@@ -65,17 +65,17 @@
     "subtitle": "Découvrez les valeurs et engagements qui font de nous votre partenaire juridique de confiance",
     "reasons": {
       "expertise_title": "Expertise Ciblée",
-      "expertise_desc": "Une connaissance approfondie du droit béninois et des réalités locales pour des conseils précis et adaptés.",
+      "expertise_desc": "Une connaissance approfondie, du droit OHADA et des réalités locales pour des conseils précis et adaptés.",
       "human_title": "Approche Humaine",
       "human_desc": "Nous plaçons la relation client au cœur de notre pratique avec écoute, empathie et transparence totale.",
       "results_title": "Résultats Probants",
       "results_desc": "95% de taux de réussite grâce à notre stratégie juridique rigoureuse et notre engagement sans faille.",
-      "confidentiality_title": "Confidentialité Absolue",
+      "confidentiality_title": "Confidentialité Absolue et protection de vos données",
       "confidentiality_desc": "Protection maximale de vos informations avec le secret professionnel le plus strict garanti.",
-      "availability_title": "Disponibilité 24/7",
+      "availability_title": "Disponibilité en horaire exceptionnel",
       "availability_desc": "Une équipe réactive disponible pour les urgences juridiques, même en dehors des heures de bureau.",
       "excellence_title": "Excellence Reconnue",
-      "excellence_desc": "Cabinet primé et recommandé par nos clients pour la qualité exceptionnelle de nos prestations."
+      "excellence_desc": "Cabinet adopté et recommandé par nos clients pour la qualité exceptionnelle de nos prestations."
     }
   },
   "faq": {
@@ -197,12 +197,12 @@
       "1": {
         "title": "Cellule de l'Intelligence Fiscale",
         "subtitle": "Optimisation & Défense Fiscale",
-        "description": "Expertise pointue en fiscalité, optimisation fiscale et défense des intérêts face aux administrations fiscales."
+        "description": "Expertise pointue en fiscalité, optimisation fiscale et défense des intérêts auprès de l'administration fiscale."
       },
       "2": {
         "title": "Cellule des Actes Juridiques et de la Gouvernance d'Entreprise",
         "subtitle": "Gouvernance d'Entreprise",
-        "description": "Spécialisée dans la rédaction d'actes juridiques, la gouvernance d'entreprise et l'accompagnement des structures organisationnelles."
+        "description": "Spécialisée dans la rédaction d'actes juridiques, la gouvernance d'entreprise et l'accompagnement des organisations."
       },
       "3": {
         "title": "Cellule de Traitement de l'Information Financière",
@@ -503,7 +503,11 @@
         "0": { "title": "Réactivité Garantie", "description": "Réponse sous 24h à toute demande" },
         "1": { "title": "Confidentialité Totale", "description": "Protection absolue de vos informations" },
         "2": { "title": "Résultats Concrets", "description": "Objectifs clairs et mesurables" },
-        "3": { "title": "Excellence Juridique", "description": "Expertise reconnue et certifiée" }
+        "3": { "title": "Excellence Juridique", "description": "Expertise reconnue et certifiée" },
+        "4": { "title": "Respect de vos droits", "description": "Engagement ferme au respect de vos droits" },
+        "5": { "title": "Intégrité", "description": "Une conduite irréprochable fondée sur l'éthique" },
+        "6": { "title": "Responsabilité professionnelle", "description": "Sens élevé de responsabilité professionnelle" },
+        "7": { "title": "Bonne foi", "description": "Transparence et loyauté dans chaque démarche" }
       },
       "stats_title": "Des Résultats qui Parlent d'Eux-Mêmes",
       "stats_subtitle": "Notre processus éprouvé génère des résultats concrets et mesurables",

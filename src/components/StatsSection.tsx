@@ -17,7 +17,7 @@ export const StatsSection = () => {
         <div className="stats-grid grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           <div>
             <div className="text-4xl md:text-5xl font-extrabold text-white">
-              <AnimatedCounter value={500} suffix="+" />
+              <AnimatedCounter value={250} suffix="+" />
             </div>
             <div className="text-sm text-white/80">{t("stats.clients_supported", { defaultValue: "Clients Accompagnés" })}</div>
           </div>
@@ -35,7 +35,7 @@ export const StatsSection = () => {
           </div>
           <div>
             <div className="text-4xl md:text-5xl font-extrabold text-white">
-              <AnimatedCounter value={5} suffix="+" />
+              <AnimatedCounter value={10} suffix="+" />
             </div>
             <div className="text-sm text-white/80">{t("stats.years_experience", { defaultValue: "Années d'Expérience" })}</div>
           </div>

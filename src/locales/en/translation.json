@@ -56,7 +56,7 @@
       "excellence_desc": "Rigorous practice and recognized expertise for lasting, measurable outcomes."
     },
     "image_alt": "Axe Legal firm - Professional team",
-    "image_badge": "5+ years of experience",
+    "image_badge": "10+ years of experience",
     "caption_title": "Legal excellence",
     "caption_subtitle": "Serving our clients"
   },
@@ -65,17 +65,17 @@
     "subtitle": "Discover the values and commitments that make us your trusted legal partner",
     "reasons": {
       "expertise_title": "Focused expertise",
-      "expertise_desc": "Deep knowledge of Beninese law and local realities for precise, practical advice.",
+      "expertise_desc": "In-depth knowledge of OHADA law and local realities for precise, practical advice.",
       "human_title": "Human approach",
       "human_desc": "We put the client relationship at the heart of our practice with listening, empathy and full transparency.",
       "results_title": "Proven results",
       "results_desc": "A 95% success rate driven by rigorous legal strategy and unwavering commitment.",
-      "confidentiality_title": "Absolute confidentiality",
+      "confidentiality_title": "Absolute confidentiality and data protection",
       "confidentiality_desc": "Maximum protection of your information—strict professional secrecy guaranteed.",
-      "availability_title": "Availability 24/7",
+      "availability_title": "Extended-hours availability",
       "availability_desc": "A responsive team available for legal emergencies, even outside business hours.",
       "excellence_title": "Recognized excellence",
-      "excellence_desc": "An award-winning firm recommended by clients for exceptional service quality."
+      "excellence_desc": "A firm trusted and recommended by our clients for exceptional service quality."
     }
   },
   "faq": {
@@ -202,7 +202,7 @@
       "2": {
         "title": "Legal Documentation & Corporate Governance Unit",
         "subtitle": "Corporate governance",
-        "description": "Specialized in legal drafting, corporate governance, and support for organizational structures."
+        "description": "Specialized in legal drafting, corporate governance, and support for organizations."
       },
       "3": {
         "title": "Financial Information Processing Unit",
@@ -503,7 +503,11 @@
         "0": { "title": "Guaranteed responsiveness", "description": "Reply within 24 hours to any request" },
         "1": { "title": "Full confidentiality", "description": "Absolute protection of your information" },
         "2": { "title": "Concrete results", "description": "Clear, measurable objectives" },
-        "3": { "title": "Legal excellence", "description": "Recognized, proven expertise" }
+        "3": { "title": "Legal excellence", "description": "Recognized, proven expertise" },
+        "4": { "title": "Respect for your rights", "description": "A firm commitment to respecting your rights" },
+        "5": { "title": "Integrity", "description": "Irreproachable conduct grounded in ethics" },
+        "6": { "title": "Professional responsibility", "description": "A strong sense of professional responsibility" },
+        "7": { "title": "Good faith", "description": "Transparency and loyalty in every step" }
       },
       "stats_title": "Results that speak for themselves",
       "stats_subtitle": "Our proven process delivers concrete, measurable outcomes",

@@ -223,7 +223,7 @@ export default function Team() {
             <div className="grid md:grid-cols-4 gap-8">
               <div className="text-center animate-scale-in bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20">
                 <div className="text-5xl font-extrabold text-white mb-2">
-                  <AnimatedCounter value={150} suffix="+" />
+                  <AnimatedCounter value={250} suffix="+" />
                 </div>
                 <div className="text-white/90 font-medium">{t("stats.clients_supported", { defaultValue: "Clients Accompagnés" })}</div>
                 <p className="text-white/70 text-sm mt-2">{t("pages.team.stats_clients_note", { defaultValue: "Entreprises et particuliers" })}</p>
@@ -231,7 +231,7 @@ export default function Team() {
               
               <div className="text-center animate-scale-in bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20" style={{ animationDelay: "100ms" }}>
                 <div className="text-5xl font-extrabold text-white mb-2">
-                  <AnimatedCounter value={500} suffix="+" />
+                  <AnimatedCounter value={1000} suffix="+" />
                 </div>
                 <div className="text-white/90 font-medium">{t("stats.cases_handled", { defaultValue: "Dossiers Traités" })}</div>
                 <p className="text-white/70 text-sm mt-2">{t("pages.team.stats_cases_note", { defaultValue: "Avec succès et rigueur" })}</p>
@@ -247,7 +247,7 @@ export default function Team() {
               
               <div className="text-center animate-scale-in bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20" style={{ animationDelay: "300ms" }}>
                 <div className="text-5xl font-extrabold text-white mb-2">
-                  <AnimatedCounter value={5} suffix="+" />
+                  <AnimatedCounter value={10} suffix="+" />
                 </div>
                 <div className="text-white/90 font-medium">{t("stats.years_experience", { defaultValue: "Années d'Expérience" })}</div>
                 <p className="text-white/70 text-sm mt-2">{t("pages.team.stats_years_note", { defaultValue: "Expertise éprouvée" })}</p>

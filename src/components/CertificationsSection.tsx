@@ -1,5 +1,5 @@
 import { Card } from "@/components/ui/card";
-import { Award, Shield, Lock } from "lucide-react";
+import { Award, Lock } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
 export const CertificationsSection = () => {
@@ -11,12 +11,6 @@ export const CertificationsSection = () => {
       title: t("certifications.items.0.title", { defaultValue: "Droit des Affaires" }),
       subtitle: t("certifications.items.0.subtitle", { defaultValue: "Expert en droit des affaires et contrats commerciaux" }),
       color: "primary",
-    },
-    {
-      icon: Shield,
-      title: t("certifications.items.1.title", { defaultValue: "Excellence" }),
-      subtitle: t("certifications.items.1.subtitle", { defaultValue: "Prix du meilleur cabinet 2023" }),
-      color: "accent",
     },
     {
       icon: Lock,
@@ -36,7 +30,7 @@ export const CertificationsSection = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="mx-auto grid max-w-4xl grid-cols-1 gap-8 md:grid-cols-2">
           {certifications.map((cert, index) => (
             <Card
               key={index}

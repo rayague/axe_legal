@@ -16,7 +16,7 @@ export const WhyChooseUsSection = () => {
     {
       icon: Target,
       title: t("why_choose_us.reasons.expertise_title", { defaultValue: "Expertise Ciblée" }),
-      description: t("why_choose_us.reasons.expertise_desc", { defaultValue: "Une connaissance approfondie du droit béninois et des réalités locales pour des conseils précis et adaptés." }),
+      description: t("why_choose_us.reasons.expertise_desc", { defaultValue: "Une connaissance approfondie, du droit OHADA et des réalités locales pour des conseils précis et adaptés." }),
       color: "from-blue-500 to-blue-600"
     },
     {
@@ -33,20 +33,20 @@ export const WhyChooseUsSection = () => {
     },
     {
       icon: Shield,
-      title: t("why_choose_us.reasons.confidentiality_title", { defaultValue: "Confidentialité Absolue" }),
+      title: t("why_choose_us.reasons.confidentiality_title", { defaultValue: "Confidentialité Absolue et protection de vos données" }),
       description: t("why_choose_us.reasons.confidentiality_desc", { defaultValue: "Protection maximale de vos informations avec le secret professionnel le plus strict garanti." }),
       color: "from-purple-500 to-purple-600"
     },
     {
       icon: Clock,
-      title: t("why_choose_us.reasons.availability_title", { defaultValue: "Disponibilité 24/7" }),
+      title: t("why_choose_us.reasons.availability_title", { defaultValue: "Disponibilité en horaire exceptionnel" }),
       description: t("why_choose_us.reasons.availability_desc", { defaultValue: "Une équipe réactive disponible pour les urgences juridiques, même en dehors des heures de bureau." }),
       color: "from-amber-500 to-amber-600"
     },
     {
       icon: Award,
       title: t("why_choose_us.reasons.excellence_title", { defaultValue: "Excellence Reconnue" }),
-      description: t("why_choose_us.reasons.excellence_desc", { defaultValue: "Cabinet primé et recommandé par nos clients pour la qualité exceptionnelle de nos prestations." }),
+      description: t("why_choose_us.reasons.excellence_desc", { defaultValue: "Cabinet adopté et recommandé par nos clients pour la qualité exceptionnelle de nos prestations." }),
       color: "from-teal-500 to-teal-600"
     }
   ];

@@ -20,14 +20,14 @@ export const TeamSection = () => {
     {
       title: t("team_section.members.1.title", { defaultValue: "Cellule de l'Intelligence Fiscale" }),
       subtitle: t("team_section.members.1.subtitle", { defaultValue: "Optimisation & Défense Fiscale" }),
-      description: t("team_section.members.1.description", { defaultValue: "Expertise pointue en fiscalité, optimisation fiscale et défense des intérêts face aux administrations fiscales." }),
+      description: t("team_section.members.1.description", { defaultValue: "Expertise pointue en fiscalité, optimisation fiscale et défense des intérêts auprès de l'administration fiscale." }),
       icon: TrendingUp,
       image: teamFiscal,
     },
     {
       title: t("team_section.members.2.title", { defaultValue: "Cellule des Actes Juridiques et de la Gouvernance d'Entreprise" }),
       subtitle: t("team_section.members.2.subtitle", { defaultValue: "Gouvernance d'Entreprise" }),
-      description: t("team_section.members.2.description", { defaultValue: "Spécialisée dans la rédaction d'actes juridiques, la gouvernance d'entreprise et l'accompagnement des structures organisationnelles." }),
+      description: t("team_section.members.2.description", { defaultValue: "Spécialisée dans la rédaction d'actes juridiques, la gouvernance d'entreprise et l'accompagnement des organisations." }),
       icon: FileText,
       image: teamLegal,
     },

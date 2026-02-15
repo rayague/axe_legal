@@ -40,7 +40,7 @@ export const AboutSection = () => {
                 </div>
                 <div>
                   <h4 className="font-semibold text-lg">{t("about.features.responsiveness_title", { defaultValue: "Réactivité" })}</h4>
-                  <p className="text-sm text-muted-foreground mt-1">{t("about.features.responsiveness_desc", { defaultValue: "Interventions rapides, priorisation des urgences et respect strict des délais procéduraux." })}</p>
+                  <p className="text-sm text-muted-foreground mt-1">{t("about.features.responsiveness_desc", { defaultValue: "Interventions rapides, priorisation des urgences et dans les meilleurs délais." })}</p>
                 </div>
               </div>
             </Card>
@@ -52,7 +52,7 @@ export const AboutSection = () => {
                 </div>
                 <div>
                   <h4 className="font-semibold text-lg">{t("about.features.support_title", { defaultValue: "Accompagnement" })}</h4>
-                  <p className="text-sm text-muted-foreground mt-1">{t("about.features.support_desc", { defaultValue: "Un suivi dédié, explications claires et une relation de confiance au fil du dossier." })}</p>
+                  <p className="text-sm text-muted-foreground mt-1">{t("about.features.support_desc", { defaultValue: "Un suivi dédié, des avis, conseils et recommandations productifs." })}</p>
                 </div>
               </div>
             </Card>
@@ -84,12 +84,12 @@ export const AboutSection = () => {
             <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent pointer-events-none" />
 
             {/* small badge top-left */}
-            <div className="absolute top-4 left-4 bg-white/90 text-sm text-slate-900 px-3 py-1 rounded-full shadow">{t("about.image_badge", { defaultValue: "5+ ans d'expérience" })}</div>
+            <div className="absolute top-4 left-4 bg-white/90 text-sm text-slate-900 px-3 py-1 rounded-full shadow">{t("about.image_badge", { defaultValue: "10+ ans d'expérience" })}</div>
 
             {/* caption bottom-left */}
             <div className="absolute left-4 bottom-4 bg-black/60 text-white px-3 py-2 rounded-md">
-              <h3 className="text-sm font-semibold">{t("about.caption_title", { defaultValue: "Excellence Juridique" })}</h3>
-              <p className="text-xs text-white/90">{t("about.caption_subtitle", { defaultValue: "Au service de nos clients" })}</p>
+              <p className="font-semibold text-sm">{t("about.caption_title", { defaultValue: "Excellence Juridique" })}</p>
+              <p className="text-xs opacity-90">{t("about.caption_subtitle", { defaultValue: "Au service de nos clients" })}</p>
             </div>
           </div>
         </div>
