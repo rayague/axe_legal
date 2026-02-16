@@ -83,11 +83,17 @@ export default function TeamManagementPage() {
   const handleCreateMember = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const payload = {
+      const payloadRaw = {
         ...formData,
         role: toLocalized(String(formData.role || ''), undefined, editingLang),
         bio: toLocalized(String(formData.bio || ''), undefined, editingLang),
       } as any;
+
+      // Firestore n'accepte pas les champs `undefined`
+      const payload = Object.fromEntries(
+        Object.entries(payloadRaw).filter(([, value]) => value !== undefined)
+      ) as any;
+
       await addTeamMember(payload as Omit<TeamMember, 'id'>);
       toast({ title: 'Succès', description: 'Membre ajouté avec succès' });
       setCreateDialogOpen(false);
@@ -103,11 +109,17 @@ export default function TeamManagementPage() {
     if (!selectedMember) return;
 
     try {
-      const payload: Partial<TeamMember> = {
+      const payloadRaw: Partial<TeamMember> = {
         ...formData,
         role: toLocalized(String(formData.role || ''), selectedMember.role, editingLang) as any,
         bio: toLocalized(String(formData.bio || ''), selectedMember.bio, editingLang) as any,
       };
+
+      // Firestore n'accepte pas les champs `undefined`
+      const payload = Object.fromEntries(
+        Object.entries(payloadRaw).filter(([, value]) => value !== undefined)
+      ) as Partial<TeamMember>;
+
       await updateTeamMember(selectedMember.id!, payload as any);
       toast({ title: 'Succès', description: 'Membre modifié avec succès' });
       setEditDialogOpen(false);

@@ -84,11 +84,17 @@ export default function TestimonialsManagementPage() {
   const handleCreate = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const payload = {
+      const payloadRaw = {
         ...formData,
         role: toLocalized(String(formData.role || ''), undefined, editingLang),
         content: toLocalized(String(formData.content || ''), undefined, editingLang),
       } as any;
+
+      // Firestore n'accepte pas les champs `undefined`
+      const payload = Object.fromEntries(
+        Object.entries(payloadRaw).filter(([, value]) => value !== undefined)
+      ) as any;
+
       await addTestimonial(payload as Omit<Testimonial, 'id'>);
       toast({ title: 'Succès', description: 'Témoignage ajouté avec succès' });
       setCreateDialogOpen(false);
@@ -104,11 +110,17 @@ export default function TestimonialsManagementPage() {
     if (!selectedTestimonial) return;
 
     try {
-      const payload: Partial<Testimonial> = {
+      const payloadRaw: Partial<Testimonial> = {
         ...formData,
         role: toLocalized(String(formData.role || ''), selectedTestimonial.role, editingLang) as any,
         content: toLocalized(String(formData.content || ''), selectedTestimonial.content, editingLang) as any,
       };
+
+      // Firestore n'accepte pas les champs `undefined`
+      const payload = Object.fromEntries(
+        Object.entries(payloadRaw).filter(([, value]) => value !== undefined)
+      ) as Partial<Testimonial>;
+
       await updateTestimonial(selectedTestimonial.id!, payload as any);
       toast({ title: 'Succès', description: 'Témoignage modifié avec succès' });
       setEditDialogOpen(false);

@@ -99,13 +99,18 @@ export default function AnnouncementsManagementPage() {
   const handleSubmit = async () => {
     try {
       const existing = editingAnnouncement;
-      const payload: Partial<Announcement> = {
+      const payloadRaw: Partial<Announcement> = {
         ...formData,
         title: toLocalized(formData.title, existing?.title, editingLang) as any,
         subtitle: formData.subtitle ? (toLocalized(formData.subtitle, existing?.subtitle, editingLang) as any) : undefined,
         content: toLocalized(formData.content, existing?.content, editingLang) as any,
         linkText: formData.linkText ? (toLocalized(formData.linkText, existing?.linkText, editingLang) as any) : undefined,
       };
+
+      // Firestore n'accepte pas les champs `undefined`
+      const payload = Object.fromEntries(
+        Object.entries(payloadRaw).filter(([, value]) => value !== undefined)
+      ) as Partial<Announcement>;
 
       if (editingAnnouncement) {
         await updateAnnouncement(editingAnnouncement.id!, payload);

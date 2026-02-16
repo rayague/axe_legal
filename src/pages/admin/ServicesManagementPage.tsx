@@ -92,7 +92,7 @@ export default function ServicesManagementPage() {
       const cleanedFeatures = formData.features.filter(f => f.trim() !== '');
       const cleanedBenefits = formData.benefits.filter(b => b.trim() !== '');
 
-      const serviceData = {
+      const serviceDataRaw = {
         ...formData,
         title: toLocalized(formData.title, existing?.title, editingLang),
         description: toLocalized(formData.description, existing?.description, editingLang),
@@ -111,6 +111,11 @@ export default function ServicesManagementPage() {
             .replace(/[àâ]/g, 'a'),
       };
 
+      // Firestore n'accepte pas les champs `undefined`
+      const serviceData = Object.fromEntries(
+        Object.entries(serviceDataRaw).filter(([, value]) => value !== undefined)
+      );
+
       if (editingService) {
         await updateService(editingService.id!, serviceData);
         toast({ title: 'Succès', description: 'Service modifié avec succès' });
@@ -122,9 +127,22 @@ export default function ServicesManagementPage() {
       resetForm();
       loadServices();
     } catch (error) {
+      const errAny = error as any;
+      const code = typeof errAny?.code === 'string' ? errAny.code : undefined;
+      const name = typeof errAny?.name === 'string' ? errAny.name : undefined;
+      const message = error instanceof Error ? error.message : String(error);
+
+      console.error('Erreur sauvegarde service:', {
+        code,
+        name,
+        message,
+        error,
+      });
+
+      const detail = [code, name, message].filter(Boolean).join(' | ');
       toast({
         title: 'Erreur',
-        description: 'Impossible de sauvegarder le service',
+        description: `Impossible de sauvegarder le service${detail ? `: ${detail}` : ''}`,
         variant: 'destructive',
       });
     }

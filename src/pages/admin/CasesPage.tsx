@@ -63,11 +63,16 @@ export default function CasesPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
+      // Firestore n'accepte pas les champs `undefined`
+      const payload = Object.fromEntries(
+        Object.entries(formData).filter(([, value]) => value !== undefined)
+      ) as typeof formData;
+
       if (editingCase) {
-        await updateCase(editingCase.id, formData);
+        await updateCase(editingCase.id, payload);
         toast({ title: "Succès", description: "Dossier mis à jour" });
       } else {
-        await addCase(formData);
+        await addCase(payload);
         toast({ title: "Succès", description: "Dossier créé" });
       }
       setIsDialogOpen(false);

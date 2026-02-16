@@ -155,7 +155,12 @@ export default function ProcessManagementPage() {
   const handleCreate = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await addProcessStep(formData as Omit<ProcessStep, 'id'>);
+      // Firestore n'accepte pas les champs `undefined`
+      const payload = Object.fromEntries(
+        Object.entries(formData).filter(([, value]) => value !== undefined)
+      ) as Omit<ProcessStep, 'id'>;
+
+      await addProcessStep(payload);
       toast({ title: 'Succès', description: 'Étape ajoutée avec succès' });
       setCreateDialogOpen(false);
       resetForm();
@@ -170,7 +175,12 @@ export default function ProcessManagementPage() {
     if (!selectedStep) return;
 
     try {
-      await updateProcessStep(selectedStep.id!, formData);
+      // Firestore n'accepte pas les champs `undefined`
+      const payload = Object.fromEntries(
+        Object.entries(formData).filter(([, value]) => value !== undefined)
+      ) as Partial<ProcessStep>;
+
+      await updateProcessStep(selectedStep.id!, payload);
       toast({ title: 'Succès', description: 'Étape modifiée avec succès' });
       setEditDialogOpen(false);
       resetForm();
