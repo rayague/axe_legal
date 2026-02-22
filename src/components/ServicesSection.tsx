@@ -26,9 +26,12 @@ import { getServices } from "@/lib/firebaseApi";
 import { pickLocalizedString, getCurrentLang } from "@/lib/i18nFields";
 import { useTranslation } from "react-i18next";
 import businessLaw from "@/assets/business-law.jpg";
-import taxLaw from "@/assets/tax-law.jpg";
+import taxLaw from "@/assets/tax-law.jpeg";
 import realEstateLaw from "@/assets/real-estate-law.jpg";
-import laborLaw from "@/assets/labor-law.jpg";
+import laborLaw from "@/assets/labor-law.jpeg";
+import law from "@/assets/image5.jpeg";
+import adminLaw from "@/assets/image3.jpeg";
+import juridicLaw from "@/assets/image2.jpeg";
 
 // Map pour les icônes
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
@@ -53,15 +56,15 @@ const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
 
 // Map pour les images par défaut selon la catégorie
 const imageMap: Record<string, string> = {
-  "Droit des affaires": businessLaw,
+  "Droit des affaires": law,
   "Droit fiscal": taxLaw,
   "Droit immobilier": realEstateLaw,
   "Droit du travail": laborLaw,
-  "Droit de la famille": realEstateLaw,
+  "Droit de la famille": juridicLaw,
   "Droit pénal": businessLaw,
-  "Droit administratif": realEstateLaw,
+  "Droit administratif": adminLaw,
   "Contentieux": businessLaw,
-  "Conseil juridique": businessLaw,
+  "Conseil juridique": juridicLaw,
 };
 
 interface Service {

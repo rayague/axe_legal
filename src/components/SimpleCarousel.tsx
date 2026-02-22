@@ -2,9 +2,9 @@ import React, { useCallback, useEffect, useState } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import businessLaw from '@/assets/business-law.jpg';
-import taxLaw from '@/assets/tax-law.jpg';
+import taxLaw from '@/assets/tax-law.jpeg';
 import realEstateLaw from '@/assets/real-estate-law.jpg';
-import laborLaw from '@/assets/labor-law.jpg';
+import laborLaw from '@/assets/labor-law.jpeg';
 
 const SLIDES = [
   { src: businessLaw, alt: 'Droit des affaires', caption: "Cabinet - Droit des affaires" },
