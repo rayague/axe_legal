@@ -65,7 +65,7 @@ const Index = () => {
         
         <WhyChooseUsSection />
         <TeamSection />
-        <TestimonialsSection />
+        <TestimonialsSection limit={4} showViewAllButton />
         <FAQSection />
         <CTASection />
         

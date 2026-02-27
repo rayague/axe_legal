@@ -1,13 +1,21 @@
 import { useState, useEffect } from "react";
 import { Card } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Star, Quote, User } from "lucide-react";
+import { Star, Quote, User, ArrowRight } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { getPublishedReviews, type Review } from "@/lib/firebaseApi";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 
-export const TestimonialsSection = () => {
+interface TestimonialsSectionProps {
+  limit?: number;
+  showViewAllButton?: boolean;
+}
+
+export const TestimonialsSection = ({ limit, showViewAllButton = false }: TestimonialsSectionProps) => {
   const [testimonials, setTestimonials] = useState<Review[]>([]);
+  const [totalCount, setTotalCount] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const { toast } = useToast();
   const { t } = useTranslation();
@@ -15,13 +23,15 @@ export const TestimonialsSection = () => {
   useEffect(() => {
     fetchTestimonials();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [limit]);
 
   const fetchTestimonials = async () => {
     try {
       setIsLoading(true);
       const data = await getPublishedReviews();
-      setTestimonials(data as Review[]);
+      setTotalCount(data.length);
+      // Limiter si une limite est spécifiée
+      setTestimonials(limit ? data.slice(0, limit) : data);
     } catch (error) {
       console.error('Error fetching testimonials:', error);
       toast({
@@ -67,8 +77,9 @@ export const TestimonialsSection = () => {
             <p className="text-muted-foreground">{t("testimonials_section.empty", { defaultValue: "Aucun témoignage disponible pour le moment." })}</p>
           </div>
         ) : (
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-            {testimonials.map((item, index) => (
+          <>
+            <div className={`grid gap-6 lg:gap-8 ${limit ? 'md:grid-cols-2 lg:grid-cols-4' : 'md:grid-cols-2 lg:grid-cols-3'}`}>
+              {testimonials.map((item, index) => (
               <Card
                 key={item.id}
                 className="p-6 hover:shadow-2xl transition-all duration-500 animate-fade-in-up border-2 hover:border-primary/50 group bg-gradient-to-br from-background to-primary/5 hover:to-primary/10"
@@ -110,8 +121,20 @@ export const TestimonialsSection = () => {
                   </div>
                 </div>
               </Card>
-            ))}
-          </div>
+              ))}
+            </div>
+            
+            {showViewAllButton && totalCount > (limit || 0) && (
+              <div className="text-center mt-12">
+                <Button size="lg" variant="outline" className="group" asChild>
+                  <Link to="/temoignages">
+                    {t("testimonials_section.view_all", { defaultValue: "Voir tous les témoignages" })} ({totalCount})
+                    <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
+                  </Link>
+                </Button>
+              </div>
+            )}
+          </>
         )}
       </div>
     </section>

@@ -1,11 +1,10 @@
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { TestimonialsSection } from "@/components/TestimonialsSection";
 import PageHero from "@/components/PageHero";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { Link } from "react-router-dom";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { 
   Star, 
   Award, 
@@ -14,14 +13,101 @@ import {
   CheckCircle,
   ArrowRight,
   Quote,
-  ThumbsUp
+  ThumbsUp,
+  Loader2,
+  ChevronLeft,
+  ChevronRight
 } from "lucide-react";
 import AnimatedCounter from "@/components/AnimatedCounter";
 import heroLegal from "@/assets/hero-legal.jpg";
 import { useTranslation } from "react-i18next";
+import { useState, useEffect } from "react";
+import { getPublishedReviews, type Review } from "@/lib/firebaseApi";
+import { useToast } from "@/hooks/use-toast";
+
+const REVIEWS_PER_PAGE = 12;
 
 export default function Testimonials() {
   const { t } = useTranslation();
+  const { toast } = useToast();
+  const [reviews, setReviews] = useState<Review[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalReviews, setTotalReviews] = useState(0);
+
+  useEffect(() => {
+    fetchReviews();
+  }, []);
+
+  const fetchReviews = async () => {
+    try {
+      setIsLoading(true);
+      const data = await getPublishedReviews();
+      setReviews(data);
+      setTotalReviews(data.length);
+    } catch (error) {
+      console.error('Error fetching reviews:', error);
+      toast({
+        title: t("testimonials_section.toast_error_title", { defaultValue: "Erreur" }),
+        description: t("testimonials_section.toast_error_desc", { defaultValue: "Impossible de charger les témoignages" }),
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  // Pagination calculations
+  const totalPages = Math.ceil(totalReviews / REVIEWS_PER_PAGE);
+  const startIndex = (currentPage - 1) * REVIEWS_PER_PAGE;
+  const endIndex = startIndex + REVIEWS_PER_PAGE;
+  const currentReviews = reviews.slice(startIndex, endIndex);
+
+  const getInitials = (name: string) => {
+    return name
+      .split(' ')
+      .map(word => word[0])
+      .join('')
+      .toUpperCase()
+      .slice(0, 2);
+  };
+
+  const goToPage = (page: number) => {
+    if (page >= 1 && page <= totalPages) {
+      setCurrentPage(page);
+      // Scroll to reviews section
+      document.getElementById('reviews-grid')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
+  // Generate page numbers for pagination
+  const getPageNumbers = () => {
+    const pages: (number | string)[] = [];
+    const maxVisiblePages = 5;
+    
+    if (totalPages <= maxVisiblePages) {
+      for (let i = 1; i <= totalPages; i++) {
+        pages.push(i);
+      }
+    } else {
+      if (currentPage <= 3) {
+        for (let i = 1; i <= 4; i++) pages.push(i);
+        pages.push('...');
+        pages.push(totalPages);
+      } else if (currentPage >= totalPages - 2) {
+        pages.push(1);
+        pages.push('...');
+        for (let i = totalPages - 3; i <= totalPages; i++) pages.push(i);
+      } else {
+        pages.push(1);
+        pages.push('...');
+        for (let i = currentPage - 1; i <= currentPage + 1; i++) pages.push(i);
+        pages.push('...');
+        pages.push(totalPages);
+      }
+    }
+    return pages;
+  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -106,8 +192,135 @@ export default function Testimonials() {
           </div>
         </section>
 
-        {/* Testimonials Grid */}
-        <TestimonialsSection />
+        {/* Testimonials Grid with Pagination */}
+        <section id="reviews-grid" className="py-16 bg-background">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-12">
+              <Badge className="mb-4" variant="outline">
+                <Quote className="h-4 w-4 mr-2" />
+                {t("pages.testimonials.all_reviews_badge", { defaultValue: "Tous les Avis" })}
+              </Badge>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                {t("pages.testimonials.all_reviews_title", { defaultValue: "Ce que disent nos clients" })}
+              </h2>
+              <p className="text-muted-foreground max-w-2xl mx-auto">
+                {t("pages.testimonials.all_reviews_subtitle", { defaultValue: "Découvrez les témoignages authentiques de nos clients satisfaits" })}
+                {totalReviews > 0 && (
+                  <span className="block mt-2 text-sm">
+                    {t("pages.testimonials.showing", { defaultValue: "Affichage de" })} {startIndex + 1}-{Math.min(endIndex, totalReviews)} {t("pages.testimonials.of", { defaultValue: "sur" })} {totalReviews} {t("pages.testimonials.reviews", { defaultValue: "avis" })}
+                  </span>
+                )}
+              </p>
+            </div>
+
+            {isLoading ? (
+              <div className="text-center py-12">
+                <Loader2 className="h-12 w-12 animate-spin text-primary mx-auto mb-4" />
+                <p className="text-muted-foreground">{t("testimonials_section.loading", { defaultValue: "Chargement des témoignages..." })}</p>
+              </div>
+            ) : reviews.length === 0 ? (
+              <div className="text-center py-12">
+                <Quote className="h-16 w-16 text-muted-foreground mx-auto mb-4" />
+                <p className="text-muted-foreground">{t("testimonials_section.empty", { defaultValue: "Aucun témoignage disponible pour le moment." })}</p>
+              </div>
+            ) : (
+              <>
+                {/* Reviews Grid */}
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-12">
+                  {currentReviews.map((item, index) => (
+                    <Card
+                      key={item.id}
+                      className="p-6 hover:shadow-2xl transition-all duration-300 border-2 hover:border-primary/50 group bg-gradient-to-br from-background to-primary/5 hover:to-primary/10"
+                      style={{ animationDelay: `${index * 50}ms` }}
+                    >
+                      <div className="space-y-4">
+                        {/* Quote Icon */}
+                        <div className="relative">
+                          <Quote className="h-10 w-10 text-primary/20 absolute -top-2 -left-2" />
+                          <div className="flex gap-1 relative z-10 pl-6">
+                            {Array.from({ length: item.rating }).map((_, i) => (
+                              <Star key={i} className="h-4 w-4 fill-accent text-accent" />
+                            ))}
+                          </div>
+                        </div>
+
+                        {/* Content */}
+                        <p className="text-muted-foreground leading-relaxed text-sm line-clamp-4">
+                          "{item.comment}"
+                        </p>
+
+                        {/* Author */}
+                        <div className="flex items-center gap-3 pt-2 border-t border-primary/20">
+                          <Avatar className="h-10 w-10 bg-gradient-to-br from-primary to-primary/80 text-primary-foreground">
+                            <AvatarImage src="" alt={item.name} />
+                            <AvatarFallback className="bg-gradient-to-br from-primary to-primary/80 text-white text-sm font-bold">
+                              {getInitials(item.name)}
+                            </AvatarFallback>
+                          </Avatar>
+                          <div className="flex-1 min-w-0">
+                            <div className="font-semibold text-sm text-foreground group-hover:text-primary transition-colors truncate">
+                              {item.name}
+                            </div>
+                            <div className="text-xs text-muted-foreground">{t("testimonials_section.client", { defaultValue: "Client" })}</div>
+                          </div>
+                        </div>
+                      </div>
+                    </Card>
+                  ))}
+                </div>
+
+                {/* Pagination */}
+                {totalPages > 1 && (
+                  <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <div className="flex items-center gap-2">
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => goToPage(currentPage - 1)}
+                        disabled={currentPage === 1}
+                      >
+                        <ChevronLeft className="h-4 w-4 mr-1" />
+                        {t("common.previous", { defaultValue: "Précédent" })}
+                      </Button>
+
+                      <div className="flex items-center gap-1">
+                        {getPageNumbers().map((page, index) => (
+                          page === '...' ? (
+                            <span key={`ellipsis-${index}`} className="px-2 text-muted-foreground">...</span>
+                          ) : (
+                            <Button
+                              key={page}
+                              variant={currentPage === page ? "default" : "outline"}
+                              size="sm"
+                              onClick={() => goToPage(page as number)}
+                              className="min-w-[40px]"
+                            >
+                              {page}
+                            </Button>
+                          )
+                        ))}
+                      </div>
+
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => goToPage(currentPage + 1)}
+                        disabled={currentPage === totalPages}
+                      >
+                        {t("common.next", { defaultValue: "Suivant" })}
+                        <ChevronRight className="h-4 w-4 ml-1" />
+                      </Button>
+                    </div>
+
+                    <div className="text-sm text-muted-foreground">
+                      {t("pages.testimonials.page", { defaultValue: "Page" })} {currentPage} {t("pages.testimonials.of", { defaultValue: "sur" })} {totalPages}
+                    </div>
+                  </div>
+                )}
+              </>
+            )}
+          </div>
+        </section>
 
         {/* Trust Indicators */}
         <section className="py-20 bg-gradient-to-br from-primary/5 via-background to-primary/10">
@@ -202,25 +415,25 @@ export default function Testimonials() {
                 </div>
                 
                 <h2 className="text-3xl md:text-4xl font-bold">
-                  {t("pages.testimonials.cta_title_prefix", { defaultValue: "Rejoignez Nos" })}{" "}
-                  <span className="text-primary">{t("pages.testimonials.cta_title_highlight", { defaultValue: "Clients Satisfaits" })}</span>
+                  {t("pages.testimonials.cta_title_prefix", { defaultValue: "Partagez Votre" })}{" "}
+                  <span className="text-primary">{t("pages.testimonials.cta_title_highlight", { defaultValue: "Expérience" })}</span>
                 </h2>
                 
                 <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                  {t("pages.testimonials.cta_subtitle", { defaultValue: "Faites l'expérience d'un service juridique d'excellence. Contactez-nous dès aujourd'hui pour une première consultation gratuite et découvrez comment nous pouvons vous aider." })}
+                  {t("pages.testimonials.cta_review_subtitle", { defaultValue: "Vous avez bénéficié de nos services ? Laissez un avis et aidez d'autres clients à nous découvrir." })}
                 </p>
 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
                   <Button size="lg" className="group" asChild>
-                    <Link to="/contact">
-                      {t("common.request_consultation", { defaultValue: "Demander une Consultation" })}
+                    <a href="/avis">
+                      {t("pages.testimonials.leave_review", { defaultValue: "Laisser un Avis" })}
                       <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
-                    </Link>
+                    </a>
                   </Button>
                   <Button size="lg" variant="outline" asChild>
-                    <Link to="/services">
-                      {t("common.discover_services", { defaultValue: "Découvrir nos Services" })}
-                    </Link>
+                    <a href="/contact">
+                      {t("common.request_consultation", { defaultValue: "Demander une Consultation" })}
+                    </a>
                   </Button>
                 </div>
 
