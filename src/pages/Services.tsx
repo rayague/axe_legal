@@ -7,20 +7,14 @@ import { Link } from "react-router-dom";
 import { ArrowRight, Phone, Mail, Globe2, Download, FileText } from "lucide-react";
 import servicesHero from "@/assets/business-law.jpg";
 import { useTranslation } from "react-i18next";
-import { useState } from "react";
 
 const Services = () => {
   const { t } = useTranslation();
-  const [openPreview, setOpenPreview] = useState<null | 'doc1' | 'doc2'>(null);
-
-  const isMobile = typeof window !== 'undefined' && window.matchMedia
-    ? window.matchMedia('(max-width: 767px)').matches
-    : false;
 
   return (
     <div className="min-h-screen">
-  <Header />
-  <main>
+      <Header />
+      <main>
         <PageHero
           eyebrow={t("pages.services.hero_eyebrow", { defaultValue: "Nos Expertises" })}
           title={(
@@ -89,49 +83,12 @@ const Services = () => {
                   </div>
 
                   <div className="mt-4 flex flex-col sm:flex-row gap-2">
-                    <Button
-                      size="sm"
-                      variant="outline"
-                      className="shadow-sm"
-                      onClick={() => {
-                        if (isMobile) {
-                          window.open(
-                            "/assets/documents/Notes_%20Usage%20Conseil%20Service%20Juridique-1.pdf",
-                            "_blank",
-                            "noopener,noreferrer"
-                          );
-                          return;
-                        }
-                        setOpenPreview((v) => (v === 'doc1' ? null : 'doc1'));
-                      }}
-                      type="button"
-                    >
-                      {openPreview === 'doc1' && !isMobile
-                        ? t("pages.services.usefulDocuments.close", { defaultValue: "Fermer" })
-                        : t("pages.services.usefulDocuments.read", { defaultValue: "Lire" })}
-                    </Button>
-                    <Button size="sm" className="shadow-sm" asChild>
-                      <a
-                        href="/assets/documents/Notes_%20Usage%20Conseil%20Service%20Juridique-1.pdf"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2"
-                      >
-                        <Download className="h-4 w-4" />
-                        {t("pages.services.usefulDocuments.cta", { defaultValue: "Télécharger" })}
-                      </a>
+                    <Button size="sm" variant="outline" className="shadow-sm" asChild>
+                      <Link to="/documents/notes-usage-consultation-juridique">
+                        {t("pages.services.usefulDocuments.read", { defaultValue: "Lire" })}
+                      </Link>
                     </Button>
                   </div>
-
-                  {openPreview === 'doc1' && !isMobile && (
-                    <div className="mt-4">
-                      <iframe
-                        title={t("pages.services.usefulDocuments.doc1", { defaultValue: "Notes d'usage - Consultation juridique" })}
-                        src="/assets/documents/Notes_%20Usage%20Conseil%20Service%20Juridique-1.pdf#view=FitH"
-                        className="w-full h-[520px] md:h-[640px] rounded-xl border border-primary/10 bg-white"
-                      />
-                    </div>
-                  )}
                 </div>
 
                 <div className="rounded-xl border border-primary/10 bg-background/70 p-5 hover:border-primary/30 hover:shadow-md transition-all">
@@ -150,49 +107,12 @@ const Services = () => {
                   </div>
 
                   <div className="mt-4 flex flex-col sm:flex-row gap-2">
-                    <Button
-                      size="sm"
-                      variant="outline"
-                      className="shadow-sm"
-                      onClick={() => {
-                        if (isMobile) {
-                          window.open(
-                            "/assets/documents/Notes_%20Usage%20Conseil%20Service%20Juridiq%20V2-1.pdf",
-                            "_blank",
-                            "noopener,noreferrer"
-                          );
-                          return;
-                        }
-                        setOpenPreview((v) => (v === 'doc2' ? null : 'doc2'));
-                      }}
-                      type="button"
-                    >
-                      {openPreview === 'doc2' && !isMobile
-                        ? t("pages.services.usefulDocuments.close", { defaultValue: "Fermer" })
-                        : t("pages.services.usefulDocuments.read", { defaultValue: "Lire" })}
-                    </Button>
-                    <Button variant="outline" size="sm" className="shadow-sm" asChild>
-                      <a
-                        href="/assets/documents/Notes_%20Usage%20Conseil%20Service%20Juridiq%20V2-1.pdf"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2"
-                      >
-                        <Download className="h-4 w-4" />
-                        {t("pages.services.usefulDocuments.cta", { defaultValue: "Télécharger" })}
-                      </a>
+                    <Button size="sm" variant="outline" className="shadow-sm" asChild>
+                      <Link to="/documents/notes-usage-conseil-service-juridiq-v2">
+                        {t("pages.services.usefulDocuments.read", { defaultValue: "Lire" })}
+                      </Link>
                     </Button>
                   </div>
-
-                  {openPreview === 'doc2' && !isMobile && (
-                    <div className="mt-4">
-                      <iframe
-                        title={t("pages.services.usefulDocuments.doc2", { defaultValue: "Notes d'usage - Fiscalité & Optimisation" })}
-                        src="/assets/documents/Notes_%20Usage%20Conseil%20Service%20Juridiq%20V2-1.pdf#view=FitH"
-                        className="w-full h-[520px] md:h-[640px] rounded-xl border border-primary/10 bg-white"
-                      />
-                    </div>
-                  )}
                 </div>
               </div>
             </div>

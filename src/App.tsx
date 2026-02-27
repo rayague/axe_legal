@@ -18,6 +18,7 @@ import NotFound from "./pages/NotFound";
 import TransitionDemo from "./pages/TransitionDemo";
 import MentionsLegales from "./pages/MentionsLegales";
 import Confidentialite from "./pages/Confidentialite";
+import Document from "./pages/Document";
 import AdminLogin from "./pages/AdminLogin";
 import AdminLayout from "./pages/admin/AdminLayout";
 import DashboardHome from "./pages/admin/DashboardHome";
@@ -59,6 +60,7 @@ const App = () => (
               <Route path="/legaltech" element={<LegalTech />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/consultation" element={<Consultation />} />
+              <Route path="/documents/:slug" element={<Document />} />
               <Route path="/demo/transition" element={<TransitionDemo />} />
               <Route path="/mentions-legales" element={<MentionsLegales />} />
               <Route path="/confidentialite" element={<Confidentialite />} />
