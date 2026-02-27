@@ -22,7 +22,7 @@ import PageHero from "@/components/PageHero";
 import contactHero from "@/assets/team-office.jpg";
 import { useEffect, useState } from "react";
 import { useToast } from "@/hooks/use-toast";
-import { addMessage, getBusinessHours, type BusinessHours, type DaySchedule } from "@/lib/firebaseApi";
+import { addMessage, subscribeBusinessHours, type BusinessHours, type DaySchedule } from "@/lib/firebaseApi";
 import { Trans, useTranslation } from "react-i18next";
 
 const Contact = () => {
@@ -56,24 +56,12 @@ const Contact = () => {
   const [isBusinessHoursLoading, setIsBusinessHoursLoading] = useState(true);
 
   useEffect(() => {
-    let isMounted = true;
+    const unsubscribe = subscribeBusinessHours((data) => {
+      setBusinessHours(data);
+      setIsBusinessHoursLoading(false);
+    });
 
-    getBusinessHours()
-      .then((data) => {
-        if (!isMounted) return;
-        if (data) setBusinessHours(data);
-      })
-      .catch((error) => {
-        console.error("Erreur lors du chargement des horaires:", error);
-      })
-      .finally(() => {
-        if (!isMounted) return;
-        setIsBusinessHoursLoading(false);
-      });
-
-    return () => {
-      isMounted = false;
-    };
+    return () => unsubscribe();
   }, []);
 
   const formatSchedule = (schedule: DaySchedule) => {

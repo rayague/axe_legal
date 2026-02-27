@@ -147,6 +147,7 @@
     "subtitle": "Découvrez ce que nos clients disent de notre accompagnement juridique",
     "loading": "Chargement des témoignages...",
     "empty": "Aucun témoignage disponible pour le moment.",
+    "client": "Client",
     "toast_error_title": "Erreur",
     "toast_error_desc": "Impossible de charger les témoignages"
   },
@@ -380,6 +381,34 @@
             "a": "Oui, nous proposons également des consultations par visioconférence pour plus de flexibilité. Indiquez votre préférence lors de la prise de rendez-vous."
           }
         }
+      }
+    },
+    "review": {
+      "hero_eyebrow": "Avis client",
+      "hero_title_prefix": "Laissez votre",
+      "hero_title_highlight": "Avis",
+      "hero_subtitle": "Votre retour nous aide à améliorer nos services. Votre avis sera publié après validation.",
+      "hero_cta": "Déposer mon avis",
+      "toast_success_title": "Merci !",
+      "toast_success_desc": "Votre avis a été reçu. Il sera publié après validation.",
+      "toast_permission_denied": "Permission refusée. Vérifiez que les règles Firestore ont bien été déployées, puis réessayez.",
+      "thank_you_title": "Merci pour votre avis",
+      "thank_you_desc": "Votre avis est en attente de validation et sera publié très bientôt.",
+      "leave_another": "Laisser un autre avis",
+      "errors": {
+        "name": "Veuillez renseigner votre nom.",
+        "comment": "Votre avis est trop court (min. 20 caractères).",
+        "comment_max": "Votre avis est trop long (max. 1200 caractères).",
+        "rating": "Veuillez choisir une note entre 1 et 5."
+      },
+      "form": {
+        "name": "Nom",
+        "rating": "Note",
+        "rating_star": "Étoile",
+        "comment": "Votre avis",
+        "comment_hint": "Merci d’être précis et respectueux.",
+        "submitting": "Envoi...",
+        "submit": "Envoyer mon avis"
       }
     },
     "transition_demo": {

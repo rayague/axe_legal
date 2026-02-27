@@ -3,26 +3,14 @@ import { Card } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Star, Quote, User } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import { getTestimonials } from "@/lib/firebaseApi";
-import { pickLocalizedString, getCurrentLang } from "@/lib/i18nFields";
+import { getPublishedReviews, type Review } from "@/lib/firebaseApi";
 import { useTranslation } from "react-i18next";
 
-interface Testimonial {
-  id?: string;
-  name: string;
-  role: string;
-  content: string;
-  rating: number;
-  image: string;
-}
-
 export const TestimonialsSection = () => {
-  const [testimonials, setTestimonials] = useState<Testimonial[]>([]);
+  const [testimonials, setTestimonials] = useState<Review[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const { toast } = useToast();
-  const { t, i18n } = useTranslation();
-
-  const currentLang = getCurrentLang(i18n);
+  const { t } = useTranslation();
 
   useEffect(() => {
     fetchTestimonials();
@@ -32,8 +20,8 @@ export const TestimonialsSection = () => {
   const fetchTestimonials = async () => {
     try {
       setIsLoading(true);
-      const data = await getTestimonials();
-      setTestimonials(data as Testimonial[]);
+      const data = await getPublishedReviews();
+      setTestimonials(data as Review[]);
     } catch (error) {
       console.error('Error fetching testimonials:', error);
       toast({
@@ -102,15 +90,13 @@ export const TestimonialsSection = () => {
 
                   {/* Content */}
                   <p className="text-muted-foreground leading-relaxed text-base min-h-[100px]">
-                    "{pickLocalizedString(item.content, currentLang)}"
+                    "{item.comment}"
                   </p>
 
                   {/* Author */}
                   <div className="flex items-center gap-4 pt-2 border-t border-primary/20">
                     <Avatar className="h-14 w-14 bg-gradient-to-br from-primary to-primary/80 text-primary-foreground ring-2 ring-primary/20">
-                      {item.image ? (
-                        <AvatarImage src={item.image} alt={item.name} />
-                      ) : null}
+                      <AvatarImage src="" alt={item.name} />
                       <AvatarFallback className="bg-gradient-to-br from-primary to-primary/80 text-white font-bold">
                         {getInitials(item.name)}
                       </AvatarFallback>
@@ -119,9 +105,7 @@ export const TestimonialsSection = () => {
                       <div className="font-bold text-foreground group-hover:text-primary transition-colors">
                         {item.name}
                       </div>
-                      <div className="text-sm text-muted-foreground">
-                        {pickLocalizedString(item.role, currentLang)}
-                      </div>
+                      <div className="text-sm text-muted-foreground">{t("testimonials_section.client", { defaultValue: "Client" })}</div>
                     </div>
                   </div>
                 </div>

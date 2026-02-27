@@ -3,7 +3,7 @@ import { Clock, AlertCircle } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Alert, AlertDescription } from '@/components/ui/alert';
-import { getBusinessHours, type BusinessHours, type DaySchedule } from '@/lib/firebaseApi';
+import { subscribeBusinessHours, type BusinessHours, type DaySchedule } from '@/lib/firebaseApi';
 import { useTranslation } from 'react-i18next';
 
 export function BusinessHoursDisplay() {
@@ -12,15 +12,12 @@ export function BusinessHoursDisplay() {
   const { t, i18n } = useTranslation();
 
   useEffect(() => {
-    getBusinessHours()
-      .then(data => {
-        setBusinessHours(data);
-        setLoading(false);
-      })
-      .catch(error => {
-        console.error('Error fetching business hours:', error);
-        setLoading(false);
-      });
+    const unsubscribe = subscribeBusinessHours((data) => {
+      setBusinessHours(data);
+      setLoading(false);
+    });
+    
+    return () => unsubscribe();
   }, []);
 
   const formatSchedule = (schedule: DaySchedule) => {

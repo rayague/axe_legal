@@ -36,6 +36,7 @@ export default function AdminLayout() {
     { id: "team", icon: Users, label: "Équipe", path: "/admin/team" },
     { id: "process", icon: GitBranch, label: "Processus", path: "/admin/process" },
     { id: "testimonials", icon: Star, label: "Témoignages", path: "/admin/testimonials" },
+    { id: "reviews", icon: Star, label: "Avis clients", path: "/admin/reviews" },
     { id: "announcements", icon: Megaphone, label: "Annonces", path: "/admin/announcements" },
     { id: "business-hours", icon: Clock, label: "Horaires", path: "/admin/business-hours" },
     { id: "messages", icon: MessageSquare, label: "Messages", path: "/admin/messages" },
@@ -49,8 +50,8 @@ export default function AdminLayout() {
     <div className="min-h-screen bg-gray-50 flex">
       {/* Sidebar */}
       <aside
-        className={`fixed lg:static inset-y-0 left-0 z-50 bg-primary text-white transition-all duration-300 ${
-          sidebarOpen ? "w-64" : "w-0 lg:w-20"
+        className={`fixed lg:static inset-y-0 left-0 z-50 bg-primary text-white transition-all duration-300 overflow-hidden ${
+          sidebarOpen ? "w-64 translate-x-0" : "w-0 -translate-x-full lg:w-20 lg:translate-x-0"
         }`}
       >
         <div className="flex flex-col h-full">

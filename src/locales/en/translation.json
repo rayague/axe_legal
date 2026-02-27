@@ -147,6 +147,7 @@
     "subtitle": "See what our clients say about our legal support",
     "loading": "Loading testimonials...",
     "empty": "No testimonials available at the moment.",
+    "client": "Client",
     "toast_error_title": "Error",
     "toast_error_desc": "Unable to load testimonials"
   },

@@ -60,6 +60,25 @@ service cloud.firestore {
       allow create: if true;
       allow read, update, delete: if isAuthenticated();
     }
+
+    // Collection reviews - Création publique (pending), lecture publique seulement si published, modération pour authentifiés
+    match /reviews/{reviewId} {
+      allow create: if true
+        && request.resource.data.status == 'pending'
+        && request.resource.data.name is string
+        && request.resource.data.comment is string
+        && request.resource.data.rating is number
+        && request.resource.data.rating in [1, 2, 3, 4, 5]
+        && request.resource.data.name.size() >= 2
+        && request.resource.data.name.size() <= 80
+        && request.resource.data.comment.size() >= 20
+        && request.resource.data.comment.size() <= 1200
+        && request.resource.data.keys().hasOnly(['name','rating','comment','status','createdAt','honeypot'])
+        && (!('honeypot' in request.resource.data) || request.resource.data.honeypot.size() <= 0);
+
+      allow read: if resource.data.status == 'published' || isAuthenticated();
+      allow update, delete: if isAuthenticated();
+    }
     
     // Collection cases - Admin seulement
     match /cases/{caseId} {

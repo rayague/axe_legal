@@ -285,7 +285,7 @@ export default function Consultation() {
                         required
                         value={formData.nom}
                         onChange={(e) => setFormData({ ...formData, nom: e.target.value })}
-                        placeholder={t("pages.consultation.placeholder_full_name", { defaultValue: "Jean Dupont" })}
+                        placeholder={t("pages.contact.placeholder_full_name", { defaultValue: "Ifè DÉ" })}
                         className="h-11"
                       />
                     </div>
@@ -298,7 +298,7 @@ export default function Consultation() {
                         required
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                        placeholder={t("pages.consultation.placeholder_email", { defaultValue: "jean@exemple.com" })}
+                        placeholder={t("pages.contact.placeholder_email", { defaultValue: "ife@email.bj" })}
                         className="h-11"
                       />
                     </div>
@@ -314,7 +314,7 @@ export default function Consultation() {
                         required
                         value={formData.telephone}
                         onChange={(e) => setFormData({ ...formData, telephone: e.target.value })}
-                        placeholder={t("pages.consultation.placeholder_phone", { defaultValue: "+229 XX XX XX XX" })}
+                        placeholder={t("pages.contact.placeholder_phone", { defaultValue: "+229 XX XX XX XX" })}
                         className="h-11"
                       />
                     </div>

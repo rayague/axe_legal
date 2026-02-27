@@ -19,6 +19,7 @@ import TransitionDemo from "./pages/TransitionDemo";
 import MentionsLegales from "./pages/MentionsLegales";
 import Confidentialite from "./pages/Confidentialite";
 import Document from "./pages/Document";
+import ReviewPage from "./pages/Review";
 import AdminLogin from "./pages/AdminLogin";
 import AdminLayout from "./pages/admin/AdminLayout";
 import DashboardHome from "./pages/admin/DashboardHome";
@@ -39,6 +40,7 @@ import PlaceholderPage from "./pages/admin/PlaceholderPage";
 import SeedDataPage from "./pages/admin/SeedDataPage";
 import TestFirestore from "./pages/admin/TestFirestore";
 import SettingsPage from "./pages/admin/SettingsPage";
+import ReviewsManagementPage from "./pages/admin/ReviewsManagementPage";
 
 const queryClient = new QueryClient();
 
@@ -61,6 +63,7 @@ const App = () => (
               <Route path="/contact" element={<Contact />} />
               <Route path="/consultation" element={<Consultation />} />
               <Route path="/documents/:slug" element={<Document />} />
+              <Route path="/avis" element={<ReviewPage />} />
               <Route path="/demo/transition" element={<TransitionDemo />} />
               <Route path="/mentions-legales" element={<MentionsLegales />} />
               <Route path="/confidentialite" element={<Confidentialite />} />
@@ -101,6 +104,7 @@ const App = () => (
                 <Route path="consultations" element={<ConsultationsPage />} />
                 <Route path="calendar" element={<CalendarPage />} />
                 <Route path="notifications" element={<NotificationsPage />} />
+                <Route path="reviews" element={<ReviewsManagementPage />} />
                 <Route path="seed-data" element={<SeedDataPage />} />
                 <Route path="test-firestore" element={<TestFirestore />} />
                 <Route path="settings" element={<SettingsPage />} />

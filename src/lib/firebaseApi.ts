@@ -6,10 +6,12 @@ import {
   addDoc, 
   updateDoc, 
   deleteDoc,
+  setDoc,
   query,
   where,
   orderBy,
-  Timestamp
+  Timestamp,
+  onSnapshot
 } from 'firebase/firestore';
 import { 
   signInWithEmailAndPassword,
@@ -62,6 +64,18 @@ export interface Testimonial {
   rating?: number;
   image?: string;
   createdAt?: Date;
+}
+
+export type ReviewStatus = 'pending' | 'published' | 'hidden';
+
+export interface Review {
+  id: string;
+  name: string;
+  rating: number;
+  comment: string;
+  status: ReviewStatus;
+  createdAt?: Date;
+  publishedAt?: Date;
 }
 
 export interface Announcement {
@@ -292,6 +306,75 @@ export const deleteTestimonial = async (id: string): Promise<void> => {
   await deleteDoc(doc(db, 'testimonials', id));
 };
 
+// ============= REVIEWS (PUBLIC) =============
+
+export const addReview = async (review: {
+  name: string;
+  rating: number;
+  comment: string;
+  honeypot?: string;
+}): Promise<Review> => {
+  const docRef = await addDoc(collection(db, 'reviews'), {
+    name: review.name,
+    rating: review.rating,
+    comment: review.comment,
+    status: 'pending',
+    honeypot: review.honeypot || '',
+    createdAt: Timestamp.now(),
+  });
+  const newDoc = await getDoc(docRef);
+  return { id: newDoc.id, ...convertTimestamp(newDoc.data()) } as Review;
+};
+
+export const getPublishedReviews = async (): Promise<Review[]> => {
+  const reviewsRef = collection(db, 'reviews');
+  const q = query(reviewsRef, where('status', '==', 'published'));
+  const snapshot = await getDocs(q);
+  const items = snapshot.docs.map((d) => ({
+    id: d.id,
+    ...convertTimestamp(d.data()),
+  })) as Review[];
+
+  return items.sort((a, b) => {
+    const aTime = a.publishedAt ? new Date(a.publishedAt).getTime() : 0;
+    const bTime = b.publishedAt ? new Date(b.publishedAt).getTime() : 0;
+    return bTime - aTime;
+  });
+};
+
+// ============= REVIEWS (ADMIN) =============
+
+export const getPendingReviews = async (): Promise<Review[]> => {
+  const reviewsRef = collection(db, 'reviews');
+  const q = query(reviewsRef, where('status', '==', 'pending'));
+  const snapshot = await getDocs(q);
+  const items = snapshot.docs.map((d) => ({
+    id: d.id,
+    ...convertTimestamp(d.data()),
+  })) as Review[];
+
+  return items.sort((a, b) => {
+    const aTime = a.createdAt ? new Date(a.createdAt).getTime() : 0;
+    const bTime = b.createdAt ? new Date(b.createdAt).getTime() : 0;
+    return bTime - aTime;
+  });
+};
+
+export const updateReviewStatus = async (id: string, status: ReviewStatus): Promise<void> => {
+  const ref = doc(db, 'reviews', id);
+  const payload: any = {
+    status,
+  };
+  if (status === 'published') {
+    payload.publishedAt = Timestamp.now();
+  }
+  await updateDoc(ref, payload);
+};
+
+export const deleteReview = async (id: string): Promise<void> => {
+  await deleteDoc(doc(db, 'reviews', id));
+};
+
 // ============= ANNOUNCEMENTS =============
 
 export const getAnnouncements = async (): Promise<Announcement[]> => {
@@ -432,11 +515,85 @@ export const getBusinessHours = async (): Promise<BusinessHours> => {
 };
 
 export const updateBusinessHours = async (hours: BusinessHours): Promise<void> => {
+  // Nettoyer les données pour Firestore - supprimer les champs undefined et Date
+  const cleanSchedule = (schedule: DaySchedule) => ({
+    isOpen: schedule.isOpen,
+    ...(schedule.openTime && { openTime: schedule.openTime }),
+    ...(schedule.closeTime && { closeTime: schedule.closeTime }),
+    ...(schedule.breakStart && { breakStart: schedule.breakStart }),
+    ...(schedule.breakEnd && { breakEnd: schedule.breakEnd }),
+    ...(schedule.note && { note: schedule.note }),
+  });
+
   const dataToUpdate = {
-    ...hours,
+    monday: cleanSchedule(hours.monday),
+    tuesday: cleanSchedule(hours.tuesday),
+    wednesday: cleanSchedule(hours.wednesday),
+    thursday: cleanSchedule(hours.thursday),
+    friday: cleanSchedule(hours.friday),
+    saturday: cleanSchedule(hours.saturday),
+    sunday: cleanSchedule(hours.sunday),
+    holidays: hours.holidays || [],
+    exceptionalClosure: hours.exceptionalClosure || [],
+    timezone: hours.timezone || 'Europe/Paris',
     lastUpdated: Timestamp.now()
   };
-  await updateDoc(doc(db, 'settings', 'business_hours'), dataToUpdate);
+  
+  await setDoc(doc(db, 'settings', 'business_hours'), dataToUpdate, { merge: true });
+};
+
+export const subscribeBusinessHours = (callback: (hours: BusinessHours) => void) => {
+  const docRef = doc(db, 'settings', 'business_hours');
+  return onSnapshot(docRef, (docSnap) => {
+    if (docSnap.exists()) {
+      const data = docSnap.data();
+      callback({
+        ...data,
+        lastUpdated: data.lastUpdated?.toDate?.() || new Date()
+      } as BusinessHours);
+    } else {
+      // Return default values if document doesn't exist
+      const defaultSchedule: DaySchedule = {
+        isOpen: true,
+        openTime: '08:00',
+        closeTime: '18:00'
+      };
+      callback({
+        monday: defaultSchedule,
+        tuesday: defaultSchedule,
+        wednesday: defaultSchedule,
+        thursday: defaultSchedule,
+        friday: defaultSchedule,
+        saturday: { isOpen: true, openTime: '09:00', closeTime: '13:00' },
+        sunday: { isOpen: false },
+        holidays: [],
+        exceptionalClosure: [],
+        timezone: 'Europe/Paris',
+        lastUpdated: new Date()
+      });
+    }
+  }, (error) => {
+    console.error('Error subscribing to business hours:', error);
+    // Return default values on error
+    const defaultSchedule: DaySchedule = {
+      isOpen: true,
+      openTime: '08:00',
+      closeTime: '18:00'
+    };
+    callback({
+      monday: defaultSchedule,
+      tuesday: defaultSchedule,
+      wednesday: defaultSchedule,
+      thursday: defaultSchedule,
+      friday: defaultSchedule,
+      saturday: { isOpen: true, openTime: '09:00', closeTime: '13:00' },
+      sunday: { isOpen: false },
+      holidays: [],
+      exceptionalClosure: [],
+      timezone: 'Europe/Paris',
+      lastUpdated: new Date()
+    });
+  });
 };
 
 // ============= CASES (Dossiers) =============
