@@ -48,7 +48,7 @@ const MentionsLegales = () => {
 
             <Card className="mb-6 p-6" id="hebergement">
               <h2 className="text-2xl font-semibold mb-3">{t("pages.mentions.hosting_title", { defaultValue: "Hébergement" })}</h2>
-              <p className="text-muted-foreground">{t("pages.mentions.hosting_text", { defaultValue: "Le site est hébergé par le fournisseur de votre choix (hébergeur technique). Pour toute demande relative à l'hébergement, contactez l'éditeur via contact@axelegal.bj." })}</p>
+              <p className="text-muted-foreground">{t("pages.mentions.hosting_text", { defaultValue: "Le site est hébergé par le fournisseur de votre choix (hébergeur technique). Pour toute demande relative à l'hébergement, contactez l'éditeur via axelconsultjurist@gmail.com." })}</p>
             </Card>
 
             <Card className="mb-6 p-6" id="propriete">
@@ -71,9 +71,9 @@ const MentionsLegales = () => {
               <p className="text-muted-foreground">
                 <Trans
                   i18nKey="pages.mentions.contact_text"
-                  defaults="Pour toute question relative aux présentes mentions légales, contactez-nous : <1>contact@axelegal.bj</1> ou par téléphone au +229 01 97 74 75 93."
+                  defaults="Pour toute question relative aux présentes mentions légales, contactez-nous : <1>axelconsultjurist@gmail.com</1> ou par téléphone au +229 01 40 66 69 38."
                   components={{
-                    1: <a className="text-primary" href="mailto:contact@axelegal.bj" />,
+                    1: <a className="text-primary" href="mailto:axelconsultjurist@gmail.com" />,
                   }}
                 />
               </p>

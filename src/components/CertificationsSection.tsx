@@ -24,7 +24,7 @@ export const CertificationsSection = () => {
     <section className="py-16 bg-primary text-white">
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto text-center mb-12 animate-fade-in-up">
-          <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">{t("certifications.title", { defaultValue: "Reconnu et Certifié" })}</h2>
+          <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">{t("certifications.title", { defaultValue: "Reconnu" })}</h2>
           <p className="text-lg text-white/90">
             {t("certifications.subtitle", { defaultValue: "Notre expertise juridique reconnue au service de votre réussite" })}
           </p>

@@ -141,7 +141,7 @@ const Contact = () => {
           )}
           subtitle={t("pages.contact.hero_subtitle", { defaultValue: "Notre équipe d'experts est à votre disposition pour répondre à vos questions et vous accompagner dans vos démarches juridiques. Première consultation offerte." })}
           ctaText={t("pages.contact.hero_cta", { defaultValue: "Appeler maintenant" })}
-          ctaLink="tel:+2290197747593"
+          ctaLink="tel:+2290140666938"
           imageSrc={contactHero}
           large
         />
@@ -210,7 +210,7 @@ const Contact = () => {
                             {t("pages.contact.field_full_name", { defaultValue: "Nom complet" })} <span className="text-destructive">*</span>
                           </label>
                           <Input 
-                            placeholder={t("pages.contact.placeholder_full_name", { defaultValue: "Jean Dupont" })}
+                            placeholder={t("pages.contact.placeholder_full_name", { defaultValue: "Ifè DÉ" })}
                             required
                             value={formData.nom}
                             onChange={(e) => setFormData({...formData, nom: e.target.value})}
@@ -222,7 +222,7 @@ const Contact = () => {
                           </label>
                           <Input 
                             type="email" 
-                            placeholder={t("pages.contact.placeholder_email", { defaultValue: "jean@exemple.com" })}
+                            placeholder={t("pages.contact.placeholder_email", { defaultValue: "ife@email.bj" })}
                             required
                             value={formData.email}
                             onChange={(e) => setFormData({...formData, email: e.target.value})}
@@ -315,22 +315,16 @@ const Contact = () => {
                           <h3 className="font-semibold text-lg mb-2">{t("pages.contact.card_phone_title", { defaultValue: "Téléphone" })}</h3>
                           <div className="space-y-1">
                             <a
-                              href="tel:+2290197747593"
+                              href="tel:+2290140666938"
                               className="block text-muted-foreground hover:text-primary transition-colors text-lg font-medium"
                             >
-                              +229 01 97 74 75 93
+                              +229 01 40 66 69 38
                             </a>
                             <a
                               href="tel:+2290165656825"
                               className="block text-muted-foreground hover:text-primary transition-colors text-lg font-medium"
                             >
                               +229 01 65 65 68 25
-                            </a>
-                            <a
-                              href="tel:+2290140666938"
-                              className="block text-muted-foreground hover:text-primary transition-colors text-lg font-medium"
-                            >
-                              +229 01 40 66 69 38
                             </a>
                           </div>
                           <p className="text-sm text-muted-foreground mt-1">
@@ -350,10 +344,10 @@ const Contact = () => {
                         <div className="flex-1">
                           <h3 className="font-semibold text-lg mb-2">{t("pages.contact.card_email_title", { defaultValue: "Email" })}</h3>
                           <a 
-                            href="mailto:contact@axelegal.bj" 
+                            href="mailto:axelconsultjurist@gmail.com" 
                             className="text-muted-foreground hover:text-primary transition-colors break-all"
                           >
-                            contact@axelegal.bj
+                            axelconsultjurist@gmail.com
                           </a>
                           <p className="text-sm text-muted-foreground mt-1">
                             {t("pages.contact.email_response_time", { defaultValue: "Réponse sous 24h" })}
@@ -436,7 +430,7 @@ const Contact = () => {
                           contactez-nous directement par téléphone.
                         </p>
                         <Button variant="outline" className="w-full" asChild>
-                          <a href="tel:+2290197747593">
+                          <a href="tel:+2290140666938">
                             <Phone className="h-4 w-4 mr-2" />
                             Appeler Maintenant
                           </a>

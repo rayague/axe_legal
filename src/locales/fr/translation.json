@@ -167,7 +167,7 @@
     }
   },
   "certifications": {
-    "title": "Reconnu et Certifié",
+    "title": "Reconnu",
     "subtitle": "Notre expertise juridique reconnue au service de votre réussite",
     "items": {
       "0": {
@@ -254,9 +254,9 @@
       "form_title_highlight": "Message",
       "form_subtitle": "Remplissez le formulaire ci-dessous et nous vous recontacterons dans les plus brefs délais.",
       "field_full_name": "Nom complet",
-      "placeholder_full_name": "Jean Dupont",
+      "placeholder_full_name": "Ifè DÉ",
       "field_email": "Email",
-      "placeholder_email": "jean@exemple.com",
+      "placeholder_email": "ife@email.bj",
       "field_phone": "Téléphone",
       "placeholder_phone": "+229 XX XX XX XX",
       "field_subject": "Objet de la demande",
@@ -344,9 +344,9 @@
       "form_title_highlight": "Rendez-vous",
       "form_subtitle": "Remplissez le formulaire ci-dessous et nous vous contacterons rapidement",
       "field_full_name": "Nom complet",
-      "placeholder_full_name": "Jean Dupont",
+      "placeholder_full_name": "Ifè DÉ",
       "field_email": "Email",
-      "placeholder_email": "jean@exemple.com",
+      "placeholder_email": "ife@email.bj",
       "field_phone": "Téléphone",
       "placeholder_phone": "+229 XX XX XX XX",
       "field_service": "Service concerné",
@@ -718,7 +718,7 @@
       "editor_text": "AXE LEGAL - Cabinet d'affaires spécialisé dans l'accompagnement juridique des entreprises et particuliers au Bénin.",
       "ids_title": "Identifiants",
       "hosting_title": "Hébergement",
-      "hosting_text": "Le site est hébergé par le fournisseur de votre choix (hébergeur technique). Pour toute demande relative à l'hébergement, contactez l'éditeur via contact@axelegal.bj.",
+      "hosting_text": "Le site est hébergé par le fournisseur de votre choix (hébergeur technique). Pour toute demande relative à l'hébergement, contactez l'éditeur via axelconsultjurist@gmail.com.",
       "ip_title": "Propriété intellectuelle",
       "ip_text": "L'ensemble des contenus présents sur ce site (textes, images, logos, icônes) est la propriété de AXE LEGAL ou est utilisé avec l'autorisation de leurs titulaires. Toute reproduction, représentation ou diffusion, totale ou partielle, est interdite sans autorisation préalable.",
       "liability_title": "Responsabilité",
@@ -726,7 +726,7 @@
       "services_terms_title": "Conditions de prestation",
       "services_terms_text": "Nos prestations s'effectuent selon deux modes : prestations sous contrat (durée minimale : 3 mois) avec facturation mensuelle ou trimestrielle, ou prestations à la tâche/mission facturées à l'acte. Les conditions précises sont détaillées dans nos propositions et contrats.",
       "contact_title": "Contact",
-      "contact_text": "Pour toute question relative aux présentes mentions légales, contactez-nous : <1>contact@axelegal.bj</1> ou par téléphone au +229 01 97 74 75 93."
+      "contact_text": "Pour toute question relative aux présentes mentions légales, contactez-nous : <1>axelconsultjurist@gmail.com</1> ou par téléphone au +229 01 40 66 69 38."
     },
     "privacy": {
       "title": "Politique de Confidentialité",
@@ -744,11 +744,11 @@
       "security_title": "Sécurité",
       "security_text": "Nous mettons en place des mesures techniques et organisationnelles pour protéger vos données contre la perte, l'altération ou l'accès non autorisé.",
       "rights_title": "Vos droits",
-      "rights_text": "Conformément à la réglementation applicable, vous disposez d'un droit d'accès, de rectification, d'effacement, de limitation, d'opposition et de portabilité. Pour exercer vos droits, contactez-nous à <1>contact@axelegal.bj</1>.",
+      "rights_text": "Conformément à la réglementation applicable, vous disposez d'un droit d'accès, de rectification, d'effacement, de limitation, d'opposition et de portabilité. Pour exercer vos droits, contactez-nous à <1>axelconsultjurist@gmail.com</1>.",
       "retention_title": "Durée de conservation",
       "retention_text": "Les données sont conservées pendant la durée nécessaire aux finalités. Les délais peuvent varier selon la nature des données et les obligations légales.",
       "contact_title": "Contact",
-      "contact_text": "Pour toute question relative à la confidentialité : <1>contact@axelegal.bj</1>."
+      "contact_text": "Pour toute question relative à la confidentialité : <1>axelconsultjurist@gmail.com</1>."
     },
     "not_found": {
       "badge": "Page introuvable",

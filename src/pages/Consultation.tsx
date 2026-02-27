@@ -411,20 +411,20 @@ export default function Consultation() {
                 <h3 className="text-xl font-bold mb-6 text-center">{t("pages.consultation.contact_direct", { defaultValue: "Ou contactez-nous directement" })}</h3>
                 <div className="grid sm:grid-cols-2 gap-4">
                   <Button variant="outline" size="lg" className="gap-2 h-14 group border-2" asChild>
-                    <a href="tel:+2290197747593">
+                    <a href="tel:+2290140666938">
                       <Phone className="h-5 w-5 text-primary" />
                       <div className="text-left">
                         <div className="text-xs text-muted-foreground">{t("common.call_us", { defaultValue: "Appelez-nous" })}</div>
-                        <div className="font-semibold group-hover:text-primary transition-colors">+229 01 97 74 75 93</div>
+                        <div className="font-semibold group-hover:text-primary transition-colors">+229 01 40 66 69 38</div>
                       </div>
                     </a>
                   </Button>
                   <Button variant="outline" size="lg" className="gap-2 h-14 group border-2" asChild>
-                    <a href="mailto:contact@axelegal.bj">
+                    <a href="mailto:axelconsultjurist@gmail.com">
                       <Mail className="h-5 w-5 text-primary" />
                       <div className="text-left">
                         <div className="text-xs text-muted-foreground">{t("common.write_us", { defaultValue: "Écrivez-nous" })}</div>
-                        <div className="font-semibold group-hover:text-primary transition-colors">contact@axelegal.bj</div>
+                        <div className="font-semibold group-hover:text-primary transition-colors">axelconsultjurist@gmail.com</div>
                       </div>
                     </a>
                   </Button>

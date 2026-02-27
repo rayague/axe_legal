@@ -167,7 +167,7 @@
     }
   },
   "certifications": {
-    "title": "Recognized and certified",
+    "title": "Recognized",
     "subtitle": "Recognized legal expertise to support your success",
     "items": {
       "0": {
@@ -254,9 +254,9 @@
       "form_title_highlight": "message",
       "form_subtitle": "Fill out the form below and we will get back to you as soon as possible.",
       "field_full_name": "Full name",
-      "placeholder_full_name": "John Doe",
+      "placeholder_full_name": "Ifè DÉ",
       "field_email": "Email",
-      "placeholder_email": "john@example.com",
+      "placeholder_email": "ife@email.bj",
       "field_phone": "Phone",
       "placeholder_phone": "+229 XX XX XX XX",
       "field_subject": "Subject",
@@ -344,9 +344,9 @@
       "form_title_highlight": "appointment",
       "form_subtitle": "Fill out the form below and we will contact you shortly",
       "field_full_name": "Full name",
-      "placeholder_full_name": "John Doe",
+      "placeholder_full_name": "Ifè DÉ",
       "field_email": "Email",
-      "placeholder_email": "john@example.com",
+      "placeholder_email": "ife@email.bj",
       "field_phone": "Phone",
       "placeholder_phone": "+229 XX XX XX XX",
       "field_service": "Service concerned",
@@ -718,7 +718,7 @@
       "editor_text": "AXE LEGAL - Business law firm specialized in legal advisory for companies and individuals in Benin.",
       "ids_title": "Identifiers",
       "hosting_title": "Hosting",
-      "hosting_text": "The website is hosted by the provider of your choice (technical hosting). For any request related to hosting, contact the publisher at contact@axelegal.bj.",
+      "hosting_text": "The website is hosted by the provider of your choice (technical hosting). For any request related to hosting, contact the publisher at axelconsultjurist@gmail.com.",
       "ip_title": "Intellectual property",
       "ip_text": "All content on this website (texts, images, logos, icons) is the property of AXE LEGAL or is used with permission of the rights holders. Any reproduction, representation or distribution, in whole or in part, is prohibited without prior authorization.",
       "liability_title": "Liability",
@@ -726,7 +726,7 @@
       "services_terms_title": "Service terms",
       "services_terms_text": "Our services are provided in two ways: contract-based services (minimum duration: 3 months) billed monthly or quarterly, or one-off services billed per task/mission. Specific terms are detailed in our proposals and contracts.",
       "contact_title": "Contact",
-      "contact_text": "For any question regarding this legal notice, contact us: <1>contact@axelegal.bj</1> or call +229 01 97 74 75 93."
+      "contact_text": "For any question regarding this legal notice, contact us: <1>axelconsultjurist@gmail.com</1> or call +229 01 40 66 69 38."
     },
     "privacy": {
       "title": "Privacy Policy",
@@ -744,11 +744,11 @@
       "security_title": "Security",
       "security_text": "We implement technical and organizational measures to protect your data against loss, alteration or unauthorized access.",
       "rights_title": "Your rights",
-      "rights_text": "In accordance with applicable regulations, you have rights of access, rectification, erasure, restriction, objection and portability. To exercise your rights, contact us at <1>contact@axelegal.bj</1>.",
+      "rights_text": "In accordance with applicable regulations, you have rights of access, rectification, erasure, restriction, objection and portability. To exercise your rights, contact us at <1>axelconsultjurist@gmail.com</1>.",
       "retention_title": "Retention period",
       "retention_text": "Data is retained for the period necessary for the purposes. Timeframes may vary depending on the nature of the data and legal obligations.",
       "contact_title": "Contact",
-      "contact_text": "For any privacy-related question: <1>contact@axelegal.bj</1>."
+      "contact_text": "For any privacy-related question: <1>axelconsultjurist@gmail.com</1>."
     },
     "not_found": {
       "badge": "Page not found",

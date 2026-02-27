@@ -72,9 +72,9 @@ const Confidentialite = () => {
               <p className="text-muted-foreground">
                 <Trans
                   i18nKey="pages.privacy.rights_text"
-                  defaults="Conformément à la réglementation applicable, vous disposez d'un droit d'accès, de rectification, d'effacement, de limitation, d'opposition et de portabilité. Pour exercer vos droits, contactez-nous à <1>contact@axelegal.bj</1>."
+                  defaults="Conformément à la réglementation applicable, vous disposez d'un droit d'accès, de rectification, d'effacement, de limitation, d'opposition et de portabilité. Pour exercer vos droits, contactez-nous à <1>axelconsultjurist@gmail.com</1>."
                   components={{
-                    1: <a className="text-primary" href="mailto:contact@axelegal.bj" />,
+                    1: <a className="text-primary" href="mailto:axelconsultjurist@gmail.com" />,
                   }}
                 />
               </p>
@@ -90,9 +90,9 @@ const Confidentialite = () => {
               <p className="text-muted-foreground">
                 <Trans
                   i18nKey="pages.privacy.contact_text"
-                  defaults="Pour toute question relative à la confidentialité : <1>contact@axelegal.bj</1>."
+                  defaults="Pour toute question relative à la confidentialité : <1>axelconsultjurist@gmail.com</1>."
                   components={{
-                    1: <a className="text-primary" href="mailto:contact@axelegal.bj" />,
+                    1: <a className="text-primary" href="mailto:axelconsultjurist@gmail.com" />,
                   }}
                 />
               </p>

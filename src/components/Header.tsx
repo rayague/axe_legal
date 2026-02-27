@@ -294,7 +294,7 @@ export const Header = () => {
                 <LangSwitch />
               </div>
 
-              <a href="tel:+2290197747593" className="flex items-center gap-3 px-4 py-3 rounded-md hover:bg-secondary/40">
+              <a href="tel:+2290140666938" className="flex items-center gap-3 px-4 py-3 rounded-md hover:bg-secondary/40">
                 <Phone className="h-5 w-5 text-primary" />
                 <span>{t("nav.call_us", { defaultValue: "Appelez-nous" })}</span>
               </a>

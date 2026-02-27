@@ -67,7 +67,7 @@ export const CTASection = () => {
               <MessageSquare className="h-6 w-6" />
               <div className="text-left">
                 <p className="text-sm text-white/70">{t("common.write_us", { defaultValue: "Écrivez-nous" })}</p>
-                <p className="font-semibold text-lg">contact@axelegal.bj</p>
+                <p className="font-semibold text-lg">axelconsultjurist@gmail.com</p>
               </div>
             </div>
           </div>
